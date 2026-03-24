@@ -24,7 +24,7 @@
           </div>
           <div class="marrob-gallery__footer">
             <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__texture">Фасадные термопанели MARROB</span>
+            <span class="marrob-gallery__card-title">Частный дом • клинкер оранжевый PR-523</span>
           </div>
         </div>
         <div class="marrob-gallery__card is-visible">
@@ -38,7 +38,7 @@
           </div>
           <div class="marrob-gallery__footer">
             <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__texture">Фасадные термопанели MARROB</span>
+            <span class="marrob-gallery__card-title">Частный дом • семь оттенков, золотая кладка PR-509</span>
           </div>
         </div>
         <div class="marrob-gallery__card is-visible">
@@ -52,7 +52,7 @@
           </div>
           <div class="marrob-gallery__footer">
             <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__texture">Фасадные термопанели MARROB</span>
+            <span class="marrob-gallery__card-title">Частный дом • Brickstyle Baker Street беж PR-514</span>
           </div>
         </div>
         <div class="marrob-gallery__card is-visible">
@@ -66,7 +66,7 @@
           </div>
           <div class="marrob-gallery__footer">
             <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__texture">Фасадные термопанели MARROB</span>
+            <span class="marrob-gallery__card-title">Частный дом • Loft brick chilli PR-511</span>
           </div>
         </div>
         <div class="marrob-gallery__card is-visible">
@@ -80,7 +80,7 @@
           </div>
           <div class="marrob-gallery__footer">
             <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__texture">Фасадные термопанели MARROB</span>
+            <span class="marrob-gallery__card-title">Частный дом • Brickstyle London дымный PR-516</span>
           </div>
         </div>
         <div class="marrob-gallery__card is-visible">
@@ -94,7 +94,7 @@
           </div>
           <div class="marrob-gallery__footer">
             <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__texture">Фасадные термопанели MARROB</span>
+            <span class="marrob-gallery__card-title">Частный дом • Porti beige Paradyz PR-505</span>
           </div>
         </div>
         <div class="marrob-gallery__card">
@@ -108,7 +108,7 @@
           </div>
           <div class="marrob-gallery__footer">
             <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__texture">Фасадные термопанели MARROB</span>
+            <span class="marrob-gallery__card-title">Частный дом • Cerrad Loft brick curry PR-244</span>
           </div>
         </div>
         <div class="marrob-gallery__card">
@@ -122,7 +122,7 @@
           </div>
           <div class="marrob-gallery__footer">
             <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__texture">Фасадные термопанели MARROB</span>
+            <span class="marrob-gallery__card-title">Частный дом • Baker Street беж PR-230</span>
           </div>
         </div>
         <div class="marrob-gallery__card">
@@ -136,7 +136,7 @@
           </div>
           <div class="marrob-gallery__footer">
             <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__texture">Фасадные термопанели MARROB</span>
+            <span class="marrob-gallery__card-title">Частный дом • Seven tones orange PR-227</span>
           </div>
         </div>
         <div class="marrob-gallery__card">
@@ -150,7 +150,7 @@
           </div>
           <div class="marrob-gallery__footer">
             <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__texture">Фасадные термопанели MARROB</span>
+            <span class="marrob-gallery__card-title">Частный дом • Viano beige фасад PR-225</span>
           </div>
         </div>
         <div class="marrob-gallery__card">
@@ -164,7 +164,7 @@
           </div>
           <div class="marrob-gallery__footer">
             <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__texture">Фасадные термопанели MARROB</span>
+            <span class="marrob-gallery__card-title">Частный дом • Aria rustica HF21 PR-221</span>
           </div>
         </div>
         <div class="marrob-gallery__card">
@@ -178,7 +178,7 @@
           </div>
           <div class="marrob-gallery__footer">
             <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__texture">Фасадные термопанели MARROB</span>
+            <span class="marrob-gallery__card-title">Частный дом • Loft brick chilly PR-216</span>
           </div>
         </div>
       </div>
@@ -309,24 +309,29 @@
     padding: 16px;
     border-top: 1px solid var(--marrob-border);
     gap: 12px;
+    min-width: 0;
   }
   .marrob-gallery__badge-area {
+    flex-shrink: 0;
     display: inline-block;
     padding: 6px 12px;
     font-size: 0.8125rem;
     font-weight: 500;
     color: var(--marrob-text-muted);
-    background: var(--marrob-bg);
+    background: var(--marrob-bg-card, #faf9f7);
     border: 1px solid var(--marrob-border);
     border-radius: 8px;
   }
-  .marrob-gallery__texture {
+  .marrob-gallery__card-title {
+    flex: 1;
+    min-width: 0;
     font-size: 0.8125rem;
-    color: var(--marrob-text-light);
+    font-weight: 500;
+    color: var(--marrob-text-muted);
+    text-align: right;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 160px;
   }
   .marrob-gallery__load-wrap { text-align: center; margin: -8px 0 32px; }
   .marrob-gallery__load-more {

@@ -95,16 +95,16 @@ const Gallery: React.FC = () => {
                 </div>
               </div>
 
-              {/* Info */}
-              <div className="p-5">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-display font-semibold text-text">{project.title}</h3>
-                  <span className="text-xs px-2 py-1 bg-primary-light text-primary rounded-full">
+              {/* Метраж слева, название справа (одна строка, ellipsis) */}
+              <div className="min-w-0 border-t border-border p-4 sm:p-5">
+                <div className="flex min-w-0 items-center justify-between gap-3">
+                  <span className="shrink-0 rounded-lg border border-border bg-sand-light px-3 py-1.5 text-sm font-medium text-text-muted">
                     {project.area}
                   </span>
+                  <p className="min-w-0 flex-1 text-right text-sm font-medium text-text truncate" title={project.title}>
+                    {project.title}
+                  </p>
                 </div>
-                <p className="text-text-light text-sm mb-1">{project.location}</p>
-                <p className="text-text-muted text-xs">{project.texture}</p>
               </div>
             </div>
           ))}
