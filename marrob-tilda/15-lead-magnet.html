@@ -1,0 +1,212 @@
+<!-- MARROB — Блок 15: Лид-магнит «Скачать прайс». Кнопка + попап с формой. -->
+<div class="marrob-block marrob-block-lead">
+  <section class="marrob-lead">
+    <div class="marrob-lead__inner">
+      <div class="marrob-lead__box marrob-fade-up">
+        <p class="marrob-lead__text">Получите актуальный прайс-лист и каталог коллекций</p>
+        <button type="button" class="marrob-lead__btn" id="marrob-lead-open">Скачать прайс и каталог</button>
+      </div>
+    </div>
+  </section>
+  <div class="marrob-lead-popup" id="marrob-lead-popup" role="dialog" aria-modal="true" aria-labelledby="marrob-lead-popup-title" hidden>
+    <div class="marrob-lead-popup__overlay" id="marrob-lead-close"></div>
+    <div class="marrob-lead-popup__box">
+      <button type="button" class="marrob-lead-popup__close" id="marrob-lead-close-btn" aria-label="Закрыть">&times;</button>
+      <h3 class="marrob-lead-popup__title marrob-font-display" id="marrob-lead-popup-title">Скачать прайс и каталог</h3>
+      <p class="marrob-lead-popup__subtitle">Оставьте контакты — отправим материалы на почту или в мессенджер.</p>
+      <form class="marrob-lead-popup__form" id="marrob-lead-form-popup">
+        <label class="marrob-lead-popup__field">
+          <span class="marrob-lead-popup__label">Имя</span>
+          <input type="text" name="name" placeholder="Ваше имя" class="marrob-lead-popup__input">
+        </label>
+        <label class="marrob-lead-popup__field">
+          <span class="marrob-lead-popup__label">Телефон <em>*</em></span>
+          <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="marrob-lead-popup__input" required id="marrob-lead-phone">
+        </label>
+        <button type="submit" class="marrob-lead-popup__submit">Отправить</button>
+      </form>
+    </div>
+  </div>
+</div>
+<style>
+  .marrob-block-lead { background: var(--marrob-bg); position: relative; }
+  .marrob-lead { padding: 48px 24px; font-family: var(--marrob-font-body); }
+  .marrob-lead__inner { max-width: 640px; margin: 0 auto; }
+  .marrob-lead__box {
+    text-align: center;
+    padding: 40px 32px;
+    background: var(--marrob-bg-card);
+    border: 1px solid var(--marrob-border);
+    border-radius: var(--marrob-radius-lg);
+    box-shadow: var(--marrob-shadow);
+  }
+  .marrob-lead__text {
+    font-size: 1.125rem;
+    color: var(--marrob-text-muted);
+    margin: 0 0 24px;
+  }
+  .marrob-lead__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: #fff;
+    background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
+    border: none;
+    border-radius: var(--marrob-radius);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+  }
+  .marrob-lead__btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(196, 92, 62, 0.35);
+  }
+  .marrob-lead-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+  .marrob-lead-popup[hidden] { display: none; }
+  .marrob-lead-popup__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    cursor: pointer;
+  }
+  .marrob-lead-popup__box {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    background: var(--marrob-bg-card);
+    border-radius: var(--marrob-radius-lg);
+    padding: 32px 24px;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+  }
+  .marrob-lead-popup__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--marrob-text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .marrob-lead-popup__close:hover { color: var(--marrob-text); }
+  .marrob-lead-popup__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--marrob-text);
+    margin: 0 0 8px;
+  }
+  .marrob-lead-popup__subtitle {
+    font-size: 0.9375rem;
+    color: var(--marrob-text-muted);
+    margin: 0 0 24px;
+  }
+  .marrob-lead-popup__form { display: flex; flex-direction: column; gap: 20px; }
+  .marrob-lead-popup__label {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--marrob-text-muted);
+    margin-bottom: 8px;
+  }
+  .marrob-lead-popup__label em { color: var(--marrob-primary); }
+  .marrob-lead-popup__input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--marrob-text);
+    background: var(--marrob-bg);
+    border: 1px solid var(--marrob-border);
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+  .marrob-lead-popup__input:focus {
+    outline: none;
+    border-color: var(--marrob-primary);
+  }
+  .marrob-lead-popup__submit {
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: #fff;
+    background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
+    border: none;
+    border-radius: var(--marrob-radius);
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  .marrob-lead-popup__submit:hover { opacity: 0.95; }
+</style>
+<script>
+(function() {
+  var openBtn = document.getElementById('marrob-lead-open');
+  var popup = document.getElementById('marrob-lead-popup');
+  var closeBtn = document.getElementById('marrob-lead-close-btn');
+  var overlay = document.getElementById('marrob-lead-close');
+  var form = document.getElementById('marrob-lead-form-popup');
+  var phoneInput = document.getElementById('marrob-lead-phone');
+  if (!openBtn || !popup) return;
+
+  function openPopup() {
+    popup.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    if (phoneInput) phoneInput.focus();
+  }
+  function closePopup() {
+    popup.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+  }
+
+  openBtn.addEventListener('click', openPopup);
+  closeBtn.addEventListener('click', closePopup);
+  overlay.addEventListener('click', closePopup);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && popup && !popup.hasAttribute('hidden')) closePopup();
+  });
+
+  function maskPhone(el) {
+    var v = el.value.replace(/\D/g, '');
+    if (v.length > 0) {
+      if (v[0] === '8' || v[0] === '7') v = v.substring(1);
+      var r = '+7';
+      if (v.length > 0) r += ' (' + v.substring(0, 3);
+      if (v.length >= 3) r += ') ' + v.substring(3, 6);
+      if (v.length >= 6) r += '-' + v.substring(6, 8);
+      if (v.length >= 8) r += '-' + v.substring(8, 10);
+      el.value = r;
+    }
+  }
+  if (phoneInput) phoneInput.addEventListener('input', function() { maskPhone(this); });
+
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var phone = (phoneInput && phoneInput.value || '').replace(/\D/g, '');
+      if (phone.length < 10) {
+        if (phoneInput) phoneInput.focus();
+        return;
+      }
+      closePopup();
+      form.reset();
+    });
+  }
+})();
+</script>

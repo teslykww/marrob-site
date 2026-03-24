@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MARROB — вариант Kimi (референс)</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #1a1a1a;
+      color: #e0e0e0;
+    }
+    .toolbar {
+      padding: 12px 20px;
+      background: #252525;
+      border-bottom: 1px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .toolbar h1 { margin: 0; font-size: 1rem; font-weight: 600; }
+    .toolbar a {
+      color: #C45C3E;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    .toolbar a:hover { text-decoration: underline; }
+    .frame-wrap {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - 52px);
+      min-height: 400px;
+    }
+    .frame-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .frame-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      background: #1a1a1a;
+    }
+    .frame-fallback p { margin: 0 0 16px; max-width: 420px; font-size: 0.9375rem; color: #999; }
+    .frame-fallback code {
+      display: block;
+      margin-top: 12px;
+      padding: 12px 16px;
+      background: #252525;
+      border-radius: 8px;
+      font-size: 0.8125rem;
+      text-align: left;
+      color: #c0c0c0;
+    }
+    .frame-fallback a {
+      color: #C45C3E;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <h1>Вариант Kimi (референс дизайна)</h1>
+    <a href="index.html">← Назад к варианту для Tilda</a>
+  </div>
+  <div class="frame-wrap">
+    <iframe
+      id="kimi-frame"
+      src="http://localhost:5174/"
+      title="Kimi — референс"
+    ></iframe>
+    <div class="frame-fallback" id="fallback">
+      <p>Вариант Kimi не загружен. Запустите локальный сервер с собранным Kimi:</p>
+      <code>cd kimi/app<br>npx serve dist -p 5174</code>
+      <p style="margin-top: 20px;">
+        <a href="http://localhost:5174/" target="_blank" rel="noopener">Открыть в новой вкладке →</a>
+      </p>
+    </div>
+  </div>
+  <script>
+    (function() {
+      var frame = document.getElementById('kimi-frame');
+      var fallback = document.getElementById('fallback');
+      frame.onload = function() {
+        try {
+          if (frame.contentWindow && frame.contentWindow.location.href !== 'about:blank')
+            fallback.style.display = 'none';
+        } catch (e) {}
+      };
+      setTimeout(function() {
+        try {
+          if (frame.contentDocument && frame.contentDocument.body && frame.contentDocument.body.innerText)
+            fallback.style.display = 'none';
+        } catch (e) {}
+      }, 2000);
+    })();
+  </script>
+</body>
+</html>

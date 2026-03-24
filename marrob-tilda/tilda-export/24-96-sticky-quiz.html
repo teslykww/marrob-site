@@ -1,0 +1,127 @@
+<!-- MARROB — Sticky Mobile CTA + Quiz Modal. Подключите после основных блоков. -->
+<div class="marrob-sticky-cta">
+  <a href="https://wa.me/79166662335" class="marrob-sticky-cta__btn marrob-sticky-cta__btn--wa" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    WhatsApp
+  </a>
+  <a href="#contact" class="marrob-sticky-cta__btn marrob-sticky-cta__btn--quiz" id="marrob-sticky-quiz-btn">Рассчитать стоимость</a>
+</div>
+
+<div class="marrob-lead-popup" id="marrob-quiz-modal" role="dialog" aria-modal="true" aria-labelledby="marrob-quiz-title" hidden>
+  <div class="marrob-lead-popup__overlay" id="marrob-quiz-overlay"></div>
+  <div class="marrob-lead-popup__content marrob-quiz-content">
+    <button type="button" class="marrob-lead-popup__close" id="marrob-quiz-close" aria-label="Закрыть">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="marrob-quiz">
+      <div class="marrob-quiz__progress"><div class="marrob-quiz__progress-bar" id="quiz-progress" style="width: 33%;"></div></div>
+      <div class="marrob-quiz__step" id="quiz-step-1">
+        <h3 class="marrob-lead-popup__title marrob-font-display" id="marrob-quiz-title">Какая площадь фасада вашего дома?</h3>
+        <p class="marrob-lead-popup__desc">Выберите примерную площадь для точного расчёта.</p>
+        <div class="marrob-quiz__options">
+          <label class="marrob-quiz__option"><input type="radio" name="quiz-area" value="До 100 м²"><span>До 100 м²</span></label>
+          <label class="marrob-quiz__option"><input type="radio" name="quiz-area" value="100 - 200 м²"><span>100 – 200 м²</span></label>
+          <label class="marrob-quiz__option"><input type="radio" name="quiz-area" value="200 - 300 м²"><span>200 – 300 м²</span></label>
+          <label class="marrob-quiz__option"><input type="radio" name="quiz-area" value="Более 300 м²"><span>Более 300 м²</span></label>
+        </div>
+        <button type="button" class="marrob-lead-popup__submit" id="quiz-next-1">Далее</button>
+      </div>
+      <div class="marrob-quiz__step" id="quiz-step-2" style="display: none;">
+        <h3 class="marrob-lead-popup__title marrob-font-display">Из какого материала построен дом?</h3>
+        <p class="marrob-lead-popup__desc">Это поможет подобрать правильный тип крепления.</p>
+        <div class="marrob-quiz__options">
+          <label class="marrob-quiz__option"><input type="radio" name="quiz-material" value="Газобетон / Пеноблок"><span>Газобетон / Пеноблок</span></label>
+          <label class="marrob-quiz__option"><input type="radio" name="quiz-material" value="Кирпич"><span>Кирпич</span></label>
+          <label class="marrob-quiz__option"><input type="radio" name="quiz-material" value="Дерево / Каркас"><span>Дерево / Каркас</span></label>
+          <label class="marrob-quiz__option"><input type="radio" name="quiz-material" value="Другое"><span>Другое</span></label>
+        </div>
+        <div class="marrob-quiz__nav">
+          <button type="button" class="marrob-lead-popup__submit marrob-quiz__back" id="quiz-back-2">Назад</button>
+          <button type="button" class="marrob-lead-popup__submit" id="quiz-next-2">Далее</button>
+        </div>
+      </div>
+      <div class="marrob-quiz__step" id="quiz-step-3" style="display: none;">
+        <h3 class="marrob-lead-popup__title marrob-font-display">Куда отправить расчёт?</h3>
+        <p class="marrob-lead-popup__desc">Оставьте контакт — мы вышлем смету в течение 15 минут.</p>
+        <label class="marrob-lead-popup__field"><span class="marrob-lead-popup__label">Имя</span><input type="text" class="marrob-lead-popup__input" placeholder="Иван Иванов" id="quiz-name"></label>
+        <label class="marrob-lead-popup__field"><span class="marrob-lead-popup__label">Телефон <em>*</em></span><input type="tel" class="marrob-lead-popup__input" placeholder="+7 (___) ___-__-__" required id="quiz-phone"></label>
+        <div class="marrob-quiz__nav">
+          <button type="button" class="marrob-lead-popup__submit marrob-quiz__back" id="quiz-back-3">Назад</button>
+          <button type="button" class="marrob-lead-popup__submit" id="quiz-submit">Получить расчёт</button>
+        </div>
+        <p class="marrob-lead-popup__policy">Нажимая кнопку, вы соглашаетесь с <a href="#">политикой конфиденциальности</a></p>
+      </div>
+      <div class="marrob-quiz__step" id="quiz-step-4" style="display: none; text-align: center; padding: 40px 0;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--marrob-accent)" stroke-width="2" style="width: 64px; height: 64px; margin: 0 auto 24px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h3 class="marrob-lead-popup__title marrob-font-display">Спасибо за заявку!</h3>
+        <p class="marrob-lead-popup__desc">Мы уже приступили к расчёту. Менеджер свяжется с вами в ближайшее время.</p>
+        <button type="button" class="marrob-lead-popup__submit" id="quiz-close-btn">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .marrob-sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #fff; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); z-index: 999; padding: 12px 16px; gap: 12px; }
+  @media (max-width: 768px) { .marrob-sticky-cta { display: flex; } }
+  .marrob-sticky-cta__btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px; border-radius: 8px; font-size: 0.9375rem; font-weight: 600; text-decoration: none; text-align: center; border: none; cursor: pointer; font-family: inherit; }
+  .marrob-sticky-cta__btn--wa { background: #25D366; color: #fff; }
+  .marrob-sticky-cta__btn--wa svg { width: 20px; height: 20px; }
+  .marrob-sticky-cta__btn--quiz { background: var(--marrob-primary); color: #fff; }
+  #marrob-quiz-modal { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box; }
+  #marrob-quiz-modal[hidden] { display: none !important; }
+  #marrob-quiz-modal .marrob-lead-popup__overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); cursor: pointer; }
+  #marrob-quiz-modal .marrob-quiz-content { position: relative; width: 100%; max-width: 600px; background: var(--marrob-bg-card); border-radius: var(--marrob-radius-lg); padding: 32px 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); max-height: 90vh; overflow-y: auto; }
+  #marrob-quiz-modal .marrob-lead-popup__close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; padding: 0; border: none; background: none; cursor: pointer; color: var(--marrob-text-muted); }
+  #marrob-quiz-modal .marrob-lead-popup__close svg { width: 24px; height: 24px; }
+  .marrob-quiz__progress { height: 4px; background: var(--marrob-border); border-radius: 2px; margin-bottom: 32px; overflow: hidden; }
+  .marrob-quiz__progress-bar { height: 100%; background: var(--marrob-primary); transition: width 0.3s ease; }
+  .marrob-quiz__options { display: flex; flex-direction: column; gap: 12px; }
+  .marrob-quiz__option { display: flex; align-items: center; gap: 12px; padding: 16px; border: 1px solid var(--marrob-border); border-radius: 8px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+  .marrob-quiz__option:hover { border-color: var(--marrob-primary); background: rgba(196, 92, 62, 0.02); }
+  .marrob-quiz__option input { width: 20px; height: 20px; accent-color: var(--marrob-primary); }
+  .marrob-quiz__option span { font-size: 1rem; color: var(--marrob-text); font-weight: 500; }
+  .marrob-quiz__nav { display: flex; gap: 12px; margin-top: 24px; }
+  .marrob-quiz__back { background: var(--marrob-border); color: var(--marrob-text); }
+  .marrob-lead-popup__policy { font-size: 0.8125rem; color: var(--marrob-text-light); margin-top: 16px; }
+  .marrob-lead-popup__policy a { color: var(--marrob-text-muted); text-decoration: underline; }
+</style>
+
+<script>
+(function() {
+  var modal = document.getElementById('marrob-quiz-modal');
+  var progressBar = document.getElementById('quiz-progress');
+  function showStep(step) {
+    [1,2,3,4].forEach(function(n) {
+      var el = document.getElementById('quiz-step-' + n);
+      if (el) el.style.display = n === step ? 'block' : 'none';
+    });
+    var p = step === 1 ? 33 : step === 2 ? 66 : 100;
+    if (progressBar) progressBar.style.width = p + '%';
+  }
+  function openQuiz(e) {
+    if (e) e.preventDefault();
+    if (modal) { modal.removeAttribute('hidden'); document.body.style.overflow = 'hidden'; showStep(1); }
+  }
+  function closeQuiz() {
+    if (modal) { modal.setAttribute('hidden', ''); document.body.style.overflow = ''; setTimeout(function() { showStep(1); }, 300); }
+  }
+  window.openQuizModal = openQuiz;
+  if (modal) {
+    var overlay = document.getElementById('marrob-quiz-overlay');
+    var closeBtn = document.getElementById('marrob-quiz-close');
+    if (overlay) overlay.addEventListener('click', closeQuiz);
+    if (closeBtn) closeBtn.addEventListener('click', closeQuiz);
+    document.getElementById('quiz-next-1') && document.getElementById('quiz-next-1').addEventListener('click', function() { showStep(2); });
+    document.getElementById('quiz-back-2') && document.getElementById('quiz-back-2').addEventListener('click', function() { showStep(1); });
+    document.getElementById('quiz-next-2') && document.getElementById('quiz-next-2').addEventListener('click', function() { showStep(3); });
+    document.getElementById('quiz-back-3') && document.getElementById('quiz-back-3').addEventListener('click', function() { showStep(2); });
+    document.getElementById('quiz-submit') && document.getElementById('quiz-submit').addEventListener('click', function() { showStep(4); });
+    document.getElementById('quiz-close-btn') && document.getElementById('quiz-close-btn').addEventListener('click', closeQuiz);
+  }
+  var stickyBtn = document.getElementById('marrob-sticky-quiz-btn');
+  if (stickyBtn) { stickyBtn.addEventListener('click', function(e) { e.preventDefault(); openQuiz(e); }); }
+  var heroBtn = document.querySelector('.marrob-hero__btn--primary');
+  if (heroBtn) { heroBtn.setAttribute('href', '#'); heroBtn.addEventListener('click', function(e) { e.preventDefault(); openQuiz(e); }); }
+})();
+</script>

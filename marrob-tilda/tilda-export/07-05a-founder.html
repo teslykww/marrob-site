@@ -1,0 +1,59 @@
+<!-- MARROB — Блок 5a: Founder & Guarantees. -->
+<div class="marrob-block marrob-block-founder">
+  <section class="marrob-founder">
+    <div class="marrob-founder__inner">
+      <div class="marrob-founder__grid">
+        <div class="marrob-founder__media marrob-fade-up">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80" alt="Руководитель компании" class="marrob-founder__img" loading="lazy">
+          <div class="marrob-founder__nameplate">
+            <div class="marrob-founder__name">Александр Смирнов</div>
+            <div class="marrob-founder__role">Главный инженер MARROB</div>
+          </div>
+        </div>
+        <div class="marrob-founder__content marrob-fade-up marrob-fade-up-delay-2">
+          <span class="marrob-founder__badge">Надёжность</span>
+          <h2 class="marrob-founder__title marrob-font-display">
+            Мы не просто продаём панели, мы <span class="marrob-founder__title-accent">гарантируем результат</span>
+          </h2>
+          <p class="marrob-founder__quote">
+            «Каждый фасад, который мы монтируем — это лицо нашей компании. Поэтому мы используем только сертифицированные материалы: клинкер не выцветает и не трескается даже спустя десятилетия. Я лично контролирую качество на производстве и отвечаю за каждый квадратный метр.»
+          </p>
+          <div class="marrob-founder__guarantees">
+            <div class="marrob-founder__guarantee">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span><strong>30 лет</strong> гарантия на панель</span>
+            </div>
+            <div class="marrob-founder__guarantee">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+              <span><strong>12 месяцев</strong> гарантия на монтаж</span>
+            </div>
+            <div class="marrob-founder__guarantee">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              <span><strong>Фиксация сметы</strong> в договоре</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<style>
+  .marrob-block-founder { background: var(--marrob-bg); position: relative; }
+  .marrob-founder { padding: 80px 24px; font-family: var(--marrob-font-body); }
+  .marrob-founder__inner { max-width: 1280px; margin: 0 auto; }
+  .marrob-founder__grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+  @media (min-width: 1024px) { .marrob-founder__grid { grid-template-columns: 5fr 7fr; gap: 80px; } }
+  .marrob-founder__media { position: relative; border-radius: var(--marrob-radius-lg); overflow: hidden; box-shadow: var(--marrob-shadow-hover); }
+  .marrob-founder__img { width: 100%; height: auto; display: block; aspect-ratio: 3/4; object-fit: cover; }
+  .marrob-founder__nameplate { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 40px 24px 24px; color: #fff; }
+  .marrob-founder__name { font-size: 1.25rem; font-weight: 700; margin-bottom: 4px; }
+  .marrob-founder__role { font-size: 0.9375rem; color: rgba(255,255,255,0.8); }
+  .marrob-founder__badge { display: inline-block; padding: 8px 20px; background: rgba(45, 138, 94, 0.1); color: var(--marrob-accent); font-size: 0.875rem; font-weight: 500; border-radius: 999px; margin-bottom: 20px; }
+  .marrob-founder__title { font-size: 2rem; line-height: 1.2; font-weight: 700; color: var(--marrob-text); margin: 0 0 24px; }
+  @media (min-width: 768px) { .marrob-founder__title { font-size: 2.5rem; } }
+  .marrob-founder__title-accent { color: var(--marrob-primary); }
+  .marrob-founder__quote { font-size: 1.125rem; color: var(--marrob-text-muted); line-height: 1.6; font-style: italic; margin: 0 0 40px; border-left: 4px solid var(--marrob-primary); padding-left: 20px; }
+  .marrob-founder__guarantees { display: flex; flex-direction: column; gap: 16px; }
+  .marrob-founder__guarantee { display: flex; align-items: center; gap: 16px; font-size: 1.0625rem; color: var(--marrob-text); }
+  .marrob-founder__guarantee svg { width: 24px; height: 24px; color: var(--marrob-primary); flex-shrink: 0; }
+</style>

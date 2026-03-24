@@ -1,0 +1,155 @@
+<!-- MARROB — Блок 14: Как мы работаем (этапы). -->
+<div class="marrob-block marrob-block-stages">
+  <section class="marrob-stages">
+    <div class="marrob-stages__inner">
+      <div class="marrob-stages__head">
+        <span class="marrob-stages__badge marrob-fade-up">Процесс</span>
+        <h2 class="marrob-stages__title marrob-font-display marrob-fade-up marrob-fade-up-delay-1">
+          Как мы работаем
+        </h2>
+        <p class="marrob-stages__subtitle marrob-fade-up marrob-fade-up-delay-2">
+          От заявки до сдачи объекта под ключ
+        </p>
+      </div>
+      <div class="marrob-stages__list">
+        <div class="marrob-stages__step marrob-fade-up">
+          <div class="marrob-stages__step-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><polyline points="7 10 12 15 17 10"/></svg>
+          </div>
+          <div class="marrob-stages__step-content">
+            <span class="marrob-stages__step-num">01</span>
+            <h3 class="marrob-stages__step-title">Заявка</h3>
+            <p class="marrob-stages__step-desc">Оставляете заявку на сайте или по телефону. Специалист свяжется с вами для уточнения параметров.</p>
+          </div>
+        </div>
+        <div class="marrob-stages__step marrob-fade-up marrob-fade-up-delay-1">
+          <div class="marrob-stages__step-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="marrob-stages__step-content">
+            <span class="marrob-stages__step-num">02</span>
+            <h3 class="marrob-stages__step-title">Бесплатный замер и расчёт</h3>
+            <p class="marrob-stages__step-desc">Выезд на объект (при необходимости), расчёт объёма панелей и ориентировочной стоимости. Подбор коллекции и цвета.</p>
+          </div>
+        </div>
+        <div class="marrob-stages__step marrob-fade-up marrob-fade-up-delay-2">
+          <div class="marrob-stages__step-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20V10l10-5 10 5v10"/><path d="M4 20h4v-6h4v6h4v-6h4v6"/></svg>
+          </div>
+          <div class="marrob-stages__step-content">
+            <span class="marrob-stages__step-num">03</span>
+            <h3 class="marrob-stages__step-title">Производство и поставка</h3>
+            <p class="marrob-stages__step-desc">Изготовление панелей на нашем производстве. Доставка на объект в согласованные сроки.</p>
+          </div>
+        </div>
+        <div class="marrob-stages__step marrob-fade-up marrob-fade-up-delay-3">
+          <div class="marrob-stages__step-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div class="marrob-stages__step-content">
+            <span class="marrob-stages__step-num">04</span>
+            <h3 class="marrob-stages__step-title">Монтаж за 5 дней</h3>
+            <p class="marrob-stages__step-desc">Профессиональная установка фасадной системы нашими монтажниками. Гарантия на монтажные работы — 12 месяцев.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<style>
+  .marrob-block-stages { background: var(--marrob-bg-card); position: relative; }
+  .marrob-stages {
+    padding: 80px 24px;
+    font-family: var(--marrob-font-body);
+  }
+  .marrob-stages__inner { max-width: 1280px; margin: 0 auto; }
+  .marrob-stages__head { text-align: center; margin-bottom: 48px; }
+  .marrob-stages__badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(196, 92, 62, 0.1);
+    color: var(--marrob-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  .marrob-stages__title {
+    font-size: 1.75rem;
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--marrob-text);
+    margin: 0 0 12px;
+  }
+  @media (min-width: 768px) {
+    .marrob-stages__title { font-size: 2.25rem; }
+  }
+  .marrob-stages__subtitle {
+    font-size: 1rem;
+    color: var(--marrob-text-muted);
+    margin: 0;
+  }
+  .marrob-stages__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 768px) {
+    .marrob-stages__list {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+  }
+  .marrob-stages__step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 28px 24px;
+    background: var(--marrob-bg);
+    border: 1px solid var(--marrob-border);
+    border-radius: var(--marrob-radius-lg);
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  .marrob-stages__step:hover {
+    box-shadow: var(--marrob-shadow-hover);
+    transform: translateY(-4px);
+  }
+  .marrob-stages__step-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+  }
+  .marrob-stages__step-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  .marrob-stages__step-num {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--marrob-primary);
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .marrob-stages__step-title {
+    font-family: var(--marrob-font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--marrob-text);
+    margin: 0 0 8px;
+  }
+  .marrob-stages__step-desc {
+    font-size: 0.9375rem;
+    color: var(--marrob-text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+</style>

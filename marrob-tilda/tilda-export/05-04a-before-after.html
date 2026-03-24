@@ -1,0 +1,78 @@
+<!-- MARROB — Блок 4a: Before/After Slider. -->
+<div class="marrob-block marrob-block-before-after">
+  <section class="marrob-ba">
+    <div class="marrob-ba__inner">
+      <div class="marrob-ba__head">
+        <span class="marrob-ba__badge marrob-fade-up">Результат</span>
+        <h2 class="marrob-ba__title marrob-font-display marrob-fade-up marrob-fade-up-delay-1">
+          До и После монтажа
+        </h2>
+        <p class="marrob-ba__subtitle marrob-fade-up marrob-fade-up-delay-2">
+          Посмотрите, как преображается фасад всего за 14 дней.
+        </p>
+      </div>
+      <div class="marrob-ba__slider-wrap marrob-fade-up marrob-fade-up-delay-3">
+        <div class="marrob-ba__slider">
+          <div class="marrob-ba__img marrob-ba__img--after">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80" alt="После" loading="lazy">
+            <span class="marrob-ba__label marrob-ba__label--after">После</span>
+          </div>
+          <div class="marrob-ba__img marrob-ba__img--before">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=80" alt="До" loading="lazy">
+            <span class="marrob-ba__label marrob-ba__label--before">До</span>
+          </div>
+          <input type="range" min="0" max="100" value="50" class="marrob-ba__range" aria-label="Слайдер До и После">
+          <div class="marrob-ba__line">
+            <div class="marrob-ba__handle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 18L2 12l6-6M16 6l6 6-6 6"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<style>
+  .marrob-block-before-after { background: var(--marrob-bg-card); position: relative; }
+  .marrob-ba { padding: 80px 24px; font-family: var(--marrob-font-body); }
+  .marrob-ba__inner { max-width: 1000px; margin: 0 auto; }
+  .marrob-ba__head { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+  .marrob-ba__badge { display: inline-block; padding: 8px 20px; background: rgba(196, 92, 62, 0.1); color: var(--marrob-primary); font-size: 0.875rem; font-weight: 500; border-radius: 999px; margin-bottom: 20px; }
+  .marrob-ba__title { font-size: 2.25rem; line-height: 1.2; font-weight: 700; color: var(--marrob-text); margin: 0 0 16px; }
+  .marrob-ba__subtitle { font-size: 1.0625rem; color: var(--marrob-text-muted); line-height: 1.6; margin: 0; }
+  .marrob-ba__slider-wrap { position: relative; border-radius: var(--marrob-radius-lg); overflow: hidden; box-shadow: var(--marrob-shadow-hover); aspect-ratio: 16/9; }
+  .marrob-ba__slider { position: relative; width: 100%; height: 100%; }
+  .marrob-ba__img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; }
+  .marrob-ba__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .marrob-ba__img--before { width: 50%; }
+  .marrob-ba__label { position: absolute; top: 20px; padding: 6px 16px; background: rgba(0,0,0,0.6); color: #fff; font-size: 0.875rem; font-weight: 600; border-radius: 999px; backdrop-filter: blur(4px); }
+  .marrob-ba__label--before { left: 20px; }
+  .marrob-ba__label--after { right: 20px; }
+  .marrob-ba__range { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; z-index: 10; cursor: ew-resize; margin: 0; }
+  .marrob-ba__line { position: absolute; top: 0; left: 50%; width: 2px; height: 100%; background: #fff; transform: translateX(-50%); pointer-events: none; z-index: 5; }
+  .marrob-ba__handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--marrob-primary); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+  .marrob-ba__handle svg { width: 24px; height: 24px; }
+  @media (max-width: 768px) {
+    .marrob-ba__slider-wrap { aspect-ratio: 4/3; }
+    .marrob-ba__handle { width: 40px; height: 40px; }
+  }
+</style>
+<script>
+(function() {
+  function init() {
+    document.querySelectorAll('.marrob-ba__slider').forEach(function(slider) {
+      var range = slider.querySelector('.marrob-ba__range');
+      var beforeImg = slider.querySelector('.marrob-ba__img--before');
+      var line = slider.querySelector('.marrob-ba__line');
+      if (!range || !beforeImg || !line) return;
+      range.addEventListener('input', function() {
+        var val = this.value;
+        beforeImg.style.width = val + '%';
+        line.style.left = val + '%';
+      });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>

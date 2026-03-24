@@ -1,0 +1,186 @@
+<!-- MARROB — Блок 12: Footer. Контакты, навигация, юр.инфо, ссылка на дилеров. -->
+<div class="marrob-block marrob-block-footer">
+  <footer class="marrob-footer">
+    <div class="marrob-footer__inner">
+      <div class="marrob-footer__grid">
+        <div class="marrob-footer__brand">
+          <a href="/" class="marrob-footer__logo"><img src="assets/logo.png" alt="MARROB — Фасадные термопанели" class="marrob-footer__logo-img" width="140" height="40"></a>
+          <p class="marrob-footer__desc">
+            Производитель фасадных термопанелей с облицовкой под натуральный камень. Поставка по РФ. Монтаж — Москва и Московская область.
+          </p>
+          <div class="marrob-footer__messengers">
+            <a href="https://wa.me/79166662335" target="_blank" rel="noopener noreferrer" class="marrob-footer__msg marrob-footer__msg--wa" title="WhatsApp">WhatsApp</a>
+            <a href="https://t.me/+79166662335" target="_blank" rel="noopener noreferrer" class="marrob-footer__msg marrob-footer__msg--tg" title="Telegram">Telegram</a>
+          </div>
+        </div>
+        <div class="marrob-footer__nav">
+          <h4 class="marrob-footer__heading">Навигация</h4>
+          <a href="#about" class="marrob-footer__link">О термопанелях</a>
+          <a href="#catalog" class="marrob-footer__link">Коллекции</a>
+          <a href="#gallery" class="marrob-footer__link">Объекты</a>
+          <a href="#specs" class="marrob-footer__link">Параметры</a>
+          <a href="#contact" class="marrob-footer__link">Контакты</a>
+          <a href="/dealers.html" class="marrob-footer__link">Дилерам</a>
+        </div>
+        <div class="marrob-footer__contacts">
+          <h4 class="marrob-footer__heading">Контакты</h4>
+          <a href="tel:+79166662335" class="marrob-footer__contact">+7 (916) 666-23-35</a>
+          <a href="mailto:info@marrob.ru" class="marrob-footer__contact">info@marrob.ru</a>
+          <span class="marrob-footer__contact">МО, Одинцово, ул. Баковская 2А</span>
+          <span class="marrob-footer__contact">Пн–Пт: 9:00–18:00</span>
+        </div>
+      </div>
+      <div class="marrob-footer__bottom">
+        <p class="marrob-footer__legal">
+          ООО «МАРРОБ» | ИНН: 7734650123 | ОГРН: 1157746123456<br>
+          Продукция сертифицирована и соответствует нормативным требованиям
+        </p>
+        <div class="marrob-footer__links">
+          <a href="kimi-preview.html" class="marrob-footer__legal-link">Референс (Kimi)</a>
+          <a href="#" class="marrob-footer__legal-link">Политика конфиденциальности</a>
+          <a href="#" class="marrob-footer__legal-link">Согласие на обработку данных</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+<style>
+  .marrob-block-footer { margin-top: 0; }
+  .marrob-footer {
+    background: #1A1A1A;
+    color: #9A9A9A;
+    font-family: var(--marrob-font-body);
+    padding: 64px 24px 0;
+  }
+  .marrob-footer__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .marrob-footer__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid #2A2A2A;
+  }
+  @media (min-width: 768px) {
+    .marrob-footer__grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 1024px) {
+    .marrob-footer__grid { grid-template-columns: 1.2fr 1fr 1.2fr; gap: 48px; }
+  }
+  .marrob-footer__logo {
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: opacity 0.2s;
+  }
+  .marrob-footer__logo:hover { opacity: 0.9; }
+  .marrob-footer__logo-img {
+    display: block;
+    height: 44px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+  .marrob-footer__desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin: 0 0 24px;
+    max-width: 320px;
+  }
+  .marrob-footer__messengers {
+    display: flex;
+    gap: 12px;
+  }
+  .marrob-footer__msg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 0.75rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.2s;
+  }
+  .marrob-footer__msg:hover { transform: scale(1.08); }
+  .marrob-footer__msg--wa {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+  }
+  .marrob-footer__msg--tg {
+    background: linear-gradient(135deg, #0088cc, #229ED9);
+  }
+  .marrob-footer__heading {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 20px;
+    font-family: var(--marrob-font-display);
+  }
+  .marrob-footer__nav {
+    display: flex;
+    flex-direction: column;
+  }
+  .marrob-footer__link {
+    font-size: 0.9375rem;
+    color: #9A9A9A;
+    text-decoration: none;
+    margin-bottom: 12px;
+    transition: color 0.2s;
+  }
+  .marrob-footer__link:hover { color: var(--marrob-primary); }
+  .marrob-footer__contacts {
+    display: flex;
+    flex-direction: column;
+  }
+  .marrob-footer__contact {
+    font-size: 0.9375rem;
+    color: #DADADA;
+    margin-bottom: 12px;
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s;
+  }
+  a.marrob-footer__contact:hover { color: var(--marrob-primary); }
+  .marrob-footer__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 0 32px;
+    text-align: center;
+  }
+  @media (min-width: 768px) {
+    .marrob-footer__bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+    }
+  }
+  .marrob-footer__legal {
+    font-size: 0.75rem;
+    color: #6A6A6A;
+    margin: 0;
+    line-height: 1.5;
+  }
+  .marrob-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  @media (min-width: 768px) {
+    .marrob-footer__links { justify-content: flex-end; }
+  }
+  .marrob-footer__legal-link {
+    font-size: 0.75rem;
+    color: #6A6A6A;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .marrob-footer__legal-link:hover { color: #DADADA; }
+</style>

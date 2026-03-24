@@ -1,0 +1,380 @@
+<!-- MARROB — Глобальный попап заявки. Открывается по клику на ссылки #contact и кнопки каталога. -->
+<div class="marrob-cta-popup" id="marrob-cta-popup" role="dialog" aria-modal="true" aria-labelledby="marrob-cta-popup-title" aria-hidden="true">
+  <div class="marrob-cta-popup__overlay" id="marrob-cta-popup-close"></div>
+  <div class="marrob-cta-popup__box">
+    <button type="button" class="marrob-cta-popup__close" id="marrob-cta-popup-close-btn" aria-label="Закрыть">&times;</button>
+    <h3 class="marrob-cta-popup__title marrob-font-display" id="marrob-cta-popup-title">Рассчитать фасад</h3>
+    <div class="marrob-cta-popup__quiz" id="marrob-cta-popup-quiz" hidden>
+      <div class="marrob-cta-popup__quiz-step" data-step="1">
+        <p class="marrob-cta-popup__form-label">Площадь фасада (м²)</p>
+        <input type="number" class="marrob-cta-popup__input" id="marrob-quiz-area" placeholder="Например, 150" min="20" max="1000" step="10" value="">
+        <button type="button" class="marrob-cta-popup__submit marrob-cta-popup__quiz-next" data-next="2">Далее</button>
+      </div>
+      <div class="marrob-cta-popup__quiz-step" data-step="2" hidden>
+        <p class="marrob-cta-popup__form-label">Материал стен</p>
+        <div class="marrob-cta-popup__radio-group marrob-cta-popup__radio-group--stack">
+          <label class="marrob-cta-popup__radio"><input type="radio" name="quiz-material" value="gasblock"> <span>Газоблок</span></label>
+          <label class="marrob-cta-popup__radio"><input type="radio" name="quiz-material" value="brick"> <span>Кирпич</span></label>
+          <label class="marrob-cta-popup__radio"><input type="radio" name="quiz-material" value="wood"> <span>Дерево</span></label>
+          <label class="marrob-cta-popup__radio"><input type="radio" name="quiz-material" value="other"> <span>Другое</span></label>
+        </div>
+        <button type="button" class="marrob-cta-popup__submit marrob-cta-popup__quiz-next" data-next="3">Далее</button>
+      </div>
+      <div class="marrob-cta-popup__quiz-step" data-step="3" hidden>
+        <p class="marrob-cta-popup__form-label">Нужен монтаж под ключ?</p>
+        <div class="marrob-cta-popup__radio-group">
+          <label class="marrob-cta-popup__radio"><input type="radio" name="quiz-mount" value="yes" checked> <span>Да, с монтажом</span></label>
+          <label class="marrob-cta-popup__radio"><input type="radio" name="quiz-mount" value="no"> <span>Нет, только панели</span></label>
+        </div>
+        <button type="button" class="marrob-cta-popup__submit marrob-cta-popup__quiz-next" data-next="4">Получить смету</button>
+      </div>
+    </div>
+    <form class="marrob-cta-popup__form" id="marrob-cta-popup-form" novalidate>
+      <input type="hidden" name="collection" id="marrob-cta-popup-collection" value="">
+      <input type="hidden" name="quiz_area" id="marrob-cta-popup-quiz-area" value="">
+      <input type="hidden" name="quiz_material" id="marrob-cta-popup-quiz-material" value="">
+      <input type="hidden" name="quiz_mount" id="marrob-cta-popup-quiz-mount" value="">
+      <p class="marrob-cta-popup__form-label">Что вас интересует?</p>
+      <div class="marrob-cta-popup__radio-group">
+        <label class="marrob-cta-popup__radio">
+          <input type="radio" name="marrob-type" value="facade" checked>
+          <span>Фасад под ключ</span>
+        </label>
+        <label class="marrob-cta-popup__radio">
+          <input type="radio" name="marrob-type" value="panels">
+          <span>Покупка панелей</span>
+        </label>
+      </div>
+      <label class="marrob-cta-popup__field">
+        <span class="marrob-cta-popup__label">Имя</span>
+        <input type="text" name="name" placeholder="Ваше имя" class="marrob-cta-popup__input">
+      </label>
+      <label class="marrob-cta-popup__field">
+        <span class="marrob-cta-popup__label">Телефон <em>*</em></span>
+        <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="marrob-cta-popup__input" required id="marrob-cta-popup-phone">
+        <span class="marrob-cta-popup__error" id="marrob-cta-popup-phone-error"></span>
+      </label>
+      <button type="submit" class="marrob-cta-popup__submit">Отправить заявку</button>
+      <p class="marrob-cta-popup__disclaimer">Мы свяжемся с вами для уточнения параметров. Без навязчивых продаж.</p>
+    </form>
+    <div class="marrob-cta-popup__success" id="marrob-cta-popup-success" hidden>
+      <p class="marrob-cta-popup__success-title">Заявка отправлена!</p>
+      <p class="marrob-cta-popup__success-text">Мы свяжемся с вами в ближайшее время.</p>
+    </div>
+  </div>
+</div>
+<style>
+  .marrob-cta-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .marrob-cta-popup[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+  }
+  .marrob-cta-popup__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
+  .marrob-cta-popup__box {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--marrob-bg-card);
+    border-radius: var(--marrob-radius-lg);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 32px 24px;
+    font-family: var(--marrob-font-body);
+  }
+  .marrob-cta-popup__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: var(--marrob-bg);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--marrob-text-muted);
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
+  }
+  .marrob-cta-popup__close:hover {
+    color: var(--marrob-text);
+    background: var(--marrob-border);
+  }
+  .marrob-cta-popup__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--marrob-text);
+    margin: 0 0 24px;
+  }
+  .marrob-cta-popup__form-label {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--marrob-text-muted);
+    margin: 0 0 12px;
+  }
+  .marrob-cta-popup__radio-group {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .marrob-cta-popup__radio {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9375rem;
+    color: var(--marrob-text);
+    cursor: pointer;
+  }
+  .marrob-cta-popup__radio input { accent-color: var(--marrob-primary); }
+  .marrob-cta-popup__field {
+    display: block;
+    margin-bottom: 20px;
+  }
+  .marrob-cta-popup__label {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--marrob-text-muted);
+    margin-bottom: 8px;
+  }
+  .marrob-cta-popup__input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--marrob-text);
+    background: var(--marrob-bg);
+    border: 1px solid var(--marrob-border);
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+  .marrob-cta-popup__input:focus {
+    outline: none;
+    border-color: var(--marrob-primary);
+  }
+  .marrob-cta-popup__input.error { border-color: #c53030; }
+  .marrob-cta-popup__error {
+    display: block;
+    font-size: 0.8125rem;
+    color: #c53030;
+    margin-top: 6px;
+  }
+  .marrob-cta-popup__submit {
+    width: 100%;
+    padding: 16px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: #fff;
+    background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
+    border: none;
+    border-radius: var(--marrob-radius);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+  .marrob-cta-popup__submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(196, 92, 62, 0.35);
+  }
+  .marrob-cta-popup__disclaimer {
+    font-size: 0.8125rem;
+    color: var(--marrob-text-light);
+    text-align: center;
+    margin: 0;
+  }
+  .marrob-cta-popup__success { text-align: center; padding: 24px 0; }
+  .marrob-cta-popup__success-title {
+    font-family: var(--marrob-font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--marrob-text);
+    margin: 0 0 8px;
+  }
+  .marrob-cta-popup__success-text {
+    font-size: 0.9375rem;
+    color: var(--marrob-text-muted);
+    margin: 0;
+  }
+  .marrob-cta-popup__quiz { margin-bottom: 0; }
+  .marrob-cta-popup__quiz-step .marrob-cta-popup__input { margin-bottom: 20px; }
+  .marrob-cta-popup__quiz-next { margin-top: 16px; }
+  .marrob-cta-popup__radio-group--stack {
+    flex-direction: column;
+    gap: 12px;
+  }
+</style>
+<script>
+(function() {
+  var popup = document.getElementById('marrob-cta-popup');
+  var popupTitle = document.getElementById('marrob-cta-popup-title');
+  var popupForm = document.getElementById('marrob-cta-popup-form');
+  var popupCollection = document.getElementById('marrob-cta-popup-collection');
+  var popupSuccess = document.getElementById('marrob-cta-popup-success');
+  var popupCloseOverlay = document.getElementById('marrob-cta-popup-close');
+  var popupCloseBtn = document.getElementById('marrob-cta-popup-close-btn');
+  var phoneInput = document.getElementById('marrob-cta-popup-phone');
+  var phoneError = document.getElementById('marrob-cta-popup-phone-error');
+  var quizEl = document.getElementById('marrob-cta-popup-quiz');
+  var quizAreaInput = document.getElementById('marrob-quiz-area');
+  var hiddenQuizArea = document.getElementById('marrob-cta-popup-quiz-area');
+  var hiddenQuizMaterial = document.getElementById('marrob-cta-popup-quiz-material');
+  var hiddenQuizMount = document.getElementById('marrob-cta-popup-quiz-mount');
+
+  if (!popup || !popupForm) return;
+
+  function showQuizStep(stepNum) {
+    if (!quizEl) return;
+    var steps = quizEl.querySelectorAll('.marrob-cta-popup__quiz-step');
+    steps.forEach(function(s) {
+      s.hidden = parseInt(s.getAttribute('data-step'), 10) !== stepNum;
+    });
+  }
+
+  function resetQuiz() {
+    if (quizAreaInput) quizAreaInput.value = '';
+    if (quizEl) {
+      var matRadios = quizEl.querySelectorAll('input[name="quiz-material"]');
+      matRadios.forEach(function(r) { r.checked = false; });
+      var mountYes = quizEl.querySelector('input[name="quiz-mount"][value="yes"]');
+      if (mountYes) mountYes.checked = true;
+    }
+    if (hiddenQuizArea) hiddenQuizArea.value = '';
+    if (hiddenQuizMaterial) hiddenQuizMaterial.value = '';
+    if (hiddenQuizMount) hiddenQuizMount.value = '';
+    showQuizStep(1);
+  }
+
+  function openPopup(options) {
+    options = options || {};
+    popup.setAttribute('aria-hidden', 'false');
+    popupTitle.textContent = options.title || 'Рассчитать фасад';
+    if (popupCollection) popupCollection.value = options.collection || '';
+    if (popupSuccess) popupSuccess.hidden = true;
+    document.body.style.overflow = 'hidden';
+    var useQuiz = options.quiz && !options.collection && quizEl;
+    if (useQuiz) {
+      resetQuiz();
+      quizEl.hidden = false;
+      popupForm.style.display = 'none';
+      showQuizStep(1);
+    } else {
+      if (quizEl) quizEl.hidden = true;
+      popupForm.style.display = '';
+    }
+  }
+
+  function closePopup() {
+    popup.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (quizEl) quizEl.hidden = true;
+    popupForm.style.display = '';
+    resetQuiz();
+  }
+
+  function getCollectionFromCatalog(clickedEl) {
+    var catalogBlock = clickedEl && clickedEl.closest && clickedEl.closest('.marrob-block-catalog');
+    if (!catalogBlock) return '';
+    var panel = clickedEl.closest('.marrob-catalog__panel');
+    if (!panel) {
+      var active = catalogBlock.querySelector('.marrob-catalog__panel.active');
+      panel = active;
+    }
+    var titleEl = panel && panel.querySelector('.marrob-catalog__info-title');
+    return titleEl ? titleEl.textContent.trim() : '';
+  }
+
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href="#contact"]');
+    if (!link) return;
+    e.preventDefault();
+    var collection = getCollectionFromCatalog(link);
+    var title = collection ? 'Узнать цену коллекции: ' + collection : 'Рассчитать фасад';
+    var useQuiz = !collection;
+    openPopup({ title: title, collection: collection, quiz: useQuiz });
+  });
+
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.marrob-cta-popup__quiz-next');
+    if (!btn || !quizEl) return;
+    var next = parseInt(btn.getAttribute('data-next'), 10);
+    if (next === 2 && quizAreaInput && hiddenQuizArea) {
+      hiddenQuizArea.value = quizAreaInput.value || '';
+    }
+    if (next === 3) {
+      var mat = quizEl.querySelector('input[name="quiz-material"]:checked');
+      if (mat && hiddenQuizMaterial) hiddenQuizMaterial.value = mat.value;
+    }
+    if (next === 4) {
+      var mount = quizEl.querySelector('input[name="quiz-mount"]:checked');
+      if (mount && hiddenQuizMount) hiddenQuizMount.value = mount.value;
+      quizEl.hidden = true;
+      popupForm.style.display = '';
+      return;
+    }
+    if (next >= 1 && next <= 3) showQuizStep(next);
+  });
+
+  if (popupCloseOverlay) popupCloseOverlay.addEventListener('click', closePopup);
+  if (popupCloseBtn) popupCloseBtn.addEventListener('click', closePopup);
+
+  popup.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closePopup();
+  });
+
+  if (phoneInput) {
+    phoneInput.addEventListener('input', function() {
+      var v = this.value.replace(/\D/g, '');
+      if (v.length > 0 && (v[0] === '8' || v[0] === '7')) v = v.substring(1);
+      var r = '+7';
+      if (v.length > 0) r += ' (' + v.substring(0, 3);
+      if (v.length >= 3) r += ') ' + v.substring(3, 6);
+      if (v.length >= 6) r += '-' + v.substring(6, 8);
+      if (v.length >= 8) r += '-' + v.substring(8, 10);
+      this.value = r;
+      this.classList.remove('error');
+      if (phoneError) phoneError.textContent = '';
+    });
+  }
+
+  popupForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var phone = (phoneInput && phoneInput.value || '').replace(/\D/g, '');
+    var valid = phone.length >= 10;
+    if (!valid) {
+      if (phoneInput) {
+        phoneInput.classList.add('error');
+        if (phoneError) phoneError.textContent = 'Введите корректный номер телефона';
+        phoneInput.focus();
+      }
+      return;
+    }
+    var btn = popupForm.querySelector('.marrob-cta-popup__submit');
+    if (btn) { btn.disabled = true; btn.textContent = 'Отправка...'; }
+    setTimeout(function() {
+      popupForm.style.display = 'none';
+      if (popupSuccess) popupSuccess.hidden = false;
+      if (btn) { btn.disabled = false; btn.textContent = 'Отправить заявку'; }
+      setTimeout(closePopup, 2000);
+    }, 600);
+  });
+})();
+</script>

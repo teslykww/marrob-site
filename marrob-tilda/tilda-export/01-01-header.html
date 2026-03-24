@@ -1,0 +1,379 @@
+<!-- MARROB — Блок 1: Header. Top-bar с контактами, шапка с логотипом, навигацией, телефоном и CTA. -->
+<a href="#about" class="marrob-skip-link">Перейти к контенту</a>
+<div class="marrob-block marrob-block-header" id="marrob-header">
+  <div class="marrob-header__top-bar">
+    <div class="marrob-header__top-bar-left">
+      <span class="marrob-header__address">МО, Одинцово, ул. Баковская 2А</span>
+      <span class="marrob-header__address marrob-header__address--accent">Собственное производство</span>
+      <span class="marrob-header__address">Срок службы панелей 30 лет</span>
+    </div>
+    <div class="marrob-header__top-bar-right">
+      <a href="tel:+79166662335" class="marrob-header__top-phone">+7 (916) 666-23-35</a>
+      <a href="mailto:info@marrob.ru" class="marrob-header__email">info@marrob.ru</a>
+    </div>
+  </div>
+  <header class="marrob-header">
+    <div class="marrob-header__inner">
+      <a href="/" class="marrob-header__logo"><img src="assets/logo.png" alt="MARROB — Фасадные термопанели" class="marrob-header__logo-img" width="140" height="40"></a>
+      <nav class="marrob-header__nav">
+        <a href="#about" class="marrob-header__link">О термопанелях</a>
+        <a href="#benefits" class="marrob-header__link">Преимущества</a>
+        <a href="#catalog" class="marrob-header__link">Коллекции</a>
+        <a href="#gallery" class="marrob-header__link">Объекты</a>
+        <a href="#certs" class="marrob-header__link">Сертификаты</a>
+        <a href="#specs" class="marrob-header__link">Параметры</a>
+        <a href="#stages" class="marrob-header__link">Этапы</a>
+        <a href="#contact" class="marrob-header__link">Контакты</a>
+        <a href="/dealers.html" class="marrob-header__link">Дилерам</a>
+      </nav>
+      <div class="marrob-header__cta">
+        <a href="tel:+79166662335" class="marrob-header__phone">+7 (916) 666-23-35</a>
+        <a href="#contact" class="marrob-header__btn">Заказать звонок</a>
+      </div>
+      <button type="button" class="marrob-header__burger" aria-label="Меню" id="marrob-burger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <div class="marrob-header__overlay" id="marrob-menu-overlay"></div>
+  <div class="marrob-header__drawer" id="marrob-menu-drawer">
+    <nav class="marrob-header__drawer-nav">
+      <a href="#about" class="marrob-header__drawer-link">О термопанелях</a>
+      <a href="#benefits" class="marrob-header__drawer-link">Преимущества</a>
+      <a href="#catalog" class="marrob-header__drawer-link">Коллекции</a>
+      <a href="#gallery" class="marrob-header__drawer-link">Объекты</a>
+      <a href="#certs" class="marrob-header__drawer-link">Сертификаты</a>
+      <a href="#specs" class="marrob-header__drawer-link">Параметры</a>
+      <a href="#stages" class="marrob-header__drawer-link">Этапы</a>
+      <a href="#contact" class="marrob-header__drawer-link">Контакты</a>
+      <a href="/dealers.html" class="marrob-header__drawer-link">Дилерам</a>
+    </nav>
+    <a href="tel:+79166662335" class="marrob-header__drawer-phone">+7 (916) 666-23-35</a>
+    <a href="mailto:info@marrob.ru" class="marrob-header__drawer-email">info@marrob.ru</a>
+    <span class="marrob-header__drawer-address">МО, Одинцово, ул. Баковская 2А</span>
+    <a href="#contact" class="marrob-header__drawer-btn">Заказать звонок</a>
+  </div>
+</div>
+<style>
+  .marrob-skip-link {
+    position: absolute;
+    top: -100px;
+    left: 24px;
+    z-index: 10000;
+    padding: 12px 20px;
+    background: var(--marrob-primary);
+    color: #fff;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--marrob-radius);
+    transition: top 0.2s;
+  }
+  .marrob-skip-link:focus {
+    top: 24px;
+    outline: 2px solid var(--marrob-accent);
+    outline-offset: 2px;
+  }
+  .marrob-block-header { position: relative; z-index: 1000; }
+  .marrob-header__top-bar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    background: #2A2A2A;
+    color: #9A9A9A;
+    font-size: 0.8125rem;
+    padding: 8px 24px;
+    font-family: var(--marrob-font-body);
+    justify-content: space-between;
+    align-items: center;
+  }
+  @media (min-width: 1024px) {
+    .marrob-header__top-bar { display: flex; }
+  }
+  .marrob-header__top-bar-left { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .marrob-header__top-bar .marrob-header__address { margin: 0; }
+  .marrob-header__top-bar .marrob-header__email {
+    color: var(--marrob-primary);
+    text-decoration: none;
+  }
+  .marrob-header__top-bar .marrob-header__email:hover { text-decoration: underline; }
+  .marrob-header__top-bar-right { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: flex-end; }
+  .marrob-header__top-phone {
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .marrob-header__top-phone:hover { text-decoration: underline; color: var(--marrob-primary); }
+  .marrob-header__address--accent { color: var(--marrob-accent); }
+  .marrob-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-family: var(--marrob-font-body);
+    background: transparent;
+    transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+  }
+  .marrob-header__top-bar + .marrob-header { top: 0; }
+  @media (min-width: 1024px) {
+    .marrob-header__top-bar + .marrob-header { top: 40px; }
+  }
+  .marrob-header__top-bar { z-index: 1000; }
+  .marrob-header.scrolled {
+    background: rgba(250, 249, 247, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--marrob-border);
+  }
+  .marrob-header__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .marrob-header__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .marrob-header__logo:hover { opacity: 0.85; }
+  .marrob-header__logo-img {
+    display: block;
+    height: 40px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+  }
+  .marrob-header__nav {
+    display: none;
+    align-items: center;
+    gap: 32px;
+  }
+  @media (min-width: 1024px) {
+    .marrob-header__nav { display: flex; }
+  }
+  .marrob-header__link {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--marrob-text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .marrob-header__link:hover { color: var(--marrob-primary); }
+  .marrob-header__cta {
+    display: none;
+    align-items: center;
+    gap: 16px;
+  }
+  @media (min-width: 1024px) {
+    .marrob-header__cta { display: flex; }
+  }
+  .marrob-header__phone {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--marrob-text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .marrob-header__phone:hover { color: var(--marrob-primary); }
+  .marrob-header__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
+    color: #fff;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    border-radius: var(--marrob-radius);
+    text-decoration: none;
+    transition: box-shadow 0.3s, transform 0.2s;
+  }
+  .marrob-header__btn:hover {
+    box-shadow: 0 8px 24px rgba(196, 92, 62, 0.35);
+    transform: translateY(-2px);
+  }
+  .marrob-header__burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  @media (min-width: 1024px) {
+    .marrob-header__burger { display: none; }
+  }
+  .marrob-header__burger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--marrob-text);
+    border-radius: 1px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .marrob-header__burger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .marrob-header__burger.active span:nth-child(2) { opacity: 0; }
+  .marrob-header__burger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  .marrob-header__overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1001;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .marrob-header__overlay.visible {
+    display: block;
+    opacity: 1;
+  }
+  @media (min-width: 1024px) {
+    .marrob-header__overlay.visible { display: none; }
+  }
+  .marrob-header__drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--marrob-bg-card);
+    border-left: 1px solid var(--marrob-border);
+    z-index: 1002;
+    padding: 96px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -8px 0 32px rgba(0,0,0,0.08);
+  }
+  .marrob-header__drawer.open { transform: translateX(0); }
+  @media (min-width: 1024px) {
+    .marrob-header__drawer { display: none; }
+  }
+  .marrob-header__drawer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .marrob-header__drawer-link {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--marrob-text-muted);
+    text-decoration: none;
+    padding: 12px 0;
+    transition: color 0.2s;
+  }
+  .marrob-header__drawer-link:hover { color: var(--marrob-primary); }
+  .marrob-header__drawer-phone {
+    margin-top: 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--marrob-text);
+    text-decoration: none;
+  }
+  .marrob-header__drawer-email {
+    margin-top: 8px;
+    font-size: 0.9375rem;
+    color: var(--marrob-primary);
+    text-decoration: none;
+  }
+  .marrob-header__drawer-address {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.875rem;
+    color: var(--marrob-text-muted);
+  }
+  .marrob-header__drawer-btn {
+    margin-top: 16px;
+    display: block;
+    text-align: center;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
+    color: #fff;
+    font-weight: 600;
+    border-radius: var(--marrob-radius);
+    text-decoration: none;
+  }
+</style>
+<script>
+(function() {
+  var header = document.querySelector('.marrob-header');
+  var burger = document.getElementById('marrob-burger');
+  var overlay = document.getElementById('marrob-menu-overlay');
+  var drawer = document.getElementById('marrob-menu-drawer');
+  var focusables;
+  function getDrawerFocusables() {
+    if (!drawer) return [];
+    return drawer.querySelectorAll('a[href], button:not([disabled])');
+  }
+  function toggleMenu() {
+    var isOpen = drawer.classList.toggle('open');
+    burger.classList.toggle('active', isOpen);
+    overlay.classList.toggle('visible', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    if (isOpen) {
+      focusables = getDrawerFocusables();
+      drawer.setAttribute('aria-hidden', 'false');
+      if (focusables.length) focusables[0].focus();
+    } else {
+      drawer.setAttribute('aria-hidden', 'true');
+      if (burger) burger.focus();
+    }
+  }
+  function closeMenu() {
+    if (!drawer || !drawer.classList.contains('open')) return;
+    burger.classList.remove('active');
+    overlay.classList.remove('visible');
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+    drawer.setAttribute('aria-hidden', 'true');
+    if (burger) burger.focus();
+  }
+  if (burger) burger.addEventListener('click', toggleMenu);
+  if (overlay) overlay.addEventListener('click', closeMenu);
+  if (drawer) {
+    drawer.setAttribute('aria-hidden', 'true');
+    drawer.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key !== 'Escape' || !drawer.classList.contains('open')) return;
+      closeMenu();
+    });
+    drawer.addEventListener('keydown', function(e) {
+      if (e.key !== 'Tab' || !drawer.classList.contains('open')) return;
+      focusables = getDrawerFocusables();
+      if (focusables.length === 0) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+  }
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+  if (window.scrollY > 50) header.classList.add('scrolled');
+})();
+</script>

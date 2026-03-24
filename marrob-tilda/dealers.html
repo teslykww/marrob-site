@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дилерам / Партнёрам — MARROB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --marrob-bg: #FAF9F7;
+      --marrob-bg-card: #ffffff;
+      --marrob-primary: #C45C3E;
+      --marrob-primary-hover: #E07A5F;
+      --marrob-accent: #2D8A5E;
+      --marrob-text: #2A2A2A;
+      --marrob-text-muted: #5A5A5A;
+      --marrob-text-light: #7A7A7A;
+      --marrob-border: #E8E4DF;
+      --marrob-radius: 12px;
+      --marrob-radius-lg: 20px;
+      --marrob-font-display: 'Playfair Display', Georgia, serif;
+      --marrob-font-body: 'Inter', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--marrob-font-body);
+      background: var(--marrob-bg);
+      color: var(--marrob-text);
+      line-height: 1.6;
+    }
+    .marrob-d-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(250, 249, 247, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--marrob-border);
+    }
+    .marrob-d-header__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .marrob-d-header__logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .marrob-d-header__logo:hover { opacity: 0.85; }
+    .marrob-d-header__logo-img {
+      display: block;
+      height: 40px;
+      width: auto;
+      max-width: 160px;
+      object-fit: contain;
+    }
+    .marrob-d-header__back {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--marrob-text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .marrob-d-header__back:hover { color: var(--marrob-primary); }
+
+    /* 2.1 Hero */
+    .marrob-d-hero {
+      padding: 140px 24px 80px;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .marrob-d-hero__title {
+      font-family: var(--marrob-font-display);
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1.25;
+      margin: 0 0 16px;
+      color: var(--marrob-text);
+    }
+    @media (min-width: 768px) {
+      .marrob-d-hero__title { font-size: 2.5rem; }
+    }
+    .marrob-d-hero__subtitle {
+      font-size: 1.125rem;
+      color: var(--marrob-text-muted);
+      margin: 0 0 28px;
+      line-height: 1.5;
+    }
+    .marrob-d-hero__list {
+      list-style: none;
+      margin: 0 0 32px;
+      padding: 0;
+      text-align: left;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .marrob-d-hero__list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9375rem;
+      color: var(--marrob-text-muted);
+      margin-bottom: 12px;
+    }
+    .marrob-d-hero__list li::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(45, 138, 94, 0.2);
+      flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232D8A5E' stroke-width='2'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .marrob-d-hero__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: var(--marrob-radius);
+      background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
+      color: #fff;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 20px rgba(196, 92, 62, 0.3);
+    }
+    .marrob-d-hero__btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196, 92, 62, 0.4);
+    }
+
+    /* Sections common */
+    .marrob-d-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 56px 24px;
+    }
+    .marrob-d-section__title {
+      font-family: var(--marrob-font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 20px;
+      color: var(--marrob-text);
+    }
+    @media (min-width: 768px) {
+      .marrob-d-section__title { font-size: 1.75rem; }
+    }
+    .marrob-d-section__intro {
+      font-size: 1rem;
+      color: var(--marrob-text-muted);
+      margin: 0 0 24px;
+      line-height: 1.6;
+    }
+
+    /* 2.2 О компании — усиливающие фразы */
+    .marrob-d-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    @media (min-width: 640px) {
+      .marrob-d-stats { grid-template-columns: repeat(4, 1fr); }
+    }
+    .marrob-d-stat {
+      padding: 20px 16px;
+      background: var(--marrob-bg-card);
+      border: 1px solid var(--marrob-border);
+      border-radius: var(--marrob-radius);
+      text-align: center;
+    }
+    .marrob-d-stat__text {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--marrob-text);
+      margin: 0;
+    }
+
+    /* 2.3 Рынок — список */
+    .marrob-d-bullets {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .marrob-d-bullets li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 12px;
+      font-size: 0.9375rem;
+      color: var(--marrob-text-muted);
+    }
+    .marrob-d-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.4em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--marrob-primary);
+    }
+    .marrob-d-section__tagline {
+      font-size: 0.9375rem;
+      color: var(--marrob-accent);
+      font-weight: 500;
+      margin: 20px 0 0;
+    }
+
+    /* 2.4, 2.5, 2.6 — карточки */
+    .marrob-d-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 24px;
+    }
+    @media (min-width: 640px) {
+      .marrob-d-cards--4 { grid-template-columns: repeat(2, 1fr); }
+      .marrob-d-cards--6 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .marrob-d-cards--4 { grid-template-columns: repeat(4, 1fr); }
+      .marrob-d-cards--6 { grid-template-columns: repeat(3, 1fr); }
+    }
+    .marrob-d-card {
+      padding: 24px;
+      background: var(--marrob-bg-card);
+      border: 1px solid var(--marrob-border);
+      border-radius: var(--marrob-radius);
+      box-shadow: 0 4px 24px rgba(42, 42, 42, 0.04);
+    }
+    .marrob-d-card__title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--marrob-text);
+      margin: 0 0 10px;
+    }
+    .marrob-d-card__text {
+      font-size: 0.9375rem;
+      color: var(--marrob-text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* 2.7 Form */
+    .marrob-d-form-section {
+      padding: 56px 24px 80px;
+      background: linear-gradient(180deg, var(--marrob-bg) 0%, rgba(250, 249, 247, 0.6) 100%);
+    }
+    .marrob-d-form-wrap {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .marrob-d-form-wrap__title {
+      font-family: var(--marrob-font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-align: center;
+      margin: 0 0 12px;
+      color: var(--marrob-text);
+    }
+    .marrob-d-form-wrap__subtitle {
+      text-align: center;
+      font-size: 0.9375rem;
+      color: var(--marrob-text-muted);
+      margin: 0 0 32px;
+    }
+    .marrob-d-form {
+      background: var(--marrob-bg-card);
+      border: 1px solid var(--marrob-border);
+      border-radius: var(--marrob-radius);
+      padding: 32px 24px;
+      box-shadow: 0 4px 24px rgba(42, 42, 42, 0.06);
+    }
+    .marrob-d-form label {
+      display: block;
+      margin-bottom: 20px;
+    }
+    .marrob-d-form label span {
+      display: block;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--marrob-text-muted);
+      margin-bottom: 8px;
+    }
+    .marrob-d-form input,
+    .marrob-d-form select,
+    .marrob-d-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 1rem;
+      font-family: inherit;
+      color: var(--marrob-text);
+      background: var(--marrob-bg);
+      border: 1px solid var(--marrob-border);
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+    .marrob-d-form select {
+      cursor: pointer;
+      appearance: auto;
+    }
+    .marrob-d-form input:focus,
+    .marrob-d-form select:focus,
+    .marrob-d-form textarea:focus {
+      outline: none;
+      border-color: var(--marrob-primary);
+    }
+    .marrob-d-form button {
+      width: 100%;
+      padding: 18px 24px;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      font-family: inherit;
+      color: #fff;
+      background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
+      border: none;
+      border-radius: var(--marrob-radius);
+      cursor: pointer;
+      transition: box-shadow 0.3s, transform 0.2s;
+      margin-top: 8px;
+    }
+    .marrob-d-form button:hover {
+      box-shadow: 0 8px 24px rgba(196, 92, 62, 0.35);
+      transform: translateY(-2px);
+    }
+    .marrob-d-form__disclaimer {
+      font-size: 0.8125rem;
+      color: var(--marrob-text-light);
+      margin: 16px 0 0;
+      text-align: center;
+    }
+
+    .marrob-d-footer {
+      background: #1A1A1A;
+      color: #9A9A9A;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .marrob-d-footer a {
+      color: var(--marrob-primary);
+      text-decoration: none;
+    }
+    .marrob-d-footer a:hover { text-decoration: underline; }
+    .marrob-d-footer__phone {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #fff;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header class="marrob-d-header">
+    <div class="marrob-d-header__inner">
+      <a href="index.html" class="marrob-d-header__logo"><img src="assets/logo.png" alt="MARROB" class="marrob-d-header__logo-img" width="140" height="40"></a>
+      <a href="index.html" class="marrob-d-header__back">← На главную</a>
+    </div>
+  </header>
+
+  <!-- 2.1 Hero: приглашение к сотрудничеству -->
+  <section class="marrob-d-hero">
+    <h1 class="marrob-d-hero__title">Станьте дилером фасадных термопанелей MARROB</h1>
+    <p class="marrob-d-hero__subtitle">
+      Продукт с высоким спросом и маржинальностью. Собственное производство и поддержка партнёров.
+    </p>
+    <ul class="marrob-d-hero__list">
+      <li>Более 100 фактур и оттенков термопанелей</li>
+      <li>Маржинальность до 40%</li>
+      <li>Поставка по всей России</li>
+      <li>Стабильные сроки производства</li>
+      <li>Защита территории для активных партнёров</li>
+    </ul>
+    <a href="#dealer-form" class="marrob-d-hero__btn">Получить партнёрскую программу</a>
+  </section>
+
+  <!-- 2.2 О компании -->
+  <section class="marrob-d-section">
+    <h2 class="marrob-d-section__title">Производитель фасадных термопанелей MARROB</h2>
+    <p class="marrob-d-section__intro">
+      MARROB — производитель фасадных термопанелей с облицовкой под натуральный камень. Собственное производство, контроль качества и стабильные поставки позволяют нам выстраивать долгосрочные партнёрские отношения по всей России.
+    </p>
+    <div class="marrob-d-stats">
+      <div class="marrob-d-stat">
+        <p class="marrob-d-stat__text">Производственные мощности — 3000 м² в месяц</p>
+      </div>
+      <div class="marrob-d-stat">
+        <p class="marrob-d-stat__text">Более 6500 реализованных объектов</p>
+      </div>
+      <div class="marrob-d-stat">
+        <p class="marrob-d-stat__text">Сертифицированная продукция</p>
+      </div>
+      <div class="marrob-d-stat">
+        <p class="marrob-d-stat__text">Работаем с 2016 года</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2.3 Рынок и спрос -->
+  <section class="marrob-d-section">
+    <h2 class="marrob-d-section__title">Рынок фасадных термопанелей активно развивается</h2>
+    <p class="marrob-d-section__intro">
+      Частное домостроение и реконструкция фасадов остаются устойчивыми сегментами рынка. Клиенты всё чаще выбирают готовые фасадные системы вместо классических мокрых решений.
+    </p>
+    <ul class="marrob-d-bullets">
+      <li>Рост частного строительства</li>
+      <li>Повышение требований к энергоэффективности</li>
+      <li>Популярность фасадов под натуральный камень</li>
+      <li>Сокращение сроков строительства</li>
+      <li>Спрос на готовые фасадные решения</li>
+    </ul>
+    <p class="marrob-d-section__tagline">
+      Термопанели становятся альтернативой штукатурным и кирпичным фасадам.
+    </p>
+  </section>
+
+  <!-- 2.4 Экономика дилера -->
+  <section class="marrob-d-section">
+    <h2 class="marrob-d-section__title">Сколько зарабатывает дилер MARROB</h2>
+    <p class="marrob-d-section__intro">
+      Фасадные термопанели — продукт со стабильным спросом и понятной экономикой. Партнёр получает доход как от продажи панелей, так и от дополнительных услуг.
+    </p>
+    <div class="marrob-d-cards marrob-d-cards--4">
+      <div class="marrob-d-card">
+        <h3 class="marrob-d-card__title">Маржинальность до 40%</h3>
+        <p class="marrob-d-card__text">Партнёр получает фиксированную дилерскую скидку от рекомендованной розничной цены.</p>
+      </div>
+      <div class="marrob-d-card">
+        <h3 class="marrob-d-card__title">Средний объём заказа</h3>
+        <p class="marrob-d-card__text">Средний фасад частного дома — от 150 м².</p>
+      </div>
+      <div class="marrob-d-card">
+        <h3 class="marrob-d-card__title">Дополнительная прибыль</h3>
+        <p class="marrob-d-card__text">Монтаж, доборные элементы, сопутствующие материалы, повторные заказы. Фасад — это комплексное решение, позволяющее увеличивать средний чек.</p>
+      </div>
+      <div class="marrob-d-card">
+        <h3 class="marrob-d-card__title">Эффект повторных продаж</h3>
+        <p class="marrob-d-card__text">Фасад — хорошо заметный продукт. Один реализованный объект привлекает новых клиентов и соседей.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2.5 Кому подходит партнёрство -->
+  <section class="marrob-d-section">
+    <h2 class="marrob-d-section__title">Кому подходит партнёрство с MARROB</h2>
+    <p class="marrob-d-section__intro">
+      Мы выстраиваем сотрудничество с компаниями, которые активно работают с частным домостроением и заинтересованы в развитии направления фасадных решений.
+    </p>
+    <div class="marrob-d-cards marrob-d-cards--4">
+      <div class="marrob-d-card">
+        <h3 class="marrob-d-card__title">Строительные магазины и шоу-румы</h3>
+        <p class="marrob-d-card__text">С активными продажами фасадных материалов и собственной клиентской базой.</p>
+      </div>
+      <div class="marrob-d-card">
+        <h3 class="marrob-d-card__title">Компании по строительству частных домов</h3>
+        <p class="marrob-d-card__text">Добавьте фасадные термопанели в свои проекты и увеличьте средний чек объекта.</p>
+      </div>
+      <div class="marrob-d-card">
+        <h3 class="marrob-d-card__title">Подрядные организации</h3>
+        <p class="marrob-d-card__text">Решение, которое усиливает вашу экспертизу и повышает доверие заказчиков.</p>
+      </div>
+      <div class="marrob-d-card">
+        <h3 class="marrob-d-card__title">Интернет-продавцы</h3>
+        <p class="marrob-d-card__text">Продажи через онлайн-каналы и работа с собственной клиентской базой.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2.6 Поддержка от производителя -->
+  <section class="marrob-d-section">
+    <h2 class="marrob-d-section__title">Поддержка партнёров на каждом этапе</h2>
+    <p class="marrob-d-section__intro">
+      Наша задача — не просто поставить продукцию, а выстроить устойчивое партнёрство и помочь вам развивать направление фасадных решений.
+    </p>
+    <div class="marrob-d-cards marrob-d-cards--6">
+      <div class="marrob-d-card">
+        <h3 class="marrob-d-card__title">Обучение по продукту</h3>
+        <p class="marrob-d-card__text">Разбор преимуществ, аргументация для клиента, помощь в презентации продукта.</p>
+      </div>
+      <div class="marrob-d-card">
+        <h3 class="marrob-d-card__title">Помощь в расчётах</h3>
+        <p class="marrob-d-card__text">Поддержка при расчёте фасадов и подборе оптимальной комплектации.</p>
+      </div>
+      <div class="marrob-d-card">
+        <h3 class="marrob-d-card__title">Каталоги и образцы</h3>
+        <p class="marrob-d-card__text">Предоставление печатных и демонстрационных материалов.</p>
+      </div>
+      <div class="marrob-d-card">
+        <h3 class="marrob-d-card__title">Маркетинговые материалы</h3>
+        <p class="marrob-d-card__text">Фото, описания, технические данные для размещения на сайте и в рекламе.</p>
+      </div>
+      <div class="marrob-d-card">
+        <h3 class="marrob-d-card__title">Техническая консультация</h3>
+        <p class="marrob-d-card__text">Оперативная поддержка по вопросам монтажа и характеристик.</p>
+      </div>
+      <div class="marrob-d-card">
+        <h3 class="marrob-d-card__title">Передача входящих заявок</h3>
+        <p class="marrob-d-card__text">При наличии партнёра в регионе заявки передаются для обработки.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2.7 Финальная форма -->
+  <div class="marrob-d-form-section" id="dealer-form">
+    <div class="marrob-d-form-wrap">
+      <h2 class="marrob-d-form-wrap__title">Получите подробную партнёрскую программу MARROB</h2>
+      <p class="marrob-d-form-wrap__subtitle">
+        Мы направим условия сотрудничества и свяжемся с вами для обсуждения формата работы.
+      </p>
+      <form class="marrob-d-form" id="marrob-dealers-form" action="#" method="post">
+        <label>
+          <span>Название компании *</span>
+          <input type="text" name="company" required placeholder="ООО «Название»">
+        </label>
+        <label>
+          <span>Регион / Город *</span>
+          <input type="text" name="region" required placeholder="Город или область">
+        </label>
+        <label>
+          <span>Формат бизнеса</span>
+          <select name="format">
+            <option value="">Выберите формат</option>
+            <option value="store">Строительный магазин</option>
+            <option value="construction">Строительство домов</option>
+            <option value="contractor">Подрядная организация</option>
+            <option value="online">Интернет-продажи</option>
+            <option value="other">Другое</option>
+          </select>
+        </label>
+        <label>
+          <span>Контактное лицо *</span>
+          <input type="text" name="name" required placeholder="ФИО">
+        </label>
+        <label>
+          <span>Телефон *</span>
+          <input type="tel" name="phone" required placeholder="+7 (___) ___-__-__">
+        </label>
+        <label>
+          <span>Email *</span>
+          <input type="email" name="email" required placeholder="email@company.ru">
+        </label>
+        <button type="submit">Получить партнёрскую программу</button>
+        <p class="marrob-d-form__disclaimer">
+          Мы рассматриваем заявки и связываемся для обсуждения сотрудничества. Свяжется руководитель дилерского направления.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <footer class="marrob-d-footer">
+    <a href="tel:+79166662335" class="marrob-d-footer__phone">+7 (916) 666-23-35</a><br>
+    <a href="mailto:info@marrob.ru">info@marrob.ru</a><br>
+    <small>ООО «МАРРОБ» | ИНН: 7734650123 | ОГРН: 1157746123456</small>
+  </footer>
+
+  <script>
+    (function() {
+      var form = document.getElementById('marrob-dealers-form');
+      var tel = form && form.querySelector('input[name="phone"]');
+      if (tel) {
+        tel.addEventListener('input', function() {
+          var v = this.value.replace(/\D/g, '');
+          if (v.length > 0 && (v[0] === '8' || v[0] === '7')) v = v.substring(1);
+          var r = '+7';
+          if (v.length > 0) r += ' (' + v.substring(0, 3);
+          if (v.length >= 3) r += ') ' + v.substring(3, 6);
+          if (v.length >= 6) r += '-' + v.substring(6, 8);
+          if (v.length >= 8) r += '-' + v.substring(8, 10);
+          this.value = r;
+        });
+      }
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          alert('Заявка отправлена. Мы свяжемся с вами в ближайшее время.');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

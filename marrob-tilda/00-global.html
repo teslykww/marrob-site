@@ -1,0 +1,89 @@
+<!-- MARROB Tilda — глобальные стили. Вставьте этот блок ПЕРВЫМ на странице (или в настройках страницы Tilda: Дополнительно → Код в <head>). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --marrob-bg: #FAF9F7;
+    --marrob-bg-card: #ffffff;
+    --marrob-primary: #C45C3E;
+    --marrob-primary-hover: #E07A5F;
+    --marrob-accent: #2D8A5E;
+    --marrob-accent-light: #4CAF7C;
+    /* Визуал: зелёный и песочный для фонов, декора, рамок */
+    --marrob-green: #2D8A5E;
+    --marrob-green-soft: #E8F5EE;
+    --marrob-sand: #D4C4A8;
+    --marrob-sand-light: #F5F0E6;
+    --marrob-text: #2A2A2A;
+    --marrob-text-muted: #5A5A5A;
+    --marrob-text-light: #7A7A7A;
+    --marrob-border: #E8E4DF;
+    --marrob-radius: 12px;
+    --marrob-radius-lg: 20px;
+    --marrob-shadow: 0 4px 24px rgba(42, 42, 42, 0.06);
+    --marrob-shadow-hover: 0 12px 40px rgba(42, 42, 42, 0.1);
+    /* Шрифты: 2–3 макс. Заглавные только в начале предложений — не в верстке. */
+    --marrob-font-display: 'Merriweather', Georgia, serif;
+    --marrob-font-body: 'Open Sans', system-ui, sans-serif;
+    /* Типографика: заголовки 30–70px, подзаголовки 22–30px, текст 16–20px */
+    --marrob-h1: clamp(30px, 5vw, 70px);
+    --marrob-h2: clamp(26px, 4vw, 48px);
+    --marrob-subtitle: clamp(22px, 2.5vw, 30px);
+    --marrob-body: clamp(16px, 1.5vw, 20px);
+  }
+  html { scroll-behavior: smooth; font-size: 100%; }
+  .marrob-font-display { font-family: var(--marrob-font-display); }
+  .marrob-font-body { font-family: var(--marrob-font-body); }
+  .marrob-h1 { font-size: var(--marrob-h1); font-family: var(--marrob-font-display); line-height: 1.15; }
+  .marrob-h2 { font-size: var(--marrob-h2); font-family: var(--marrob-font-display); line-height: 1.2; }
+  .marrob-subtitle { font-size: var(--marrob-subtitle); font-family: var(--marrob-font-body); line-height: 1.35; }
+  .marrob-body { font-size: var(--marrob-body); font-family: var(--marrob-font-body); line-height: 1.5; }
+  /* Единый стиль иконок (строительная тема): outline 24×24, stroke 1.5 */
+  .marrob-icon { width: 24px; height: 24px; flex-shrink: 0; }
+  .marrob-icon svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Dot-grid background for sections */
+  .marrob-dot-bg {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, var(--marrob-border) 1px, transparent 0);
+    background-size: 50px 50px;
+    opacity: 0.2;
+    pointer-events: none;
+  }
+  /* Gradient blob decoration */
+  .marrob-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .marrob-blob--primary { background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover)); }
+  .marrob-blob--accent { background: linear-gradient(135deg, var(--marrob-accent), var(--marrob-accent-light)); }
+  .marrob-blob--sm { width: 300px; height: 300px; }
+  .marrob-blob--md { width: 400px; height: 400px; }
+  .marrob-blob--lg { width: 500px; height: 500px; }
+  .marrob-blob--tr { top: 0; right: 0; transform: translate(30%, -30%); }
+  .marrob-blob--tl { top: 0; left: 0; transform: translate(-30%, -30%); }
+  .marrob-blob--br { bottom: 0; right: 0; transform: translate(30%, 30%); }
+  .marrob-blob--bl { bottom: 0; left: 0; transform: translate(-30%, 30%); }
+  .marrob-blob--center-left { top: 50%; left: 0; transform: translate(-50%, -50%); }
+  .marrob-blob--center-right { top: 50%; right: 0; transform: translate(50%, -50%); }
+
+  /* FadeUp: всегда видим (на Tilda скрытие из JS часто не снимается — блоки остаются пустыми) */
+  .marrob-fade-up {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .marrob-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .marrob-fade-up-delay-1 { transition-delay: 0.1s; }
+  .marrob-fade-up-delay-2 { transition-delay: 0.2s; }
+  .marrob-fade-up-delay-3 { transition-delay: 0.3s; }
+  .marrob-fade-up-delay-4 { transition-delay: 0.4s; }
+</style>

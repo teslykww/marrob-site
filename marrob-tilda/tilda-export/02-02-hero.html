@@ -1,0 +1,358 @@
+<!-- MARROB — Блок 2: Hero (kimi2): заголовок 2 строки, лид один, точки, trust-bar снизу. Фон: assets/hero-bg.png -->
+<div class="marrob-block marrob-block-hero-v2" id="marrob-hero">
+  <section class="marrob-hero-v2">
+    <div class="marrob-hero-v2__bg">
+      <img src="assets/hero-bg.png" alt="" class="marrob-hero-v2__bg-img" width="1920" height="1080">
+      <div class="marrob-hero-v2__grad marrob-hero-v2__grad--mob" aria-hidden="true"></div>
+      <div class="marrob-hero-v2__grad marrob-hero-v2__grad--desk" aria-hidden="true"></div>
+      <div class="marrob-hero-v2__ring" aria-hidden="true"></div>
+    </div>
+
+    <div class="marrob-hero-v2__main">
+      <div class="marrob-hero-v2__container">
+        <div class="marrob-hero-v2__shell">
+          <div class="marrob-hero-v2__badges marrob-fade-up">
+            <span class="marrob-hero-v2__badge">Собственное производство</span>
+            <span class="marrob-hero-v2__badge marrob-hero-v2__badge--accent">30 лет гарантии</span>
+          </div>
+          <h1 class="marrob-hero-v2__title marrob-font-display marrob-fade-up marrob-fade-up-delay-1">
+            Фасадные термопанели
+            <span class="marrob-hero-v2__title-line2">с облицовкой под камень</span>
+          </h1>
+          <p class="marrob-hero-v2__lead marrob-fade-up marrob-fade-up-delay-1">
+            <strong>Экономия до 50–60%</strong> на теплопотерях. Напрямую от производителя.<br>
+            Покупка панелей отдельно или монтаж под ключ.
+          </p>
+          <ul class="marrob-hero-v2__list marrob-fade-up marrob-fade-up-delay-2">
+            <li><span class="marrob-hero-v2__li-dot" aria-hidden="true"></span> Утепление и отделка в одной системе</li>
+            <li><span class="marrob-hero-v2__li-dot" aria-hidden="true"></span> Более <strong class="marrob-hero-v2__li-strong">100</strong> фактур и оттенков камня</li>
+            <li><span class="marrob-hero-v2__li-dot" aria-hidden="true"></span> Замковая геометрия — без мостиков холода</li>
+          </ul>
+          <div class="marrob-hero-v2__cta marrob-fade-up marrob-fade-up-delay-2">
+            <a href="#contact" class="marrob-hero-v2__btn marrob-hero-v2__btn--primary">Рассчитать фасад</a>
+            <a href="#catalog" class="marrob-hero-v2__btn marrob-hero-v2__btn--ghost">Купить панели</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="marrob-hero-v2__trust" aria-label="Показатели компании">
+      <div class="marrob-hero-v2__trust-inner">
+        <div class="marrob-hero-v2__trust-cell marrob-hero-v2__trust-cell--1">
+          <p class="marrob-hero-v2__trust-num"><span class="marrob-hero-v2__trust-accent">6500+</span></p>
+          <p class="marrob-hero-v2__trust-label">реализованных объектов</p>
+        </div>
+        <div class="marrob-hero-v2__trust-cell marrob-hero-v2__trust-cell--2">
+          <p class="marrob-hero-v2__trust-num">с <span class="marrob-hero-v2__trust-accent">2016</span></p>
+          <p class="marrob-hero-v2__trust-label">года на рынке</p>
+        </div>
+        <div class="marrob-hero-v2__trust-cell marrob-hero-v2__trust-cell--3">
+          <p class="marrob-hero-v2__trust-num"><span class="marrob-hero-v2__trust-accent">3000</span> м²</p>
+          <p class="marrob-hero-v2__trust-label">производство в месяц</p>
+        </div>
+        <div class="marrob-hero-v2__trust-cell marrob-hero-v2__trust-cell--4">
+          <p class="marrob-hero-v2__trust-num"><span class="marrob-hero-v2__trust-accent">100+</span></p>
+          <p class="marrob-hero-v2__trust-label">фактур и оттенков</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="marrob-hero-v2__scroll" aria-hidden="true">
+      <span>Прокрутите вниз</span>
+      <div class="marrob-hero-v2__mouse"><span class="marrob-hero-v2__dot"></span></div>
+    </div>
+  </section>
+</div>
+<style>
+  .marrob-block-hero-v2 { margin-top: 0; }
+  .marrob-hero-v2 {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    padding: 96px 0 0;
+    overflow: hidden;
+    font-family: var(--marrob-font-body);
+  }
+  @media (min-width: 1024px) {
+    .marrob-hero-v2 { padding-top: 120px; }
+  }
+  .marrob-hero-v2__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .marrob-hero-v2__bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .marrob-hero-v2__grad--mob {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.82) 100%);
+  }
+  @media (min-width: 1024px) {
+    .marrob-hero-v2__grad--mob { display: none; }
+  }
+  .marrob-hero-v2__grad--desk {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.1) 100%);
+  }
+  @media (min-width: 1024px) {
+    .marrob-hero-v2__grad--desk { display: block; }
+  }
+  .marrob-hero-v2__ring {
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
+    pointer-events: none;
+  }
+
+  .marrob-hero-v2__main {
+    position: relative;
+    z-index: 2;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    min-height: 0;
+    padding-bottom: 24px;
+  }
+  .marrob-hero-v2__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .marrob-hero-v2__shell {
+    max-width: 36rem;
+  }
+  @media (max-width: 1023px) {
+    .marrob-hero-v2__shell {
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.3);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      padding: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    }
+  }
+  .marrob-hero-v2__badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
+  .marrob-hero-v2__badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .marrob-hero-v2__badge--accent {
+    background: rgba(232, 240, 227, 0.95);
+    color: var(--marrob-accent, #2d8a5e);
+    border-color: transparent;
+  }
+  .marrob-hero-v2__title {
+    font-size: clamp(1.875rem, 4vw, 3.25rem);
+    font-weight: 600;
+    line-height: 1.15;
+    color: #fff;
+    margin: 0 0 22px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  }
+  .marrob-hero-v2__title-line2 {
+    display: block;
+    margin-top: 10px;
+    color: #d8f0c8;
+  }
+  @media (min-width: 1024px) {
+    .marrob-hero-v2__title-line2 { color: var(--marrob-accent, #2d8a5e); }
+  }
+  .marrob-hero-v2__lead {
+    font-size: 1.125rem;
+    color: rgba(255,255,255,0.95);
+    margin: 0 0 26px;
+    line-height: 1.5;
+  }
+  @media (min-width: 768px) { .marrob-hero-v2__lead { font-size: 1.25rem; } }
+  .marrob-hero-v2__lead strong { color: #fde68a; font-weight: 600; }
+
+  .marrob-hero-v2__list {
+    list-style: none;
+    margin: 0 0 28px;
+    padding: 0;
+  }
+  .marrob-hero-v2__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.9375rem;
+    margin-bottom: 12px;
+  }
+  @media (min-width: 768px) {
+    .marrob-hero-v2__list li { align-items: center; font-size: 1rem; }
+  }
+  .marrob-hero-v2__li-dot {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--marrob-accent-light, #4caf7c);
+    margin-top: 0.45em;
+  }
+  @media (min-width: 768px) {
+    .marrob-hero-v2__li-dot { margin-top: 0; }
+  }
+  .marrob-hero-v2__li-strong { color: #fff; font-weight: 600; }
+
+  .marrob-hero-v2__cta { display: flex; flex-direction: column; gap: 12px; }
+  @media (min-width: 480px) {
+    .marrob-hero-v2__cta { flex-direction: row; flex-wrap: wrap; }
+  }
+  .marrob-hero-v2__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .marrob-hero-v2__btn--primary {
+    background: var(--marrob-primary, #c45c3e);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+  }
+  .marrob-hero-v2__btn--primary:hover { filter: brightness(1.05); }
+  .marrob-hero-v2__btn--ghost {
+    border: 2px solid rgba(255,255,255,0.7);
+    color: #fff;
+    background: rgba(255,255,255,0.1);
+  }
+  .marrob-hero-v2__btn--ghost:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: #fff;
+  }
+
+  .marrob-hero-v2__trust {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    width: 100%;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.55);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  .marrob-hero-v2__trust-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: 768px) {
+    .marrob-hero-v2__trust-inner { grid-template-columns: repeat(4, 1fr); }
+  }
+  .marrob-hero-v2__trust-cell {
+    padding: 16px 18px;
+    border-color: rgba(255,255,255,0.1);
+  }
+  .marrob-hero-v2__trust-cell--1 {
+    border-right: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .marrob-hero-v2__trust-cell--2 {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .marrob-hero-v2__trust-cell--3 {
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  @media (min-width: 768px) {
+    .marrob-hero-v2__trust-cell {
+      border-bottom: none;
+      padding: 16px 24px;
+    }
+    .marrob-hero-v2__trust-cell--1,
+    .marrob-hero-v2__trust-cell--2,
+    .marrob-hero-v2__trust-cell--3 {
+      border-right: 1px solid rgba(255,255,255,0.1);
+      border-bottom: none;
+    }
+    .marrob-hero-v2__trust-cell--4 { border: none; }
+  }
+  .marrob-hero-v2__trust-num {
+    font-family: var(--marrob-font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.1;
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  @media (min-width: 768px) {
+    .marrob-hero-v2__trust-num { font-size: 1.5rem; }
+  }
+  .marrob-hero-v2__trust-accent {
+    color: var(--marrob-accent-light, #4caf7c);
+  }
+  .marrob-hero-v2__trust-label {
+    margin: 6px 0 0;
+    font-size: 11px;
+    line-height: 1.35;
+    color: rgba(255,255,255,0.45);
+  }
+  @media (min-width: 768px) {
+    .marrob-hero-v2__trust-label { font-size: 12px; }
+  }
+
+  .marrob-hero-v2__scroll {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.7);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    bottom: 9rem;
+  }
+  @media (min-width: 768px) {
+    .marrob-hero-v2__scroll { bottom: 6.25rem; }
+  }
+  .marrob-hero-v2__mouse {
+    width: 26px;
+    height: 40px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+  }
+  .marrob-hero-v2__dot {
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 50%;
+    animation: marrob-hero-v2-bounce 1.6s ease-in-out infinite;
+  }
+  @keyframes marrob-hero-v2-bounce {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(8px); opacity: 0.5; }
+  }
+</style>

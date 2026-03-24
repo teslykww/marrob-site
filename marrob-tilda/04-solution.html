@@ -1,0 +1,160 @@
+<!-- MARROB — Блок 4: Solution (как kimi2). Схема solution-scheme.png + зелёный CTA с формой. Подключите форму к Tilda Forms. -->
+<div class="marrob-block marrob-block-solution-v2">
+  <section class="marrob-sol2">
+    <div class="marrob-blob marrob-blob--lg marrob-blob--accent marrob-blob--center-left"></div>
+    <div class="marrob-sol2__inner">
+      <div class="marrob-sol2__head">
+        <span class="marrob-sol2__badge marrob-fade-up">Решение</span>
+        <h2 class="marrob-sol2__title marrob-font-display marrob-fade-up marrob-fade-up-delay-1">
+          Термопанель — <span class="marrob-sol2__accent">утепление и фасад</span> в одной системе
+        </h2>
+        <p class="marrob-sol2__lead marrob-fade-up marrob-fade-up-delay-1">
+          Готовая фасадная система 2 в 1: современное решение для дома
+        </p>
+      </div>
+
+      <div class="marrob-sol2__scheme marrob-fade-up marrob-fade-up-delay-2">
+        <img src="assets/solution-scheme.png" alt="Двухслойная конструкция термопанелей MARROB" class="marrob-sol2__scheme-img" loading="lazy">
+      </div>
+
+      <p class="marrob-sol2__caption marrob-fade-up">
+        Термопанель объединяет утеплитель и декоративную облицовку в единой конструкции. Монтаж выполняется в один этап, без мокрых процессов и дополнительной отделки.
+      </p>
+
+      <div class="marrob-sol2__cta marrob-fade-up">
+        <div class="marrob-sol2__cta-grid">
+          <div class="marrob-sol2__cta-visual">
+            <img src="images/solution-cta-house.png" alt="Термопанели MARROB на объекте: утеплитель и каменная облицовка" class="marrob-sol2__cta-img" width="1200" height="675" loading="lazy" decoding="async">
+            <div class="marrob-sol2__cta-img-grad" aria-hidden="true"></div>
+          </div>
+          <div class="marrob-sol2__cta-body">
+            <h3 class="marrob-sol2__cta-title marrob-font-display">
+              Дом получает одновременно утепление и капитальный каменный фасад
+            </h3>
+            <p class="marrob-sol2__cta-text">
+              Замковая геометрия обеспечивает плотную стыковку панелей без щелей и мостиков холода
+            </p>
+            <form class="marrob-sol2__form" action="#" method="post" id="marrob-sol2-form">
+              <div class="marrob-sol2__fields">
+                <div>
+                  <label class="marrob-sol2__label" for="marrob-sol2-name">Имя</label>
+                  <input type="text" id="marrob-sol2-name" name="name" class="marrob-sol2__input" placeholder="Как к вам обращаться">
+                </div>
+                <div>
+                  <label class="marrob-sol2__label" for="marrob-sol2-phone">Телефон <span class="marrob-sol2__req">*</span></label>
+                  <input type="tel" id="marrob-sol2-phone" name="phone" class="marrob-sol2__input" placeholder="+7 (___) ___-__-__" required>
+                </div>
+              </div>
+              <div class="marrob-sol2__submit-row">
+                <span class="marrob-sol2__hint-desktop">Получить консультацию →</span>
+                <button type="submit" class="marrob-sol2__submit">Получить консультацию</button>
+              </div>
+              <p class="marrob-sol2__fine">
+                Или напишите в разделе <a href="#contact">Контакты</a>. Замените <code>action</code> формы на обработчик Tilda.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<style>
+  .marrob-block-solution-v2 { background: var(--marrob-bg-card); position: relative; overflow: hidden; }
+  .marrob-sol2 { padding: 64px 24px; font-family: var(--marrob-font-body); position: relative; }
+  .marrob-sol2__inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+  .marrob-sol2__head { text-align: center; max-width: 720px; margin: 0 auto 40px; }
+  .marrob-sol2__badge {
+    display: inline-block; padding: 8px 20px;
+    background: rgba(45, 138, 94, 0.1); color: var(--marrob-accent);
+    font-size: 0.875rem; font-weight: 500; border-radius: 999px; margin-bottom: 16px;
+  }
+  .marrob-sol2__title { font-size: var(--marrob-h2); line-height: 1.3; font-weight: 600; color: var(--marrob-text); margin: 0 0 12px; }
+  .marrob-sol2__accent { color: var(--marrob-accent); }
+  .marrob-sol2__lead { font-size: var(--marrob-subtitle); color: var(--marrob-text-muted); margin: 0; line-height: 1.5; }
+  .marrob-sol2__scheme {
+    border-radius: var(--marrob-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--marrob-shadow-hover);
+    background: #fff;
+    margin-bottom: 24px;
+  }
+  .marrob-sol2__scheme-img {
+    display: block; width: 100%; height: auto; max-height: 560px; object-fit: contain;
+    margin: 0 auto;
+  }
+  .marrob-sol2__caption {
+    text-align: center; font-size: var(--marrob-body); color: var(--marrob-text-muted);
+    max-width: 720px; margin: 0 auto 40px; line-height: 1.55;
+  }
+  .marrob-sol2__cta {
+    border-radius: var(--marrob-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--marrob-shadow-hover);
+    background: linear-gradient(90deg, var(--marrob-accent, #2d8a5e), #1e5c3d);
+    color: #fff;
+  }
+  .marrob-sol2__cta-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 1024px) {
+    .marrob-sol2__cta-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+  }
+  .marrob-sol2__cta-visual { position: relative; min-height: 200px; }
+  @media (min-width: 640px) { .marrob-sol2__cta-visual { min-height: 260px; } }
+  @media (min-width: 1024px) { .marrob-sol2__cta-visual { min-height: 320px; } }
+  .marrob-sol2__cta-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .marrob-sol2__cta-img-grad {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.35), transparent);
+  }
+  @media (min-width: 1024px) {
+    .marrob-sol2__cta-img-grad {
+      background: linear-gradient(to right, transparent, transparent, rgba(0,0,0,0.2));
+    }
+  }
+  .marrob-sol2__cta-body { padding: 24px; }
+  @media (min-width: 768px) { .marrob-sol2__cta-body { padding: 32px 40px; } }
+  .marrob-sol2__cta-title { font-size: 1.375rem; font-weight: 600; margin: 0 0 12px; text-align: center; }
+  @media (min-width: 1024px) { .marrob-sol2__cta-title { text-align: left; font-size: 1.75rem; } }
+  .marrob-sol2__cta-text { font-size: 0.875rem; color: rgba(255,255,255,0.88); margin: 0 0 22px; text-align: center; max-width: 36rem; margin-left: auto; margin-right: auto; }
+  @media (min-width: 1024px) { .marrob-sol2__cta-text { text-align: left; margin-left: 0; } }
+  .marrob-sol2__fields { display: grid; gap: 16px; margin-bottom: 16px; }
+  @media (min-width: 640px) { .marrob-sol2__fields { grid-template-columns: 1fr 1fr; } }
+  .marrob-sol2__label { display: block; font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.9); margin-bottom: 6px; }
+  .marrob-sol2__req { color: #fde68a; }
+  .marrob-sol2__input {
+    width: 100%; height: 44px; padding: 0 14px; border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.95);
+    color: var(--marrob-text); font-size: 0.9375rem;
+  }
+  .marrob-sol2__input::placeholder { color: #9a9a9a; }
+  .marrob-sol2__submit-row {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px;
+    padding-top: 4px;
+  }
+  @media (min-width: 1024px) {
+    .marrob-sol2__submit-row { justify-content: flex-start; }
+  }
+  .marrob-sol2__hint-desktop {
+    display: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.75); max-width: 100px; line-height: 1.3;
+  }
+  @media (min-width: 640px) { .marrob-sol2__hint-desktop { display: block; } }
+  .marrob-sol2__submit {
+    flex: 1; min-width: 200px; max-width: 100%;
+    padding: 14px 28px; border-radius: 12px; border: none; cursor: pointer;
+    background: #fff; color: var(--marrob-accent, #2d8a5e);
+    font-family: var(--marrob-font-display); font-weight: 600; font-size: 0.9375rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .marrob-sol2__submit:hover { filter: brightness(0.98); }
+  @media (min-width: 640px) {
+    .marrob-sol2__submit { flex: 0 1 auto; width: auto; }
+  }
+  .marrob-sol2__fine { font-size: 0.6875rem; color: rgba(255,255,255,0.55); margin: 16px 0 0; text-align: center; }
+  @media (min-width: 1024px) { .marrob-sol2__fine { text-align: left; } }
+  .marrob-sol2__fine a { color: #fff; text-decoration: underline; }
+  .marrob-sol2__fine code { font-size: 0.65rem; }
+</style>

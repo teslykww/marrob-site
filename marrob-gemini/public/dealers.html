@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MARROB - Дилерам и партнерам</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --marrob-bg: #FAF9F7;
+      --marrob-bg-card: #ffffff;
+      --marrob-primary: #C45C3E;
+      --marrob-primary-hover: #E07A5F;
+      --marrob-accent: #2D8A5E;
+      --marrob-accent-light: #4CAF7C;
+      --marrob-text: #2A2A2A;
+      --marrob-text-muted: #5A5A5A;
+      --marrob-text-light: #7A7A7A;
+      --marrob-border: #E8E4DF;
+      --marrob-radius: 12px;
+      --marrob-radius-lg: 20px;
+      --marrob-shadow: 0 4px 24px rgba(42, 42, 42, 0.06);
+      --marrob-shadow-hover: 0 12px 40px rgba(42, 42, 42, 0.1);
+      --marrob-font-display: 'Playfair Display', Georgia, serif;
+      --marrob-font-body: 'Inter', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; padding: 0; background-color: var(--marrob-bg); color: var(--marrob-text); font-family: var(--marrob-font-body); overflow-x: hidden; }
+    * { box-sizing: border-box; }
+    .marrob-font-display { font-family: var(--marrob-font-display); }
+    .marrob-font-body { font-family: var(--marrob-font-body); }
+
+    /* FadeUpText: animate when in view */
+    .marrob-fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .marrob-fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .marrob-fade-up-delay-1 { transition-delay: 0.1s; }
+    .marrob-fade-up-delay-2 { transition-delay: 0.2s; }
+    .marrob-fade-up-delay-3 { transition-delay: 0.3s; }
+  </style>
+</head>
+<body>
+  <!-- Header (simplified for dealers) -->
+  <div class="marrob-block marrob-block-header" id="marrob-header">
+    <header class="marrob-header">
+      <div class="marrob-header__inner">
+        <a href="/landing.html" class="marrob-header__logo">MAR<span class="marrob-header__logo-accent">ROB</span> <span style="font-size: 0.8rem; color: var(--marrob-text-muted); font-family: var(--marrob-font-body); font-weight: 500; margin-left: 8px;">Партнерам</span></a>
+        <nav class="marrob-header__nav">
+          <a href="#benefits" class="marrob-header__link">Преимущества</a>
+          <a href="#formats" class="marrob-header__link">Форматы работы</a>
+          <a href="#contact" class="marrob-header__link">Стать дилером</a>
+          <a href="/landing.html" class="marrob-header__link">На главный сайт</a>
+        </nav>
+        <div class="marrob-header__cta">
+          <a href="tel:+79166662335" class="marrob-header__phone">+7 (916) 666-23-35</a>
+        </div>
+      </div>
+    </header>
+  </div>
+  <style>
+    .marrob-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: transparent; transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease; }
+    .marrob-header.scrolled { background: rgba(250, 249, 247, 0.9); backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--marrob-border); }
+    .marrob-header__inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 80px; display: flex; align-items: center; justify-content: space-between; }
+    .marrob-header__logo { font-family: var(--marrob-font-display); font-size: 1.5rem; font-weight: 700; color: var(--marrob-text); text-decoration: none; }
+    .marrob-header__logo-accent { color: var(--marrob-primary); }
+    .marrob-header__nav { display: flex; gap: 32px; }
+    .marrob-header__link { font-size: 0.9375rem; font-weight: 500; color: var(--marrob-text-muted); text-decoration: none; transition: color 0.2s; }
+    .marrob-header__link:hover { color: var(--marrob-primary); }
+    .marrob-header__phone { font-size: 0.9375rem; font-weight: 600; color: var(--marrob-text); text-decoration: none; }
+    @media (max-width: 768px) { .marrob-header__nav { display: none; } }
+  </style>
+
+  <!-- Hero B2B -->
+  <div class="marrob-block marrob-block-hero-b2b" style="margin-top: 80px;">
+    <section class="marrob-hero-b2b">
+      <div class="marrob-hero-b2b__inner">
+        <div class="marrob-hero-b2b__content">
+          <span class="marrob-hero-b2b__badge marrob-fade-up">B2B Партнерство</span>
+          <h1 class="marrob-hero-b2b__title marrob-font-display marrob-fade-up marrob-fade-up-delay-1">
+            Станьте партнером MARROB и зарабатывайте на <span class="marrob-hero-b2b__title-accent">инновационных фасадах</span>
+          </h1>
+          <p class="marrob-hero-b2b__subtitle marrob-fade-up marrob-fade-up-delay-2">
+            Специальные условия для строительных компаний, архитекторов и торговых сетей. Маржинальность от 25% с каждого объекта.
+          </p>
+          <ul class="marrob-hero-b2b__list marrob-fade-up marrob-fade-up-delay-3">
+            <li>Защита проектов и закрепление клиентов</li>
+            <li>Бесплатные образцы и маркетинговые материалы</li>
+            <li>Обучение монтажных бригад</li>
+          </ul>
+          <a href="#contact" class="marrob-hero-b2b__btn marrob-fade-up marrob-fade-up-delay-3">Получить оптовый прайс</a>
+        </div>
+        <div class="marrob-hero-b2b__media marrob-fade-up marrob-fade-up-delay-2">
+          <img src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?w=800&q=80" alt="Партнерство" class="marrob-hero-b2b__img">
+        </div>
+      </div>
+    </section>
+  </div>
+  <style>
+    .marrob-hero-b2b { padding: 80px 24px; background: var(--marrob-bg); }
+    .marrob-hero-b2b__inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    @media (max-width: 1024px) { .marrob-hero-b2b__inner { grid-template-columns: 1fr; gap: 40px; } }
+    .marrob-hero-b2b__badge { display: inline-block; padding: 8px 16px; background: rgba(45, 138, 94, 0.1); color: var(--marrob-accent); font-size: 0.875rem; font-weight: 600; border-radius: 999px; margin-bottom: 24px; }
+    .marrob-hero-b2b__title { font-size: 3rem; line-height: 1.2; font-weight: 700; color: var(--marrob-text); margin: 0 0 24px; }
+    @media (max-width: 768px) { .marrob-hero-b2b__title { font-size: 2rem; } }
+    .marrob-hero-b2b__title-accent { color: var(--marrob-primary); }
+    .marrob-hero-b2b__subtitle { font-size: 1.125rem; color: var(--marrob-text-muted); line-height: 1.6; margin: 0 0 32px; }
+    .marrob-hero-b2b__list { list-style: none; padding: 0; margin: 0 0 40px; display: flex; flex-direction: column; gap: 16px; }
+    .marrob-hero-b2b__list li { display: flex; align-items: center; gap: 12px; font-size: 1rem; color: var(--marrob-text); font-weight: 500; }
+    .marrob-hero-b2b__list li::before { content: '✓'; color: var(--marrob-accent); font-weight: bold; }
+    .marrob-hero-b2b__btn { display: inline-flex; padding: 18px 32px; background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover)); color: #fff; font-size: 1.0625rem; font-weight: 600; border-radius: var(--marrob-radius); text-decoration: none; box-shadow: 0 4px 20px rgba(196, 92, 62, 0.3); transition: transform 0.2s; }
+    .marrob-hero-b2b__btn:hover { transform: translateY(-2px); }
+    .marrob-hero-b2b__img { width: 100%; border-radius: var(--marrob-radius-lg); box-shadow: var(--marrob-shadow-hover); }
+  </style>
+
+  <!-- Benefits B2B -->
+  <div class="marrob-block marrob-block-benefits-b2b" id="benefits">
+    <section class="marrob-benefits-b2b">
+      <div class="marrob-benefits-b2b__inner">
+        <h2 class="marrob-benefits-b2b__title marrob-font-display marrob-fade-up">Почему с нами выгодно работать</h2>
+        <div class="marrob-benefits-b2b__grid">
+          <div class="marrob-benefits-b2b__card marrob-fade-up">
+            <h3 class="marrob-benefits-b2b__card-title">Высокая маржинальность</h3>
+            <p class="marrob-benefits-b2b__card-desc">Дилерская скидка позволяет зарабатывать от 25% с каждого проданного квадратного метра.</p>
+          </div>
+          <div class="marrob-benefits-b2b__card marrob-fade-up marrob-fade-up-delay-1">
+            <h3 class="marrob-benefits-b2b__card-title">Защита проектов</h3>
+            <p class="marrob-benefits-b2b__card-desc">Мы регистрируем ваши объекты в CRM. Никто другой не получит цену ниже на ваш проект.</p>
+          </div>
+          <div class="marrob-benefits-b2b__card marrob-fade-up marrob-fade-up-delay-2">
+            <h3 class="marrob-benefits-b2b__card-title">Маркетинговая поддержка</h3>
+            <p class="marrob-benefits-b2b__card-desc">Предоставляем каталоги, стенды с образцами, фото и видео материалы для ваших клиентов.</p>
+          </div>
+          <div class="marrob-benefits-b2b__card marrob-fade-up marrob-fade-up-delay-3">
+            <h3 class="marrob-benefits-b2b__card-title">Обучение монтажу</h3>
+            <p class="marrob-benefits-b2b__card-desc">Проводим шеф-монтаж на первом объекте и обучаем ваши бригады правильной технологии.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <style>
+    .marrob-benefits-b2b { padding: 80px 24px; background: var(--marrob-bg-card); }
+    .marrob-benefits-b2b__inner { max-width: 1280px; margin: 0 auto; }
+    .marrob-benefits-b2b__title { font-size: 2.25rem; font-weight: 700; text-align: center; margin: 0 0 48px; }
+    .marrob-benefits-b2b__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    @media (max-width: 1024px) { .marrob-benefits-b2b__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .marrob-benefits-b2b__grid { grid-template-columns: 1fr; } }
+    .marrob-benefits-b2b__card { padding: 32px 24px; background: var(--marrob-bg); border: 1px solid var(--marrob-border); border-radius: var(--marrob-radius-lg); }
+    .marrob-benefits-b2b__card-title { font-size: 1.25rem; font-weight: 600; color: var(--marrob-primary); margin: 0 0 12px; }
+    .marrob-benefits-b2b__card-desc { font-size: 0.9375rem; color: var(--marrob-text-muted); line-height: 1.5; margin: 0; }
+  </style>
+
+  <!-- Formats B2B -->
+  <div class="marrob-block marrob-block-formats" id="formats">
+    <section class="marrob-formats">
+      <div class="marrob-formats__inner">
+        <h2 class="marrob-formats__title marrob-font-display marrob-fade-up">Форматы сотрудничества</h2>
+        <div class="marrob-formats__grid">
+          <div class="marrob-formats__card marrob-fade-up">
+            <h3 class="marrob-formats__card-title">Агент</h3>
+            <p class="marrob-formats__card-desc">Передаете нам контакты клиента. Мы сами продаем, производим и монтируем.</p>
+            <div class="marrob-formats__card-val">Бонус: 10% от сделки</div>
+          </div>
+          <div class="marrob-formats__card marrob-formats__card--highlight marrob-fade-up marrob-fade-up-delay-1">
+            <h3 class="marrob-formats__card-title">Дилер</h3>
+            <p class="marrob-formats__card-desc">Вы сами продаете панели клиенту и осуществляете монтаж. Мы предоставляем оптовую цену.</p>
+            <div class="marrob-formats__card-val">Скидка: до 25%</div>
+          </div>
+          <div class="marrob-formats__card marrob-fade-up marrob-fade-up-delay-2">
+            <h3 class="marrob-formats__card-title">Дистрибьютор</h3>
+            <p class="marrob-formats__card-desc">Эксклюзивное представительство в вашем регионе с обязательствами по объему.</p>
+            <div class="marrob-formats__card-val">Скидка: Максимальная</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <style>
+    .marrob-formats { padding: 80px 24px; background: var(--marrob-bg); }
+    .marrob-formats__inner { max-width: 1000px; margin: 0 auto; }
+    .marrob-formats__title { font-size: 2.25rem; font-weight: 700; text-align: center; margin: 0 0 48px; }
+    .marrob-formats__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 768px) { .marrob-formats__grid { grid-template-columns: 1fr; } }
+    .marrob-formats__card { padding: 40px 32px; background: var(--marrob-bg-card); border: 1px solid var(--marrob-border); border-radius: var(--marrob-radius-lg); text-align: center; }
+    .marrob-formats__card--highlight { border-color: var(--marrob-primary); box-shadow: var(--marrob-shadow); transform: scale(1.05); }
+    @media (max-width: 768px) { .marrob-formats__card--highlight { transform: scale(1); } }
+    .marrob-formats__card-title { font-size: 1.5rem; font-weight: 700; margin: 0 0 16px; }
+    .marrob-formats__card-desc { font-size: 0.9375rem; color: var(--marrob-text-muted); margin: 0 0 24px; line-height: 1.5; }
+    .marrob-formats__card-val { font-size: 1.125rem; font-weight: 600; color: var(--marrob-primary); padding: 12px; background: rgba(196, 92, 62, 0.1); border-radius: 8px; }
+  </style>
+
+  <!-- CTA B2B -->
+  <div class="marrob-block marrob-block-cta-b2b" id="contact">
+    <section class="marrob-cta-b2b">
+      <div class="marrob-cta-b2b__inner">
+        <div class="marrob-cta-b2b__box marrob-fade-up">
+          <h2 class="marrob-cta-b2b__title marrob-font-display">Начните зарабатывать с MARROB</h2>
+          <p class="marrob-cta-b2b__desc">Оставьте заявку, и мы вышлем вам дилерский прайс-лист, условия договора и презентацию продукта.</p>
+          <form class="marrob-cta-b2b__form">
+            <input type="text" placeholder="Название компании" required class="marrob-cta-b2b__input">
+            <input type="tel" placeholder="+7 (___) ___-__-__" required class="marrob-cta-b2b__input">
+            <button type="submit" class="marrob-cta-b2b__submit">Получить условия</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+  <style>
+    .marrob-cta-b2b { padding: 80px 24px; background: var(--marrob-bg-card); }
+    .marrob-cta-b2b__inner { max-width: 800px; margin: 0 auto; }
+    .marrob-cta-b2b__box { padding: 64px 48px; background: linear-gradient(135deg, #2A2A2A, #1A1A1A); border-radius: var(--marrob-radius-lg); text-align: center; color: #fff; }
+    @media (max-width: 768px) { .marrob-cta-b2b__box { padding: 40px 24px; } }
+    .marrob-cta-b2b__title { font-size: 2.25rem; font-weight: 700; margin: 0 0 16px; }
+    @media (max-width: 768px) { .marrob-cta-b2b__title { font-size: 1.75rem; } }
+    .marrob-cta-b2b__desc { font-size: 1.0625rem; color: #DADADA; margin: 0 0 32px; }
+    .marrob-cta-b2b__form { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .marrob-cta-b2b__input { padding: 16px 24px; border-radius: 8px; border: none; font-size: 1rem; width: 240px; max-width: 100%; }
+    .marrob-cta-b2b__submit { padding: 16px 32px; background: var(--marrob-primary); color: #fff; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s; width: 240px; max-width: 100%; }
+    .marrob-cta-b2b__submit:hover { background: var(--marrob-primary-hover); }
+  </style>
+
+  <!-- Footer -->
+  <div class="marrob-block marrob-block-footer">
+    <footer class="marrob-footer">
+      <div class="marrob-footer__inner">
+        <div class="marrob-footer__grid">
+          <div class="marrob-footer__col marrob-footer__col--brand">
+            <div class="marrob-footer__logo">MARROB</div>
+            <p class="marrob-footer__desc">Производство и монтаж фасадных термопанелей премиум-класса.</p>
+            <div class="marrob-footer__socials">
+              <a href="#" class="marrob-footer__social" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              </a>
+              <a href="#" class="marrob-footer__social" aria-label="Telegram">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.381 4.025-1.627 4.476-1.635z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="marrob-footer__col">
+            <h4 class="marrob-footer__title">Навигация</h4>
+            <ul class="marrob-footer__nav">
+              <li><a href="/landing.html#hero">Главная</a></li>
+              <li><a href="/landing.html#catalog">Каталог</a></li>
+              <li><a href="/landing.html#gallery">Портфолио</a></li>
+              <li><a href="/landing.html#specs">Характеристики</a></li>
+              <li><a href="dealers.html">Дилерам</a></li>
+            </ul>
+          </div>
+          <div class="marrob-footer__col">
+            <h4 class="marrob-footer__title">Контакты</h4>
+            <ul class="marrob-footer__contacts">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <a href="tel:+78000000000">8 (800) 000-00-00</a>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <a href="mailto:info@marrob.ru">info@marrob.ru</a>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>г. Москва, ул. Примерная, д. 1, офис 1</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="marrob-footer__bottom">
+          <p class="marrob-footer__copy">&copy; 2024 MARROB. Все права защищены.</p>
+          <div class="marrob-footer__links">
+            <a href="#">Политика конфиденциальности</a>
+            <a href="#">Пользовательское соглашение</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <style>
+    .marrob-block-footer { background: var(--marrob-bg-card); position: relative; border-top: 1px solid var(--marrob-border); }
+    .marrob-footer { padding: 64px 24px 24px; font-family: var(--marrob-font-body); }
+    .marrob-footer__inner { max-width: 1280px; margin: 0 auto; }
+    .marrob-footer__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      margin-bottom: 64px;
+    }
+    @media (min-width: 640px) { .marrob-footer__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .marrob-footer__grid { grid-template-columns: 2fr 1fr 1.5fr; gap: 64px; } }
+    .marrob-footer__logo {
+      font-family: var(--marrob-font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--marrob-text);
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    .marrob-footer__desc { font-size: 0.9375rem; color: var(--marrob-text-muted); line-height: 1.6; margin: 0 0 24px; max-width: 320px; }
+    .marrob-footer__socials { display: flex; gap: 16px; }
+    .marrob-footer__social {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--marrob-bg);
+      border: 1px solid var(--marrob-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--marrob-text-muted);
+      transition: all 0.3s;
+    }
+    .marrob-footer__social:hover { background: var(--marrob-primary); color: #fff; border-color: var(--marrob-primary); }
+    .marrob-footer__social svg { width: 20px; height: 20px; }
+    .marrob-footer__title { font-size: 1.125rem; font-weight: 600; color: var(--marrob-text); margin: 0 0 24px; }
+    .marrob-footer__nav { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .marrob-footer__nav a { color: var(--marrob-text-muted); text-decoration: none; font-size: 0.9375rem; transition: color 0.2s; }
+    .marrob-footer__nav a:hover { color: var(--marrob-primary); }
+    .marrob-footer__contacts { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
+    .marrob-footer__contacts li { display: flex; align-items: flex-start; gap: 12px; color: var(--marrob-text-muted); font-size: 0.9375rem; line-height: 1.5; }
+    .marrob-footer__contacts svg { width: 20px; height: 20px; color: var(--marrob-primary); flex-shrink: 0; margin-top: 2px; }
+    .marrob-footer__contacts a { color: inherit; text-decoration: none; transition: color 0.2s; }
+    .marrob-footer__contacts a:hover { color: var(--marrob-primary); }
+    .marrob-footer__bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding-top: 24px;
+      border-top: 1px solid var(--marrob-border);
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .marrob-footer__bottom { flex-direction: row; justify-content: space-between; text-align: left; }
+    }
+    .marrob-footer__copy { font-size: 0.875rem; color: var(--marrob-text-light); margin: 0; }
+    .marrob-footer__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+    .marrob-footer__links a { font-size: 0.875rem; color: var(--marrob-text-light); text-decoration: none; transition: color 0.2s; }
+    .marrob-footer__links a:hover { color: var(--marrob-primary); }
+  </style>
+
+  <script>
+    // Intersection Observer for fade-up animations
+    document.addEventListener("DOMContentLoaded", function() {
+      const fadeElements = document.querySelectorAll('.marrob-fade-up');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+      fadeElements.forEach(el => observer.observe(el));
+
+      // Header scroll logic
+      const header = document.querySelector('.marrob-header');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+      if (window.scrollY > 50) header.classList.add('scrolled');
+    });
+  </script>
+</body>
+</html>

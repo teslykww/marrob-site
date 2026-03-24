@@ -1,0 +1,273 @@
+<!-- MARROB — Блок 9: Purchase Options. Badge, dot-grid, blob, pulse на primary-кнопке. -->
+<div class="marrob-block marrob-block-purchase marrob-dot-bg">
+  <section class="marrob-purchase">
+    <div class="marrob-blob marrob-blob--sm marrob-blob--accent marrob-blob--tr"></div>
+    <div class="marrob-purchase__inner">
+      <div class="marrob-purchase__head">
+        <span class="marrob-purchase__badge marrob-fade-up">Варианты покупки</span>
+        <h2 class="marrob-purchase__title marrob-font-display marrob-fade-up marrob-fade-up-delay-1">
+          Как вы можете приобрести <span class="marrob-purchase__title-accent">термопанели MARROB</span>
+        </h2>
+        <p class="marrob-purchase__subtitle marrob-fade-up marrob-fade-up-delay-2">
+          Два понятных пути — выбирайте тот, который подходит именно вам
+        </p>
+      </div>
+      <div class="marrob-purchase__grid">
+        <div class="marrob-purchase__card">
+          <div class="marrob-purchase__card-img" style="background-image: url('https://images.unsplash.com/photo-1565043666747-69f6646db940?w=600&q=80');">
+            <div class="marrob-purchase__card-img-overlay">
+              <h3 class="marrob-purchase__card-title">Покупка панелей</h3>
+              <p class="marrob-purchase__card-sub">напрямую от производителя</p>
+            </div>
+          </div>
+          <div class="marrob-purchase__card-body">
+            <p class="marrob-purchase__card-desc">
+              Подберём коллекцию, рассчитаем необходимый объём и подготовим панели к отгрузке.
+            </p>
+            <p class="marrob-purchase__card-for">Подходит для:</p>
+            <ul class="marrob-purchase__card-list">
+              <li>Самостоятельный монтаж</li>
+              <li>Работа со своей бригадой</li>
+              <li>Строительные компании</li>
+            </ul>
+            <p class="marrob-purchase__card-note">
+              Поставка возможна в любой регион РФ и СНГ
+            </p>
+            <a href="#contact" class="marrob-purchase__card-btn marrob-purchase__card-btn--outline">Рассчитать количество панелей</a>
+          </div>
+        </div>
+        <div class="marrob-purchase__card marrob-purchase__card--highlight">
+          <span class="marrob-purchase__card-badge">Рекомендуем</span>
+          <div class="marrob-purchase__card-img" style="background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80');">
+            <div class="marrob-purchase__card-img-overlay">
+              <h3 class="marrob-purchase__card-title">Фасад под ключ</h3>
+              <p class="marrob-purchase__card-sub">с монтажом от производителя</p>
+            </div>
+          </div>
+          <div class="marrob-purchase__card-body">
+            <p class="marrob-purchase__card-desc">
+              Производство панелей и профессиональный монтаж одной командой.
+            </p>
+            <p class="marrob-purchase__card-for">Подходит для:</p>
+            <ul class="marrob-purchase__card-list">
+              <li>Частные дома</li>
+              <li>Реконструкция фасада</li>
+              <li>Полный контроль результата</li>
+            </ul>
+            <p class="marrob-purchase__card-note">
+              Монтаж выполняется в Москве и Московской области
+            </p>
+            <a href="#contact" class="marrob-purchase__card-btn marrob-purchase__card-btn--primary marrob-purchase__card-btn--pulse">Рассчитать фасад под ключ</a>
+          </div>
+        </div>
+      </div>
+      <p class="marrob-purchase__note">
+        Независимо от выбранного формата, вы получаете продукцию собственного производства и консультацию специалиста.
+      </p>
+    </div>
+  </section>
+</div>
+<style>
+  .marrob-block-purchase { background: var(--marrob-bg); position: relative; overflow: hidden; }
+  .marrob-purchase {
+    padding: 80px 24px;
+    font-family: var(--marrob-font-body);
+    position: relative;
+    z-index: 1;
+  }
+  .marrob-purchase__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .marrob-purchase__head { text-align: center; margin-bottom: 48px; }
+  .marrob-purchase__badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(196, 92, 62, 0.1);
+    color: var(--marrob-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  .marrob-purchase__title {
+    font-size: 1.75rem;
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--marrob-text);
+    text-align: center;
+    margin: 0 0 12px;
+  }
+  @media (min-width: 768px) {
+    .marrob-purchase__title { font-size: 2.25rem; }
+  }
+  .marrob-purchase__title-accent { color: var(--marrob-primary); }
+  .marrob-purchase__subtitle {
+    font-size: 1.0625rem;
+    color: var(--marrob-text-muted);
+    margin: 0;
+  }
+  .marrob-purchase__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  @media (min-width: 1024px) {
+    .marrob-purchase__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  .marrob-purchase__card {
+    position: relative;
+    background: var(--marrob-bg-card);
+    border: 1px solid var(--marrob-border);
+    border-radius: var(--marrob-radius-lg);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .marrob-purchase__card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--marrob-shadow-hover);
+  }
+  .marrob-purchase__card--highlight {
+    border-color: rgba(196, 92, 62, 0.3);
+    background: linear-gradient(to bottom, #fff, var(--marrob-bg));
+  }
+  .marrob-purchase__card-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    padding: 8px 20px;
+    background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border-radius: 0 0 0 12px;
+  }
+  .marrob-purchase__card-img {
+    position: relative;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+  }
+  .marrob-purchase__card-img-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 50%, transparent);
+  }
+  .marrob-purchase__card-img-overlay .marrob-purchase__card-title {
+    font-family: var(--marrob-font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 4px;
+  }
+  .marrob-purchase__card-img-overlay .marrob-purchase__card-sub {
+    font-size: 0.9375rem;
+    color: rgba(255,255,255,0.85);
+    margin: 0;
+  }
+  .marrob-purchase__card-body {
+    padding: 28px 24px;
+  }
+  .marrob-purchase__card-desc {
+    font-size: 0.9375rem;
+    color: var(--marrob-text-muted);
+    line-height: 1.5;
+    margin: 0 0 20px;
+  }
+  .marrob-purchase__card-for {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--marrob-text-light);
+    margin: 0 0 12px;
+  }
+  .marrob-purchase__card-list {
+    list-style: none;
+    margin: 0 0 20px;
+    padding: 0;
+  }
+  .marrob-purchase__card-list li {
+    font-size: 0.9375rem;
+    color: var(--marrob-text);
+    padding: 6px 0 6px 24px;
+    position: relative;
+  }
+  .marrob-purchase__card-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    background: rgba(45, 138, 94, 0.2);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%232D8A5E' stroke-width='2'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .marrob-purchase__card-note {
+    font-size: 0.875rem;
+    color: var(--marrob-text-light);
+    margin: 0 0 24px;
+    padding: 14px 16px;
+    background: var(--marrob-bg);
+    border: 1px solid var(--marrob-border);
+    border-radius: 10px;
+  }
+  .marrob-purchase__card-btn {
+    display: block;
+    text-align: center;
+    padding: 16px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--marrob-radius);
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.3s;
+  }
+  .marrob-purchase__card-btn:hover {
+    transform: translateY(-2px);
+  }
+  .marrob-purchase__card-btn--outline {
+    background: transparent;
+    color: var(--marrob-text-muted);
+    border: 2px solid var(--marrob-border);
+  }
+  .marrob-purchase__card-btn--outline:hover {
+    border-color: var(--marrob-primary);
+    color: var(--marrob-primary);
+  }
+  .marrob-purchase__card-btn--primary {
+    background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 20px rgba(196, 92, 62, 0.3);
+  }
+  .marrob-purchase__card-btn--primary:hover {
+    box-shadow: 0 8px 28px rgba(196, 92, 62, 0.4);
+  }
+  .marrob-purchase__card-btn--pulse {
+    animation: marrob-pulse-btn 2.5s ease-in-out infinite;
+  }
+  .marrob-purchase__card-btn--pulse:hover {
+    animation: none;
+  }
+  @keyframes marrob-pulse-btn {
+    0%, 100% { box-shadow: 0 4px 20px rgba(196, 92, 62, 0.3); }
+    50% { box-shadow: 0 4px 28px rgba(196, 92, 62, 0.45); }
+  }
+  .marrob-purchase__note {
+    text-align: center;
+    font-size: 0.9375rem;
+    color: var(--marrob-text-muted);
+    margin: 40px 0 0;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>

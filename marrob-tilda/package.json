@@ -1,0 +1,9 @@
+{
+  "name": "marrob-tilda",
+  "private": true,
+  "description": "Лендинг MARROB — экспорт блоков для Tilda",
+  "scripts": {
+    "build": "node build-tilda.js",
+    "start": "npm run build && npx serve tilda-export -l 3000"
+  }
+}

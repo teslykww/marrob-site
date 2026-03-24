@@ -1,0 +1,190 @@
+<!-- MARROB — Блок 3: Problem. Фото-карточки с overlay, icon badge, TiltCard, переход к решению. -->
+<div class="marrob-block marrob-block-problem" id="about">
+  <section class="marrob-problem">
+    <div class="marrob-blob marrob-blob--md marrob-blob--primary marrob-blob--tr"></div>
+    <div class="marrob-blob marrob-blob--sm marrob-blob--accent marrob-blob--bl"></div>
+    <div class="marrob-problem__inner">
+      <div class="marrob-problem__head">
+        <span class="marrob-problem__badge marrob-fade-up">Проблема</span>
+        <h2 class="marrob-problem__title marrob-font-display marrob-fade-up marrob-fade-up-delay-1">
+          Почему классическое утепление фасада — это <span class="marrob-problem__title-accent">несколько этапов и лишние риски?</span>
+        </h2>
+        <p class="marrob-problem__subtitle marrob-fade-up marrob-fade-up-delay-2">
+          Традиционные схемы утепления сложны и создают множество проблем на каждом этапе
+        </p>
+      </div>
+      <div class="marrob-problem__grid">
+        <div class="marrob-problem__card">
+          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(196, 92, 62, 0.12); color: #C45C3E;">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="marrob-problem__card-body">
+            <h3 class="marrob-problem__card-title">Два подрядчика</h3>
+            <p class="marrob-problem__card-text">Отдельное утепление и отдельная облицовка — два подрядчика, разные сроки и координация работ</p>
+          </div>
+        </div>
+        <div class="marrob-problem__card">
+          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(90, 122, 154, 0.12); color: #5A7A9A;">
+            <svg viewBox="0 0 24 24"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
+          </div>
+          <div class="marrob-problem__card-body">
+            <h3 class="marrob-problem__card-title">Мокрые процессы</h3>
+            <p class="marrob-problem__card-text">Зависимость от погоды и сезонности — работы невозможны при дожде и минусовой температуре</p>
+          </div>
+        </div>
+        <div class="marrob-problem__card">
+          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(139, 90, 60, 0.12); color: #8B5A3C;">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+          </div>
+          <div class="marrob-problem__card-body">
+            <h3 class="marrob-problem__card-title">Мостики холода</h3>
+            <p class="marrob-problem__card-text">Ошибки стыковки слоёв приводят к мостикам холода, трещинам и потере тепла</p>
+          </div>
+        </div>
+        <div class="marrob-problem__card">
+          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(106, 106, 106, 0.12); color: #6A6A6A;">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="marrob-problem__card-body">
+            <h3 class="marrob-problem__card-title">Длительный монтаж</h3>
+            <p class="marrob-problem__card-text">Растянутые сроки строительства — классическая схема занимает в 2–3 раза больше времени</p>
+          </div>
+        </div>
+      </div>
+      <div class="marrob-problem__transition marrob-fade-up marrob-fade-up-delay-3">
+        <div class="marrob-problem__arrow-wrap">
+          <span class="marrob-problem__arrow">↓</span>
+        </div>
+        <p class="marrob-problem__transition-text">
+          <strong class="marrob-problem__transition-accent">Современные фасадные системы</strong> объединяют утепление и отделку в одном продукте
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+<style>
+  .marrob-block-problem { background: var(--marrob-bg); position: relative; overflow: hidden; }
+  .marrob-problem {
+    padding: 56px 24px;
+    font-family: var(--marrob-font-body);
+    position: relative;
+  }
+  .marrob-problem__inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+  .marrob-problem__head { text-align: center; max-width: 720px; margin: 0 auto 32px; }
+  .marrob-problem__badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(196, 92, 62, 0.1);
+    color: var(--marrob-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  .marrob-problem__title {
+    font-size: 1.75rem;
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--marrob-text);
+    margin: 0 0 12px;
+  }
+  @media (min-width: 768px) {
+    .marrob-problem__title { font-size: 2.25rem; }
+  }
+  .marrob-problem__title-accent { color: var(--marrob-primary); }
+  .marrob-problem__subtitle {
+    font-size: 1.0625rem;
+    color: var(--marrob-text-muted);
+    margin: 0;
+  }
+  .marrob-problem__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  @media (min-width: 640px) {
+    .marrob-problem__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .marrob-problem__grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  }
+  .marrob-problem__card {
+    background: var(--marrob-bg-card);
+    border-radius: var(--marrob-radius);
+    border: 1px solid var(--marrob-border);
+    box-shadow: var(--marrob-shadow);
+    transition: box-shadow 0.3s;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+  }
+  .marrob-problem__card:hover {
+    box-shadow: var(--marrob-shadow-hover);
+  }
+  .marrob-problem__card-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: var(--marrob-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .marrob-problem__card-body { padding: 0; min-width: 0; }
+  .marrob-problem__card-title {
+    font-family: var(--marrob-font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--marrob-text);
+    margin: 0 0 6px;
+  }
+  .marrob-problem__card-text {
+    font-size: 0.875rem;
+    color: var(--marrob-text-muted);
+    line-height: 1.45;
+    margin: 0;
+  }
+  .marrob-problem__transition {
+    text-align: center;
+  }
+  .marrob-problem__arrow-wrap {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: rgba(45, 138, 94, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: marrob-bounce 2s ease-in-out infinite;
+  }
+  .marrob-problem__arrow {
+    font-size: 1.5rem;
+    color: var(--marrob-accent);
+    line-height: 1;
+  }
+  @keyframes marrob-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+  .marrob-problem__transition-text {
+    font-size: 1.0625rem;
+    color: var(--marrob-text-muted);
+    margin: 0;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .marrob-problem__transition-accent { color: var(--marrob-accent); }
+  .marrob-problem__card {
+    opacity: 1;
+    transform: translateY(0) rotateY(0);
+    transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s;
+  }
+  .marrob-problem__card:nth-child(1) { transition-delay: 0s; }
+  .marrob-problem__card:nth-child(2) { transition-delay: 0.15s; }
+  .marrob-problem__card:nth-child(3) { transition-delay: 0.3s; }
+  .marrob-problem__card:nth-child(4) { transition-delay: 0.45s; }
+</style>
