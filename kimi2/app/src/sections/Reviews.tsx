@@ -6,7 +6,8 @@ const Reviews: React.FC = () => {
   const base = import.meta.env.BASE_URL;
   const reviews = [
     {
-      image: `${base}projects/moscow/01/klinker-br7ick-orange-pr-523-2.webp`,
+      // Подменяем превью на фото, где лучше видна облицовка фасада
+      image: `${base}projects/moscow/01/klinker-brick-orange-pr-523-4.webp`,
       text: 'Долго выбирали между штукатуркой и панелями. Выбрали MARROB и не пожалели. Дом 180 м² обшили за 2 недели. Зимой стало заметно теплее, а выглядит как настоящий кирпич.',
       author: 'Михаил В.',
       location: 'Московская область, Истра',
