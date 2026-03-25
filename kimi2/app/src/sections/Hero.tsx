@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
         <img
           src={`${base}hero-bg.png`}
           alt="Дом с фасадными термопанелями"
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          className="absolute inset-0 h-full w-full object-cover object-[75%_center] lg:object-[65%_center]"
           fetchPriority="high"
         />
         <div
@@ -33,8 +33,8 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="relative z-10 flex min-h-0 flex-1 flex-col">
-        <div className="container-premium flex flex-1 items-center py-8 pb-6 md:py-10">
-          <div className="max-w-xl">
+        <div className="container-premium flex flex-1 items-center justify-start py-8 pb-6 md:py-10">
+          <div className="max-w-xl lg:-translate-x-1 xl:-translate-x-2">
             <div className="max-lg:rounded-2xl max-lg:border max-lg:border-white/15 max-lg:bg-black/30 max-lg:p-5 max-lg:backdrop-blur-md max-lg:shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
               <div className="mb-6 flex flex-wrap gap-3">
                 <span className="badge-premium badge-liquid shadow-lg">Собственное производство</span>

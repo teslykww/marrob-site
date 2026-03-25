@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PhoneIcon, MailIcon, MapPinIcon } from '../components/icons/BuildingIcons';
 
 const Footer: React.FC = () => {
@@ -7,12 +8,11 @@ const Footer: React.FC = () => {
       title: 'Навигация',
       links: [
         { label: 'О термопанелях', href: '#about' },
-        { label: 'Преимущества', href: '#benefits' },
         { label: 'Коллекции', href: '#catalog' },
         { label: 'Объекты', href: '#gallery' },
         { label: 'Сертификаты', href: '#certs' },
-        { label: 'Параметры', href: '#specs' },
-        { label: 'Как мы работаем', href: '#stages' },
+        { label: 'Контакты', href: '#contact' },
+        { label: 'Дилерам', to: '/dealers' },
       ],
     },
     {
@@ -73,12 +73,21 @@ const Footer: React.FC = () => {
               <ul className="space-y-2">
                 {group.links.map((link, i) => (
                   <li key={i}>
-                    <a
-                      href={link.href}
-                      className="text-white/90 text-sm hover:text-primary transition-colors"
-                    >
-                      {link.label}
-                    </a>
+                    {'to' in link && link.to ? (
+                      <Link
+                        to={link.to}
+                        className="text-white/90 text-sm hover:text-primary transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="text-white/90 text-sm hover:text-primary transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

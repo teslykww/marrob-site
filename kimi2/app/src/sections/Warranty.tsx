@@ -23,10 +23,8 @@ const Warranty: React.FC = () => {
   ];
 
   const features = [
-    'Собственное производство в Московской области',
     'Современное оборудование и контроль качества',
     'Склад готовой продукции',
-    'Отгрузка в течение 3–5 дней',
   ];
 
   return (
@@ -54,13 +52,13 @@ const Warranty: React.FC = () => {
               на все компоненты фасадной системы.
             </p>
 
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-2 mb-8">
               {warrantyPoints.map((point, index) => (
-                <li key={index} className="flex items-center gap-3">
+                <li key={index} className="flex items-center gap-3 leading-snug">
                   <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
                     <CheckCircleIcon size={14} />
                   </div>
-                  <span className="text-white/90">{point}</span>
+                  <span className="text-white/90 text-[0.9375rem]">{point}</span>
                 </li>
               ))}
             </ul>
@@ -83,9 +81,8 @@ const Warranty: React.FC = () => {
               </div>
             </div>
 
-            <p className="text-text-muted mb-6">
-              Производство расположено в Московской области. 
-              Полный цикл от проектирования до отгрузки.
+            <p className="text-text-muted mb-6 text-base leading-relaxed">
+              Полный цикл от проектирования до отгрузки готовой продукции.
             </p>
 
             {/* Stats */}
@@ -102,9 +99,9 @@ const Warranty: React.FC = () => {
             </div>
 
             {/* Features */}
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {features.map((feature, index) => (
-                <li key={index} className="flex items-center gap-3 text-sm text-text-muted">
+                <li key={index} className="flex items-center gap-3 text-base text-text-muted leading-snug">
                   <div className="w-5 h-5 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
                     <CheckCircleIcon size={10} className="text-white" />
                   </div>

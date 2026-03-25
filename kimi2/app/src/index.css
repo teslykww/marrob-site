@@ -263,6 +263,103 @@
       transform: translateY(0);
     }
   }
+
+  /* Страница «Дилерам»: типографика и адаптивный ритм */
+  .dealers-h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.625rem, 4.2vw, 3.25rem);
+    line-height: 1.15;
+    color: var(--text);
+  }
+
+  .dealers-h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--h2-size);
+    line-height: 1.2;
+    color: var(--text);
+  }
+
+  .dealers-h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--h3-size);
+    line-height: 1.25;
+    color: var(--text);
+  }
+
+  .dealers-lead {
+    font-size: var(--text-size);
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .dealers-prose {
+    max-width: 65ch;
+  }
+
+  .dealers-stack {
+    margin-bottom: 3rem;
+  }
+
+  @media (min-width: 640px) {
+    .dealers-stack {
+      margin-bottom: 4rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .dealers-stack {
+      margin-bottom: 5rem;
+    }
+  }
+
+  .dealers-section {
+    border-top: 1px solid var(--border);
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .dealers-section {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .dealers-section {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+
+  .dealers-hero-grid {
+    min-height: min(70svh, 520px);
+  }
+
+  @media (min-width: 640px) {
+    .dealers-hero-grid {
+      min-height: min(78svh, 600px);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .dealers-hero-grid {
+      min-height: 480px;
+    }
+  }
+
+  @media (orientation: landscape) and (max-height: 500px) {
+    .dealers-hero-grid {
+      min-height: min(280px, 88vh);
+    }
+
+    .dealers-hero-visual {
+      min-height: 200px !important;
+    }
+  }
 }
 
 @layer utilities {

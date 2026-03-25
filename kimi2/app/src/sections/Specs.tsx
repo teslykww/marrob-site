@@ -62,7 +62,7 @@ const Specs: React.FC = () => {
           <img
             src={diagramSrc}
             alt="Схема термопанели MARROB: декоративно-защитный слой из керамобетона, утеплитель, монолитное соединение слоёв при производстве, окрашивание в массе, скрытые монтажные отверстия в основании"
-            className="mx-auto block h-auto w-full max-h-[min(420px,55vh)] object-contain"
+            className="mx-auto block h-auto w-full max-h-[min(360px,48vh)] md:max-h-[min(380px,50vh)] object-contain scale-[0.88] md:scale-[0.9] origin-center"
             loading="lazy"
             decoding="async"
           />

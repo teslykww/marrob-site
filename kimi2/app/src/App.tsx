@@ -19,10 +19,10 @@ function App() {
   return (
     <main>
       <Hero />
+      <BenefitsVisual />
       <Problem />
       <Solution />
       <BeforeAfter />
-      <BenefitsVisual />
       <Catalog />
       <LeadMagnet />
       <Gallery />

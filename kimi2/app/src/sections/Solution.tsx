@@ -29,7 +29,7 @@ const Solution: React.FC = () => {
           <img
             src={`${base}solution-scheme.png`}
             alt="Двухслойная конструкция термопанелей MARROB"
-            className="w-full h-auto object-contain max-h-[480px] md:max-h-[560px]"
+            className="w-full h-auto object-contain max-h-[min(400px,48vh)] md:max-h-[min(476px,52vh)] scale-[0.92] md:scale-[0.9] origin-center"
           />
         </div>
 
@@ -54,11 +54,15 @@ const Solution: React.FC = () => {
             </div>
 
             <div className="p-6 sm:p-8 md:p-10 flex flex-col justify-center">
-              <h3 className="font-display font-semibold text-2xl md:text-3xl mb-3 text-center lg:text-left">
-                Дом получает одновременно утепление и капитальный каменный фасад
+              <p className="text-white/75 text-xs uppercase tracking-wider mb-2 text-center lg:text-left">
+                Один монтаж — два результата
+              </p>
+              <h3 className="font-display font-semibold text-2xl md:text-3xl mb-4 text-center lg:text-left leading-tight">
+                Утепление и каменный фасад за один проход
               </h3>
-              <p className="text-white/85 mb-6 max-w-xl mx-auto lg:mx-0 text-center lg:text-left text-sm md:text-base">
-                Замковая геометрия обеспечивает плотную стыковку панелей без щелей и мостиков холода
+              <p className="text-white/90 mb-6 max-w-xl mx-auto lg:mx-0 text-center lg:text-left text-base md:text-lg leading-relaxed">
+                Панели MARROB соединяются по замковой геометрии: плотный шов без щелей и лишних мостиков
+                холода — дом сразу теплее и выглядит как с отделкой под камень.
               </p>
 
               {ctaSent ? (

@@ -20,6 +20,31 @@ function normalizeName(name: string) {
   return displayName(name).trim().toLowerCase();
 }
 
+/** Крупное превью: не всегда files[0] — часто там однотипные светлые кадры. */
+function pickCoverFileIndex(files: string[]): number {
+  if (!files.length) return 0;
+  const pngIdx = files.findIndex((f) => /\.png$/i.test(f));
+  if (pngIdx >= 0) return pngIdx;
+  const mid = Math.floor(files.length / 2);
+  return Math.min(Math.max(1, mid), files.length - 1);
+}
+
+/** До `count` индексов по всей длине массива для разнообразных миниатюр. */
+function spreadFileIndices(len: number, count: number): number[] {
+  if (len <= 0) return [];
+  if (len <= count) return Array.from({ length: len }, (_, i) => i);
+  const idx = new Set<number>();
+  for (let i = 0; i < count; i++) {
+    idx.add(Math.min(len - 1, Math.round((i * (len - 1)) / Math.max(1, count - 1))));
+  }
+  let n = 0;
+  while (idx.size < count && n < len) {
+    idx.add(n);
+    n += 1;
+  }
+  return [...idx].sort((a, b) => a - b).slice(0, count);
+}
+
 const Catalog: React.FC = () => {
   const [activeCollection, setActiveCollection] = useState(0);
   const [manifest, setManifest] = useState<CatalogManifest | null>(null);
@@ -61,12 +86,16 @@ const Catalog: React.FC = () => {
 
   const coverImage = useMemo(() => {
     if (!manifest || !currentCollection?.files?.length) return '';
-    return `${base}${manifest.basePath}/${currentCollection.name}/${currentCollection.files[0]}`;
+    const files = currentCollection.files;
+    const i = pickCoverFileIndex(files);
+    return `${base}${manifest.basePath}/${currentCollection.name}/${files[i]}`;
   }, [manifest, currentCollection]);
 
   const thumbs = useMemo(() => {
     if (!manifest || !currentCollection?.files?.length) return [];
-    return currentCollection.files.slice(0, 4).map((f) => `${base}${manifest.basePath}/${currentCollection.name}/${f}`);
+    const files = currentCollection.files;
+    const indices = spreadFileIndices(files.length, 8);
+    return indices.map((i) => `${base}${manifest.basePath}/${currentCollection.name}/${files[i]}`);
   }, [manifest, currentCollection]);
 
   return (
@@ -103,9 +132,8 @@ const Catalog: React.FC = () => {
           ))}
         </div>
 
-        {/* Collection Display */}
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
-          {/* Image */}
+        {/* Collection Display: слева крупное фото, справа текст + две колонки миниатюр */}
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
           <div className="relative rounded-2xl overflow-hidden shadow-premium-lg group">
             {coverImage ? (
               <img
@@ -126,36 +154,46 @@ const Catalog: React.FC = () => {
             </div>
           </div>
 
-          {/* Details */}
-          <div>
-            <h3 className="font-display font-semibold text-2xl text-text mb-3">
-              {currentCollection ? displayName(currentCollection.name) : 'Каталог'}
-            </h3>
-            <p className="text-text-muted mb-8">
-              {currentDescription}
-            </p>
-
-            {/* Thumbnails */}
-            <div className="mb-8">
-              <p className="text-xs uppercase tracking-wider text-text-light mb-4">
-                Примеры фактур
-              </p>
-              <div className="grid grid-cols-4 gap-4">
-                {thumbs.map((src, index) => (
-                  <div key={`${src}-${index}`} className="text-center">
-                    <div className="w-full aspect-square rounded-xl border-2 border-border mb-2 shadow-premium hover:shadow-premium-md transition-shadow overflow-hidden bg-sand-light">
-                      <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
-                    </div>
-                  </div>
-                ))}
-              </div>
+          <div className="flex flex-col gap-8">
+            <div>
+              <h3 className="font-display font-semibold text-2xl text-text mb-3">
+                {currentCollection ? displayName(currentCollection.name) : 'Каталог'}
+              </h3>
+              <p className="text-text-muted mb-6">{currentDescription}</p>
+              <Link to="/catalog" className="inline-flex items-center gap-2 btn-premium btn-premium--primary">
+                Смотреть каталог
+                <ChevronRightIcon size={18} />
+              </Link>
             </div>
 
-            {/* CTA */}
-            <Link to="/catalog" className="inline-flex items-center gap-2 btn-premium btn-premium--primary">
-              Смотреть каталог
-              <ChevronRightIcon size={18} />
-            </Link>
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div>
+                <p className="text-xs uppercase tracking-wider text-text-light mb-3">Варианты оттенков</p>
+                <div className="grid grid-cols-2 gap-3">
+                  {thumbs.slice(0, 4).map((src, index) => (
+                    <div
+                      key={`${src}-a-${index}`}
+                      className="aspect-square rounded-xl border-2 border-border shadow-premium overflow-hidden bg-sand-light"
+                    >
+                      <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-wider text-text-light mb-3">Ещё фактуры коллекции</p>
+                <div className="grid grid-cols-2 gap-3">
+                  {thumbs.slice(4, 8).map((src, index) => (
+                    <div
+                      key={`${src}-b-${index}`}
+                      className="aspect-square rounded-xl border-2 border-border shadow-premium overflow-hidden bg-sand-light"
+                    >
+                      <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { 
-  PhoneIcon, 
-  MailIcon, 
+import {
+  PhoneIcon,
+  MailIcon,
   MapPinIcon,
-  CheckCircleIcon 
+  CheckCircleIcon,
 } from '../components/icons/BuildingIcons';
+import { extractRuPhoneDigits10, formatRuPhoneMask, isCompleteRuMobile10 } from '@/lib/phoneRu';
 
 const Contact: React.FC = () => {
   const assetBase = import.meta.env.BASE_URL;
@@ -17,17 +18,32 @@ const Contact: React.FC = () => {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setPhoneError(false);
+    if (!isCompleteRuMobile10(formData.phone)) {
+      setPhoneError(true);
+      return;
+    }
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 3000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    if (name === 'phone') {
+      setPhoneError(false);
+      setFormData({
+        ...formData,
+        phone: formatRuPhoneMask(extractRuPhoneDigits10(value)),
+      });
+      return;
+    }
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
 
@@ -168,12 +184,20 @@ const Contact: React.FC = () => {
                   <input
                     type="tel"
                     name="phone"
+                    inputMode="tel"
+                    autoComplete="tel"
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+7 (___) ___-__-__"
-                    className="w-full px-4 py-3 bg-sand-light rounded-xl border border-transparent focus:border-primary focus:outline-none transition-colors"
+                    aria-invalid={phoneError}
+                    className={`w-full px-4 py-3 bg-sand-light rounded-xl border focus:outline-none transition-colors ${
+                      phoneError ? 'border-destructive' : 'border-transparent focus:border-primary'
+                    }`}
                     required
                   />
+                  {phoneError && (
+                    <p className="text-sm text-destructive mt-1.5 m-0">Введите полный номер из 10 цифр после +7</p>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm text-text-muted mb-2">Email</label>

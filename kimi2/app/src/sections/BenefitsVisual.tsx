@@ -194,7 +194,9 @@ const BenefitsVisual: React.FC = () => {
             Что вы получаете при выборе{' '}
             <span className="text-primary">термопанелей</span>
           </h2>
-          <p className="text-text-muted text-lg">Ключевые преимущества фасадной системы MARROB</p>
+          <p className="text-text text-lg sm:text-xl font-medium leading-snug">
+            Ключевые преимущества фасадной системы MARROB
+          </p>
         </div>
 
         <div className="relative overflow-hidden rounded-3xl shadow-premium-lg min-h-[520px] md:min-h-[560px] lg:min-h-[600px]">

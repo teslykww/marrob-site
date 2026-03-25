@@ -101,8 +101,8 @@ const Gallery: React.FC = () => {
                   <span className="shrink-0 rounded-lg border border-border bg-sand-light px-3 py-1.5 text-sm font-medium text-text-muted">
                     {project.area}
                   </span>
-                  <p className="min-w-0 flex-1 text-right text-sm font-medium text-text truncate" title={project.title}>
-                    {project.title}
+                  <p className="min-w-0 flex-1 text-right text-sm font-medium text-text truncate" title={project.cardTitle}>
+                    {project.cardTitle}
                   </p>
                 </div>
               </div>

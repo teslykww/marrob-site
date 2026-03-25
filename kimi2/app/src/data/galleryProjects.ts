@@ -1,6 +1,7 @@
 export type GalleryProject = {
   id: string;
   title: string;
+  cardTitle: string;
   location: string;
   area: string;
   texture: string;
@@ -14,21 +15,20 @@ function moscow(base: string, folder: string, files: readonly string[]): string[
 /** Кейсы из `public/projects/moscow` (папки 01…13, без 11). */
 export function getGalleryProjects(base: string): GalleryProject[] {
   const texture = 'Фасадные термопанели MARROB';
-  const loc = 'Москва';
-
   const moscowCases: GalleryProject[] = [
     {
       id: 'moscow-01',
       title: 'Частный дом • клинкер оранжевый PR-523',
-      location: loc,
-      area: '—',
+      cardTitle: 'Истринский район',
+      location: 'МО, Истринский район',
+      area: '220 м²',
       texture,
       images: moscow(base, '01', [
+        'klinker-brick-orange-pr-523-4.webp',
         'klinker-br7ick-orange-pr-523-2.webp',
         'klinker-brick-orange-pr-523-1.webp',
         'klinker-brick-orange-pr-523-2.webp',
         'klinker-brick-orange-pr-523-3.webp',
-        'klinker-brick-orange-pr-523-4.webp',
         'klinker-brick-orange-pr-523-5.webp',
         'klinker-brick-orange-pr-523-6.webp',
       ]),
@@ -36,8 +36,9 @@ export function getGalleryProjects(base: string): GalleryProject[] {
     {
       id: 'moscow-02',
       title: 'Частный дом • семь оттенков, золотая кладка PR-509',
-      location: loc,
-      area: '—',
+      cardTitle: 'г. Дедовск',
+      location: 'МО, г. Дедовск',
+      area: '195 м²',
       texture,
       images: moscow(base, '02', [
         'seven-tones-orange-golden-tile-eston-ya-pr-509-01.webp',
@@ -48,8 +49,9 @@ export function getGalleryProjects(base: string): GalleryProject[] {
     {
       id: 'moscow-03',
       title: 'Частный дом • Brickstyle Baker Street беж PR-514',
-      location: loc,
-      area: '—',
+      cardTitle: 'г. Красногорск',
+      location: 'МО, г. Красногорск',
+      area: '310 м²',
       texture,
       images: moscow(base, '03', [
         'brickstyle-baker-street-beige-kiev-pr-514-01.webp',
@@ -67,10 +69,12 @@ export function getGalleryProjects(base: string): GalleryProject[] {
     {
       id: 'moscow-04',
       title: 'Частный дом • Loft brick chilli PR-511',
-      location: loc,
-      area: '—',
+      cardTitle: 'г. Химки',
+      location: 'МО, г. Химки',
+      area: '285 м²',
       texture,
       images: moscow(base, '04', [
+        'loft-brick-chilli-serrad-s-kryukivshchina-pr-511-08.webp',
         'loft-brick-chilli-serrad-s-kryukivshchina-pr-511-01.webp',
         'loft-brick-chilli-serrad-s-kryukivshchina-pr-511-02.webp',
         'loft-brick-chilli-serrad-s-kryukivshchina-pr-511-03.webp',
@@ -91,8 +95,9 @@ export function getGalleryProjects(base: string): GalleryProject[] {
     {
       id: 'moscow-05',
       title: 'Частный дом • Brickstyle London дымный PR-516',
-      location: loc,
-      area: '—',
+      cardTitle: 'г. Одинцово',
+      location: 'МО, г. Одинцово',
+      area: '240 м²',
       texture,
       images: moscow(base, '05', [
         'brickstyle-london-dymny-lviv-pr-516-01-scaled.webp',
@@ -108,8 +113,9 @@ export function getGalleryProjects(base: string): GalleryProject[] {
     {
       id: 'moscow-06',
       title: 'Частный дом • Porti beige Paradyz PR-505',
-      location: loc,
-      area: '—',
+      cardTitle: 'г. Мытищи',
+      location: 'МО, г. Мытищи',
+      area: '268 м²',
       texture,
       images: moscow(base, '06', [
         'porti-beige-paradyz-lvivska-obl-pr-505-01.webp',
@@ -126,17 +132,18 @@ export function getGalleryProjects(base: string): GalleryProject[] {
     {
       id: 'moscow-07',
       title: 'Частный дом • Cerrad Loft brick curry PR-244',
-      location: loc,
-      area: '—',
+      cardTitle: 'г. Балашиха',
+      location: 'МО, г. Балашиха',
+      area: '190 м²',
       texture,
       images: moscow(base, '07', [
+        'cerrad-loft-brick-curry-vovchinets-pr-244-10-scaled.webp',
         'cerrad-loft-brick-curry-vovchinets-pr-244-03.jpg',
         'cerrad-loft-brick-curry-vovchinets-pr-244-04.jpg',
         'cerrad-loft-brick-curry-vovchinets-pr-244-05.jpg',
         'cerrad-loft-brick-curry-vovchinets-pr-244-06.jpg',
         'cerrad-loft-brick-curry-vovchinets-pr-244-07.jpg',
         'cerrad-loft-brick-curry-vovchinets-pr-244-07-scaled.webp',
-        'cerrad-loft-brick-curry-vovchinets-pr-244-10-scaled.webp',
         'cerrad-loft-brick-curry-vovchinets-pr-244-11-scaled.webp',
         'cerrad-loft-brick-curry-vovchinets-pr-244-12-scaled.webp',
         'cerrad-loft-brick-curry-vovchinets-pr-244-13-scaled.webp',
@@ -151,8 +158,9 @@ export function getGalleryProjects(base: string): GalleryProject[] {
     {
       id: 'moscow-08',
       title: 'Частный дом • Baker Street беж PR-230',
-      location: loc,
-      area: '—',
+      cardTitle: 'Ленинский г.о.',
+      location: 'МО, Ленинский г.о., Видное',
+      area: '205 м²',
       texture,
       images: moscow(base, '08', [
         'backer-street-beige-lithuania-pr-230-01.jpg',
@@ -164,8 +172,9 @@ export function getGalleryProjects(base: string): GalleryProject[] {
     {
       id: 'moscow-09',
       title: 'Частный дом • Seven tones orange PR-227',
-      location: loc,
-      area: '—',
+      cardTitle: 'г. Долгопрудный',
+      location: 'МО, г. Долгопрудный',
+      area: '178 м²',
       texture,
       images: moscow(base, '09', [
         'seven-tones-orange-ivanofrankivsk-pr-227-01.jpg',
@@ -181,8 +190,9 @@ export function getGalleryProjects(base: string): GalleryProject[] {
     {
       id: 'moscow-10',
       title: 'Частный дом • Viano beige фасад PR-225',
-      location: loc,
-      area: '—',
+      cardTitle: 'г. Люберцы',
+      location: 'МО, г. Люберцы',
+      area: '320 м²',
       texture,
       images: moscow(base, '10', [
         'viano-beige-elewaciya-odesa-pr-225-01.jpg',
@@ -201,8 +211,9 @@ export function getGalleryProjects(base: string): GalleryProject[] {
     {
       id: 'moscow-12',
       title: 'Частный дом • Aria rustica HF21 PR-221',
-      location: loc,
-      area: '—',
+      cardTitle: 'Чеховский район',
+      location: 'МО, Чеховский район',
+      area: '225 м²',
       texture,
       images: moscow(base, '12', [
         'aria-rustica-hf21-sokilniki-pr-221-01.jpg',
@@ -222,8 +233,9 @@ export function getGalleryProjects(base: string): GalleryProject[] {
     {
       id: 'moscow-13',
       title: 'Частный дом • Loft brick chilly PR-216',
-      location: loc,
-      area: '—',
+      cardTitle: 'г. Сергиев Посад',
+      location: 'МО, г. Сергиев Посад',
+      area: '195 м²',
       texture,
       images: moscow(base, '13', [
         'loft-brick-chilly-otopeni-rumunia-pr-216-01.jpg',

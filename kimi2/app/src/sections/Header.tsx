@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { MenuIcon, XIcon, PhoneIcon } from '../components/icons/BuildingIcons';
 
 const Header: React.FC = () => {
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isInnerPage = location.pathname === '/dealers' || location.pathname === '/catalog';
+  const headerSolid = isScrolled || isInnerPage;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,12 +19,9 @@ const Header: React.FC = () => {
 
   const navLinks = [
     { href: '#about', label: 'О термопанелях' },
-    { href: '#benefits', label: 'Преимущества' },
     { href: '#catalog', label: 'Коллекции' },
     { href: '#gallery', label: 'Объекты' },
     { href: '#certs', label: 'Сертификаты' },
-    { href: '#specs', label: 'Параметры' },
-    { href: '#stages', label: 'Этапы' },
     { href: '#contact', label: 'Контакты' },
   ];
 
@@ -49,7 +50,7 @@ const Header: React.FC = () => {
       {/* Main Header */}
       <header
         className={`fixed top-0 lg:top-[36px] left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
+          headerSolid
             ? 'bg-white/95 backdrop-blur-md shadow-premium'
             : 'bg-gradient-to-b from-black/55 via-black/25 to-transparent backdrop-blur-[2px]'
         }`}
@@ -57,35 +58,35 @@ const Header: React.FC = () => {
         <div className="container-premium">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <a href="/" className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-3">
               <span
                 className={`inline-flex rounded-xl transition-all duration-300 ${
-                  isScrolled ? '' : 'bg-white/92 p-1.5 shadow-md ring-1 ring-white/40'
+                  headerSolid ? '' : 'bg-white/92 p-1.5 shadow-md ring-1 ring-white/40'
                 }`}
               >
                 <img
                   src={`${import.meta.env.BASE_URL}logo.png`}
                   alt="MARROB"
-                  className="h-8 sm:h-9 w-auto object-contain"
+                  className="h-10 sm:h-11 w-auto object-contain"
                 />
               </span>
               <div className="hidden sm:block">
                 <span
                   className={`font-display font-semibold text-lg transition-colors duration-300 ${
-                    isScrolled ? 'text-text' : 'text-white drop-shadow-md'
+                    headerSolid ? 'text-text' : 'text-white drop-shadow-md'
                   }`}
                 >
                   MARROB
                 </span>
                 <p
                   className={`text-xs -mt-1 transition-colors duration-300 ${
-                    isScrolled ? 'text-text-light' : 'text-white/90 drop-shadow-sm'
+                    headerSolid ? 'text-text-light' : 'text-white/90 drop-shadow-sm'
                   }`}
                 >
                   Фасадные термопанели
                 </p>
               </div>
-            </a>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
@@ -93,8 +94,8 @@ const Header: React.FC = () => {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-semibold transition-colors ${
-                    isScrolled
+                  className={`text-sm font-normal transition-colors ${
+                    headerSolid
                       ? 'text-text-muted hover:text-primary'
                       : 'text-white hover:text-primary-light drop-shadow-[0_1px_2px_rgba(0,0,0,0.85)]'
                   }`}
@@ -102,22 +103,41 @@ const Header: React.FC = () => {
                   {link.label}
                 </a>
               ))}
+              <Link
+                to="/dealers"
+                className={`text-sm font-normal transition-colors ${
+                  headerSolid
+                    ? 'text-text-muted hover:text-primary'
+                    : 'text-white hover:text-primary-light drop-shadow-[0_1px_2px_rgba(0,0,0,0.85)]'
+                }`}
+              >
+                Дилерам
+              </Link>
             </nav>
 
             {/* CTA */}
             <div className="hidden lg:flex items-center">
-              <a
-                href="#contact"
-                className="btn-premium btn-premium--primary text-sm py-3 px-6"
-              >
-                Заказать звонок
-              </a>
+              {isInnerPage ? (
+                <a
+                  href="tel:+79166662335"
+                  className="btn-premium btn-premium--primary text-sm py-3 px-6"
+                >
+                  Позвонить
+                </a>
+              ) : (
+                <a
+                  href="#contact"
+                  className="btn-premium btn-premium--primary text-sm py-3 px-6"
+                >
+                  Заказать звонок
+                </a>
+              )}
             </div>
 
             {/* Mobile Menu Button */}
             <button
               className={`lg:hidden p-2 transition-colors ${
-                isScrolled ? 'text-text' : 'text-white drop-shadow-md'
+                headerSolid ? 'text-text' : 'text-white drop-shadow-md'
               }`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
@@ -150,12 +170,19 @@ const Header: React.FC = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-lg font-medium text-text py-2 border-b border-border"
+                className="text-lg font-normal text-text py-2 border-b border-border"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
               </a>
             ))}
+            <Link
+              to="/dealers"
+              className="text-lg font-normal text-text py-2 border-b border-border"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Дилерам
+            </Link>
           </nav>
           <div className="mt-6 pt-6 border-t border-border">
             <a
@@ -165,13 +192,23 @@ const Header: React.FC = () => {
               <PhoneIcon size={20} />
               +7 (916) 666-23-35
             </a>
-            <a
-              href="#contact"
-              className="btn-premium btn-premium--primary w-full"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Заказать звонок
-            </a>
+            {isInnerPage ? (
+              <a
+                href="tel:+79166662335"
+                className="btn-premium btn-premium--primary w-full"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Позвонить
+              </a>
+            ) : (
+              <a
+                href="#contact"
+                className="btn-premium btn-premium--primary w-full"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Заказать звонок
+              </a>
+            )}
           </div>
         </div>
       </div>
