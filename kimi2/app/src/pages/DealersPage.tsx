@@ -279,14 +279,17 @@ function IconCard({
       </div>
       <h3
         className={cn(
-          'font-display font-semibold mb-2 text-base sm:text-lg leading-tight',
+          'font-display font-semibold mb-2 text-base sm:text-lg leading-[1.15]',
           isDark ? 'text-[var(--section-dark-text)]' : 'text-text',
         )}
       >
         {title}
       </h3>
       <p
-        className={cn('text-sm leading-snug m-0 grow', isDark ? 'text-[var(--section-dark-muted)]' : 'text-text-muted')}
+        className={cn(
+          'text-[0.9375rem] sm:text-base leading-tight m-0 grow',
+          isDark ? 'text-[var(--section-dark-muted)]' : 'text-text-muted',
+        )}
       >
         {text}
       </p>

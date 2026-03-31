@@ -112,7 +112,7 @@
     overflow-x: hidden;
     font-family: var(--font-body);
     font-size: var(--text-size);
-    line-height: 1.6;
+    line-height: 1.5;
     color: var(--text);
     background-color: var(--bg);
     -webkit-font-smoothing: antialiased;
