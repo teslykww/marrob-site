@@ -1,12 +1,16 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   PackageIcon, 
   ToolIcon, 
   CheckCircleIcon,
   ChevronRightIcon 
 } from '../components/icons/BuildingIcons';
+import { handleSectionLinkClick } from '@/lib/scrollToSection';
 
 const Scenarios: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const scenarios = [
     {
       icon: <PackageIcon size={28} />,
@@ -50,10 +54,10 @@ const Scenarios: React.FC = () => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="badge-premium mb-4">Варианты покупки</span>
-          <h2 className="font-display font-semibold text-3xl md:text-4xl text-text mb-4">
+          <h2 className="type-section-title mb-4">
             Выберите удобный формат сотрудничества
           </h2>
-          <p className="text-text-muted text-lg">
+          <p className="type-section-lead mb-4">
             Покупка панелей отдельно или полный комплекс под ключ
           </p>
         </div>
@@ -81,7 +85,7 @@ const Scenarios: React.FC = () => {
               </div>
 
               <div className="mb-4">
-                <h3 className="font-display font-semibold text-xl text-text mb-1">
+                <h3 className="type-card-title mb-1 text-text">
                   {scenario.title}
                 </h3>
                 <p className="text-text-light text-sm">{scenario.subtitle}</p>
@@ -107,6 +111,12 @@ const Scenarios: React.FC = () => {
                     ? 'btn-premium--primary'
                     : 'btn-premium--outline'
                 }`}
+                onClick={(e) =>
+                  handleSectionLinkClick(e, '#contact', {
+                    navigate,
+                    location,
+                  })
+                }
               >
                 {scenario.cta}
                 <ChevronRightIcon size={16} />
@@ -119,7 +129,16 @@ const Scenarios: React.FC = () => {
         <div className="mt-10 text-center">
           <p className="text-text-muted text-base md:text-lg font-semibold">
             Не знаете, что выбрать?{' '}
-            <a href="#contact" className="text-primary font-semibold hover:underline">
+            <a
+              href="#contact"
+              className="text-primary font-semibold hover:underline"
+              onClick={(e) =>
+                handleSectionLinkClick(e, '#contact', {
+                  navigate,
+                  location,
+                })
+              }
+            >
               Получите бесплатную консультацию
             </a>
           </p>

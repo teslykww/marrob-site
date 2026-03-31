@@ -1,4 +1,4 @@
-<!-- MARROB — Блок 2: Hero (kimi2): заголовок 2 строки, лид один, точки, trust-bar снизу. Фон: assets/hero-bg.png -->
+<!-- MARROB — Блок 2: Hero (kimi2): h1 в 3 строки как на Vercel, лид, точки, trust-bar. Фон: assets/hero-bg.png -->
 <div class="marrob-block marrob-block-hero-v2" id="marrob-hero">
   <section class="marrob-hero-v2">
     <div class="marrob-hero-v2__bg">
@@ -16,11 +16,13 @@
             <span class="marrob-hero-v2__badge marrob-hero-v2__badge--accent">30 лет гарантии</span>
           </div>
           <h1 class="marrob-hero-v2__title marrob-font-display marrob-fade-up marrob-fade-up-delay-1">
-            Фасадные термопанели
-            <span class="marrob-hero-v2__title-line2">с облицовкой под камень</span>
+            <span class="marrob-hero-v2__title-line1">Фасадные</span>
+            <span class="marrob-hero-v2__title-accent">термопанели</span>
+            <span class="marrob-hero-v2__title-line3">с облицовкой под камень</span>
           </h1>
           <p class="marrob-hero-v2__lead marrob-fade-up marrob-fade-up-delay-1">
-            <strong>Экономия до 50–60%</strong> на теплопотерях. Напрямую от производителя.<br>
+            <strong>Экономия до 50–60%</strong> на теплопотерях.<br>
+            Напрямую от производителя.<br>
             Покупка панелей отдельно или монтаж под ключ.
           </p>
           <ul class="marrob-hero-v2__list marrob-fade-up marrob-fade-up-delay-2">
@@ -56,11 +58,6 @@
         </div>
       </div>
     </div>
-
-    <div class="marrob-hero-v2__scroll" aria-hidden="true">
-      <span>Прокрутите вниз</span>
-      <div class="marrob-hero-v2__mouse"><span class="marrob-hero-v2__dot"></span></div>
-    </div>
   </section>
 </div>
 <style>
@@ -89,7 +86,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: 75% center;
+  }
+  @media (min-width: 1024px) {
+    .marrob-hero-v2__bg-img { object-position: 65% center; }
   }
   .marrob-hero-v2__grad--mob {
     position: absolute;
@@ -134,6 +134,16 @@
   .marrob-hero-v2__shell {
     max-width: 36rem;
   }
+  @media (min-width: 1024px) {
+    .marrob-hero-v2__shell {
+      transform: translateX(-6px);
+    }
+  }
+  @media (min-width: 1280px) {
+    .marrob-hero-v2__shell {
+      transform: translateX(-10px);
+    }
+  }
   @media (max-width: 1023px) {
     .marrob-hero-v2__shell {
       border-radius: 16px;
@@ -169,13 +179,34 @@
     margin: 0 0 22px;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
   }
-  .marrob-hero-v2__title-line2 {
+  .marrob-hero-v2__title-line1 {
     display: block;
-    margin-top: 10px;
+    letter-spacing: -0.02em;
+  }
+  .marrob-hero-v2__title-accent {
+    display: block;
+    margin-top: 4px;
     color: #d8f0c8;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.9);
   }
   @media (min-width: 1024px) {
-    .marrob-hero-v2__title-line2 { color: var(--marrob-accent, #2d8a5e); }
+    .marrob-hero-v2__title-accent { color: var(--marrob-primary, #7c9a6b); }
+  }
+  .marrob-hero-v2__title-line3 {
+    display: block;
+    margin-top: 8px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.375;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.75);
+  }
+  @media (min-width: 768px) {
+    .marrob-hero-v2__title-line3 { font-size: 1.75rem; }
+  }
+  @media (min-width: 1024px) {
+    .marrob-hero-v2__title-line3 { font-size: 2rem; }
   }
   .marrob-hero-v2__lead {
     font-size: 1.125rem;
@@ -317,42 +348,4 @@
     .marrob-hero-v2__trust-label { font-size: 12px; }
   }
 
-  .marrob-hero-v2__scroll {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: rgba(255,255,255,0.7);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    bottom: 9rem;
-  }
-  @media (min-width: 768px) {
-    .marrob-hero-v2__scroll { bottom: 6.25rem; }
-  }
-  .marrob-hero-v2__mouse {
-    width: 26px;
-    height: 40px;
-    border: 2px solid rgba(255,255,255,0.4);
-    border-radius: 999px;
-    display: flex;
-    justify-content: center;
-    padding-top: 8px;
-  }
-  .marrob-hero-v2__dot {
-    width: 5px;
-    height: 5px;
-    background: #fff;
-    border-radius: 50%;
-    animation: marrob-hero-v2-bounce 1.6s ease-in-out infinite;
-  }
-  @keyframes marrob-hero-v2-bounce {
-    0%, 100% { transform: translateY(0); opacity: 1; }
-    50% { transform: translateY(8px); opacity: 0.5; }
-  }
 </style>

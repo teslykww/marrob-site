@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=PT+Sans:wght@400;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -37,6 +35,41 @@
   
   --border: #E8E4DC;
   --border-dark: #D4CFC4;
+
+  /* Тёмные полосы (страница дилеров) */
+  --section-dark-bg: #242522;
+  --section-dark-elevated: #2e2e2b;
+  --section-dark-border: rgba(255, 255, 255, 0.08);
+  --section-dark-text: #f4f3f0;
+  --section-dark-muted: rgba(244, 243, 240, 0.72);
+  --section-dark-subtle: rgba(244, 243, 240, 0.5);
+  --success: #5cb85c;
+  --success-muted: rgba(92, 184, 92, 0.35);
+
+  /* Recharts / ChartContainer — согласовано с primary, accent, нейтралью */
+  --chart-1: #7c9a6b;
+  --chart-2: #b66a50;
+  --chart-3: #5a5a5a;
+  --chart-4: #b8a88c;
+  --chart-5: #5a7a4a;
+
+  /* Shadcn / Tailwind hsl(var(--*)) — согласовано с палитрой MARROB */
+  --background: 40 33% 97%;
+  --foreground: 0 0% 18%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 18%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 18%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 40 22% 94%;
+  --secondary-foreground: 0 0% 18%;
+  --muted: 40 18% 93%;
+  --muted-foreground: 0 0% 38%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --input: 40 18% 88%;
+  --ring: 95 20% 45%;
   
   /* Тени */
   --shadow: 0 2px 8px rgba(45, 45, 45, 0.06);
@@ -72,9 +105,11 @@
   
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
-  
+
   body {
+    overflow-x: hidden;
     font-family: var(--font-body);
     font-size: var(--text-size);
     line-height: 1.6;
@@ -113,6 +148,140 @@
   
   .section-premium {
     padding: var(--section-py) var(--section-px);
+  }
+
+  /**
+   * Единая шкала типографики (секции, страницы, карточки).
+   * Заголовки секций ≈ Tailwind text-3xl md:text-4xl (1.875rem → 2.25rem от md).
+   */
+  .type-page-title,
+  .type-section-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text);
+    font-size: 1.875rem;
+  }
+
+  @media (min-width: 768px) {
+    .type-page-title,
+    .type-section-title {
+      font-size: 2.25rem;
+    }
+  }
+
+  .type-section-lead {
+    font-size: 1.125rem;
+    line-height: 1.625;
+    color: var(--text-muted);
+  }
+
+  .type-card-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--h3-size);
+    line-height: 1.25;
+    color: var(--text);
+  }
+
+  /** Подзаголовок крупнее h3 (например блок «Решение») */
+  .type-section-subtitle {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text);
+    font-size: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .type-section-subtitle {
+      font-size: 1.875rem;
+    }
+  }
+
+  .type-caption {
+    font-size: var(--text-xs);
+    line-height: 1.375;
+  }
+
+  .type-trust-label {
+    font-size: 0.75rem;
+    line-height: 1.375;
+  }
+
+  @media (min-width: 768px) {
+    .type-trust-label {
+      font-size: var(--text-xs);
+    }
+  }
+
+  .type-label {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text);
+  }
+
+  /** Первый экран: многострочный h1 (визуально как раньше) */
+  .type-hero-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.08;
+    color: var(--text-inverse);
+    font-size: 2.25rem;
+    text-shadow: 0 1px 2px rgb(0 0 0 / 0.15);
+  }
+
+  @media (min-width: 768px) {
+    .type-hero-title {
+      font-size: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .type-hero-title {
+      font-size: 3.25rem;
+    }
+  }
+
+  .type-hero-title__line3 {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.375;
+    color: rgb(255 255 255 / 0.95);
+    text-shadow: 0 2px 8px rgb(0 0 0 / 0.75);
+  }
+
+  @media (min-width: 768px) {
+    .type-hero-title__line3 {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .type-hero-title__line3 {
+      font-size: 2rem;
+    }
+  }
+
+  .btn-premium--lg {
+    font-size: 1rem;
+    padding: 0.875rem 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .btn-premium--lg {
+      font-size: var(--text-sm);
+    }
+  }
+
+  /** Лёгкий ритм между крупными блоками главной */
+  .main-rhythm-rule {
+    border-top: 1px solid var(--border);
   }
   
   .badge-premium {
@@ -178,6 +347,53 @@
     background: var(--primary-hover);
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(124, 154, 107, 0.4);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-premium--primary:hover,
+    .btn-premium--accent:hover {
+      transform: none;
+    }
+  }
+
+  .btn-premium--shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-premium--shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 38%,
+      rgba(255, 255, 255, 0.32) 50%,
+      transparent 62%
+    );
+    transform: translateX(-100%);
+    animation: dealers-btn-shimmer 2.6s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes dealers-btn-shimmer {
+    0%,
+    12% {
+      transform: translateX(-100%);
+    }
+    45% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-premium--shimmer::after {
+      animation: none;
+      display: none;
+    }
   }
   
   .btn-premium--accent {
@@ -276,9 +492,15 @@
   .dealers-h2 {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: var(--h2-size);
     line-height: 1.2;
     color: var(--text);
+    font-size: 1.875rem;
+  }
+
+  @media (min-width: 768px) {
+    .dealers-h2 {
+      font-size: 2.25rem;
+    }
   }
 
   .dealers-h3 {
@@ -358,6 +580,105 @@
 
     .dealers-hero-visual {
       min-height: 200px !important;
+    }
+  }
+
+  /* Полосы светлое/тёмное на странице дилеров */
+  .dealers-band {
+    margin-left: calc(-1 * var(--section-px));
+    margin-right: calc(-1 * var(--section-px));
+    padding-left: var(--section-px);
+    padding-right: var(--section-px);
+  }
+
+  .dealers-band--dark {
+    background: var(--section-dark-bg);
+    color: var(--section-dark-text);
+    border-radius: var(--radius-xl);
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  }
+
+  @media (min-width: 640px) {
+    .dealers-band--dark {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .dealers-band--dark {
+      padding-top: 3.5rem;
+      padding-bottom: 3.5rem;
+    }
+  }
+
+  .dealers-band--dark .dealers-h1,
+  .dealers-band--dark .dealers-h2,
+  .dealers-band--dark .dealers-h3 {
+    color: var(--section-dark-text);
+  }
+
+  .dealers-band--dark .dealers-lead {
+    color: var(--section-dark-muted);
+  }
+
+  .dealers-band--dark .dealers-section {
+    border-top-color: var(--section-dark-border);
+  }
+
+  .dealers-band--dark .badge-premium {
+    background: rgba(124, 154, 107, 0.2);
+    color: #c5d4b8;
+  }
+
+  /* Финальный CTA: чуть глубже фон */
+  .dealers-band--cta {
+    background: linear-gradient(165deg, #1e1e1c 0%, var(--section-dark-bg) 45%, #2a2926 100%);
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .dealers-band--cta {
+      padding-top: 3.25rem;
+      padding-bottom: 3.25rem;
+    }
+  }
+
+  /* Scroll-reveal */
+  .dealers-reveal {
+    opacity: 0;
+    transform: translateY(1.15rem);
+    transition:
+      opacity 0.55s ease-out,
+      transform 0.55s ease-out;
+  }
+
+  .dealers-reveal--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dealers-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in,
+    .slide-up {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .card-premium:hover {
+      transform: none;
     }
   }
 }

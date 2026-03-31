@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { XIcon } from '@/components/icons/BuildingIcons';
 import {
   Dialog,
   DialogClose,
@@ -47,10 +47,10 @@ const Certs: React.FC = () => {
       <div className="container-premium relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="badge-premium mb-4">Надёжность</span>
-          <h2 className="font-display font-semibold text-3xl md:text-4xl text-text mb-4">
+          <h2 className="type-section-title mb-4">
             Сертификаты
           </h2>
-          <p className="text-text-muted text-lg">
+          <p className="type-section-lead mb-4">
             Соответствие ГОСТ и современным стандартам качества
           </p>
         </div>
@@ -88,7 +88,7 @@ const Certs: React.FC = () => {
             aria-label="Закрыть"
             className="absolute right-3 top-3 z-10 flex size-10 items-center justify-center rounded-full bg-white text-text shadow-md ring-1 ring-black/10 hover:bg-white/95"
           >
-            <X className="size-5" strokeWidth={2.25} />
+            <XIcon size={20} className="size-5 shrink-0" />
           </DialogClose>
           <div className="max-h-[min(85dvh,calc(100vh-3rem))] overflow-auto p-4 sm:p-6">
             <img

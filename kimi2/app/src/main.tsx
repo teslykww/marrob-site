@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter, Route, Routes } from 'react-router-dom';
+import { MotionConfig } from 'motion/react';
 import './index.css';
 import App from './App.tsx';
 import Header from './sections/Header';
@@ -12,7 +13,8 @@ import DealersPage from './pages/DealersPage';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HashRouter>
-      <div className="min-h-screen bg-bg">
+      <MotionConfig reducedMotion="user">
+      <div className="min-h-screen min-w-0 w-full max-w-[100%] overflow-x-hidden bg-bg">
         <Header />
         <Routes>
           <Route path="/" element={<App />} />
@@ -22,6 +24,7 @@ createRoot(document.getElementById('root')!).render(
         <Footer />
         <MessengerWidget />
       </div>
+      </MotionConfig>
     </HashRouter>
   </StrictMode>,
 )

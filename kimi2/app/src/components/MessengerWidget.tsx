@@ -1,7 +1,7 @@
 import React from 'react';
 import { WhatsAppIcon, TelegramIcon } from './icons/BuildingIcons';
 
-const WHATSAPP_URL = 'https://wa.me/79166662335';
+const WHATSAPP_URL = 'https://wa.me/74996475910';
 const TELEGRAM_URL = 'https://t.me/marrob';
 
 const MessengerWidget: React.FC = () => {

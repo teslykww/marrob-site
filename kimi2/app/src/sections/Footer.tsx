@@ -1,8 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { PhoneIcon, MailIcon, MapPinIcon } from '../components/icons/BuildingIcons';
+import { handleSectionLinkClick } from '@/lib/scrollToSection';
 
 const Footer: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const footerLinks = [
     {
       title: 'Навигация',
@@ -36,7 +40,9 @@ const Footer: React.FC = () => {
             <div className="flex items-center gap-3 mb-4">
               <img
                 src={`${import.meta.env.BASE_URL}logo.png`}
-                alt="MARROB"
+                alt=""
+                width={160}
+                height={40}
                 className="h-10 w-auto object-contain brightness-0 invert"
               />
               <div>
@@ -49,9 +55,9 @@ const Footer: React.FC = () => {
               Собственное производство в Московской области.
             </p>
             <div className="flex flex-col gap-2 text-sm">
-              <a href="tel:+79166662335" className="flex items-center gap-2 text-white/90 hover:text-primary transition-colors">
+              <a href="tel:+74996475910" className="flex items-center gap-2 text-white/90 hover:text-primary transition-colors">
                 <PhoneIcon size={16} />
-                +7 (916) 666-23-35
+                +7(499)647-59-10
               </a>
               <a href="mailto:info@marrob.ru" className="flex items-center gap-2 text-white/90 hover:text-primary transition-colors">
                 <MailIcon size={16} />
@@ -83,6 +89,14 @@ const Footer: React.FC = () => {
                     ) : (
                       <a
                         href={link.href}
+                        onClick={(e) =>
+                          link.href
+                            ? handleSectionLinkClick(e, link.href, {
+                            navigate,
+                            location,
+                              })
+                            : undefined
+                        }
                         className="text-white/90 text-sm hover:text-primary transition-colors"
                       >
                         {link.label}

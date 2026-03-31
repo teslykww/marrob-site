@@ -2,6 +2,11 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { ChevronRightIcon } from '@/components/icons/BuildingIcons';
 import { Link } from 'react-router-dom';
+import {
+  collectionFallbackCaption,
+  extractVariantPrefix,
+  lookupVariantCaption,
+} from '@/lib/catalogVariantCaption';
 
 type CatalogManifest = {
   basePath: string;
@@ -9,6 +14,10 @@ type CatalogManifest = {
     name: string;
     files: string[];
   }>;
+};
+
+type VariantCaptionsFile = {
+  captions?: Record<string, string>;
 };
 
 const base = import.meta.env.BASE_URL;
@@ -24,6 +33,7 @@ const CatalogPage: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [activeCollection, setActiveCollection] = useState<string>('');
   const [activeIndex, setActiveIndex] = useState(0);
+  const [variantCaptions, setVariantCaptions] = useState<Record<string, string> | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -47,6 +57,22 @@ const CatalogPage: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`${base}catalog/variant-captions.json`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data: VariantCaptionsFile | null) => {
+        if (cancelled || !data?.captions) return;
+        setVariantCaptions(data.captions);
+      })
+      .catch(() => {
+        if (!cancelled) setVariantCaptions(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const collections = manifest?.collections ?? [];
 
   const activeFiles = useMemo(() => {
@@ -59,6 +85,19 @@ const CatalogPage: React.FC = () => {
     if (!manifest || !activeFiles.length) return '';
     return toSrc(manifest, activeCollection, activeFiles[activeIndex]);
   }, [manifest, activeCollection, activeFiles, activeIndex]);
+
+  const activeCaption = useMemo(() => {
+    const file = activeFiles[activeIndex];
+    if (!file) return collectionFallbackCaption(activeCollection);
+    const fromMarrob = lookupVariantCaption(variantCaptions, activeCollection, file);
+    return fromMarrob ?? collectionFallbackCaption(activeCollection);
+  }, [activeCollection, activeFiles, activeIndex, variantCaptions]);
+
+  const activeVariantLabel = useMemo(() => {
+    const file = activeFiles[activeIndex];
+    if (!file) return '';
+    return extractVariantPrefix(file);
+  }, [activeFiles, activeIndex]);
 
   const openCollection = (name: string) => {
     setActiveCollection(name);
@@ -88,19 +127,22 @@ const CatalogPage: React.FC = () => {
   }, [open, activeFiles.length]);
 
   return (
-    <main className="section-premium bg-sand-light relative overflow-hidden">
+    <main className="section-premium bg-sand-light relative overflow-hidden main-rhythm-rule">
       <div className="absolute top-1/3 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none" />
 
       <div className="container-premium relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="badge-premium mb-4">Каталог</span>
-          <h1 className="font-display font-semibold text-3xl md:text-4xl text-text mb-4">
+          <h1 className="type-page-title mb-4">
             Все коллекции термопанелей <span className="text-primary">MARROB</span>
           </h1>
-          <p className="text-text-muted text-lg">Выберите коллекцию — откроется галерея фактур и оттенков</p>
+          <p className="type-section-lead">Выберите коллекцию — откроется галерея фактур и оттенков</p>
           <div className="mt-6">
-            <Link to="/" className="inline-flex items-center gap-2 text-sm text-text-muted hover:text-primary transition-colors">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 text-sm text-text-muted hover:text-primary transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
               <span className="rotate-180">
                 <ChevronRightIcon size={16} />
               </span>
@@ -127,7 +169,7 @@ const CatalogPage: React.FC = () => {
                   key={c.name}
                   type="button"
                   onClick={() => openCollection(c.name)}
-                  className="text-left group bg-white rounded-2xl overflow-hidden shadow-premium hover:shadow-premium-lg transition-all duration-300"
+                  className="text-left group bg-white rounded-[var(--radius-lg)] overflow-hidden shadow-premium hover:shadow-premium-lg transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     {cover && (
@@ -165,7 +207,11 @@ const CatalogPage: React.FC = () => {
                 {activeSrc && (
                   <img
                     src={activeSrc}
-                    alt={activeCollection}
+                    alt={
+                      activeVariantLabel
+                        ? `${activeCollection.replace(/_+$/g, '')} ${activeVariantLabel}`
+                        : activeCollection
+                    }
                     className="absolute inset-0 w-full h-full object-contain"
                   />
                 )}
@@ -175,7 +221,7 @@ const CatalogPage: React.FC = () => {
                 type="button"
                 aria-label="Предыдущее фото"
                 onClick={prev}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
               >
                 <span className="rotate-180">
                   <ChevronRightIcon size={22} />
@@ -185,7 +231,7 @@ const CatalogPage: React.FC = () => {
                 type="button"
                 aria-label="Следующее фото"
                 onClick={next}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
               >
                 <ChevronRightIcon size={22} />
               </button>
@@ -201,7 +247,10 @@ const CatalogPage: React.FC = () => {
                   {activeCollection.replace(/_+$/g, '') || 'Коллекция'}
                 </DialogTitle>
               </DialogHeader>
-              <div className="mt-2 text-sm text-text-light">Фасадные термопанели MARROB</div>
+              {activeVariantLabel ? (
+                <p className="mt-1 text-xs font-medium text-text-muted tracking-wide">{activeVariantLabel}</p>
+              ) : null}
+              <div className="mt-3 max-h-44 overflow-y-auto text-sm text-text-muted leading-snug pr-1">{activeCaption}</div>
 
               <div className="mt-5 grid grid-cols-4 gap-2 max-h-[320px] overflow-auto pr-1">
                 {manifest &&
@@ -213,7 +262,7 @@ const CatalogPage: React.FC = () => {
                         type="button"
                         onClick={() => setActiveIndex(i)}
                         className={[
-                          'relative aspect-square rounded-lg overflow-hidden border transition-colors',
+                          'relative aspect-square rounded-[var(--radius)] overflow-hidden border transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
                           i === activeIndex ? 'border-primary' : 'border-border hover:border-primary/60',
                         ].join(' ')}
                         aria-label={`Открыть фото ${i + 1}`}

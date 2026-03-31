@@ -2,9 +2,7 @@ import Hero from './sections/Hero';
 import Problem from './sections/Problem';
 import Solution from './sections/Solution';
 import BeforeAfter from './sections/BeforeAfter';
-import BenefitsVisual from './sections/BenefitsVisual';
 import Catalog from './sections/Catalog';
-import LeadMagnet from './sections/LeadMagnet';
 import Gallery from './sections/Gallery';
 import Reviews from './sections/Reviews';
 import Certs from './sections/Certs';
@@ -14,17 +12,24 @@ import Scenarios from './sections/Scenarios';
 import Stages from './sections/Stages';
 import FAQ from './sections/FAQ';
 import Contact from './sections/Contact';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { usePendingSectionScroll } from './lib/scrollToSection';
 
 function App() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  usePendingSectionScroll(location, () => {
+    navigate('.', { replace: true, state: null });
+  });
+
   return (
     <main>
       <Hero />
-      <BenefitsVisual />
       <Problem />
       <Solution />
       <BeforeAfter />
       <Catalog />
-      <LeadMagnet />
       <Gallery />
       <Reviews />
       <Certs />

@@ -14,7 +14,7 @@
       </div>
 
       <div class="marrob-sol2__scheme marrob-fade-up marrob-fade-up-delay-2">
-        <img src="assets/solution-scheme.png" alt="Двухслойная конструкция термопанелей MARROB" class="marrob-sol2__scheme-img" loading="lazy">
+        <img src="assets/solution-scheme.png" alt="Двухслойная конструкция термопанелей MARROB" class="marrob-sol2__scheme-img" width="1200" height="675" loading="lazy">
       </div>
 
       <p class="marrob-sol2__caption marrob-fade-up">
@@ -28,11 +28,12 @@
             <div class="marrob-sol2__cta-img-grad" aria-hidden="true"></div>
           </div>
           <div class="marrob-sol2__cta-body">
+            <p class="marrob-sol2__cta-kicker">Один монтаж — два результата</p>
             <h3 class="marrob-sol2__cta-title marrob-font-display">
-              Дом получает одновременно утепление и капитальный каменный фасад
+              Утепление и каменный фасад за один проход
             </h3>
             <p class="marrob-sol2__cta-text">
-              Замковая геометрия обеспечивает плотную стыковку панелей без щелей и мостиков холода
+              Панели MARROB соединяются по замковой геометрии: плотный шов без щелей и лишних мостиков холода — дом сразу теплее и выглядит как с отделкой под камень.
             </p>
             <form class="marrob-sol2__form" action="#" method="post" id="marrob-sol2-form">
               <div class="marrob-sol2__fields">
@@ -80,8 +81,15 @@
     margin-bottom: 24px;
   }
   .marrob-sol2__scheme-img {
-    display: block; width: 100%; height: auto; max-height: 560px; object-fit: contain;
+    display: block; width: 100%; height: auto;
+    max-height: min(400px, 48vh);
+    object-fit: contain;
     margin: 0 auto;
+    transform: scale(0.9);
+    transform-origin: center center;
+  }
+  @media (min-width: 768px) {
+    .marrob-sol2__scheme-img { max-height: min(476px, 52vh); transform: scale(0.88); }
   }
   .marrob-sol2__caption {
     text-align: center; font-size: var(--marrob-body); color: var(--marrob-text-muted);
@@ -116,10 +124,35 @@
   }
   .marrob-sol2__cta-body { padding: 24px; }
   @media (min-width: 768px) { .marrob-sol2__cta-body { padding: 32px 40px; } }
-  .marrob-sol2__cta-title { font-size: 1.375rem; font-weight: 600; margin: 0 0 12px; text-align: center; }
+  .marrob-sol2__cta-kicker {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.75);
+    margin: 0 0 8px;
+    text-align: center;
+  }
+  @media (min-width: 1024px) {
+    .marrob-sol2__cta-kicker { text-align: left; }
+  }
+  .marrob-sol2__cta-title { font-size: 1.375rem; font-weight: 600; margin: 0 0 16px; text-align: center; line-height: 1.25; }
   @media (min-width: 1024px) { .marrob-sol2__cta-title { text-align: left; font-size: 1.75rem; } }
-  .marrob-sol2__cta-text { font-size: 0.875rem; color: rgba(255,255,255,0.88); margin: 0 0 22px; text-align: center; max-width: 36rem; margin-left: auto; margin-right: auto; }
-  @media (min-width: 1024px) { .marrob-sol2__cta-text { text-align: left; margin-left: 0; } }
+  .marrob-sol2__cta-text {
+    font-size: 1rem;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.9);
+    margin: 0 0 22px;
+    text-align: center;
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media (min-width: 768px) {
+    .marrob-sol2__cta-text { font-size: 1.0625rem; }
+  }
+  @media (min-width: 1024px) {
+    .marrob-sol2__cta-text { text-align: left; margin-left: 0; font-size: 1.125rem; }
+  }
   .marrob-sol2__fields { display: grid; gap: 16px; margin-bottom: 16px; }
   @media (min-width: 640px) { .marrob-sol2__fields { grid-template-columns: 1fr 1fr; } }
   .marrob-sol2__label { display: block; font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.9); margin-bottom: 6px; }

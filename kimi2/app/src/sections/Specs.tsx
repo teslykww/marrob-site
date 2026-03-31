@@ -50,18 +50,20 @@ const Specs: React.FC = () => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-8">
           <span className="badge-premium mb-4">Технические характеристики</span>
-          <h2 className="font-display font-semibold text-3xl md:text-4xl text-text mb-4">
+          <h2 className="type-section-title mb-4">
             Параметры термопанелей <span className="text-primary">MARROB</span>
           </h2>
-          <p className="text-text-muted text-lg">
+          <p className="type-section-lead mb-4">
             Соответствие ГОСТ и современным стандартам качества
           </p>
         </div>
 
-        <div className="relative left-1/2 mb-10 w-screen max-w-[100vw] -translate-x-1/2 bg-white py-8 md:py-12 px-4 sm:px-6">
+        <div className="relative mb-10 -mx-[var(--section-px)] w-[calc(100%_+_2_*_var(--section-px))] max-w-none bg-white py-8 md:py-12 px-4 sm:px-6">
           <img
             src={diagramSrc}
             alt="Схема термопанели MARROB: декоративно-защитный слой из керамобетона, утеплитель, монолитное соединение слоёв при производстве, окрашивание в массе, скрытые монтажные отверстия в основании"
+            width={1024}
+            height={576}
             className="mx-auto block h-auto w-full max-h-[min(360px,48vh)] md:max-h-[min(380px,50vh)] object-contain scale-[0.88] md:scale-[0.9] origin-center"
             loading="lazy"
             decoding="async"
@@ -75,7 +77,7 @@ const Specs: React.FC = () => {
               key={index}
               className="bg-white rounded-2xl p-6 shadow-premium hover:shadow-premium-md transition-all duration-300"
             >
-              <h3 className="font-display font-semibold text-lg text-text mb-4">
+              <h3 className="type-card-title mb-4 text-text">
                 {spec.title}
               </h3>
               <ul className="space-y-3">

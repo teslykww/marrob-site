@@ -43,7 +43,7 @@ const Warranty: React.FC = () => {
               </div>
               <div>
                 <span className="text-white/70 text-sm uppercase tracking-wider">Гарантия</span>
-                <h3 className="font-display font-semibold text-2xl">30 лет на панели</h3>
+                <h3 className="type-card-title">30 лет на панели</h3>
               </div>
             </div>
 
@@ -77,7 +77,7 @@ const Warranty: React.FC = () => {
               </div>
               <div>
                 <span className="text-text-light text-sm uppercase tracking-wider">Производство</span>
-                <h3 className="font-display font-semibold text-2xl text-text">Собственный завод</h3>
+                <h3 className="type-card-title text-text">Собственный завод</h3>
               </div>
             </div>
 

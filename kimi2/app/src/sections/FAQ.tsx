@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { ChevronDownIcon } from '../components/icons/BuildingIcons';
+import { handleSectionLinkClick } from '@/lib/scrollToSection';
 
 const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const faqs = [
     {
@@ -52,10 +56,10 @@ const FAQ: React.FC = () => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="badge-premium mb-4">FAQ</span>
-          <h2 className="font-display font-semibold text-3xl md:text-4xl text-text mb-4">
+          <h2 className="type-section-title mb-4">
             Часто задаваемые вопросы
           </h2>
-          <p className="text-text-muted text-lg">
+          <p className="type-section-lead mb-4">
             Ответы на популярные вопросы о термопанелях и монтаже
           </p>
         </div>
@@ -106,6 +110,12 @@ const FAQ: React.FC = () => {
           <a
             href="#contact"
             className="btn-premium btn-premium--primary"
+            onClick={(e) =>
+              handleSectionLinkClick(e, '#contact', {
+                navigate,
+                location,
+              })
+            }
           >
             Задать вопрос специалисту
           </a>

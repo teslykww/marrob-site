@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { Reveal } from '@/components/Reveal';
 import { ChevronRightIcon } from '../components/icons/BuildingIcons';
+import MagnetLeadForm from '@/components/MagnetLeadForm';
 import { Link } from 'react-router-dom';
 
 type CatalogManifest = {
@@ -45,6 +47,20 @@ function spreadFileIndices(len: number, count: number): number[] {
   return [...idx].sort((a, b) => a - b).slice(0, count);
 }
 
+/**
+ * Крупное фото слева: примеры домов из Media/дома (скопированы в public/images/catalog-houses).
+ * Ключ = normalizeName(имя коллекции из manifest).
+ * Подбор: визуальный характер фасада ↔ позиционирование коллекции.
+ */
+const CATALOG_HOUSE_IMAGE: Record<string, string> = {
+  'версальский кирпич': 'versailles.jpg', // классика, белый декор, «дворцовые» наличники
+  'византийский кирпич': 'byzantine.jpg', // кладка + светлый камень, богатый патио (восточное/средиземноморское)
+  'клинкерный кирпич': 'clinker.jpg', // тёмный клинкер + цоколь, фото про термопанели под кирпич
+  'скандинавский кирпич': 'scandinavian.jpg', // минимализм: тёмная кладка, белый акцент, чистые линии
+  'туринский кирпич': 'turin.jpg', // терракотовая черепица, тёплая кладка, итальянский настрой
+  'шумерский кирпич': 'sumerian.jpg', // горизонтальные пояса кирпич/светлый цоколь, монументальный силуэт
+};
+
 const Catalog: React.FC = () => {
   const [activeCollection, setActiveCollection] = useState(0);
   const [manifest, setManifest] = useState<CatalogManifest | null>(null);
@@ -85,7 +101,10 @@ const Catalog: React.FC = () => {
     : '';
 
   const coverImage = useMemo(() => {
-    if (!manifest || !currentCollection?.files?.length) return '';
+    if (!currentCollection) return '';
+    const houseFile = CATALOG_HOUSE_IMAGE[normalizeName(currentCollection.name)];
+    if (houseFile) return `${base}images/catalog-houses/${houseFile}`;
+    if (!manifest || !currentCollection.files?.length) return '';
     const files = currentCollection.files;
     const i = pickCoverFileIndex(files);
     return `${base}${manifest.basePath}/${currentCollection.name}/${files[i]}`;
@@ -99,22 +118,24 @@ const Catalog: React.FC = () => {
   }, [manifest, currentCollection]);
 
   return (
-    <section id="catalog" className="section-premium bg-white relative overflow-hidden">
+    <section id="catalog" className="section-premium bg-white relative overflow-hidden main-rhythm-rule">
       {/* Decorative blob */}
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl translate-x-1/2" />
       
       <div className="container-premium relative z-10">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="badge-premium mb-4">Каталог</span>
-          <h2 className="font-display font-semibold text-3xl md:text-4xl text-text mb-4">
-            Коллекции термопанелей <span className="text-primary">MARROB</span>
-          </h2>
-          <p className="text-text-muted text-lg">
-            Более 100 вариантов фактур и оттенков под натуральный камень
-          </p>
-        </div>
+        <Reveal>
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="badge-premium mb-4">Каталог</span>
+            <h2 className="type-section-title mb-4">
+              Коллекции термопанелей <span className="text-primary">MARROB</span>
+            </h2>
+            <p className="type-section-lead mb-4">
+              Более 100 вариантов фактур и оттенков под натуральный камень
+            </p>
+          </div>
+        </Reveal>
 
+        <Reveal delay={0.08}>
         {/* Collection Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">
           {collections.map((collection, index) => (
@@ -132,22 +153,23 @@ const Catalog: React.FC = () => {
           ))}
         </div>
 
-        {/* Collection Display: слева крупное фото, справа текст + две колонки миниатюр */}
-        <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
-          <div className="relative rounded-2xl overflow-hidden shadow-premium-lg group">
+        {/* Collection Display: слева крупное фото, справа текст + две колонки миниатюр.
+            На lg высота левой колонки = высоте правой (нижний край крупного фото совпадает с миниатюрами). */}
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-stretch">
+          <div className="relative flex min-h-[280px] h-[min(400px,52svh)] lg:h-full lg:min-h-[260px] rounded-2xl overflow-hidden shadow-premium-lg group">
             {coverImage ? (
               <img
                 src={coverImage}
-                alt={displayName(currentCollection.name)}
-                className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
+                alt={`Пример объекта — ${displayName(currentCollection.name)}`}
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
             ) : (
-              <div className="w-full h-[400px] bg-sand-light" />
+              <div className="h-full min-h-[280px] w-full bg-sand-light" />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 text-white">
-              <h3 className="font-display font-semibold text-2xl mb-2">
+              <h3 className="type-card-title mb-2">
                 {currentCollection ? displayName(currentCollection.name) : 'Коллекция'}
               </h3>
               <p className="text-white/80 text-sm">{currentDescription}</p>
@@ -156,7 +178,7 @@ const Catalog: React.FC = () => {
 
           <div className="flex flex-col gap-8">
             <div>
-              <h3 className="font-display font-semibold text-2xl text-text mb-3">
+              <h3 className="type-card-title mb-3 text-text">
                 {currentCollection ? displayName(currentCollection.name) : 'Каталог'}
               </h3>
               <p className="text-text-muted mb-6">{currentDescription}</p>
@@ -195,6 +217,25 @@ const Catalog: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+        </Reveal>
+
+        <div
+          id="catalog-form"
+          className="mx-auto mt-12 max-w-5xl scroll-mt-24 lg:scroll-mt-32 sm:mt-14 lg:mt-16"
+        >
+          <MagnetLeadForm
+            idPrefix="catalog"
+            source="catalog-section"
+            intent="price-catalog"
+            showTopIcon={false}
+            sideImageSrc={`${base}images/catalog-lead-house.png`}
+            sideImageAlt="Дом с фасадом из термопанелей MARROB"
+            cardClassName="ring-0"
+            title="Запросить прайс и каталог"
+            description="Оставьте контакты — отправим актуальные цены и подборку фактур по выбранным коллекциям."
+            submitLabel="Получить прайс и каталог"
+          />
         </div>
       </div>
     </section>

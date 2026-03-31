@@ -255,6 +255,42 @@ export const WindIcon: React.FC<IconProps> = ({ className = '', size = 24 }) => 
   </svg>
 );
 
+export const Volume2Icon: React.FC<IconProps> = ({ className = '', size = 24 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+    <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+    <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+  </svg>
+);
+
+export const FeatherIcon: React.FC<IconProps> = ({ className = '', size = 24 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z" />
+    <line x1="16" y1="8" x2="2" y2="22" />
+    <line x1="17.5" y1="15" x2="9" y2="15" />
+  </svg>
+);
+
 export const GridIcon: React.FC<IconProps> = ({ className = '', size = 24 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}>
     <rect x="3" y="3" width="7" height="7"/>

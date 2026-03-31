@@ -33,10 +33,10 @@ const BeforeAfter: React.FC = () => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="badge-premium mb-4">Результат</span>
-          <h2 className="font-display font-semibold text-3xl md:text-4xl text-text mb-4">
+          <h2 className="type-section-title mb-4">
             До и После монтажа
           </h2>
-          <p className="text-text-muted text-lg">
+          <p className="type-section-lead mb-4">
             Посмотрите, как преображается фасад всего за 14 дней
           </p>
         </div>
@@ -59,6 +59,8 @@ const BeforeAfter: React.FC = () => {
             <img
               src={`${base}before-after/after.png`}
               alt="После монтажа термопанелей"
+              width={1024}
+              height={576}
               className="absolute inset-0 w-full h-full object-cover"
               draggable={false}
             />
@@ -74,6 +76,8 @@ const BeforeAfter: React.FC = () => {
               <img
                 src={`${base}before-after/before.png`}
                 alt="До монтажа"
+                width={1024}
+                height={576}
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{ width: `${100 / (sliderPosition / 100)}%` }}
                 draggable={false}

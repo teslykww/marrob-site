@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Reveal } from '@/components/Reveal';
+import { postLeadJson } from '@/lib/postLead';
 import {
   PhoneIcon,
   MailIcon,
@@ -19,16 +21,36 @@ const Contact: React.FC = () => {
   });
   const [submitted, setSubmitted] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const contactFormUrl = import.meta.env.VITE_CONTACT_FORM_URL as string | undefined;
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setPhoneError(false);
+    setSubmitError(null);
     if (!isCompleteRuMobile10(formData.phone)) {
       setPhoneError(true);
       return;
     }
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setSubmitting(true);
+    const result = await postLeadJson(contactFormUrl, {
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      message: formData.message,
+      source: 'contact',
+      page_url: typeof window !== 'undefined' ? window.location.href : undefined,
+    });
+    setSubmitting(false);
+    if (result.success) {
+      setSubmitted(true);
+      setFormData({ name: '', phone: '', email: '', message: '' });
+      setTimeout(() => setSubmitted(false), 5000);
+      return;
+    }
+    setSubmitError(result.errorMessage);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -51,8 +73,8 @@ const Contact: React.FC = () => {
     {
       icon: <PhoneIcon size={24} />,
       title: 'Телефон',
-      value: '+7 (916) 666-23-35',
-      href: 'tel:+79166662335',
+      value: '+7(499)647-59-10',
+      href: 'tel:+74996475910',
     },
     {
       icon: <MailIcon size={24} />,
@@ -69,22 +91,24 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="section-premium bg-sand-light relative overflow-hidden">
+    <section id="contact" className="section-premium bg-sand-light relative overflow-hidden main-rhythm-rule">
       {/* Decorative blob */}
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-y-1/2 translate-x-1/2" />
       
       <div className="container-premium relative z-10">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="badge-premium mb-4">Контакты</span>
-          <h2 className="font-display font-semibold text-3xl md:text-4xl text-text mb-4">
-            Свяжитесь с нами
-          </h2>
-          <p className="text-text-muted text-lg">
-            Получите бесплатную консультацию и расчёт стоимости вашего фасада
-          </p>
-        </div>
+        <Reveal>
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="badge-premium mb-4">Контакты</span>
+            <h2 className="type-section-title mb-4">
+              Свяжитесь с нами
+            </h2>
+            <p className="type-section-lead mb-6">
+              Получите бесплатную консультацию и расчёт стоимости вашего фасада
+            </p>
+          </div>
+        </Reveal>
 
+        <Reveal delay={0.08}>
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           {/* Contact Info */}
           <div>
@@ -114,7 +138,7 @@ const Contact: React.FC = () => {
 
             {/* Working hours */}
             <div className="bg-white rounded-xl p-6 shadow-premium">
-              <h3 className="font-display font-semibold text-text mb-4">Режим работы</h3>
+              <h3 className="type-card-title mb-4">Режим работы</h3>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span className="text-text-muted">Понедельник — Пятница</span>
@@ -149,26 +173,30 @@ const Contact: React.FC = () => {
             </figure>
 
             <div className="flex flex-1 flex-col justify-center bg-white p-6 md:p-8">
-            <h3 className="font-display font-semibold text-xl text-text mb-6">
-              Оставить заявку
-            </h3>
+            <h3 className="type-card-title mb-6">Оставить заявку</h3>
 
             {submitted ? (
               <div className="text-center py-10">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircleIcon size={32} className="text-green-600" />
                 </div>
-                <h4 className="font-display font-semibold text-xl text-text mb-2">
-                  Заявка отправлена!
-                </h4>
+                <h4 className="type-card-title mb-2">Заявка отправлена!</h4>
                 <p className="text-text-muted">
                   Мы свяжемся с вами в ближайшее время
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
+                {submitError && (
+                  <div
+                    role="alert"
+                    className="rounded-lg bg-red-50 text-red-700 text-sm font-medium px-4 py-3 text-center"
+                  >
+                    {submitError}
+                  </div>
+                )}
                 <div>
-                  <label className="block text-sm text-text-muted mb-2">Ваше имя</label>
+                  <label className="type-label mb-2 block text-text-muted">Ваше имя</label>
                   <input
                     type="text"
                     name="name"
@@ -180,7 +208,7 @@ const Contact: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-text-muted mb-2">Телефон *</label>
+                  <label className="type-label mb-2 block text-text-muted">Телефон *</label>
                   <input
                     type="tel"
                     name="phone"
@@ -200,7 +228,7 @@ const Contact: React.FC = () => {
                   )}
                 </div>
                 <div>
-                  <label className="block text-sm text-text-muted mb-2">Email</label>
+                  <label className="type-label mb-2 block text-text-muted">Email</label>
                   <input
                     type="email"
                     name="email"
@@ -211,7 +239,7 @@ const Contact: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-text-muted mb-2">Сообщение</label>
+                  <label className="type-label mb-2 block text-text-muted">Сообщение</label>
                   <textarea
                     name="message"
                     value={formData.message}
@@ -223,9 +251,10 @@ const Contact: React.FC = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full btn-premium btn-premium--primary"
+                  disabled={submitting}
+                  className="w-full btn-premium btn-premium--primary disabled:opacity-60"
                 >
-                  Отправить заявку
+                  {submitting ? 'Отправка…' : 'Отправить заявку'}
                 </button>
                 <p className="text-xs text-text-light text-center">
                   Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
@@ -235,6 +264,7 @@ const Contact: React.FC = () => {
             </div>
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   );

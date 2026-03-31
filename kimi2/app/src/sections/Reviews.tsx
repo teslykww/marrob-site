@@ -15,7 +15,7 @@ const Reviews: React.FC = () => {
       imageAlt: 'Фасад частного дома, клинкер — объект из портфолио MARROB',
     },
     {
-      image: `${base}projects/moscow/04/loft-brick-chilli-serrad-s-kryukivshchina-pr-511-01.webp`,
+      image: `${base}projects/moscow/04/loft-brick-chilli-serrad-s-kryukivshchina-pr-511-11.webp`,
       text: 'Отличная команда! Приехали, сделали замеры, через 3 недели привезли панели. Монтажники работали аккуратно, мусор убрали. Фасад радует каждый день.',
       author: 'Елена С.',
       location: 'КП «Новорижский»',
@@ -33,7 +33,7 @@ const Reviews: React.FC = () => {
   ];
 
   return (
-    <section className="section-premium bg-white relative overflow-hidden">
+    <section className="section-premium bg-sand-light relative overflow-hidden main-rhythm-rule">
       {/* Decorative blob */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
       
@@ -41,10 +41,10 @@ const Reviews: React.FC = () => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="badge-premium mb-4">Отзывы</span>
-          <h2 className="font-display font-semibold text-3xl md:text-4xl text-text mb-4">
+          <h2 className="type-section-title mb-4">
             Что говорят наши клиенты
           </h2>
-          <p className="text-text-muted text-lg">
+          <p className="type-section-lead mb-4">
             Реальные истории владельцев домов, которые выбрали MARROB. На фото — реальные объекты из портфолио.
           </p>
         </div>
@@ -54,10 +54,10 @@ const Reviews: React.FC = () => {
           {reviews.map((review, index) => (
             <div
               key={index}
-              className="bg-sand-light rounded-2xl overflow-hidden shadow-premium hover:shadow-premium-md transition-all duration-300"
+              className="bg-white rounded-[var(--radius-lg)] overflow-hidden shadow-premium hover:shadow-premium-md transition-all duration-300 flex flex-col h-full"
             >
               {/* Image */}
-              <div className="relative aspect-video overflow-hidden">
+              <div className="relative aspect-video overflow-hidden shrink-0">
                 <img
                   src={review.image}
                   alt={review.imageAlt}
@@ -73,12 +73,12 @@ const Reviews: React.FC = () => {
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <p className="text-text-muted text-sm leading-relaxed mb-6 italic">
+              {/* Content: flex column + flex-1 on quote so divider/name align across cards */}
+              <div className="p-6 flex flex-col flex-1 gap-6 min-h-0">
+                <p className="text-text-muted text-base leading-relaxed italic flex-1">
                   «{review.text}»
                 </p>
-                <div className="pt-4 border-t border-border">
+                <div className="pt-4 border-t border-border shrink-0">
                   <p className="font-display font-semibold text-text">{review.author}</p>
                   <p className="text-text-light text-xs">{review.location}</p>
                 </div>

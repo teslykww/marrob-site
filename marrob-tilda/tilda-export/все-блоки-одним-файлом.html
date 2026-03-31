@@ -2,7 +2,7 @@
   MARROB — это НЕ полная HTML-страница, только фрагменты для <body>.
   Обязательно: вставьте в <head> страницы содержимое 00-вставьте-в-head.html (шрифты, переменные, базовые стили).
   Полная страница для браузера: полная-страница.html или index.html (DOCTYPE + head + все блоки).
-  В этом файле подряд: 23 блоков (01-header.html, 02-hero.html, 03-problem.html, 04-solution.html, 04a-before-after.html, 05-benefits.html, 06-catalog.html, 15-lead-magnet.html, 07-gallery.html, 07a-reviews.html, 12-certs.html, 08-specs.html, 10-trust.html, 09-purchase-options.html, 11-cta-form.html, 14-stages.html, 16-contact.html, 13-faq.html, 12-footer.html, 98-widget-messenger.html, 97-cta-popup.html, 96-sticky-quiz.html, 99-scroll-animations.html).
+  В этом файле подряд: 21 блоков (01-header.html, 02-hero.html, 03-problem.html, 04-solution.html, 04a-before-after.html, 06-catalog.html, 15-lead-magnet.html, 07-gallery.html, 07a-reviews.html, 12-certs.html, 08-specs.html, 10-trust.html, 09-purchase-options.html, 14-stages.html, 16-contact.html, 13-faq.html, 12-footer.html, 98-widget-messenger.html, 97-cta-popup.html, 96-sticky-quiz.html, 99-scroll-animations.html).
 -->
 <!-- MARROB — Блок 1: Header. Top-bar с контактами, шапка с логотипом, навигацией, телефоном и CTA. -->
 <a href="#about" class="marrob-skip-link">Перейти к контенту</a>
@@ -14,26 +14,23 @@
       <span class="marrob-header__address">Срок службы панелей 30 лет</span>
     </div>
     <div class="marrob-header__top-bar-right">
-      <a href="tel:+79166662335" class="marrob-header__top-phone">+7 (916) 666-23-35</a>
+      <a href="tel:+74996475910" class="marrob-header__top-phone">+7(499)647-59-10</a>
       <a href="mailto:info@marrob.ru" class="marrob-header__email">info@marrob.ru</a>
     </div>
   </div>
   <header class="marrob-header">
     <div class="marrob-header__inner">
-      <a href="/" class="marrob-header__logo"><img src="assets/logo.png" alt="MARROB — Фасадные термопанели" class="marrob-header__logo-img" width="140" height="40"></a>
+      <a href="/" class="marrob-header__logo"><img src="assets/logo.png" alt="MARROB — Фасадные термопанели" class="marrob-header__logo-img" width="160" height="48"></a>
       <nav class="marrob-header__nav">
         <a href="#about" class="marrob-header__link">О термопанелях</a>
-        <a href="#benefits" class="marrob-header__link">Преимущества</a>
         <a href="#catalog" class="marrob-header__link">Коллекции</a>
         <a href="#gallery" class="marrob-header__link">Объекты</a>
         <a href="#certs" class="marrob-header__link">Сертификаты</a>
-        <a href="#specs" class="marrob-header__link">Параметры</a>
-        <a href="#stages" class="marrob-header__link">Этапы</a>
         <a href="#contact" class="marrob-header__link">Контакты</a>
         <a href="/dealers.html" class="marrob-header__link">Дилерам</a>
       </nav>
       <div class="marrob-header__cta">
-        <a href="tel:+79166662335" class="marrob-header__phone">+7 (916) 666-23-35</a>
+        <a href="tel:+74996475910" class="marrob-header__phone">+7(499)647-59-10</a>
         <a href="#contact" class="marrob-header__btn">Заказать звонок</a>
       </div>
       <button type="button" class="marrob-header__burger" aria-label="Меню" id="marrob-burger">
@@ -45,16 +42,13 @@
   <div class="marrob-header__drawer" id="marrob-menu-drawer">
     <nav class="marrob-header__drawer-nav">
       <a href="#about" class="marrob-header__drawer-link">О термопанелях</a>
-      <a href="#benefits" class="marrob-header__drawer-link">Преимущества</a>
       <a href="#catalog" class="marrob-header__drawer-link">Коллекции</a>
       <a href="#gallery" class="marrob-header__drawer-link">Объекты</a>
       <a href="#certs" class="marrob-header__drawer-link">Сертификаты</a>
-      <a href="#specs" class="marrob-header__drawer-link">Параметры</a>
-      <a href="#stages" class="marrob-header__drawer-link">Этапы</a>
       <a href="#contact" class="marrob-header__drawer-link">Контакты</a>
       <a href="/dealers.html" class="marrob-header__drawer-link">Дилерам</a>
     </nav>
-    <a href="tel:+79166662335" class="marrob-header__drawer-phone">+7 (916) 666-23-35</a>
+    <a href="tel:+74996475910" class="marrob-header__drawer-phone">+7(499)647-59-10</a>
     <a href="mailto:info@marrob.ru" class="marrob-header__drawer-email">info@marrob.ru</a>
     <span class="marrob-header__drawer-address">МО, Одинцово, ул. Баковская 2А</span>
     <a href="#contact" class="marrob-header__drawer-btn">Заказать звонок</a>
@@ -152,10 +146,13 @@
   .marrob-header__logo:hover { opacity: 0.85; }
   .marrob-header__logo-img {
     display: block;
-    height: 40px;
+    height: 44px;
     width: auto;
-    max-width: 160px;
+    max-width: 180px;
     object-fit: contain;
+  }
+  @media (min-width: 640px) {
+    .marrob-header__logo-img { height: 48px; }
   }
   .marrob-header__nav {
     display: none;
@@ -167,7 +164,7 @@
   }
   .marrob-header__link {
     font-size: 0.9375rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--marrob-text-muted);
     text-decoration: none;
     transition: color 0.2s;
@@ -280,7 +277,7 @@
   }
   .marrob-header__drawer-link {
     font-size: 1.125rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--marrob-text-muted);
     text-decoration: none;
     padding: 12px 0;
@@ -384,7 +381,7 @@
 })();
 </script>
 
-<!-- MARROB — Блок 2: Hero (kimi2): заголовок 2 строки, лид один, точки, trust-bar снизу. Фон: assets/hero-bg.png -->
+<!-- MARROB — Блок 2: Hero (kimi2): h1 в 3 строки как на Vercel, лид, точки, trust-bar. Фон: assets/hero-bg.png -->
 <div class="marrob-block marrob-block-hero-v2" id="marrob-hero">
   <section class="marrob-hero-v2">
     <div class="marrob-hero-v2__bg">
@@ -402,11 +399,13 @@
             <span class="marrob-hero-v2__badge marrob-hero-v2__badge--accent">30 лет гарантии</span>
           </div>
           <h1 class="marrob-hero-v2__title marrob-font-display marrob-fade-up marrob-fade-up-delay-1">
-            Фасадные термопанели
-            <span class="marrob-hero-v2__title-line2">с облицовкой под камень</span>
+            <span class="marrob-hero-v2__title-line1">Фасадные</span>
+            <span class="marrob-hero-v2__title-accent">термопанели</span>
+            <span class="marrob-hero-v2__title-line3">с облицовкой под камень</span>
           </h1>
           <p class="marrob-hero-v2__lead marrob-fade-up marrob-fade-up-delay-1">
-            <strong>Экономия до 50–60%</strong> на теплопотерях. Напрямую от производителя.<br>
+            <strong>Экономия до 50–60%</strong> на теплопотерях.<br>
+            Напрямую от производителя.<br>
             Покупка панелей отдельно или монтаж под ключ.
           </p>
           <ul class="marrob-hero-v2__list marrob-fade-up marrob-fade-up-delay-2">
@@ -442,11 +441,6 @@
         </div>
       </div>
     </div>
-
-    <div class="marrob-hero-v2__scroll" aria-hidden="true">
-      <span>Прокрутите вниз</span>
-      <div class="marrob-hero-v2__mouse"><span class="marrob-hero-v2__dot"></span></div>
-    </div>
   </section>
 </div>
 <style>
@@ -475,7 +469,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: 75% center;
+  }
+  @media (min-width: 1024px) {
+    .marrob-hero-v2__bg-img { object-position: 65% center; }
   }
   .marrob-hero-v2__grad--mob {
     position: absolute;
@@ -520,6 +517,16 @@
   .marrob-hero-v2__shell {
     max-width: 36rem;
   }
+  @media (min-width: 1024px) {
+    .marrob-hero-v2__shell {
+      transform: translateX(-6px);
+    }
+  }
+  @media (min-width: 1280px) {
+    .marrob-hero-v2__shell {
+      transform: translateX(-10px);
+    }
+  }
   @media (max-width: 1023px) {
     .marrob-hero-v2__shell {
       border-radius: 16px;
@@ -555,13 +562,34 @@
     margin: 0 0 22px;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
   }
-  .marrob-hero-v2__title-line2 {
+  .marrob-hero-v2__title-line1 {
     display: block;
-    margin-top: 10px;
+    letter-spacing: -0.02em;
+  }
+  .marrob-hero-v2__title-accent {
+    display: block;
+    margin-top: 4px;
     color: #d8f0c8;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.9);
   }
   @media (min-width: 1024px) {
-    .marrob-hero-v2__title-line2 { color: var(--marrob-accent, #2d8a5e); }
+    .marrob-hero-v2__title-accent { color: var(--marrob-primary, #7c9a6b); }
+  }
+  .marrob-hero-v2__title-line3 {
+    display: block;
+    margin-top: 8px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.375;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.75);
+  }
+  @media (min-width: 768px) {
+    .marrob-hero-v2__title-line3 { font-size: 1.75rem; }
+  }
+  @media (min-width: 1024px) {
+    .marrob-hero-v2__title-line3 { font-size: 2rem; }
   }
   .marrob-hero-v2__lead {
     font-size: 1.125rem;
@@ -703,96 +731,98 @@
     .marrob-hero-v2__trust-label { font-size: 12px; }
   }
 
-  .marrob-hero-v2__scroll {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: rgba(255,255,255,0.7);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    bottom: 9rem;
-  }
-  @media (min-width: 768px) {
-    .marrob-hero-v2__scroll { bottom: 6.25rem; }
-  }
-  .marrob-hero-v2__mouse {
-    width: 26px;
-    height: 40px;
-    border: 2px solid rgba(255,255,255,0.4);
-    border-radius: 999px;
-    display: flex;
-    justify-content: center;
-    padding-top: 8px;
-  }
-  .marrob-hero-v2__dot {
-    width: 5px;
-    height: 5px;
-    background: #fff;
-    border-radius: 50%;
-    animation: marrob-hero-v2-bounce 1.6s ease-in-out infinite;
-  }
-  @keyframes marrob-hero-v2-bounce {
-    0%, 100% { transform: translateY(0); opacity: 1; }
-    50% { transform: translateY(8px); opacity: 0.5; }
-  }
 </style>
 
-<!-- MARROB — Блок 3: Problem. Фото-карточки с overlay, icon badge, TiltCard, переход к решению. -->
+<!-- MARROB — Блок 3: Преимущества (8 карточек: 4 свойства + 4 из бывшего блока «В цифрах / Надёжность»). id="about". -->
 <div class="marrob-block marrob-block-problem" id="about">
   <section class="marrob-problem">
     <div class="marrob-blob marrob-blob--md marrob-blob--primary marrob-blob--tr"></div>
     <div class="marrob-blob marrob-blob--sm marrob-blob--accent marrob-blob--bl"></div>
     <div class="marrob-problem__inner">
       <div class="marrob-problem__head">
-        <span class="marrob-problem__badge marrob-fade-up">Проблема</span>
+        <span class="marrob-problem__badge marrob-fade-up">Преимущества</span>
         <h2 class="marrob-problem__title marrob-font-display marrob-fade-up marrob-fade-up-delay-1">
-          Почему классическое утепление фасада — это <span class="marrob-problem__title-accent">несколько этапов и лишние риски?</span>
+          Почему выбирают <span class="marrob-problem__title-accent">фасадные термопанели</span>
         </h2>
         <p class="marrob-problem__subtitle marrob-fade-up marrob-fade-up-delay-2">
-          Традиционные схемы утепления сложны и создают множество проблем на каждом этапе
+          Ключевые свойства системы MARROB для тёплого и долговечного фасада
         </p>
       </div>
       <div class="marrob-problem__grid">
         <div class="marrob-problem__card">
-          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(196, 92, 62, 0.12); color: #C45C3E;">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(16, 185, 129, 0.12); color: #047857;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>
           </div>
           <div class="marrob-problem__card-body">
-            <h3 class="marrob-problem__card-title">Два подрядчика</h3>
-            <p class="marrob-problem__card-text">Отдельное утепление и отдельная облицовка — два подрядчика, разные сроки и координация работ</p>
+            <h3 class="marrob-problem__card-title">Качественная теплоизоляция</h3>
+            <p class="marrob-problem__card-text">Низкая теплопроводность ядра панели — меньше теплопотери и расходы на отопление круглый год.</p>
           </div>
         </div>
         <div class="marrob-problem__card">
-          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(90, 122, 154, 0.12); color: #5A7A9A;">
-            <svg viewBox="0 0 24 24"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
+          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(14, 165, 233, 0.12); color: #0369a1;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 1 1.203-.498l7.11 7.11a2.41 2.41 0 0 1 0 3.408l-4.592 4.592a2.41 2.41 0 0 1-3.408 0z"/><path d="M12 19.94V22"/><path d="M14 17.94V20"/><path d="M2 12h2"/><path d="M7 12h2"/><path d="M9 7V5"/><path d="M15 5v2"/><path d="M17 12h2"/><path d="M19 12h2"/></svg>
           </div>
           <div class="marrob-problem__card-body">
-            <h3 class="marrob-problem__card-title">Мокрые процессы</h3>
-            <p class="marrob-problem__card-text">Зависимость от погоды и сезонности — работы невозможны при дожде и минусовой температуре</p>
+            <h3 class="marrob-problem__card-title">Высокая шумоизоляция</h3>
+            <p class="marrob-problem__card-text">Многослойная конструкция гасит уличный шум и делает интерьер заметно комфортнее.</p>
           </div>
         </div>
         <div class="marrob-problem__card">
-          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(139, 90, 60, 0.12); color: #8B5A3C;">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(59, 130, 246, 0.12); color: #1d4ed8;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 16.3c2.2 1 4.5 1.5 6.7 1.6 2.9.1 5.7-.6 8-2l1.8-1.1c.3-.2.4-.6.2-.9l-1.4-2.4a.6.6 0 0 0-.8-.2l-2.1 1.1"/><path d="M3.4 14.9c1.5-.7 3.1-1.1 4.7-1.3 2.5-.3 5.1 0 7.4 1"/><path d="M2 12c1.7-.9 3.5-1.5 5.4-1.8 2.8-.4 5.7-.2 8.4.7"/><path d="M2 9.2C4 8.2 6.2 7.5 8.4 7.2c2.7-.4 5.5-.1 8.1 1"/></svg>
           </div>
           <div class="marrob-problem__card-body">
-            <h3 class="marrob-problem__card-title">Мостики холода</h3>
-            <p class="marrob-problem__card-text">Ошибки стыковки слоёв приводят к мостикам холода, трещинам и потере тепла</p>
+            <h3 class="marrob-problem__card-title">Водонепроницаемость</h3>
+            <p class="marrob-problem__card-text">Защитный декоративный слой и геометрия стыков снижают риск промокания утеплителя.</p>
           </div>
         </div>
         <div class="marrob-problem__card">
-          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(106, 106, 106, 0.12); color: #6A6A6A;">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(245, 158, 11, 0.15); color: #b45309;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22C7.5 22 3.3 18.9 2 14.5 4.5 13 6.6 10.4 7.5 7.5 9.2 9.3 11.5 10 14 9c1 2.5 1.8 5.4 2 8.5.5.5 1.2 1 2 1.5-1.3 4.4-5.5 7.5-10 7.5Z"/></svg>
           </div>
           <div class="marrob-problem__card-body">
-            <h3 class="marrob-problem__card-title">Длительный монтаж</h3>
-            <p class="marrob-problem__card-text">Растянутые сроки строительства — классическая схема занимает в 2–3 раза больше времени</p>
+            <h3 class="marrob-problem__card-title">Небольшой вес</h3>
+            <p class="marrob-problem__card-text">Панели легче мокрой штукатурки и навесного камня — меньше нагрузка на фундамент и несущие конструкции.</p>
+          </div>
+        </div>
+        <div class="marrob-problem__card">
+          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(139, 92, 246, 0.12); color: #6d28d9;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="marrob-problem__card-body">
+            <p class="marrob-problem__card-kicker">до 60%</p>
+            <h3 class="marrob-problem__card-title">Снижение теплопотерь</h3>
+            <p class="marrob-problem__card-text">Экономия на отоплении уже в первый сезон. Дом теряет вдвое меньше тепла.</p>
+          </div>
+        </div>
+        <div class="marrob-problem__card">
+          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(244, 63, 94, 0.12); color: #be123c;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="marrob-problem__card-body">
+            <p class="marrob-problem__card-kicker">−50°C до +70°C</p>
+            <h3 class="marrob-problem__card-title">Стойкость к внешним воздействиям</h3>
+            <p class="marrob-problem__card-text">Не впитывает влагу, не подвержен коррозии. Выдерживает 200+ циклов заморозки.</p>
+          </div>
+        </div>
+        <div class="marrob-problem__card">
+          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(132, 204, 22, 0.15); color: #3f6212;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </div>
+          <div class="marrob-problem__card-body">
+            <p class="marrob-problem__card-kicker">100+ вариантов</p>
+            <h3 class="marrob-problem__card-title">Фактуры и оттенки</h3>
+            <p class="marrob-problem__card-text">Клинкер, натуральный камень, сланец — широкий выбор под любой стиль.</p>
+          </div>
+        </div>
+        <div class="marrob-problem__card">
+          <div class="marrob-problem__card-icon marrob-icon" style="background-color: rgba(6, 182, 212, 0.12); color: #155e75;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <div class="marrob-problem__card-body">
+            <p class="marrob-problem__card-kicker">Класс Г2</p>
+            <h3 class="marrob-problem__card-title">Огнестойкость и безопасность</h3>
+            <p class="marrob-problem__card-text">Декоративный камень огнеупорен и соответствует нормам пожарной безопасности.</p>
           </div>
         </div>
       </div>
@@ -801,7 +831,7 @@
           <span class="marrob-problem__arrow">↓</span>
         </div>
         <p class="marrob-problem__transition-text">
-          <strong class="marrob-problem__transition-accent">Современные фасадные системы</strong> объединяют утепление и отделку в одном продукте
+          <strong class="marrob-problem__transition-accent">Дальше</strong> — как устроена панель и как проходит монтаж
         </p>
       </div>
     </div>
@@ -819,7 +849,7 @@
   .marrob-problem__badge {
     display: inline-block;
     padding: 8px 20px;
-    background: rgba(196, 92, 62, 0.1);
+    background: var(--marrob-primary-light);
     color: var(--marrob-primary);
     font-size: 0.875rem;
     font-weight: 500;
@@ -861,23 +891,38 @@
     box-shadow: var(--marrob-shadow);
     transition: box-shadow 0.3s;
     display: flex;
-    align-items: flex-start;
-    gap: 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
     padding: 20px;
   }
   .marrob-problem__card:hover {
     box-shadow: var(--marrob-shadow-hover);
   }
   .marrob-problem__card-icon {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    border-radius: var(--marrob-radius);
+    width: 4.5rem;
+    height: 4.5rem;
+    min-width: 4.5rem;
+    border-radius: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .marrob-problem__card-icon svg {
+    width: 2.25rem;
+    height: 2.25rem;
   }
   .marrob-problem__card-body { padding: 0; min-width: 0; }
+  .marrob-problem__card-kicker {
+    font-family: var(--marrob-font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--marrob-primary);
+    line-height: 1.2;
+    margin: 0 0 8px;
+    font-variant-numeric: tabular-nums;
+  }
   .marrob-problem__card-title {
     font-family: var(--marrob-font-display);
     font-size: 1.125rem;
@@ -899,7 +944,7 @@
     height: 48px;
     margin: 0 auto 12px;
     border-radius: 50%;
-    background: rgba(45, 138, 94, 0.15);
+    background: rgba(124, 154, 107, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -907,7 +952,7 @@
   }
   .marrob-problem__arrow {
     font-size: 1.5rem;
-    color: var(--marrob-accent);
+    color: var(--marrob-primary);
     line-height: 1;
   }
   @keyframes marrob-bounce {
@@ -922,7 +967,7 @@
     margin-left: auto;
     margin-right: auto;
   }
-  .marrob-problem__transition-accent { color: var(--marrob-accent); }
+  .marrob-problem__transition-accent { color: var(--marrob-primary); }
   .marrob-problem__card {
     opacity: 1;
     transform: translateY(0) rotateY(0);
@@ -932,6 +977,13 @@
   .marrob-problem__card:nth-child(2) { transition-delay: 0.15s; }
   .marrob-problem__card:nth-child(3) { transition-delay: 0.3s; }
   .marrob-problem__card:nth-child(4) { transition-delay: 0.45s; }
+  .marrob-problem__card:nth-child(5) { transition-delay: 0.5s; }
+  .marrob-problem__card:nth-child(6) { transition-delay: 0.55s; }
+  .marrob-problem__card:nth-child(7) { transition-delay: 0.6s; }
+  .marrob-problem__card:nth-child(8) { transition-delay: 0.65s; }
+  @media (prefers-reduced-motion: reduce) {
+    .marrob-problem__arrow-wrap { animation: none; }
+  }
 </style>
 
 <!-- MARROB — Блок 4: Solution (как kimi2). Схема solution-scheme.png + зелёный CTA с формой. Подключите форму к Tilda Forms. -->
@@ -950,7 +1002,7 @@
       </div>
 
       <div class="marrob-sol2__scheme marrob-fade-up marrob-fade-up-delay-2">
-        <img src="assets/solution-scheme.png" alt="Двухслойная конструкция термопанелей MARROB" class="marrob-sol2__scheme-img" loading="lazy">
+        <img src="assets/solution-scheme.png" alt="Двухслойная конструкция термопанелей MARROB" class="marrob-sol2__scheme-img" width="1200" height="675" loading="lazy">
       </div>
 
       <p class="marrob-sol2__caption marrob-fade-up">
@@ -964,11 +1016,12 @@
             <div class="marrob-sol2__cta-img-grad" aria-hidden="true"></div>
           </div>
           <div class="marrob-sol2__cta-body">
+            <p class="marrob-sol2__cta-kicker">Один монтаж — два результата</p>
             <h3 class="marrob-sol2__cta-title marrob-font-display">
-              Дом получает одновременно утепление и капитальный каменный фасад
+              Утепление и каменный фасад за один проход
             </h3>
             <p class="marrob-sol2__cta-text">
-              Замковая геометрия обеспечивает плотную стыковку панелей без щелей и мостиков холода
+              Панели MARROB соединяются по замковой геометрии: плотный шов без щелей и лишних мостиков холода — дом сразу теплее и выглядит как с отделкой под камень.
             </p>
             <form class="marrob-sol2__form" action="#" method="post" id="marrob-sol2-form">
               <div class="marrob-sol2__fields">
@@ -1016,8 +1069,15 @@
     margin-bottom: 24px;
   }
   .marrob-sol2__scheme-img {
-    display: block; width: 100%; height: auto; max-height: 560px; object-fit: contain;
+    display: block; width: 100%; height: auto;
+    max-height: min(400px, 48vh);
+    object-fit: contain;
     margin: 0 auto;
+    transform: scale(0.9);
+    transform-origin: center center;
+  }
+  @media (min-width: 768px) {
+    .marrob-sol2__scheme-img { max-height: min(476px, 52vh); transform: scale(0.88); }
   }
   .marrob-sol2__caption {
     text-align: center; font-size: var(--marrob-body); color: var(--marrob-text-muted);
@@ -1052,10 +1112,35 @@
   }
   .marrob-sol2__cta-body { padding: 24px; }
   @media (min-width: 768px) { .marrob-sol2__cta-body { padding: 32px 40px; } }
-  .marrob-sol2__cta-title { font-size: 1.375rem; font-weight: 600; margin: 0 0 12px; text-align: center; }
+  .marrob-sol2__cta-kicker {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.75);
+    margin: 0 0 8px;
+    text-align: center;
+  }
+  @media (min-width: 1024px) {
+    .marrob-sol2__cta-kicker { text-align: left; }
+  }
+  .marrob-sol2__cta-title { font-size: 1.375rem; font-weight: 600; margin: 0 0 16px; text-align: center; line-height: 1.25; }
   @media (min-width: 1024px) { .marrob-sol2__cta-title { text-align: left; font-size: 1.75rem; } }
-  .marrob-sol2__cta-text { font-size: 0.875rem; color: rgba(255,255,255,0.88); margin: 0 0 22px; text-align: center; max-width: 36rem; margin-left: auto; margin-right: auto; }
-  @media (min-width: 1024px) { .marrob-sol2__cta-text { text-align: left; margin-left: 0; } }
+  .marrob-sol2__cta-text {
+    font-size: 1rem;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.9);
+    margin: 0 0 22px;
+    text-align: center;
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media (min-width: 768px) {
+    .marrob-sol2__cta-text { font-size: 1.0625rem; }
+  }
+  @media (min-width: 1024px) {
+    .marrob-sol2__cta-text { text-align: left; margin-left: 0; font-size: 1.125rem; }
+  }
   .marrob-sol2__fields { display: grid; gap: 16px; margin-bottom: 16px; }
   @media (min-width: 640px) { .marrob-sol2__fields { grid-template-columns: 1fr 1fr; } }
   .marrob-sol2__label { display: block; font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.9); margin-bottom: 6px; }
@@ -1173,371 +1258,6 @@
   else init();
 })();
 </script>
-
-<!-- MARROB — Блок 5: Преимущества. Обе колонки: кикер (зелёный) → заголовок → описание; вертикальный разделитель md+. id="benefits". -->
-<!-- Замените URL в marrob-bnf__cell img на фото из каталога (Tilda: Медиабиблиотека), если нужны свои фактуры. -->
-<div class="marrob-block marrob-block-benefits">
-  <section id="benefits" class="marrob-bnf">
-    <div class="marrob-bnf__inner">
-      <div class="marrob-bnf__head">
-        <span class="marrob-bnf__badge marrob-fade-up">Преимущества</span>
-        <h2 class="marrob-bnf__title marrob-font-display marrob-fade-up marrob-fade-up-delay-1">
-          Что вы получаете при выборе <span class="marrob-bnf__title-accent">термопанелей</span>
-        </h2>
-        <p class="marrob-bnf__subtitle marrob-fade-up marrob-fade-up-delay-2">
-          Ключевые преимущества фасадной системы MARROB
-        </p>
-      </div>
-
-      <div class="marrob-bnf__panel">
-        <div class="marrob-bnf__bg" aria-hidden="true">
-          <div class="marrob-bnf__grid4">
-            <div class="marrob-bnf__cell">
-              <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&h=800&fit=crop" alt="" class="marrob-bnf__cell-img">
-            </div>
-            <div class="marrob-bnf__cell">
-              <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&h=800&fit=crop" alt="" class="marrob-bnf__cell-img">
-            </div>
-            <div class="marrob-bnf__cell">
-              <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&h=800&fit=crop" alt="" class="marrob-bnf__cell-img">
-            </div>
-            <div class="marrob-bnf__cell">
-              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=800&fit=crop" alt="" class="marrob-bnf__cell-img">
-            </div>
-          </div>
-          <div class="marrob-bnf__scrim"></div>
-          <div class="marrob-bnf__tint"></div>
-          <div class="marrob-bnf__vignette"></div>
-        </div>
-
-        <div class="marrob-bnf__content">
-          <div class="marrob-bnf__glass">
-            <!-- Мобилка: две колонки стеком -->
-            <div class="marrob-bnf__cols marrob-bnf__cols--stack">
-              <div class="marrob-bnf__col marrob-bnf__col--left">
-                <p class="marrob-bnf__col-label">В цифрах</p>
-                <div class="marrob-bnf__list marrob-bnf__list--divided">
-                  <div class="marrob-bnf__row marrob-bnf__card">
-                    <div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-                    <div class="marrob-bnf__row-text">
-                      <p class="marrob-bnf__kicker">до 60%</p>
-                      <h3 class="marrob-bnf__card-title">Снижение теплопотерь</h3>
-                      <p class="marrob-bnf__card-desc">Экономия на отоплении уже в первый сезон. Дом теряет вдвое меньше тепла.</p>
-                    </div>
-                  </div>
-                  <div class="marrob-bnf__row marrob-bnf__card">
-                    <div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
-                    <div class="marrob-bnf__row-text">
-                      <p class="marrob-bnf__kicker">100+ вариантов</p>
-                      <h3 class="marrob-bnf__card-title">Фактуры и оттенки</h3>
-                      <p class="marrob-bnf__card-desc">Клинкер, натуральный камень, сланец — широкий выбор под любой стиль.</p>
-                    </div>
-                  </div>
-                  <div class="marrob-bnf__row marrob-bnf__card">
-                    <div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-                    <div class="marrob-bnf__row-text">
-                      <p class="marrob-bnf__kicker">1 этап</p>
-                      <h3 class="marrob-bnf__card-title">Монтаж без лишних работ</h3>
-                      <p class="marrob-bnf__card-desc">Утепление и отделка в одном процессе. Не нужны штукатуры и два подрядчика.</p>
-                    </div>
-                  </div>
-                  <div class="marrob-bnf__row marrob-bnf__card">
-                    <div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                    <div class="marrob-bnf__row-text">
-                      <p class="marrob-bnf__kicker">40+ лет</p>
-                      <h3 class="marrob-bnf__card-title">Срок службы</h3>
-                      <p class="marrob-bnf__card-desc">Не выцветает, не трескается, не требует покраски. Гарантия на панели — 30 лет.</p>
-                    </div>
-                  </div>
-                  <div class="marrob-bnf__row marrob-bnf__card">
-                    <div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-                    <div class="marrob-bnf__row-text">
-                      <p class="marrob-bnf__kicker">150 м² за 10 дней</p>
-                      <h3 class="marrob-bnf__card-title">Бригада из 2 человек</h3>
-                      <p class="marrob-bnf__card-desc">Полная облицовка частного дома без задержек и простоев на стройке.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="marrob-bnf__col marrob-bnf__col--right">
-                <p class="marrob-bnf__col-label">Надёжность и комфорт</p>
-                <div class="marrob-bnf__list marrob-bnf__list--divided">
-                  <div class="marrob-bnf__row marrob-bnf__card">
-                    <div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                    <div class="marrob-bnf__row-text">
-                      <p class="marrob-bnf__kicker">−50°C до +70°C</p>
-                      <h3 class="marrob-bnf__card-title">Стойкость к внешним воздействиям</h3>
-                      <p class="marrob-bnf__card-desc">Не впитывает влагу, не подвержен коррозии. Выдерживает 200+ циклов заморозки.</p>
-                    </div>
-                  </div>
-                  <div class="marrob-bnf__row marrob-bnf__card">
-                    <div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-                    <div class="marrob-bnf__row-text">
-                      <p class="marrob-bnf__kicker">Класс Г2</p>
-                      <h3 class="marrob-bnf__card-title">Огнестойкость и безопасность</h3>
-                      <p class="marrob-bnf__card-desc">Декоративный камень огнеупорен и соответствует нормам пожарной безопасности.</p>
-                    </div>
-                  </div>
-                  <div class="marrob-bnf__row marrob-bnf__card">
-                    <div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-                    <div class="marrob-bnf__row-text">
-                      <p class="marrob-bnf__kicker">Перепады до 20 мм/м²</p>
-                      <h3 class="marrob-bnf__card-title">Монтаж на существующие фасады</h3>
-                      <p class="marrob-bnf__card-desc">Подходит для реконструкции. Не нужно выравнивать стены перед установкой.</p>
-                    </div>
-                  </div>
-                  <div class="marrob-bnf__row marrob-bnf__card">
-                    <div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
-                    <div class="marrob-bnf__row-text">
-                      <p class="marrob-bnf__kicker">0,037 Вт/м·К</p>
-                      <h3 class="marrob-bnf__card-title">Энергоэффективность</h3>
-                      <p class="marrob-bnf__card-desc">Низкая теплопроводность ядра — меньше теплопотери. Экономия на отоплении и кондиционировании круглый год.</p>
-                    </div>
-                  </div>
-                  <div class="marrob-bnf__row marrob-bnf__card">
-                    <div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-                    <div class="marrob-bnf__row-text">
-                      <p class="marrob-bnf__kicker">Сухой монтаж</p>
-                      <h3 class="marrob-bnf__card-title">Без мокрых процессов</h3>
-                      <p class="marrob-bnf__card-desc">Нет зависимости от температуры. Монтаж возможен даже при минусовых температурах.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Десктоп: 5 пар в одной сетке — общие разделители строк -->
-            <div class="marrob-bnf__pair-grid">
-              <div class="marrob-bnf__pair-head">
-                <div class="marrob-bnf__pair-head-cell"><p class="marrob-bnf__col-label marrob-bnf__col-label--pair">В цифрах</p></div>
-                <div class="marrob-bnf__pair-vbar marrob-bnf__pair-vbar--head" aria-hidden="true"></div>
-                <div class="marrob-bnf__pair-head-cell"><p class="marrob-bnf__col-label marrob-bnf__col-label--pair">Надёжность и комфорт</p></div>
-              </div>
-              <div class="marrob-bnf__pair-row">
-                <div class="marrob-bnf__pair-cell"><div class="marrob-bnf__row marrob-bnf__card marrob-bnf__row--pair"><div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="marrob-bnf__row-text"><p class="marrob-bnf__kicker">до 60%</p><h3 class="marrob-bnf__card-title">Снижение теплопотерь</h3><p class="marrob-bnf__card-desc">Экономия на отоплении уже в первый сезон. Дом теряет вдвое меньше тепла.</p></div></div></div>
-                <div class="marrob-bnf__pair-vbar" aria-hidden="true"></div>
-                <div class="marrob-bnf__pair-cell"><div class="marrob-bnf__row marrob-bnf__card marrob-bnf__row--pair"><div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="marrob-bnf__row-text"><p class="marrob-bnf__kicker">−50°C до +70°C</p><h3 class="marrob-bnf__card-title">Стойкость к внешним воздействиям</h3><p class="marrob-bnf__card-desc">Не впитывает влагу, не подвержен коррозии. Выдерживает 200+ циклов заморозки.</p></div></div></div>
-              </div>
-              <div class="marrob-bnf__pair-row marrob-bnf__pair-row--bordered">
-                <div class="marrob-bnf__pair-cell"><div class="marrob-bnf__row marrob-bnf__card marrob-bnf__row--pair"><div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div><div class="marrob-bnf__row-text"><p class="marrob-bnf__kicker">100+ вариантов</p><h3 class="marrob-bnf__card-title">Фактуры и оттенки</h3><p class="marrob-bnf__card-desc">Клинкер, натуральный камень, сланец — широкий выбор под любой стиль.</p></div></div></div>
-                <div class="marrob-bnf__pair-vbar" aria-hidden="true"></div>
-                <div class="marrob-bnf__pair-cell"><div class="marrob-bnf__row marrob-bnf__card marrob-bnf__row--pair"><div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><div class="marrob-bnf__row-text"><p class="marrob-bnf__kicker">Класс Г2</p><h3 class="marrob-bnf__card-title">Огнестойкость и безопасность</h3><p class="marrob-bnf__card-desc">Декоративный камень огнеупорен и соответствует нормам пожарной безопасности.</p></div></div></div>
-              </div>
-              <div class="marrob-bnf__pair-row marrob-bnf__pair-row--bordered">
-                <div class="marrob-bnf__pair-cell"><div class="marrob-bnf__row marrob-bnf__card marrob-bnf__row--pair"><div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="marrob-bnf__row-text"><p class="marrob-bnf__kicker">1 этап</p><h3 class="marrob-bnf__card-title">Монтаж без лишних работ</h3><p class="marrob-bnf__card-desc">Утепление и отделка в одном процессе. Не нужны штукатуры и два подрядчика.</p></div></div></div>
-                <div class="marrob-bnf__pair-vbar" aria-hidden="true"></div>
-                <div class="marrob-bnf__pair-cell"><div class="marrob-bnf__row marrob-bnf__card marrob-bnf__row--pair"><div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="marrob-bnf__row-text"><p class="marrob-bnf__kicker">Перепады до 20 мм/м²</p><h3 class="marrob-bnf__card-title">Монтаж на существующие фасады</h3><p class="marrob-bnf__card-desc">Подходит для реконструкции. Не нужно выравнивать стены перед установкой.</p></div></div></div>
-              </div>
-              <div class="marrob-bnf__pair-row marrob-bnf__pair-row--bordered">
-                <div class="marrob-bnf__pair-cell"><div class="marrob-bnf__row marrob-bnf__card marrob-bnf__row--pair"><div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="marrob-bnf__row-text"><p class="marrob-bnf__kicker">40+ лет</p><h3 class="marrob-bnf__card-title">Срок службы</h3><p class="marrob-bnf__card-desc">Не выцветает, не трескается, не требует покраски. Гарантия на панели — 30 лет.</p></div></div></div>
-                <div class="marrob-bnf__pair-vbar" aria-hidden="true"></div>
-                <div class="marrob-bnf__pair-cell"><div class="marrob-bnf__row marrob-bnf__card marrob-bnf__row--pair"><div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div><div class="marrob-bnf__row-text"><p class="marrob-bnf__kicker">0,037 Вт/м·К</p><h3 class="marrob-bnf__card-title">Энергоэффективность</h3><p class="marrob-bnf__card-desc">Низкая теплопроводность ядра — меньше теплопотери. Экономия на отоплении и кондиционировании круглый год.</p></div></div></div>
-              </div>
-              <div class="marrob-bnf__pair-row marrob-bnf__pair-row--bordered">
-                <div class="marrob-bnf__pair-cell"><div class="marrob-bnf__row marrob-bnf__card marrob-bnf__row--pair"><div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="marrob-bnf__row-text"><p class="marrob-bnf__kicker">150 м² за 10 дней</p><h3 class="marrob-bnf__card-title">Бригада из 2 человек</h3><p class="marrob-bnf__card-desc">Полная облицовка частного дома без задержек и простоев на стройке.</p></div></div></div>
-                <div class="marrob-bnf__pair-vbar" aria-hidden="true"></div>
-                <div class="marrob-bnf__pair-cell"><div class="marrob-bnf__row marrob-bnf__card marrob-bnf__row--pair"><div class="marrob-bnf__ico marrob-bnf__ico--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="marrob-bnf__row-text"><p class="marrob-bnf__kicker">Сухой монтаж</p><h3 class="marrob-bnf__card-title">Без мокрых процессов</h3><p class="marrob-bnf__card-desc">Нет зависимости от температуры. Монтаж возможен даже при минусовых температурах.</p></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-<style>
-  .marrob-block-benefits { background: var(--marrob-bg); position: relative; }
-  .marrob-bnf { padding: 72px 24px 80px; font-family: var(--marrob-font-body); }
-  .marrob-bnf__inner { max-width: 1280px; margin: 0 auto; }
-  .marrob-bnf__head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
-  .marrob-bnf__badge {
-    display: inline-block; padding: 8px 20px;
-    background: rgba(196, 92, 62, 0.1); color: var(--marrob-primary);
-    font-size: 0.875rem; font-weight: 500; border-radius: 999px; margin-bottom: 16px;
-  }
-  .marrob-bnf__title { font-size: 1.75rem; line-height: 1.3; font-weight: 600; color: var(--marrob-text); margin: 0 0 12px; }
-  @media (min-width: 768px) { .marrob-bnf__title { font-size: 2.25rem; } }
-  .marrob-bnf__title-accent { color: var(--marrob-primary); }
-  .marrob-bnf__subtitle { font-size: 1.0625rem; color: var(--marrob-text-muted); margin: 0; }
-
-  .marrob-bnf__panel {
-    position: relative; border-radius: 24px; overflow: hidden;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-    min-height: 520px;
-  }
-  @media (min-width: 768px) { .marrob-bnf__panel { min-height: 560px; } }
-  @media (min-width: 1024px) { .marrob-bnf__panel { min-height: 600px; } }
-
-  .marrob-bnf__bg { position: absolute; inset: 0; }
-  .marrob-bnf__grid4 {
-    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
-    width: 100%; height: 100%; min-height: 520px;
-  }
-  @media (min-width: 768px) { .marrob-bnf__grid4 { min-height: 560px; } }
-  @media (min-width: 1024px) { .marrob-bnf__grid4 { min-height: 600px; } }
-  .marrob-bnf__cell { position: relative; min-height: 140px; }
-  @media (min-width: 640px) { .marrob-bnf__cell { min-height: 0; } }
-  .marrob-bnf__cell-img {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-    filter: brightness(0.72) saturate(0.82) contrast(1.06);
-  }
-  .marrob-bnf__scrim {
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.88) 50%, rgba(15, 23, 42, 0.9) 100%);
-    pointer-events: none;
-  }
-  .marrob-bnf__tint {
-    position: absolute; inset: 0;
-    background: rgba(6, 46, 32, 0.15);
-    pointer-events: none;
-  }
-  .marrob-bnf__vignette {
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse 85% 75% at 50% 45%, transparent 0%, rgba(15, 23, 42, 0.55) 100%);
-    pointer-events: none;
-  }
-
-  .marrob-bnf__content {
-    position: relative; z-index: 2;
-    padding: 28px 18px 24px;
-  }
-  @media (min-width: 640px) { .marrob-bnf__content { padding: 36px 28px 28px; } }
-  @media (min-width: 768px) { .marrob-bnf__content { padding: 40px 32px 32px; } }
-
-  .marrob-bnf__glass {
-    max-width: 1152px; margin: 0 auto;
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(15, 23, 42, 0.58);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 12px 48px rgba(0,0,0,0.45);
-    padding: 24px 20px;
-  }
-  @media (min-width: 640px) { .marrob-bnf__glass { padding: 32px 28px; } }
-  @media (min-width: 768px) { .marrob-bnf__glass { padding: 36px 36px; } }
-
-  /* Мобилка: только стек; десктоп скрыт */
-  .marrob-bnf__cols--stack {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-  @media (min-width: 768px) {
-    .marrob-bnf__cols--stack { display: none; }
-  }
-  .marrob-bnf__col { min-width: 0; flex: 1; }
-  .marrob-bnf__col--left {
-    padding-bottom: 32px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-  .marrob-bnf__col--right { padding-top: 32px; }
-
-  /* Десктоп: сетка пар */
-  .marrob-bnf__pair-grid { display: none; }
-  @media (min-width: 768px) {
-    .marrob-bnf__pair-grid { display: block; }
-  }
-  .marrob-bnf__pair-head {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-    gap: 0 24px;
-    align-items: end;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-  }
-  @media (min-width: 1024px) {
-    .marrob-bnf__pair-head { gap: 0 32px; }
-  }
-  .marrob-bnf__pair-head-cell { min-width: 0; }
-  .marrob-bnf__col-label--pair { margin-bottom: 0; }
-  .marrob-bnf__pair-vbar {
-    width: 1px;
-    flex-shrink: 0;
-    align-self: stretch;
-    min-height: 100%;
-    background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.08) 100%);
-    box-shadow: 1px 0 0 rgba(0,0,0,0.25);
-  }
-  .marrob-bnf__pair-vbar--head { min-height: 2.5rem; align-self: stretch; }
-  .marrob-bnf__pair-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-    gap: 0 24px;
-  }
-  @media (min-width: 1024px) {
-    .marrob-bnf__pair-row { gap: 0 32px; }
-  }
-  .marrob-bnf__pair-row--bordered {
-    border-top: 1px solid rgba(255,255,255,0.1);
-  }
-  .marrob-bnf__pair-cell {
-    min-width: 0;
-    padding: 16px 4px 16px 0;
-  }
-  .marrob-bnf__pair-cell:last-of-type { padding-left: 4px; padding-right: 0; }
-
-  .marrob-bnf__col-label {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--marrob-accent-light); margin: 0 0 16px;
-    min-height: 2.5rem;
-    display: flex; align-items: flex-end;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.45);
-  }
-  @media (min-width: 640px) { .marrob-bnf__col-label { font-size: 12px; } }
-
-  .marrob-bnf__list { display: flex; flex-direction: column; gap: 0; }
-  /* Мобилка: иконка сверху, выравнивание по началу текста */
-  .marrob-bnf__list--divided > .marrob-bnf__row {
-    display: flex; gap: 16px; align-items: flex-start;
-    padding: 16px 0;
-    border-top: 1px solid rgba(255,255,255,0.1);
-  }
-  .marrob-bnf__list--divided > .marrob-bnf__row:first-child { border-top: none; }
-
-  .marrob-bnf__row { display: flex; gap: 16px; align-items: flex-start; }
-  .marrob-bnf__row--pair {
-    padding: 0;
-    border-top: none;
-    align-items: flex-start;
-  }
-
-  .marrob-bnf__ico {
-    width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    margin-top: 2px;
-  }
-  .marrob-bnf__ico svg { width: 22px; height: 22px; flex-shrink: 0; }
-  .marrob-bnf__ico--brand {
-    background: rgba(45, 138, 94, 0.14);
-    border: 1px solid rgba(76, 175, 124, 0.45);
-    color: #8fd9b8;
-    box-shadow: none;
-  }
-
-  .marrob-bnf__row-text {
-    min-width: 0; flex: 1;
-    display: flex; flex-direction: column; gap: 4px;
-  }
-  .marrob-bnf__kicker {
-    font-family: var(--marrob-font-display); font-weight: 700; font-size: 1.125rem;
-    color: #a8e6c9; font-variant-numeric: tabular-nums; line-height: 1.2; margin: 0;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.35);
-    min-height: 2.75rem;
-  }
-  @media (min-width: 640px) { .marrob-bnf__kicker { font-size: 1.25rem; min-height: 3rem; } }
-  @media (min-width: 768px) { .marrob-bnf__kicker { font-size: 1.5rem; min-height: 3.5rem; } }
-  .marrob-bnf__card-title {
-    font-family: var(--marrob-font-display); font-weight: 600; font-size: 1rem; color: #fff;
-    margin: 0; line-height: 1.35;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.55);
-  }
-  .marrob-bnf__card-desc {
-    font-size: 0.875rem; line-height: 1.55; color: rgba(255,255,255,0.76); margin: 0;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
-    min-height: 4.5rem;
-  }
-</style>
 
 <!-- MARROB — Блок 6: Catalog (как kimi2 по смыслу). Замените href «Смотреть каталог» на URL страницы полного каталога в Tilda. -->
 <div class="marrob-block marrob-block-catalog" id="catalog">
@@ -1888,8 +1608,8 @@
   <section class="marrob-lead">
     <div class="marrob-lead__inner">
       <div class="marrob-lead__box marrob-fade-up">
-        <p class="marrob-lead__text">Получите актуальный прайс-лист и каталог коллекций</p>
-        <button type="button" class="marrob-lead__btn" id="marrob-lead-open">Скачать прайс и каталог</button>
+        <p class="marrob-lead__text">Оставьте контакты — отправим актуальные цены и подборку фактур по выбранным коллекциям.</p>
+        <button type="button" class="marrob-lead__btn" id="marrob-lead-open">Получить прайс и каталог</button>
       </div>
     </div>
   </section>
@@ -1897,8 +1617,8 @@
     <div class="marrob-lead-popup__overlay" id="marrob-lead-close"></div>
     <div class="marrob-lead-popup__box">
       <button type="button" class="marrob-lead-popup__close" id="marrob-lead-close-btn" aria-label="Закрыть">&times;</button>
-      <h3 class="marrob-lead-popup__title marrob-font-display" id="marrob-lead-popup-title">Скачать прайс и каталог</h3>
-      <p class="marrob-lead-popup__subtitle">Оставьте контакты — отправим материалы на почту или в мессенджер.</p>
+      <h3 class="marrob-lead-popup__title marrob-font-display" id="marrob-lead-popup-title">Запросить прайс и каталог</h3>
+      <p class="marrob-lead-popup__subtitle">Оставьте контакты — отправим актуальные цены и подборку фактур по выбранным коллекциям.</p>
       <form class="marrob-lead-popup__form" id="marrob-lead-form-popup">
         <label class="marrob-lead-popup__field">
           <span class="marrob-lead-popup__label">Имя</span>
@@ -1915,7 +1635,10 @@
 </div>
 <style>
   .marrob-block-lead { background: var(--marrob-bg); position: relative; }
-  .marrob-lead { padding: 48px 24px; font-family: var(--marrob-font-body); }
+  .marrob-lead { padding: 40px 24px; font-family: var(--marrob-font-body); }
+  @media (min-width: 768px) {
+    .marrob-lead { padding: 48px 24px; }
+  }
   .marrob-lead__inner { max-width: 640px; margin: 0 auto; }
   .marrob-lead__box {
     text-align: center;
@@ -2112,171 +1835,171 @@
       </div>
       <div class="marrob-gallery__grid">
         <div class="marrob-gallery__card is-visible">
-          <div class="marrob-gallery__item" data-src="projects/moscow/01/klinker-br7ick-orange-pr-523-2.webp" data-caption="Частный дом • клинкер оранжевый PR-523 — фасадные термопанели MARROB">
-            <img src="projects/moscow/01/klinker-br7ick-orange-pr-523-2.webp" alt="Клинкер оранжевый PR-523">
+          <div class="marrob-gallery__item" data-src="projects/moscow/01/klinker-brick-orange-pr-523-4.webp" data-caption="Истринский район — фасадные термопанели MARROB">
+            <img src="projects/moscow/01/klinker-brick-orange-pr-523-4.webp" alt="Истринский район">
             <div class="marrob-gallery__overlay">
-              <h3 class="marrob-gallery__overlay-title">Частный дом • клинкер оранжевый PR-523</h3>
-              <p class="marrob-gallery__overlay-location">Москва</p>
+              <h3 class="marrob-gallery__overlay-title">Истринский район</h3>
+              <p class="marrob-gallery__overlay-location">МО</p>
             </div>
             <div class="marrob-gallery__maximize">⊕</div>
           </div>
           <div class="marrob-gallery__footer">
-            <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__card-title">Частный дом • клинкер оранжевый PR-523</span>
+            <span class="marrob-gallery__badge-area">220 м²</span>
+            <span class="marrob-gallery__card-title">Истринский район</span>
           </div>
         </div>
         <div class="marrob-gallery__card is-visible">
-          <div class="marrob-gallery__item" data-src="projects/moscow/02/seven-tones-orange-golden-tile-eston-ya-pr-509-01.webp" data-caption="Частный дом • семь оттенков, золотая кладка PR-509 — фасадные термопанели MARROB">
-            <img src="projects/moscow/02/seven-tones-orange-golden-tile-eston-ya-pr-509-01.webp" alt="Seven tones PR-509">
+          <div class="marrob-gallery__item" data-src="projects/moscow/02/seven-tones-orange-golden-tile-eston-ya-pr-509-01.webp" data-caption="г. Дедовск — фасадные термопанели MARROB">
+            <img src="projects/moscow/02/seven-tones-orange-golden-tile-eston-ya-pr-509-01.webp" alt="г. Дедовск">
             <div class="marrob-gallery__overlay">
-              <h3 class="marrob-gallery__overlay-title">Частный дом • семь оттенков, золотая кладка PR-509</h3>
-              <p class="marrob-gallery__overlay-location">Москва</p>
+              <h3 class="marrob-gallery__overlay-title">г. Дедовск</h3>
+              <p class="marrob-gallery__overlay-location">МО</p>
             </div>
             <div class="marrob-gallery__maximize">⊕</div>
           </div>
           <div class="marrob-gallery__footer">
-            <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__card-title">Частный дом • семь оттенков, золотая кладка PR-509</span>
+            <span class="marrob-gallery__badge-area">195 м²</span>
+            <span class="marrob-gallery__card-title">г. Дедовск</span>
           </div>
         </div>
         <div class="marrob-gallery__card is-visible">
-          <div class="marrob-gallery__item" data-src="projects/moscow/03/brickstyle-baker-street-beige-kiev-pr-514-01.webp" data-caption="Частный дом • Brickstyle Baker Street беж PR-514 — фасадные термопанели MARROB">
-            <img src="projects/moscow/03/brickstyle-baker-street-beige-kiev-pr-514-01.webp" alt="Baker Street беж PR-514">
+          <div class="marrob-gallery__item" data-src="projects/moscow/03/brickstyle-baker-street-beige-kiev-pr-514-01.webp" data-caption="г. Красногорск — фасадные термопанели MARROB">
+            <img src="projects/moscow/03/brickstyle-baker-street-beige-kiev-pr-514-01.webp" alt="г. Красногорск">
             <div class="marrob-gallery__overlay">
-              <h3 class="marrob-gallery__overlay-title">Частный дом • Brickstyle Baker Street беж PR-514</h3>
-              <p class="marrob-gallery__overlay-location">Москва</p>
+              <h3 class="marrob-gallery__overlay-title">г. Красногорск</h3>
+              <p class="marrob-gallery__overlay-location">МО</p>
             </div>
             <div class="marrob-gallery__maximize">⊕</div>
           </div>
           <div class="marrob-gallery__footer">
-            <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__card-title">Частный дом • Brickstyle Baker Street беж PR-514</span>
+            <span class="marrob-gallery__badge-area">310 м²</span>
+            <span class="marrob-gallery__card-title">г. Красногорск</span>
           </div>
         </div>
         <div class="marrob-gallery__card is-visible">
-          <div class="marrob-gallery__item" data-src="projects/moscow/04/loft-brick-chilli-serrad-s-kryukivshchina-pr-511-01.webp" data-caption="Частный дом • Loft brick chilli PR-511 — фасадные термопанели MARROB">
-            <img src="projects/moscow/04/loft-brick-chilli-serrad-s-kryukivshchina-pr-511-01.webp" alt="Loft brick chilli PR-511">
+          <div class="marrob-gallery__item" data-src="projects/moscow/04/loft-brick-chilli-serrad-s-kryukivshchina-pr-511-08.webp" data-caption="г. Химки — фасадные термопанели MARROB">
+            <img src="projects/moscow/04/loft-brick-chilli-serrad-s-kryukivshchina-pr-511-08.webp" alt="г. Химки">
             <div class="marrob-gallery__overlay">
-              <h3 class="marrob-gallery__overlay-title">Частный дом • Loft brick chilli PR-511</h3>
-              <p class="marrob-gallery__overlay-location">Москва</p>
+              <h3 class="marrob-gallery__overlay-title">г. Химки</h3>
+              <p class="marrob-gallery__overlay-location">МО</p>
             </div>
             <div class="marrob-gallery__maximize">⊕</div>
           </div>
           <div class="marrob-gallery__footer">
-            <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__card-title">Частный дом • Loft brick chilli PR-511</span>
+            <span class="marrob-gallery__badge-area">285 м²</span>
+            <span class="marrob-gallery__card-title">г. Химки</span>
           </div>
         </div>
         <div class="marrob-gallery__card is-visible">
-          <div class="marrob-gallery__item" data-src="projects/moscow/05/brickstyle-london-dymny-lviv-pr-516-01-scaled.webp" data-caption="Частный дом • Brickstyle London дымный PR-516 — фасадные термопанели MARROB">
-            <img src="projects/moscow/05/brickstyle-london-dymny-lviv-pr-516-01-scaled.webp" alt="London дымный PR-516">
+          <div class="marrob-gallery__item" data-src="projects/moscow/05/brickstyle-london-dymny-lviv-pr-516-01-scaled.webp" data-caption="г. Одинцово — фасадные термопанели MARROB">
+            <img src="projects/moscow/05/brickstyle-london-dymny-lviv-pr-516-01-scaled.webp" alt="г. Одинцово">
             <div class="marrob-gallery__overlay">
-              <h3 class="marrob-gallery__overlay-title">Частный дом • Brickstyle London дымный PR-516</h3>
-              <p class="marrob-gallery__overlay-location">Москва</p>
+              <h3 class="marrob-gallery__overlay-title">г. Одинцово</h3>
+              <p class="marrob-gallery__overlay-location">МО</p>
             </div>
             <div class="marrob-gallery__maximize">⊕</div>
           </div>
           <div class="marrob-gallery__footer">
-            <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__card-title">Частный дом • Brickstyle London дымный PR-516</span>
+            <span class="marrob-gallery__badge-area">240 м²</span>
+            <span class="marrob-gallery__card-title">г. Одинцово</span>
           </div>
         </div>
         <div class="marrob-gallery__card is-visible">
-          <div class="marrob-gallery__item" data-src="projects/moscow/06/porti-beige-paradyz-lvivska-obl-pr-505-01.webp" data-caption="Частный дом • Porti beige Paradyz PR-505 — фасадные термопанели MARROB">
-            <img src="projects/moscow/06/porti-beige-paradyz-lvivska-obl-pr-505-01.webp" alt="Porti beige PR-505">
+          <div class="marrob-gallery__item" data-src="projects/moscow/06/porti-beige-paradyz-lvivska-obl-pr-505-01.webp" data-caption="г. Мытищи — фасадные термопанели MARROB">
+            <img src="projects/moscow/06/porti-beige-paradyz-lvivska-obl-pr-505-01.webp" alt="г. Мытищи">
             <div class="marrob-gallery__overlay">
-              <h3 class="marrob-gallery__overlay-title">Частный дом • Porti beige Paradyz PR-505</h3>
-              <p class="marrob-gallery__overlay-location">Москва</p>
+              <h3 class="marrob-gallery__overlay-title">г. Мытищи</h3>
+              <p class="marrob-gallery__overlay-location">МО</p>
             </div>
             <div class="marrob-gallery__maximize">⊕</div>
           </div>
           <div class="marrob-gallery__footer">
-            <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__card-title">Частный дом • Porti beige Paradyz PR-505</span>
+            <span class="marrob-gallery__badge-area">268 м²</span>
+            <span class="marrob-gallery__card-title">г. Мытищи</span>
           </div>
         </div>
         <div class="marrob-gallery__card">
-          <div class="marrob-gallery__item" data-src="projects/moscow/07/cerrad-loft-brick-curry-vovchinets-pr-244-03.jpg" data-caption="Частный дом • Cerrad Loft brick curry PR-244 — фасадные термопанели MARROB">
-            <img src="projects/moscow/07/cerrad-loft-brick-curry-vovchinets-pr-244-03.jpg" alt="Loft brick curry PR-244">
+          <div class="marrob-gallery__item" data-src="projects/moscow/07/cerrad-loft-brick-curry-vovchinets-pr-244-10-scaled.webp" data-caption="г. Балашиха — фасадные термопанели MARROB">
+            <img src="projects/moscow/07/cerrad-loft-brick-curry-vovchinets-pr-244-10-scaled.webp" alt="г. Балашиха">
             <div class="marrob-gallery__overlay">
-              <h3 class="marrob-gallery__overlay-title">Частный дом • Cerrad Loft brick curry PR-244</h3>
-              <p class="marrob-gallery__overlay-location">Москва</p>
+              <h3 class="marrob-gallery__overlay-title">г. Балашиха</h3>
+              <p class="marrob-gallery__overlay-location">МО</p>
             </div>
             <div class="marrob-gallery__maximize">⊕</div>
           </div>
           <div class="marrob-gallery__footer">
-            <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__card-title">Частный дом • Cerrad Loft brick curry PR-244</span>
+            <span class="marrob-gallery__badge-area">190 м²</span>
+            <span class="marrob-gallery__card-title">г. Балашиха</span>
           </div>
         </div>
         <div class="marrob-gallery__card">
-          <div class="marrob-gallery__item" data-src="projects/moscow/08/backer-street-beige-lithuania-pr-230-01.jpg" data-caption="Частный дом • Baker Street беж PR-230 — фасадные термопанели MARROB">
-            <img src="projects/moscow/08/backer-street-beige-lithuania-pr-230-01.jpg" alt="Baker Street беж PR-230">
+          <div class="marrob-gallery__item" data-src="projects/moscow/08/backer-street-beige-lithuania-pr-230-01.jpg" data-caption="Ленинский г.о. — фасадные термопанели MARROB">
+            <img src="projects/moscow/08/backer-street-beige-lithuania-pr-230-01.jpg" alt="Ленинский г.о.">
             <div class="marrob-gallery__overlay">
-              <h3 class="marrob-gallery__overlay-title">Частный дом • Baker Street беж PR-230</h3>
-              <p class="marrob-gallery__overlay-location">Москва</p>
+              <h3 class="marrob-gallery__overlay-title">Ленинский г.о.</h3>
+              <p class="marrob-gallery__overlay-location">МО</p>
             </div>
             <div class="marrob-gallery__maximize">⊕</div>
           </div>
           <div class="marrob-gallery__footer">
-            <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__card-title">Частный дом • Baker Street беж PR-230</span>
+            <span class="marrob-gallery__badge-area">205 м²</span>
+            <span class="marrob-gallery__card-title">Ленинский г.о.</span>
           </div>
         </div>
         <div class="marrob-gallery__card">
-          <div class="marrob-gallery__item" data-src="projects/moscow/09/seven-tones-orange-ivanofrankivsk-pr-227-01.jpg" data-caption="Частный дом • Seven tones orange PR-227 — фасадные термопанели MARROB">
-            <img src="projects/moscow/09/seven-tones-orange-ivanofrankivsk-pr-227-01.jpg" alt="Seven tones PR-227">
+          <div class="marrob-gallery__item" data-src="projects/moscow/09/seven-tones-orange-ivanofrankivsk-pr-227-01.jpg" data-caption="г. Долгопрудный — фасадные термопанели MARROB">
+            <img src="projects/moscow/09/seven-tones-orange-ivanofrankivsk-pr-227-01.jpg" alt="г. Долгопрудный">
             <div class="marrob-gallery__overlay">
-              <h3 class="marrob-gallery__overlay-title">Частный дом • Seven tones orange PR-227</h3>
-              <p class="marrob-gallery__overlay-location">Москва</p>
+              <h3 class="marrob-gallery__overlay-title">г. Долгопрудный</h3>
+              <p class="marrob-gallery__overlay-location">МО</p>
             </div>
             <div class="marrob-gallery__maximize">⊕</div>
           </div>
           <div class="marrob-gallery__footer">
-            <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__card-title">Частный дом • Seven tones orange PR-227</span>
+            <span class="marrob-gallery__badge-area">178 м²</span>
+            <span class="marrob-gallery__card-title">г. Долгопрудный</span>
           </div>
         </div>
         <div class="marrob-gallery__card">
-          <div class="marrob-gallery__item" data-src="projects/moscow/10/viano-beige-elewaciya-odesa-pr-225-01.jpg" data-caption="Частный дом • Viano beige фасад PR-225 — фасадные термопанели MARROB">
-            <img src="projects/moscow/10/viano-beige-elewaciya-odesa-pr-225-01.jpg" alt="Viano beige PR-225">
+          <div class="marrob-gallery__item" data-src="projects/moscow/10/viano-beige-elewaciya-odesa-pr-225-01.jpg" data-caption="г. Люберцы — фасадные термопанели MARROB">
+            <img src="projects/moscow/10/viano-beige-elewaciya-odesa-pr-225-01.jpg" alt="г. Люберцы">
             <div class="marrob-gallery__overlay">
-              <h3 class="marrob-gallery__overlay-title">Частный дом • Viano beige фасад PR-225</h3>
-              <p class="marrob-gallery__overlay-location">Москва</p>
+              <h3 class="marrob-gallery__overlay-title">г. Люберцы</h3>
+              <p class="marrob-gallery__overlay-location">МО</p>
             </div>
             <div class="marrob-gallery__maximize">⊕</div>
           </div>
           <div class="marrob-gallery__footer">
-            <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__card-title">Частный дом • Viano beige фасад PR-225</span>
+            <span class="marrob-gallery__badge-area">320 м²</span>
+            <span class="marrob-gallery__card-title">г. Люберцы</span>
           </div>
         </div>
         <div class="marrob-gallery__card">
-          <div class="marrob-gallery__item" data-src="projects/moscow/12/aria-rustica-hf21-sokilniki-pr-221-01.jpg" data-caption="Частный дом • Aria rustica HF21 PR-221 — фасадные термопанели MARROB">
-            <img src="projects/moscow/12/aria-rustica-hf21-sokilniki-pr-221-01.jpg" alt="Aria rustica PR-221">
+          <div class="marrob-gallery__item" data-src="projects/moscow/12/aria-rustica-hf21-sokilniki-pr-221-01.jpg" data-caption="Чеховский район — фасадные термопанели MARROB">
+            <img src="projects/moscow/12/aria-rustica-hf21-sokilniki-pr-221-01.jpg" alt="Чеховский район">
             <div class="marrob-gallery__overlay">
-              <h3 class="marrob-gallery__overlay-title">Частный дом • Aria rustica HF21 PR-221</h3>
-              <p class="marrob-gallery__overlay-location">Москва</p>
+              <h3 class="marrob-gallery__overlay-title">Чеховский район</h3>
+              <p class="marrob-gallery__overlay-location">МО</p>
             </div>
             <div class="marrob-gallery__maximize">⊕</div>
           </div>
           <div class="marrob-gallery__footer">
-            <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__card-title">Частный дом • Aria rustica HF21 PR-221</span>
+            <span class="marrob-gallery__badge-area">225 м²</span>
+            <span class="marrob-gallery__card-title">Чеховский район</span>
           </div>
         </div>
         <div class="marrob-gallery__card">
-          <div class="marrob-gallery__item" data-src="projects/moscow/13/loft-brick-chilly-otopeni-rumunia-pr-216-01.jpg" data-caption="Частный дом • Loft brick chilly PR-216 — фасадные термопанели MARROB">
-            <img src="projects/moscow/13/loft-brick-chilly-otopeni-rumunia-pr-216-01.jpg" alt="Loft brick chilly PR-216">
+          <div class="marrob-gallery__item" data-src="projects/moscow/13/loft-brick-chilly-otopeni-rumunia-pr-216-01.jpg" data-caption="г. Сергиев Посад — фасадные термопанели MARROB">
+            <img src="projects/moscow/13/loft-brick-chilly-otopeni-rumunia-pr-216-01.jpg" alt="г. Сергиев Посад">
             <div class="marrob-gallery__overlay">
-              <h3 class="marrob-gallery__overlay-title">Частный дом • Loft brick chilly PR-216</h3>
-              <p class="marrob-gallery__overlay-location">Москва</p>
+              <h3 class="marrob-gallery__overlay-title">г. Сергиев Посад</h3>
+              <p class="marrob-gallery__overlay-location">МО</p>
             </div>
             <div class="marrob-gallery__maximize">⊕</div>
           </div>
           <div class="marrob-gallery__footer">
-            <span class="marrob-gallery__badge-area">—</span>
-            <span class="marrob-gallery__card-title">Частный дом • Loft brick chilly PR-216</span>
+            <span class="marrob-gallery__badge-area">195 м²</span>
+            <span class="marrob-gallery__card-title">г. Сергиев Посад</span>
           </div>
         </div>
       </div>
@@ -2693,7 +2416,7 @@
         </div>
         <div class="marrob-review-card marrob-fade-up marrob-fade-up-delay-1">
           <div class="marrob-review-card__video">
-            <img src="projects/moscow/04/loft-brick-chilli-serrad-s-kryukivshchina-pr-511-01.webp" alt="Фасад Loft brick — портфолио MARROB" loading="lazy" decoding="async">
+            <img src="projects/moscow/04/loft-brick-chilli-serrad-s-kryukivshchina-pr-511-11.webp" alt="Фасад Loft brick — портфолио MARROB" loading="lazy" decoding="async">
           </div>
           <div class="marrob-review-card__content">
             <div class="marrob-review-card__stars" aria-hidden="true">★★★★★</div>
@@ -2748,51 +2471,171 @@
   .marrob-review-card__author span { font-size: 0.8125rem; color: var(--marrob-text-light); }
 </style>
 
-<!-- MARROB — Блок 12: Сертификаты и документы.
-     На Tilda: загрузите 4 изображения в Медиабиблиотеку, замените src ниже на полные URL (например https://static.tildacdn.com/...). -->
+<!-- MARROB — Блок 12: Сертификаты. Клик открывает просмотр (как на kimi2). Замените src на URL из Медиабиблиотеки Tilda. -->
 <div class="marrob-block marrob-block-certs" id="certs">
   <section class="marrob-certs">
     <div class="marrob-certs__inner">
       <div class="marrob-certs__head">
-        <h2 class="marrob-certs__title marrob-font-display marrob-fade-up">Сертификаты и документы</h2>
-        <p class="marrob-certs__subtitle marrob-fade-up marrob-fade-up-delay-1">Вся продукция MARROB сертифицирована и соответствует ГОСТ</p>
+        <span class="marrob-certs__badge marrob-fade-up">Надёжность</span>
+        <h2 class="marrob-certs__title marrob-font-display marrob-fade-up marrob-fade-up-delay-1">Сертификаты</h2>
+        <p class="marrob-certs__subtitle marrob-fade-up marrob-fade-up-delay-2">Соответствие ГОСТ и современным стандартам качества</p>
       </div>
       <div class="marrob-certs__grid">
-        <div class="marrob-certs__item marrob-fade-up">
-          <img src="assets/certs/cert-thermo-stone.png" alt="Сертификат соответствия на фасадную панель Thermo stone" class="marrob-certs__img" loading="lazy">
-          <p class="marrob-certs__name">Сертификат соответствия «Thermo stone» (Промтехстандарт, до 2026)</p>
-        </div>
-        <div class="marrob-certs__item marrob-fade-up marrob-fade-up-delay-1">
-          <img src="assets/certs/trademark-marrob.png" alt="Свидетельство на товарный знак MARROB" class="marrob-certs__img" loading="lazy">
-          <p class="marrob-certs__name">Свидетельство на товарный знак MARROB (Роспатент, до 2033)</p>
-        </div>
-        <div class="marrob-certs__item marrob-fade-up marrob-fade-up-delay-2">
-          <img src="assets/certs/mosbuild-2023.png" alt="Участник выставки MosBuild 2023" class="marrob-certs__img" loading="lazy">
-          <p class="marrob-certs__name">Участник 28-й Международной выставки MosBuild (28–31.03.2023)</p>
-        </div>
-        <div class="marrob-certs__item marrob-fade-up marrob-fade-up-delay-3">
-          <img src="assets/certs/reestr-vyborklientov-2023.png" alt="Реестр эффективных предприятий и премия Выбор клиентов и партнёров 2023" class="marrob-certs__img" loading="lazy">
+        <button type="button" class="marrob-certs__item marrob-fade-up" data-marrob-cert-open="0" aria-label="Открыть документ">
+          <img src="assets/certs/reestr-vyborklientov-2023.png" alt="" class="marrob-certs__img" loading="lazy">
           <p class="marrob-certs__name">Реестр эффективных предприятий и номинация «Выбор клиентов и партнёров 2023» (топ 4%)</p>
-        </div>
+        </button>
+        <button type="button" class="marrob-certs__item marrob-fade-up marrob-fade-up-delay-1" data-marrob-cert-open="1" aria-label="Открыть документ">
+          <img src="assets/certs/trademark-marrob.png" alt="" class="marrob-certs__img" loading="lazy">
+          <p class="marrob-certs__name">Свидетельство на товарный знак MARROB (Роспатент, до 2033)</p>
+        </button>
+        <button type="button" class="marrob-certs__item marrob-fade-up marrob-fade-up-delay-2" data-marrob-cert-open="2" aria-label="Открыть документ">
+          <img src="assets/certs/mosbuild-2023.png" alt="" class="marrob-certs__img" loading="lazy">
+          <p class="marrob-certs__name">Участник 28-й Международной выставки MosBuild (28–31.03.2023)</p>
+        </button>
+        <button type="button" class="marrob-certs__item marrob-fade-up marrob-fade-up-delay-3" data-marrob-cert-open="3" aria-label="Открыть документ">
+          <img src="assets/certs/cert-thermo-stone.png" alt="" class="marrob-certs__img" loading="lazy">
+          <p class="marrob-certs__name">Сертификат соответствия «Thermo stone» (Промтехстандарт, до 2026)</p>
+        </button>
       </div>
     </div>
   </section>
+  <div class="marrob-certs-modal" id="marrob-certs-modal" role="dialog" aria-modal="true" aria-labelledby="marrob-certs-modal-title" hidden>
+    <div class="marrob-certs-modal__backdrop" id="marrob-certs-modal-backdrop"></div>
+    <div class="marrob-certs-modal__panel">
+      <button type="button" class="marrob-certs-modal__close" id="marrob-certs-modal-close" aria-label="Закрыть">&times;</button>
+      <div class="marrob-certs-modal__body">
+        <img src="" alt="" class="marrob-certs-modal__img" id="marrob-certs-modal-img" width="800" height="1000">
+        <p class="marrob-certs-modal__caption" id="marrob-certs-modal-title"></p>
+      </div>
+    </div>
+  </div>
 </div>
 <style>
   .marrob-block-certs { background: var(--marrob-bg-card); position: relative; border-top: 1px solid var(--marrob-border); }
   .marrob-certs { padding: 80px 24px; font-family: var(--marrob-font-body); }
   .marrob-certs__inner { max-width: 1280px; margin: 0 auto; }
   .marrob-certs__head { text-align: center; margin-bottom: 48px; }
+  .marrob-certs__badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(196, 92, 62, 0.1);
+    color: var(--marrob-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 999px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
   .marrob-certs__title { font-size: 1.75rem; font-weight: 600; color: var(--marrob-text); margin: 0 0 12px; }
   @media (min-width: 768px) { .marrob-certs__title { font-size: 2.25rem; } }
   .marrob-certs__subtitle { font-size: 1.0625rem; color: var(--marrob-text-muted); margin: 0; }
   .marrob-certs__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
   @media (min-width: 768px) { .marrob-certs__grid { grid-template-columns: repeat(4, 1fr); gap: 32px; } }
-  .marrob-certs__item { text-align: center; }
+  .marrob-certs__item {
+    text-align: center;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    width: 100%;
+  }
+  .marrob-certs__item:focus-visible {
+    outline: 2px solid var(--marrob-primary);
+    outline-offset: 4px;
+    border-radius: 8px;
+  }
   .marrob-certs__img { width: 100%; max-width: 240px; height: auto; border: 1px solid var(--marrob-border); border-radius: 4px; box-shadow: var(--marrob-shadow); margin: 0 auto 16px; display: block; transition: transform 0.3s, box-shadow 0.3s; }
-  .marrob-certs__img:hover { transform: translateY(-4px); box-shadow: var(--marrob-shadow-hover); }
+  .marrob-certs__item:hover .marrob-certs__img { transform: translateY(-4px); box-shadow: var(--marrob-shadow-hover); }
   .marrob-certs__name { font-size: 0.875rem; color: var(--marrob-text-muted); line-height: 1.4; margin: 0; }
+  .marrob-certs-modal { position: fixed; inset: 0; z-index: 10050; display: flex; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box; }
+  .marrob-certs-modal[hidden] { display: none !important; }
+  .marrob-certs-modal__backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.55); }
+  .marrob-certs-modal__panel {
+    position: relative;
+    z-index: 1;
+    max-width: min(920px, 96vw);
+    max-height: min(90vh, 900px);
+    background: #fff;
+    border-radius: var(--marrob-radius-lg);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+    overflow: auto;
+    padding: 48px 20px 24px;
+  }
+  .marrob-certs-modal__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 999px;
+    background: #f3f3f3;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--marrob-text);
+  }
+  .marrob-certs-modal__close:hover { background: #e8e8e8; }
+  .marrob-certs-modal__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: min(72vh, 720px);
+    object-fit: contain;
+    margin: 0 auto;
+  }
+  .marrob-certs-modal__caption {
+    margin: 16px 8px 0;
+    text-align: center;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--marrob-text);
+    line-height: 1.45;
+  }
 </style>
+<script>
+(function () {
+  var items = document.querySelectorAll('[data-marrob-cert-open]');
+  var modal = document.getElementById('marrob-certs-modal');
+  if (!modal || !items.length) return;
+  var backdrop = document.getElementById('marrob-certs-modal-backdrop');
+  var closeBtn = document.getElementById('marrob-certs-modal-close');
+  var imgEl = document.getElementById('marrob-certs-modal-img');
+  var capEl = document.getElementById('marrob-certs-modal-title');
+  function openModal(idx) {
+    var btn = document.querySelector('[data-marrob-cert-open="' + idx + '"]');
+    if (!btn) return;
+    var im = btn.querySelector('.marrob-certs__img');
+    var cap = btn.querySelector('.marrob-certs__name');
+    if (im) {
+      imgEl.src = im.getAttribute('src') || '';
+      imgEl.alt = cap ? cap.textContent.trim() : '';
+    }
+    capEl.textContent = cap ? cap.textContent.trim() : '';
+    modal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+    imgEl.removeAttribute('src');
+  }
+  items.forEach(function (el) {
+    el.addEventListener('click', function () {
+      openModal(el.getAttribute('data-marrob-cert-open'));
+    });
+  });
+  if (backdrop) backdrop.addEventListener('click', closeModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.hasAttribute('hidden')) closeModal();
+  });
+})();
+</script>
 
 <!-- MARROB — Блок 8: Specs. Шапка, полноширинная схема панели, три колонки характеристик. -->
 <div class="marrob-block marrob-block-specs" id="specs">
@@ -2875,9 +2718,17 @@
     display: block;
     width: 100%;
     height: auto;
-    max-height: min(420px, 55vh);
+    max-height: min(360px, 48vh);
     object-fit: contain;
     margin: 0 auto;
+    transform: scale(0.88);
+    transform-origin: center center;
+  }
+  @media (min-width: 768px) {
+    .marrob-specs__diagram img {
+      max-height: min(380px, 50vh);
+      transform: scale(0.9);
+    }
   }
   .marrob-specs__section-badge {
     display: inline-block;
@@ -3436,413 +3287,6 @@
   }
 </style>
 
-<!-- MARROB — Блок 11: CTA / Form. TiltCard на форме, badge, blob. -->
-<div class="marrob-block marrob-block-cta" id="lead-calc">
-  <section class="marrob-cta">
-    <div class="marrob-blob marrob-blob--sm marrob-blob--accent marrob-blob--br"></div>
-    <div class="marrob-cta__inner">
-      <div class="marrob-cta__content">
-        <span class="marrob-cta__badge marrob-fade-up">Бесплатный расчёт</span>
-        <h2 class="marrob-cta__title marrob-font-display">
-          Получите индивидуальный расчёт фасадной системы
-        </h2>
-        <p class="marrob-cta__text">
-          Бесплатно подготовим расчёт объёма панелей и ориентировочную стоимость. Консультация специалиста без обязательств.
-        </p>
-        <ul class="marrob-cta__list">
-          <li>Расчёт за 24 часа</li>
-          <li>Подбор оптимальной коллекции</li>
-          <li>Без навязчивых продаж</li>
-        </ul>
-        <p class="marrob-cta__consult-note">
-          <span class="marrob-cta__consult-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
-          Консультирует инженер по фасадным системам
-        </p>
-      </div>
-      <div class="marrob-cta__form-wrap">
-        <form class="marrob-cta__form" id="marrob-lead-form" novalidate>
-          <p class="marrob-cta__form-label">Что вас интересует?</p>
-          <div class="marrob-cta__radio-group">
-            <label class="marrob-cta__radio">
-              <input type="radio" name="marrob-type" value="facade" checked>
-              <span class="marrob-cta__radio-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
-              <span>Фасад под ключ</span>
-            </label>
-            <label class="marrob-cta__radio">
-              <input type="radio" name="marrob-type" value="panels">
-              <span class="marrob-cta__radio-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>
-              <span>Покупка панелей</span>
-            </label>
-          </div>
-          <p class="marrob-cta__discount-badge">Скидка 10% при заказе монтажа</p>
-          <label class="marrob-cta__field">
-            <span class="marrob-cta__field-label">Имя</span>
-            <div class="marrob-cta__input-wrap">
-              <span class="marrob-cta__input-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
-              <input type="text" name="name" placeholder="Ваше имя" class="marrob-cta__input">
-            </div>
-          </label>
-          <label class="marrob-cta__field">
-            <span class="marrob-cta__field-label">Телефон <em>*</em></span>
-            <div class="marrob-cta__input-wrap">
-              <span class="marrob-cta__input-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-              <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" class="marrob-cta__input" required id="marrob-phone" aria-describedby="marrob-phone-error" aria-invalid="false">
-            </div>
-            <span class="marrob-cta__error" id="marrob-phone-error" role="alert" aria-live="polite"></span>
-          </label>
-          <label class="marrob-cta__field">
-            <span class="marrob-cta__field-label">Город / регион</span>
-            <div class="marrob-cta__input-wrap">
-              <span class="marrob-cta__input-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-              <input type="text" name="city" placeholder="Москва" class="marrob-cta__input">
-            </div>
-          </label>
-          <label class="marrob-cta__field">
-            <span class="marrob-cta__field-label">Площадь фасада (м²)</span>
-            <div class="marrob-cta__input-wrap">
-              <span class="marrob-cta__input-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
-              <input type="number" name="area" placeholder="Например, 150" class="marrob-cta__input" min="1" step="1">
-            </div>
-          </label>
-          <button type="submit" class="marrob-cta__submit">Получить расчёт за 24 часа</button>
-          <p class="marrob-cta__disclaimer">Мы свяжемся с вами для уточнения параметров. Без навязчивых продаж.</p>
-        </form>
-        <div class="marrob-cta__success" id="marrob-form-success" hidden>
-          <p class="marrob-cta__success-title">Заявка успешно отправлена!</p>
-          <p class="marrob-cta__success-text">Мы свяжемся с вами в ближайшее время.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-<style>
-  .marrob-block-cta { background: var(--marrob-bg); position: relative; overflow: hidden; }
-  .marrob-cta {
-    padding: 80px 24px;
-    font-family: var(--marrob-font-body);
-    position: relative;
-    z-index: 1;
-  }
-  .marrob-cta__inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 48px;
-    align-items: start;
-  }
-  @media (min-width: 1024px) {
-    .marrob-cta__inner { grid-template-columns: 1fr 1fr; gap: 64px; }
-  }
-  .marrob-cta__badge {
-    display: inline-block;
-    padding: 8px 16px;
-    background: rgba(196, 92, 62, 0.1);
-    color: var(--marrob-primary);
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: 999px;
-    margin-bottom: 20px;
-  }
-  .marrob-cta__title {
-    font-size: 1.75rem;
-    line-height: 1.25;
-    font-weight: 600;
-    color: var(--marrob-text);
-    margin: 0 0 16px;
-  }
-  @media (min-width: 768px) {
-    .marrob-cta__title { font-size: 2.25rem; }
-  }
-  .marrob-cta__title .marrob-cta__title-accent { color: var(--marrob-primary); }
-  .marrob-cta__text {
-    font-size: 1.0625rem;
-    color: var(--marrob-text-muted);
-    line-height: 1.6;
-    margin: 0 0 24px;
-  }
-  .marrob-cta__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .marrob-cta__list li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 0.9375rem;
-    color: var(--marrob-text-muted);
-    margin-bottom: 12px;
-  }
-  .marrob-cta__list li::before {
-    content: '';
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: rgba(45, 138, 94, 0.2);
-    flex-shrink: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232D8A5E' stroke-width='2'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  .marrob-cta__consult-note {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 24px;
-    padding: 10px 16px;
-    background: rgba(196, 92, 62, 0.08);
-    border: 1px solid rgba(196, 92, 62, 0.2);
-    border-radius: var(--marrob-radius);
-    font-size: 0.875rem;
-    color: var(--marrob-text-muted);
-  }
-  .marrob-cta__consult-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--marrob-primary);
-    flex-shrink: 0;
-  }
-  .marrob-cta__form-wrap {
-    background: var(--marrob-bg-card);
-    border: 1px solid var(--marrob-border);
-    border-radius: var(--marrob-radius-lg);
-    padding: 32px 24px;
-    box-shadow: var(--marrob-shadow);
-  }
-  .marrob-cta__form-label {
-    font-size: 0.9375rem;
-    font-weight: 500;
-    color: var(--marrob-text-muted);
-    margin: 0 0 12px;
-  }
-  .marrob-cta__radio-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-  .marrob-cta__radio {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    border: 2px solid var(--marrob-border);
-    border-radius: var(--marrob-radius);
-    background: var(--marrob-bg);
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .marrob-cta__radio input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-  }
-  .marrob-cta__radio input:checked + .marrob-cta__radio-icon,
-  .marrob-cta__radio input:checked + .marrob-cta__radio-icon + span {
-    color: var(--marrob-primary);
-  }
-  .marrob-cta__radio input:checked + .marrob-cta__radio-icon + span {
-    font-weight: 600;
-  }
-  .marrob-cta__radio:has(input:checked) {
-    border-color: var(--marrob-primary);
-    background: rgba(196, 92, 62, 0.06);
-  }
-  .marrob-cta__radio-icon {
-    display: block;
-    width: 24px;
-    height: 24px;
-    margin-bottom: 8px;
-    color: var(--marrob-text-muted);
-  }
-  .marrob-cta__radio-icon svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-  .marrob-cta__radio span:last-child {
-    font-size: 0.9375rem;
-    color: var(--marrob-text-muted);
-  }
-  .marrob-cta__discount-badge {
-    margin: 0 0 20px;
-    padding: 10px 16px;
-    background: linear-gradient(135deg, rgba(45,138,94,0.12), rgba(45,138,94,0.06));
-    border: 1px solid rgba(45,138,94,0.25);
-    border-radius: var(--marrob-radius);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--marrob-accent);
-    text-align: center;
-  }
-  .marrob-cta__field {
-    display: block;
-    margin-bottom: 20px;
-  }
-  .marrob-cta__field-label {
-    display: block;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    color: var(--marrob-text-muted);
-    margin-bottom: 8px;
-  }
-  .marrob-cta__field-label em { color: var(--marrob-primary); }
-  .marrob-cta__input-wrap {
-    position: relative;
-  }
-  .marrob-cta__input-icon {
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    color: var(--marrob-text-muted);
-    pointer-events: none;
-    z-index: 1;
-  }
-  .marrob-cta__input-icon svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-  .marrob-cta__input {
-    width: 100%;
-    padding: 14px 16px 14px 44px;
-    font-size: 1rem;
-    font-family: inherit;
-    color: var(--marrob-text);
-    background: var(--marrob-bg);
-    border: 1px solid var(--marrob-border);
-    border-radius: 10px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    box-sizing: border-box;
-  }
-  .marrob-cta__input:focus {
-    outline: none;
-    border-color: var(--marrob-primary);
-    box-shadow: 0 0 0 3px rgba(196, 92, 62, 0.15);
-  }
-  .marrob-cta__input.error {
-    border-color: #c53030;
-  }
-  .marrob-cta__error {
-    display: block;
-    font-size: 0.8125rem;
-    color: #c53030;
-    margin-top: 6px;
-  }
-  .marrob-cta__submit {
-    width: 100%;
-    padding: 18px 24px;
-    font-size: 1.0625rem;
-    font-weight: 600;
-    font-family: inherit;
-    color: #fff;
-    background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
-    border: none;
-    border-radius: var(--marrob-radius);
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.3s;
-    margin-top: 8px;
-    margin-bottom: 16px;
-  }
-  .marrob-cta__submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(196, 92, 62, 0.35);
-  }
-  .marrob-cta__submit:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none;
-  }
-  .marrob-cta__disclaimer {
-    font-size: 0.8125rem;
-    color: var(--marrob-text-light);
-    text-align: center;
-    margin: 0;
-  }
-  .marrob-cta__success {
-    text-align: center;
-    padding: 24px;
-  }
-  .marrob-cta__success-title {
-    font-family: var(--marrob-font-display);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--marrob-text);
-    margin: 0 0 12px;
-  }
-  .marrob-cta__success-text {
-    font-size: 0.9375rem;
-    color: var(--marrob-text-muted);
-    margin: 0;
-  }
-</style>
-<script>
-(function() {
-  var form = document.getElementById('marrob-lead-form');
-  var phoneInput = document.getElementById('marrob-phone');
-  var phoneError = document.getElementById('marrob-phone-error');
-  var successBlock = document.getElementById('marrob-form-success');
-  if (!form || !phoneInput) return;
-
-  function maskPhone(el) {
-    var v = el.value.replace(/\D/g, '');
-    if (v.length > 0) {
-      if (v[0] === '8' || v[0] === '7') v = v.substring(1);
-      var r = '+7';
-      if (v.length > 0) r += ' (' + v.substring(0, 3);
-      if (v.length >= 3) r += ') ' + v.substring(3, 6);
-      if (v.length >= 6) r += '-' + v.substring(6, 8);
-      if (v.length >= 8) r += '-' + v.substring(8, 10);
-      el.value = r;
-    }
-  }
-  phoneInput.addEventListener('input', function() {
-    maskPhone(this);
-    this.classList.remove('error');
-    this.removeAttribute('aria-invalid');
-    if (phoneError) phoneError.textContent = '';
-  });
-
-  function getDigits(s) {
-    return (s || '').replace(/\D/g, '');
-  }
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    var phone = getDigits(phoneInput.value);
-    var valid = phone.length >= 10;
-    if (!valid) {
-      phoneInput.classList.add('error');
-      phoneInput.setAttribute('aria-invalid', 'true');
-      if (phoneError) phoneError.textContent = 'Введите корректный номер телефона';
-      phoneInput.focus();
-      return;
-    }
-    var btn = form.querySelector('.marrob-cta__submit');
-    if (btn) {
-      btn.disabled = true;
-      btn.textContent = 'Отправка...';
-    }
-    setTimeout(function() {
-      form.style.display = 'none';
-      if (successBlock) {
-        successBlock.hidden = false;
-      }
-      if (btn) {
-        btn.disabled = false;
-        btn.textContent = 'Получить расчёт за 24 часа';
-      }
-    }, 800);
-  });
-})();
-</script>
-
 <!-- MARROB — Блок 14: Как мы работаем. Тёмная полоса: сроки, буллеты, стрелки между шагами, CTA. id="stages" -->
 <div class="marrob-block marrob-block-stages">
   <section id="stages" class="marrob-stages marrob-stages--dark">
@@ -4197,11 +3641,11 @@
       <div class="marrob-contact2__grid">
         <div>
           <div class="marrob-contact2__cards">
-            <a href="tel:+79166662335" class="marrob-contact2__card">
+            <a href="tel:+74996475910" class="marrob-contact2__card">
               <div class="marrob-contact2__card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
               <div>
                 <p class="marrob-contact2__card-label">Телефон</p>
-                <p class="marrob-contact2__card-val">+7 (916) 666-23-35</p>
+                <p class="marrob-contact2__card-val">+7(499)647-59-10</p>
               </div>
             </a>
             <a href="mailto:info@marrob.ru" class="marrob-contact2__card">
@@ -4648,10 +4092,10 @@
             Производитель фасадных термопанелей с облицовкой под натуральный камень. Поставка по РФ. Монтаж — Москва и Московская область.
           </p>
           <div class="marrob-footer__messengers">
-            <a href="https://wa.me/79166662335" target="_blank" rel="noopener noreferrer" class="marrob-footer__msg marrob-footer__msg--wa" title="WhatsApp" aria-label="WhatsApp">
+            <a href="https://wa.me/74996475910" target="_blank" rel="noopener noreferrer" class="marrob-footer__msg marrob-footer__msg--wa" title="WhatsApp" aria-label="WhatsApp">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             </a>
-            <a href="https://t.me/+79166662335" target="_blank" rel="noopener noreferrer" class="marrob-footer__msg marrob-footer__msg--tg" title="Telegram" aria-label="Telegram">
+            <a href="https://t.me/+74996475910" target="_blank" rel="noopener noreferrer" class="marrob-footer__msg marrob-footer__msg--tg" title="Telegram" aria-label="Telegram">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
             </a>
           </div>
@@ -4659,18 +4103,15 @@
         <div class="marrob-footer__nav">
           <h4 class="marrob-footer__heading">Навигация</h4>
           <a href="#about" class="marrob-footer__link">О термопанелях</a>
-          <a href="#benefits" class="marrob-footer__link">Преимущества</a>
           <a href="#catalog" class="marrob-footer__link">Коллекции</a>
           <a href="#gallery" class="marrob-footer__link">Объекты</a>
           <a href="#certs" class="marrob-footer__link">Сертификаты</a>
-          <a href="#specs" class="marrob-footer__link">Параметры</a>
-          <a href="#stages" class="marrob-footer__link">Этапы</a>
           <a href="#contact" class="marrob-footer__link">Контакты</a>
           <a href="/dealers.html" class="marrob-footer__link">Дилерам</a>
         </div>
         <div class="marrob-footer__contacts">
           <h4 class="marrob-footer__heading">Контакты</h4>
-          <a href="tel:+79166662335" class="marrob-footer__contact">+7 (916) 666-23-35</a>
+          <a href="tel:+74996475910" class="marrob-footer__contact">+7(499)647-59-10</a>
           <a href="mailto:info@marrob.ru" class="marrob-footer__contact">info@marrob.ru</a>
           <span class="marrob-footer__contact">МО, Одинцово, ул. Баковская 2А</span>
           <span class="marrob-footer__contact">Пн–Пт: 9:00–18:00</span>
@@ -4831,7 +4272,7 @@
 
 <!-- MARROB — Плавающий виджет WhatsApp / Telegram. -->
 <div class="marrob-messenger-widget" id="marrob-messenger-widget" aria-label="Мессенджеры">
-  <a href="https://wa.me/79166662335" class="marrob-messenger-widget__btn marrob-messenger-widget__btn--wa" target="_blank" rel="noopener noreferrer" title="Написать в WhatsApp">
+  <a href="https://wa.me/74996475910" class="marrob-messenger-widget__btn marrob-messenger-widget__btn--wa" target="_blank" rel="noopener noreferrer" title="Написать в WhatsApp">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
   <a href="https://t.me/marrob" class="marrob-messenger-widget__btn marrob-messenger-widget__btn--tg" target="_blank" rel="noopener noreferrer" title="Написать в Telegram">
@@ -5262,7 +4703,7 @@
 
 <!-- MARROB — Sticky Mobile CTA + Quiz Modal. Подключите после основных блоков. -->
 <div class="marrob-sticky-cta">
-  <a href="https://wa.me/79166662335" class="marrob-sticky-cta__btn marrob-sticky-cta__btn--wa" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
+  <a href="https://wa.me/74996475910" class="marrob-sticky-cta__btn marrob-sticky-cta__btn--wa" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
     WhatsApp
   </a>

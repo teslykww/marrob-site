@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { MenuIcon, XIcon, PhoneIcon } from '../components/icons/BuildingIcons';
+import { handleSectionLinkClick } from '@/lib/scrollToSection';
 
 const Header: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isInnerPage = location.pathname === '/dealers' || location.pathname === '/catalog';
@@ -36,9 +38,9 @@ const Header: React.FC = () => {
             <span>Срок службы панелей 30 лет</span>
           </div>
           <div className="flex items-center gap-6">
-            <a href="tel:+79166662335" className="whitespace-nowrap hover:text-primary transition-colors flex items-center gap-1.5">
+            <a href="tel:+74996475910" className="whitespace-nowrap hover:text-primary transition-colors flex items-center gap-1.5">
               <PhoneIcon size={14} />
-              +7 (916) 666-23-35
+              +7(499)647-59-10
             </a>
             <a href="mailto:info@marrob.ru" className="hover:text-primary transition-colors">
               info@marrob.ru
@@ -66,7 +68,9 @@ const Header: React.FC = () => {
               >
                 <img
                   src={`${import.meta.env.BASE_URL}logo.png`}
-                  alt="MARROB"
+                  alt=""
+                  width={160}
+                  height={44}
                   className="h-10 sm:h-11 w-auto object-contain"
                 />
               </span>
@@ -94,7 +98,13 @@ const Header: React.FC = () => {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-normal transition-colors ${
+                  onClick={(e) =>
+                    handleSectionLinkClick(e, link.href, {
+                      navigate,
+                      location,
+                    })
+                  }
+                  className={`text-base font-normal transition-colors ${
                     headerSolid
                       ? 'text-text-muted hover:text-primary'
                       : 'text-white hover:text-primary-light drop-shadow-[0_1px_2px_rgba(0,0,0,0.85)]'
@@ -105,7 +115,7 @@ const Header: React.FC = () => {
               ))}
               <Link
                 to="/dealers"
-                className={`text-sm font-normal transition-colors ${
+                className={`text-base font-normal transition-colors ${
                   headerSolid
                     ? 'text-text-muted hover:text-primary'
                     : 'text-white hover:text-primary-light drop-shadow-[0_1px_2px_rgba(0,0,0,0.85)]'
@@ -119,7 +129,7 @@ const Header: React.FC = () => {
             <div className="hidden lg:flex items-center">
               {isInnerPage ? (
                 <a
-                  href="tel:+79166662335"
+                  href="tel:+74996475910"
                   className="btn-premium btn-premium--primary text-sm py-3 px-6"
                 >
                   Позвонить
@@ -128,6 +138,12 @@ const Header: React.FC = () => {
                 <a
                   href="#contact"
                   className="btn-premium btn-premium--primary text-sm py-3 px-6"
+                  onClick={(e) =>
+                    handleSectionLinkClick(e, '#contact', {
+                      navigate,
+                      location,
+                    })
+                  }
                 >
                   Заказать звонок
                 </a>
@@ -171,7 +187,13 @@ const Header: React.FC = () => {
                 key={link.href}
                 href={link.href}
                 className="text-lg font-normal text-text py-2 border-b border-border"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={(e) =>
+                  handleSectionLinkClick(e, link.href, {
+                    navigate,
+                    location,
+                    beforeScroll: () => setIsMobileMenuOpen(false),
+                  })
+                }
               >
                 {link.label}
               </a>
@@ -186,15 +208,15 @@ const Header: React.FC = () => {
           </nav>
           <div className="mt-6 pt-6 border-t border-border">
             <a
-              href="tel:+79166662335"
+              href="tel:+74996475910"
               className="flex items-center gap-2 text-lg font-medium text-text mb-4"
             >
               <PhoneIcon size={20} />
-              +7 (916) 666-23-35
+              +7(499)647-59-10
             </a>
             {isInnerPage ? (
               <a
-                href="tel:+79166662335"
+                href="tel:+74996475910"
                 className="btn-premium btn-premium--primary w-full"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -204,7 +226,13 @@ const Header: React.FC = () => {
               <a
                 href="#contact"
                 className="btn-premium btn-premium--primary w-full"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={(e) =>
+                  handleSectionLinkClick(e, '#contact', {
+                    navigate,
+                    location,
+                    beforeScroll: () => setIsMobileMenuOpen(false),
+                  })
+                }
               >
                 Заказать звонок
               </a>

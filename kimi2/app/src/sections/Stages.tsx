@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   CalendarIcon,
   CheckSquareIcon,
@@ -8,6 +9,7 @@ import {
   ChevronDownIcon,
   ArrowUpRightIcon,
 } from '../components/icons/BuildingIcons';
+import { handleSectionLinkClick } from '@/lib/scrollToSection';
 
 const ICON = 22;
 
@@ -25,6 +27,8 @@ type StageItem = {
 };
 
 const Stages: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const stages: StageItem[] = [
     {
       num: '01',
@@ -80,7 +84,7 @@ const Stages: React.FC = () => {
           <span className="mb-4 inline-block rounded-full border border-primary/35 bg-primary/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
             Процесс
           </span>
-          <h2 className="mb-4 font-display text-3xl font-semibold text-white md:text-4xl">
+          <h2 className="type-section-title mb-4 text-white">
             Как мы работаем
           </h2>
           <p className="text-lg text-white/65">От заявки до сдачи объекта под ключ</p>
@@ -110,7 +114,7 @@ const Stages: React.FC = () => {
                   {stage.timeLabel}
                 </div>
 
-                <h3 className="mb-2 font-display text-lg font-semibold leading-snug text-white sm:text-xl">
+                <h3 className="type-card-title mb-2 leading-snug text-white">
                   {stage.title}
                 </h3>
                 <p className="text-sm leading-relaxed text-white/65">{stage.description}</p>
@@ -145,6 +149,12 @@ const Stages: React.FC = () => {
           <a
             href="#contact"
             className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/80 bg-transparent px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+            onClick={(e) =>
+              handleSectionLinkClick(e, '#contact', {
+                navigate,
+                location,
+              })
+            }
           >
             Начать — оставить заявку
             <ArrowUpRightIcon size={18} />

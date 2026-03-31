@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { ChevronRightIcon } from '../components/icons/BuildingIcons';
+import { ChevronRightIcon, XIcon } from '../components/icons/BuildingIcons';
 import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { X } from 'lucide-react';
 import { getGalleryProjects } from '../data/galleryProjects';
 
 const INITIAL_VISIBLE = 6;
@@ -57,10 +56,10 @@ const Gallery: React.FC = () => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="badge-premium mb-4">Портфолио</span>
-          <h2 className="font-display font-semibold text-3xl md:text-4xl text-text mb-4">
+          <h2 className="type-section-title mb-4">
             Дома с фасадами из термопанелей <span className="text-primary">MARROB</span>
           </h2>
-          <p className="text-text-muted text-lg">
+          <p className="type-section-lead mb-4">
             Реальные объекты, реализованные с использованием нашей фасадной системы
           </p>
         </div>
@@ -164,7 +163,7 @@ const Gallery: React.FC = () => {
                 aria-label="Закрыть"
                 className="absolute z-20 flex size-10 items-center justify-center rounded-full bg-white text-text shadow-md ring-1 ring-black/10 transition-colors hover:bg-white/95 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black top-[max(0.75rem,env(safe-area-inset-top))] right-[max(0.75rem,env(safe-area-inset-right))]"
               >
-                <X className="size-5" strokeWidth={2.25} />
+                <XIcon size={20} className="size-5 shrink-0" />
               </DialogClose>
               <div className="aspect-[4/3] lg:aspect-auto lg:h-[520px] relative">
                 <img

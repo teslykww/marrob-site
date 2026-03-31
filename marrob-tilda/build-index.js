@@ -5,7 +5,7 @@ const dir = __dirname;
 const globalContent = fs.readFileSync(path.join(dir, '00-global.html'), 'utf8');
 const blockFiles = [
   '01-header.html', '02-hero.html', '03-problem.html', '04-solution.html',
-  '05-benefits.html', '16-comparison.html', '06-catalog.html', '15-lead-magnet.html', '07-gallery.html', '08-specs.html',
+  '16-comparison.html', '06-catalog.html', '15-lead-magnet.html', '07-gallery.html', '08-specs.html',
   '09-purchase-options.html', '10-trust.html', '11-cta-form.html',
   '13-faq.html', '14-stages.html', '98-widget-messenger.html', '12-footer.html',
   '97-cta-popup.html', '99-scroll-animations.html'
