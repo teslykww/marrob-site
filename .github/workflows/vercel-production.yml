@@ -1,0 +1,42 @@
+# Production-деплой через Vercel CLI (как в https://vercel.com/guides/how-can-i-use-github-actions-with-vercel).
+# Если секреты не заданы — шаги пропускаются, деплой идёт только через интеграцию Vercel ↔ GitHub.
+# Если зададите секреты при уже работающей интеграции Git — получите два деплоя на один push; тогда отключите один из каналов.
+name: Vercel production (CLI)
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: vercel-prod-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Проверка секретов Vercel
+        id: gate
+        run: |
+          if [ -z "${{ secrets.VERCEL_TOKEN }}" ]; then
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Vercel::Пуш в main обрабатывает интеграция Git в Vercel. Чтобы дублировать деплой через Actions, добавьте VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID в GitHub → Settings → Secrets and variables → Actions."
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Установить Vercel CLI
+        if: steps.gate.outputs.run == 'true'
+        run: npm install -g vercel@latest
+
+      - name: Pull, build, deploy (production)
+        if: steps.gate.outputs.run == 'true'
+        working-directory: kimi2/app
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+          vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+          vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}

@@ -1,4 +1,6 @@
-# Сборка на каждый push в main — проверка, что Vercel сможет собрать тот же код.
+# Сборка на каждый push / PR — проверка, что приложение собирается.
+# Автодеплой на Vercel при push в main: Project → Settings → Git → подключить этот репозиторий, Production Branch = main
+# (см. https://vercel.com/docs/deployments/git/vercel-for-github ).
 name: Build kimi2 app
 on:
   push:
