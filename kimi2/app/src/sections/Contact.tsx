@@ -112,7 +112,7 @@ const Contact: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           {/* Contact Info */}
           <div>
-            <div className="space-y-4 mb-8">
+            <div className="space-y-4">
               {contacts.map((contact, index) => (
                 <a
                   key={index}
@@ -134,25 +134,6 @@ const Contact: React.FC = () => {
                   </div>
                 </a>
               ))}
-            </div>
-
-            {/* Working hours */}
-            <div className="bg-white rounded-xl p-6 shadow-premium">
-              <h3 className="type-card-title mb-4">Режим работы</h3>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-text-muted">Понедельник — Пятница</span>
-                  <span className="font-medium text-text">9:00 — 18:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-text-muted">Суббота</span>
-                  <span className="font-medium text-text">10:00 — 15:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-text-muted">Воскресенье</span>
-                  <span className="font-medium text-text-light">Выходной</span>
-                </div>
-              </div>
             </div>
           </div>
 

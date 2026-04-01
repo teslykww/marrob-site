@@ -370,28 +370,28 @@ const DealersPage: React.FC = () => {
       <div className="container-premium relative z-10 pb-12 sm:pb-16 lg:pb-20">
         <section className="relative dealers-stack dealers-reveal">
           <div className="dealers-hero-grid rounded-3xl overflow-hidden bg-text shadow-premium-lg grid lg:grid-cols-[1fr_1.05fr]">
-            <div className="relative z-10 order-2 lg:order-1 px-4 py-6 sm:px-6 sm:py-8 md:p-10 lg:p-14 flex flex-col justify-center bg-gradient-to-br from-bg via-bg to-sand-light/80">
-              <span className="badge-premium mb-3 sm:mb-4 w-fit">Партнёрам</span>
-              <h1 className="dealers-h1 mb-3 sm:mb-4 text-balance">
+            <div className="relative z-10 order-2 lg:order-1 px-4 py-4 sm:px-5 sm:py-5 md:p-6 lg:p-8 flex flex-col justify-center bg-gradient-to-br from-bg via-bg to-sand-light/80">
+              <span className="badge-premium mb-2 sm:mb-3 w-fit text-xs px-2 py-0.5">Партнёрам</span>
+              <h1 className="dealers-h1 mb-2 sm:mb-3 text-balance">
                 Станьте дилером фасадных термопанелей MARROB
               </h1>
-              <p className="dealers-lead mb-5 sm:mb-6 max-w-prose">
+              <p className="dealers-lead mb-3 sm:mb-4 max-w-prose text-sm sm:text-base">
                 Продукт с высоким спросом и маржинальностью. Собственное производство и поддержка партнёров.
               </p>
               <Link
                 to="/"
-                className="inline-flex items-center gap-2 text-sm text-text-muted hover:text-primary transition-colors mb-6 sm:mb-8 w-fit min-h-11"
+                className="inline-flex items-center gap-2 text-sm text-text-muted hover:text-primary transition-colors mb-4 sm:mb-5 w-fit min-h-8"
               >
                 <span className="rotate-180 shrink-0">
                   <ChevronRightIcon size={16} />
                 </span>
                 На главную
               </Link>
-              <ul className="space-y-2 sm:space-y-2.5 mb-6 sm:mb-8 max-w-md">
+              <ul className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-5 max-w-md">
                 {heroPoints.map((line) => (
-                  <li key={line} className="flex items-start gap-2.5 sm:gap-3 text-text-muted text-sm sm:text-base leading-snug sm:leading-normal">
+                  <li key={line} className="flex items-start gap-2 sm:gap-3 text-text-muted text-xs sm:text-sm leading-snug sm:leading-normal">
                     <span className="mt-0.5 text-accent shrink-0">
-                      <CheckCircleIcon size={18} className="sm:w-5 sm:h-5" />
+                      <CheckCircleIcon size={16} className="sm:w-5 sm:h-5" />
                     </span>
                     {line}
                   </li>
@@ -400,13 +400,13 @@ const DealersPage: React.FC = () => {
               <div>
                 <a
                   href="#dealer-form"
-                  className="btn-premium btn-premium--primary btn-premium--shimmer text-sm py-3 px-6 sm:px-8 inline-flex min-h-11"
+                  className="btn-premium btn-premium--primary btn-premium--shimmer text-sm py-2 px-5 sm:py-3 sm:px-8 inline-flex min-h-10"
                 >
                   Получить партнёрскую программу
                 </a>
               </div>
             </div>
-            <div className="dealers-hero-visual relative min-h-[220px] sm:min-h-[280px] lg:min-h-0 order-1 lg:order-2">
+            <div className="dealers-hero-visual relative min-h-[160px] sm:min-h-[220px] lg:min-h-0 order-1 lg:order-2">
               <HeroBackgroundPicture
                 alt="Дом с фасадом из термопанелей MARROB"
                 fetchPriority="low"

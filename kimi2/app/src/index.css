@@ -732,29 +732,35 @@
     }
   }
 
+  /* Герой «Дилерам»: ~65% высоты от прежних min(70svh,520) / min(78svh,600) / 480px — лучше помещается на типовых экранах */
+  .dealers-hero-grid .dealers-h1 {
+    font-size: clamp(1.375rem, 3.4vw, 2.75rem);
+    line-height: 1.12;
+  }
+
   .dealers-hero-grid {
-    min-height: min(70svh, 520px);
+    min-height: min(46svh, 338px);
   }
 
   @media (min-width: 640px) {
     .dealers-hero-grid {
-      min-height: min(78svh, 600px);
+      min-height: min(51svh, 390px);
     }
   }
 
   @media (min-width: 1024px) {
     .dealers-hero-grid {
-      min-height: 480px;
+      min-height: 312px;
     }
   }
 
   @media (orientation: landscape) and (max-height: 500px) {
     .dealers-hero-grid {
-      min-height: min(280px, 88vh);
+      min-height: min(200px, 58vh);
     }
 
     .dealers-hero-visual {
-      min-height: 200px !important;
+      min-height: 160px !important;
     }
   }
 
