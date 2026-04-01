@@ -7,6 +7,41 @@ const path = require('path');
 
 const dir = __dirname;
 const outDir = path.join(dir, 'tilda-export');
+const kimiPublic = path.join(dir, '..', 'kimi2', 'app', 'public');
+
+/** Базовый URL опубликованного лендинга (Vercel / основной домен) — картинки станут абсолютными. */
+function loadPublicBaseUrl() {
+  const env = (process.env.MARROB_PUBLIC_BASE_URL || '').trim();
+  if (env) return env.replace(/\/+$/, '');
+  try {
+    const cfgPath = path.join(dir, 'asset-base.config.json');
+    if (fs.existsSync(cfgPath)) {
+      const j = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
+      const u = (j.publicBaseUrl || '').trim();
+      if (u) return u.replace(/\/+$/, '');
+    }
+  } catch (_) {
+    /* ignore */
+  }
+  return '';
+}
+
+const publicBaseUrl = loadPublicBaseUrl();
+
+/** Подставляет абсолютные URL для src / data-src / fallback в onerror. Уже https:// не трогает. */
+function applyPublicBase(html) {
+  if (!publicBaseUrl) return html;
+  const base = publicBaseUrl.replace(/\/+$/, '');
+  function abs(u) {
+    if (!u || /^https?:\/\//i.test(u) || u.startsWith('data:') || u.startsWith('#')) return u;
+    return `${base}/${u.replace(/^\/+/, '')}`;
+  }
+  let out = html.replace(/\bsrc="([^"]*)"/gi, (_, u) => `src="${abs(u)}"`);
+  out = out.replace(/\bsrc='([^']*)'/gi, (_, u) => `src='${abs(u)}'`);
+  out = out.replace(/\bdata-src="([^"]*)"/gi, (_, u) => `data-src="${abs(u)}"`);
+  out = out.replace(/this\.src='([^']*)'/g, (_, u) => `this.src='${abs(u)}'`);
+  return out;
+}
 
 const globalContent = fs.readFileSync(path.join(dir, '00-global.html'), 'utf8');
 /* Порядок как на сайте kimi2/app: Hero → преимущества (03, 8 карточек) → … → Certs → … → Footer → виджет */
@@ -63,11 +98,27 @@ if (fs.existsSync(imagesSrc) && fs.cpSync) {
   fs.cpSync(imagesSrc, imagesDst, { recursive: true });
 }
 
-// Логотип шапки / плашки галереи (тот же файл, что в kimi2 Header: /logo.png)
-const logoSrc = path.join(dir, '..', 'kimi2', 'app', 'public', 'logo.png');
-const logoDst = path.join(outDir, 'logo.png');
-if (fs.existsSync(logoSrc) && fs.cpSync) {
-  fs.copyFileSync(logoSrc, logoDst);
+// Статика как на Vercel: корень public/ (те же пути, что у React после деплоя)
+function copyFromKimiPublic(rel) {
+  const s = path.join(kimiPublic, rel);
+  const d = path.join(outDir, rel);
+  if (!fs.existsSync(s) || !fs.cpSync) return;
+  const st = fs.statSync(s);
+  if (st.isDirectory()) {
+    fs.cpSync(s, d, { recursive: true });
+  } else {
+    fs.mkdirSync(path.dirname(d), { recursive: true });
+    fs.copyFileSync(s, d);
+  }
+}
+copyFromKimiPublic('logo.png');
+copyFromKimiPublic('hero-bg.png');
+copyFromKimiPublic('solution-scheme.png');
+copyFromKimiPublic('certs');
+
+function readBlockTransformed(fileName) {
+  const raw = fs.readFileSync(path.join(dir, fileName), 'utf8');
+  return applyPublicBase(raw);
 }
 
 // Код для вставки в <head> (Настройки страницы → Дополнительно → Код в <head>)
@@ -77,11 +128,14 @@ fs.writeFileSync(
   headContent,
   'utf8'
 );
+// То же содержимое, ASCII-имя (удобно искать; на Windows кириллица в имени файла путает проводник)
+fs.writeFileSync(path.join(outDir, '00-global.html'), headContent, 'utf8');
 
-// Старые нумерованные HTML от прошлых сборок (смена порядка / исключение блока) — удалить все NN-*.html перед записью.
+// Старые нумерованные HTML от прошлых сборок — удалить блоки 01-…21- перед записью.
+// Не трогаем 00-* (head) и прочие файлы.
 try {
   fs.readdirSync(outDir).forEach((name) => {
-    if (/^\d{2}-.+\.html$/.test(name)) {
+    if (/^\d{2}-.+\.html$/.test(name) && !/^00-/.test(name)) {
       fs.unlinkSync(path.join(outDir, name));
     }
   });
@@ -94,7 +148,7 @@ const outBlockNames = [];
 blockFiles.forEach((f, i) => {
   const num = String(i + 1).padStart(2, '0');
   const base = f.replace(/\.html$/, '');
-  const content = fs.readFileSync(path.join(dir, f), 'utf8');
+  const content = readBlockTransformed(f);
   const outName = num + '-' + base + '.html';
   outBlockNames.push(outName);
   fs.writeFileSync(path.join(outDir, outName), content, 'utf8');
@@ -102,12 +156,12 @@ blockFiles.forEach((f, i) => {
 
 // Все блоки одним файлом — для вставки в один Zero-блок (тест)
 let body = '';
-blockFiles.forEach(f => {
-  body += fs.readFileSync(path.join(dir, f), 'utf8') + '\n';
+blockFiles.forEach((f) => {
+  body += readBlockTransformed(f) + '\n';
 });
 const bodyOnlyBanner = `<!--
   MARROB — это НЕ полная HTML-страница, только фрагменты для <body>.
-  Обязательно: вставьте в <head> страницы содержимое 00-вставьте-в-head.html (шрифты, переменные, базовые стили).
+  Обязательно: вставьте в <head> страницы содержимое 00-global.html или 00-вставьте-в-head.html (одинаковые; шрифты, переменные, базовые стили).
   Полная страница для браузера: полная-страница.html или index.html (DOCTYPE + head + все блоки).
   В этом файле подряд: ${blockFiles.length} блоков (${blockFiles.join(', ')}).
 -->
@@ -137,10 +191,16 @@ fs.writeFileSync(path.join(outDir, 'полная-страница.html'), fullHt
 
 // Страница дилеров
 try {
-  const dealersContent = fs.readFileSync(path.join(dir, 'dealers.html'), 'utf8');
+  const dealersContent = applyPublicBase(fs.readFileSync(path.join(dir, 'dealers.html'), 'utf8'));
   fs.writeFileSync(path.join(outDir, 'dealers.html'), dealersContent, 'utf8');
 } catch (e) {
   // dealers.html может отсутствовать
+}
+
+try {
+  fs.copyFileSync(path.join(dir, 'asset-base.config.json'), path.join(outDir, 'asset-base.config.json'));
+} catch (_) {
+  /* optional */
 }
 
 // Инструкция: порядок блоков с описанием
@@ -179,7 +239,7 @@ const readme = `# Экспорт для Tilda
 
 | № | Файл | Куда в Tilda |
 |---|------|----------------|
-| 0 | **00-вставьте-в-head.html** | Настройки страницы → Дополнительно → **Код в head** — вставить **целиком** |
+| 0 | **00-global.html** (или **00-вставьте-в-head.html** — то же содержимое) | Настройки страницы → Дополнительно → **Код в head** — вставить **целиком** |
 
 Без этого шага блоки будут без нужных шрифтов и цветов.
 
@@ -217,21 +277,32 @@ ${blockTableRows}
 4. **Страница дилеров**  
    \`dealers.html\` — отдельная страница для раздела «Дилерам». Опубликуйте как отдельную страницу и привяжите ссылку в меню.
 
-5. **Картинки из папки assets (на Tilda)**  
-   Загрузите в **Медиабиблиотеку**: \`logo.png\`, \`hero-bg.png\`, \`solution-scheme.png\`, файлы из \`assets/certs/\`. В коде блоков замените пути \`assets/...\` на полные URL (\`https://static.tildacdn.com/...\`). Особенно: шапка, подвал, Hero, Решение, сертификаты.
+5. **Картинки — те же файлы, что на Vercel (без ручной замены URL)**  
+   В \`asset-base.config.json\` укажите \`publicBaseUrl\` — URL вашего деплоя **без** слэша в конце (например \`https://marrob.vercel.app\`). При сборке (\`npm run build\`) все \`src\` и \`data-src\` с относительными путами станут абсолютными и будут указывать на тот же \`public/\`, что и лендинг на Vercel: \`logo.png\`, \`hero-bg.png\`, \`solution-scheme.png\`, \`certs/cert-1.png\` … \`images/\`, \`projects/\`.  
+   Альтернатива: \`set MARROB_PUBLIC_BASE_URL=https://...\` перед сборкой (Windows: \`set MARROB_PUBLIC_BASE_URL=...\` в cmd).  
+   Если \`publicBaseUrl\` **пустой**, в HTML остаются относительные пути — удобно открыть \`tilda-export/index.html\` локально, если рядом лежат скопированные \`images/\`, \`projects/\`, \`certs/\`.
 
-5a. **Галерея и отзывы — папка \`projects/\`**  
-   В блоках используются пути \`projects/polaki/...\` и \`projects/moscow/...\`. Загрузите **всю папку \`projects\`** из этого экспорта в **корень опубликованного сайта** (рядом с index), чтобы картинки открывались по тем же относительным URL. Для **реальных** фото из кейсов «поляки» скопируйте файлы скриптом \`kimi2/app/scripts/sync-gallery-from-source.ps1\` в \`public/projects\`, затем снова выполните \`node build-tilda.js\`. Скрипт \`download-polaki-assets.mjs\` подставляет **плейсхолдеры Unsplash** под именами файлов — не путать с настоящим портфолио.
+5a. **Галерея — папка \`projects/\`**  
+   Скрипт копирует \`kimi2/app/public/projects\` в \`tilda-export/projects\`. На Tilda с включённым \`publicBaseUrl\` картинки подтягиваются с Vercel по тем же путам, что и на сайте.
 
 6. **Пользовательские CSS-стили (Tilda)**  
-   В настройках сайта/страницы есть поле «Пользовательские CSS-стили». Если вы вставили полный \`00-вставьте-в-head.html\` в «Код в <head>», в это поле ничего вставлять не нужно — все стили и переменные уже в head.
+   В настройках сайта/страницы есть поле «Пользовательские CSS-стили». Если вы вставили полный \`00-global.html\` в «Код в <head>», в это поле ничего вставлять не нужно — все стили и переменные уже в head.
 
 7. **Если блоки отображаются криво**  
-   Убедитесь, что в настройках страницы в «Код в <head>» действительно вставлено содержимое \`00-вставьте-в-head.html\` (шрифты и блок \`<style>\` с переменными \`:root\`). Без этого цвета, отступы и шрифты будут сбиваться. Если контейнеры Tilda добавляют свои отступы или ограничение ширины, в настройках шаблона/страницы можно отключить лишние отступы для зоны с Zero-блоками.
+   Убедитесь, что в настройках страницы в «Код в <head>» действительно вставлено содержимое \`00-global.html\` или \`00-вставьте-в-head.html\` (шрифты и блок \`<style>\` с переменными \`:root\`). Без этого цвета, отступы и шрифты будут сбиваться. Если контейнеры Tilda добавляют свои отступы или ограничение ширины, в настройках шаблона/страницы можно отключить лишние отступы для зоны с Zero-блоками.
 
 Собрано: ${new Date().toISOString().slice(0, 10)}
 `;
 fs.writeFileSync(path.join(outDir, 'README.md'), readme, 'utf8');
 
-console.log('tilda-export: создано файлов', blockFiles.length + 5, '(head, блоки, все-блоки, index.html, полная-страница.html, dealers.html, README.md)');
+console.log(
+  'tilda-export: файлов HTML/прочее:',
+  blockFiles.length + 7,
+  '(head: 00-global + 00-вставьте-в-head; блоки; все-блоки; index; полная-страница; dealers; README)'
+);
 console.log('Папка:', outDir);
+if (publicBaseUrl) {
+  console.log('publicBaseUrl:', publicBaseUrl, '(абсолютные URL картинок)');
+} else {
+  console.log('publicBaseUrl: (не задан — относительные пути; см. asset-base.config.json)');
+}

@@ -127,7 +127,7 @@ const CatalogPage: React.FC = () => {
   }, [open, activeFiles.length]);
 
   return (
-    <main className="section-premium bg-sand-light relative overflow-hidden main-rhythm-rule">
+    <main className="section-premium bg-sand-light relative overflow-hidden main-rhythm-rule pt-24 md:pt-28 lg:pt-32">
       <div className="absolute top-1/3 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none" />
 
@@ -200,10 +200,10 @@ const CatalogPage: React.FC = () => {
       </div>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="sm:max-w-[980px] p-0 overflow-hidden bg-white">
-          <div className="grid lg:grid-cols-[1fr_320px]">
-            <div className="relative bg-black">
-              <div className="aspect-[4/3] lg:aspect-auto lg:h-[520px] relative">
+        <DialogContent className="max-h-[min(100dvh,920px)] overflow-y-auto overflow-x-hidden p-0 sm:max-w-[980px] bg-white">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px]">
+            <div className="relative bg-black min-h-0">
+              <div className="aspect-[4/3] max-h-[min(56vh,420px)] lg:max-h-none lg:aspect-auto lg:h-[520px] relative">
                 {activeSrc && (
                   <img
                     src={activeSrc}
@@ -221,7 +221,7 @@ const CatalogPage: React.FC = () => {
                 type="button"
                 aria-label="Предыдущее фото"
                 onClick={prev}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40 touch-manipulation"
               >
                 <span className="rotate-180">
                   <ChevronRightIcon size={22} />
@@ -231,7 +231,7 @@ const CatalogPage: React.FC = () => {
                 type="button"
                 aria-label="Следующее фото"
                 onClick={next}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40"
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40 touch-manipulation"
               >
                 <ChevronRightIcon size={22} />
               </button>
@@ -241,18 +241,20 @@ const CatalogPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-5 border-t lg:border-t-0 lg:border-l border-border">
-              <DialogHeader>
-                <DialogTitle className="font-display text-text">
+            <div className="p-4 sm:p-5 border-t lg:border-t-0 lg:border-l border-border min-h-0 flex flex-col">
+              <DialogHeader className="text-left">
+                <DialogTitle className="font-display text-text text-balance">
                   {activeCollection.replace(/_+$/g, '') || 'Коллекция'}
                 </DialogTitle>
               </DialogHeader>
               {activeVariantLabel ? (
                 <p className="mt-1 text-xs font-medium text-text-muted tracking-wide">{activeVariantLabel}</p>
               ) : null}
-              <div className="mt-3 max-h-44 overflow-y-auto text-sm text-text-muted leading-snug pr-1">{activeCaption}</div>
+              <div className="mt-3 max-h-36 sm:max-h-44 overflow-y-auto text-sm text-text-muted leading-snug pr-1">
+                {activeCaption}
+              </div>
 
-              <div className="mt-5 grid grid-cols-4 gap-2 max-h-[320px] overflow-auto pr-1">
+              <div className="mt-4 sm:mt-5 grid grid-cols-4 gap-2 max-h-[min(40vh,280px)] sm:max-h-[320px] overflow-auto pr-1 pb-1">
                 {manifest &&
                   activeFiles.map((file, i) => {
                     const src = toSrc(manifest, activeCollection, file);

@@ -51,7 +51,7 @@ const Header: React.FC = () => {
 
       {/* Main Header */}
       <header
-        className={`fixed top-0 lg:top-[36px] left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 lg:top-[36px] left-0 right-0 z-50 pt-[env(safe-area-inset-top,0px)] transition-all duration-300 ${
           headerSolid
             ? 'bg-white/95 backdrop-blur-md shadow-premium'
             : 'bg-gradient-to-b from-black/55 via-black/25 to-transparent backdrop-blur-[2px]'
@@ -177,11 +177,11 @@ const Header: React.FC = () => {
           onClick={() => setIsMobileMenuOpen(false)}
         />
         <div
-          className={`absolute top-20 right-0 w-full max-w-sm bg-white shadow-premium-lg rounded-l-2xl p-6 transition-transform ${
+          className={`absolute top-20 right-0 w-[min(100%,24rem)] max-h-[calc(100dvh-5.5rem)] overflow-y-auto overscroll-contain rounded-l-2xl bg-white p-6 pb-[max(1.5rem,env(safe-area-inset-bottom,0px))] shadow-premium-lg transition-transform ${
             isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          <nav className="flex flex-col gap-4">
+          <nav className="flex flex-col gap-3 sm:gap-4">
             {navLinks.map((link) => (
               <a
                 key={link.href}

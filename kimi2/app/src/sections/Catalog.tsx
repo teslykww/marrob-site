@@ -167,12 +167,12 @@ const Catalog: React.FC = () => {
             ) : (
               <div className="h-full min-h-[280px] w-full bg-sand-light" />
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 text-white">
-              <h3 className="type-card-title mb-2">
+              <h3 className="type-card-title mb-2 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.85)]">
                 {currentCollection ? displayName(currentCollection.name) : 'Коллекция'}
               </h3>
-              <p className="text-white/80 text-sm">{currentDescription}</p>
+              <p className="text-white/90 text-sm drop-shadow-[0_1px_2px_rgba(0,0,0,0.75)]">{currentDescription}</p>
             </div>
           </div>
 
@@ -222,7 +222,7 @@ const Catalog: React.FC = () => {
 
         <div
           id="catalog-form"
-          className="mx-auto mt-12 max-w-5xl scroll-mt-24 lg:scroll-mt-32 sm:mt-14 lg:mt-16"
+          className="layout-content mt-12 scroll-mt-24 lg:scroll-mt-32 sm:mt-14 lg:mt-16"
         >
           <MagnetLeadForm
             idPrefix="catalog"

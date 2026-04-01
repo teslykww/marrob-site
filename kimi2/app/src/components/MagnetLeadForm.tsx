@@ -194,7 +194,7 @@ const MagnetLeadForm: React.FC<MagnetLeadFormProps> = ({
                 )}
               >
                 <RadioGroupItem value={value} id={id} className="shrink-0" />
-                <Label htmlFor={id} className="m-0 flex-1 cursor-pointer font-medium leading-none">
+                <Label htmlFor={id} className="m-0 flex-1 cursor-pointer font-medium leading-tight">
                   {label}
                 </Label>
               </div>
@@ -238,7 +238,7 @@ const MagnetLeadForm: React.FC<MagnetLeadFormProps> = ({
               aria-hidden
             />
             <div className="absolute bottom-5 left-5 right-5 max-w-[90%] lg:bottom-8 lg:left-8">
-              <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/90 drop-shadow-md">
+              <p className="type-trust-label m-0 font-semibold uppercase tracking-[0.18em] text-white/90 drop-shadow-md">
                 MARROB
               </p>
               <p className="mt-1.5 max-w-sm text-base font-medium leading-snug text-white drop-shadow-md sm:text-lg">

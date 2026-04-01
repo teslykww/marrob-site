@@ -93,12 +93,29 @@
   --text-sm: 0.9375rem;
   --text-xs: 0.8125rem;
 
-  /** Основной текст: один коэффициент для body, лидов и карточек (см. DealersPage IconCard). */
+  /** Основной текст: body и лиды на странице дилеров. */
   --leading-body: 1.42;
+
+  /** Компактные карточки IconCard (тёмные/светлые) — плотнее, чем основной текст. */
+  --leading-icon-card-title: 1.06;
+  --leading-icon-card-text: 1.26;
   
   /* Отступы */
   --section-py: 80px;
   --section-px: 24px;
+
+  /**
+   * Система контейнеров: одна композиционная ось внутри .container-premium (max-width 1280px).
+   * layout-wide — на всю ширину родителя; layout-content — 64rem; layout-narrow — формы/узкие CTA.
+   */
+  --layout-content-max: 64rem;
+  --layout-narrow-max: 42rem;
+
+  /** Motion system: согласовано с Reveal и hover-карточками */
+  --motion-duration-sm: 0.3s;
+  --motion-duration-md: 0.45s;
+  --motion-ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-lift-y: 14px;
 }
 
 @layer base {
@@ -148,6 +165,83 @@
     margin: 0 auto;
     padding: 0 var(--section-px);
   }
+
+  /** Полная ширина внутри container-premium — без лишнего max-w-5xl */
+  .layout-wide {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /** Текстовые колонки и сетки средней ширины */
+  .layout-content {
+    width: 100%;
+    max-width: var(--layout-content-max);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /** Формы, узкие подписи — только осознанно */
+  .layout-narrow {
+    width: 100%;
+    max-width: var(--layout-narrow-max);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /**
+   * Карточные пресеты для единого ритма (композиция без смены контента).
+   * Подключать к обёрткам карточек по смыслу: feature — крупнее, compact — плотнее.
+   */
+  .card-feature {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .card-feature {
+      padding: 2rem;
+    }
+  }
+
+  .card-compact {
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    box-shadow: var(--shadow);
+    padding: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .card-compact {
+      padding: 1.25rem;
+    }
+  }
+
+  /** Интерактив: единый hover/focus ритм */
+  .card-interactive {
+    transition:
+      box-shadow var(--motion-duration-sm) var(--motion-ease-premium),
+      transform var(--motion-duration-sm) var(--motion-ease-premium),
+      border-color var(--motion-duration-sm) var(--motion-ease-premium);
+  }
+
+  .card-interactive:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card-interactive {
+      transition: none;
+    }
+
+    .card-interactive:hover {
+      transform: none;
+    }
+  }
   
   .section-premium {
     padding: var(--section-py) var(--section-px);
@@ -175,8 +269,52 @@
 
   .type-section-lead {
     font-size: 1.125rem;
-    line-height: 1.5;
+    line-height: var(--leading-body);
     color: var(--text-muted);
+  }
+
+  /** Основной абзац — совпадает с body по ритму */
+  .type-body {
+    font-family: var(--font-body);
+    font-size: var(--text-size);
+    line-height: var(--leading-body);
+    color: var(--text);
+  }
+
+  /** Вторичный текст чуть меньше основного, тот же leading */
+  .type-body-sm {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    line-height: var(--leading-body);
+    color: var(--text-muted);
+  }
+
+  /** Карточки преимуществ / компактные блоки (IconCard и аналоги) */
+  .type-card-title-compact {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: var(--leading-icon-card-title);
+    color: var(--text);
+  }
+
+  @media (min-width: 640px) {
+    .type-card-title-compact {
+      font-size: 1.125rem;
+    }
+  }
+
+  .type-card-copy {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    line-height: var(--leading-icon-card-text);
+    color: var(--text-muted);
+  }
+
+  @media (min-width: 640px) {
+    .type-card-copy {
+      font-size: 1rem;
+    }
   }
 
   .type-card-title {

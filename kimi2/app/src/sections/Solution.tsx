@@ -71,7 +71,7 @@ const Solution: React.FC = () => {
               <p className="text-white/75 text-xs uppercase tracking-wider mb-2 text-center lg:text-left">
                 Один монтаж — два результата
               </p>
-              <h3 className="type-section-subtitle mb-4 text-center lg:text-left leading-tight">
+              <h3 className="type-section-subtitle mb-4 text-center lg:text-left leading-tight text-white">
                 Утепление и каменный фасад за один проход
               </h3>
               <p className="text-white/90 mb-6 max-w-xl mx-auto lg:mx-0 text-center lg:text-left text-base md:text-lg leading-relaxed">
@@ -172,7 +172,7 @@ const Solution: React.FC = () => {
                     </div>
                     <div className="hidden sm:flex items-center gap-2 text-white/75 shrink-0">
                       <ChevronRightIcon size={26} className="animate-pulse" />
-                      <span className="text-xs uppercase tracking-wider max-w-[100px] leading-tight">
+                      <span className="text-xs uppercase tracking-wider leading-tight sm:max-w-[10rem]">
                         Получить консультацию
                       </span>
                     </div>

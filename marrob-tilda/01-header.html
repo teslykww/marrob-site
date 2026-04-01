@@ -14,7 +14,11 @@
   </div>
   <header class="marrob-header">
     <div class="marrob-header__inner">
-      <a href="/" class="marrob-header__logo"><img src="assets/logo.png" alt="MARROB — Фасадные термопанели" class="marrob-header__logo-img" width="160" height="48"></a>
+      <a href="/" class="marrob-header__logo">
+        <span class="marrob-header__logo-wrap">
+          <img src="logo.png" alt="MARROB — Фасадные термопанели" class="marrob-header__logo-img" width="160" height="48">
+        </span>
+      </a>
       <nav class="marrob-header__nav">
         <a href="#about" class="marrob-header__link">О термопанелях</a>
         <a href="#catalog" class="marrob-header__link">Коллекции</a>
@@ -68,7 +72,11 @@
     outline: 2px solid var(--marrob-accent);
     outline-offset: 2px;
   }
-  .marrob-block-header { position: relative; z-index: 1000; }
+  .marrob-block-header {
+    position: relative;
+    z-index: 1000;
+    --marrob-primary-rgb: 124, 154, 107;
+  }
   .marrob-header__top-bar {
     display: none;
     position: fixed;
@@ -108,7 +116,9 @@
     left: 0;
     right: 0;
     font-family: var(--marrob-font-body);
-    background: transparent;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.25) 55%, transparent 100%);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
   }
   .marrob-header__top-bar + .marrob-header { top: 0; }
@@ -117,7 +127,7 @@
   }
   .marrob-header__top-bar { z-index: 1000; }
   .marrob-header.scrolled {
-    background: rgba(250, 249, 247, 0.9);
+    background: rgba(250, 249, 247, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 1px 0 var(--marrob-border);
@@ -138,6 +148,25 @@
     transition: opacity 0.2s;
   }
   .marrob-header__logo:hover { opacity: 0.85; }
+  .marrob-header__logo-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+  }
+  .marrob-header:not(.scrolled) .marrob-header__logo-wrap {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 6px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  .marrob-header.scrolled .marrob-header__logo-wrap {
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
   .marrob-header__logo-img {
     display: block;
     height: 44px;
@@ -163,7 +192,18 @@
     text-decoration: none;
     transition: color 0.2s;
   }
-  .marrob-header__link:hover { color: var(--marrob-primary); }
+  .marrob-header:not(.scrolled) .marrob-header__link {
+    color: rgba(255, 255, 255, 0.95) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+  }
+  .marrob-header:not(.scrolled) .marrob-header__link:hover {
+    color: var(--marrob-primary-light) !important;
+  }
+  .marrob-header.scrolled .marrob-header__link {
+    color: var(--marrob-text-muted) !important;
+    text-shadow: none;
+  }
+  .marrob-header.scrolled .marrob-header__link:hover { color: var(--marrob-primary) !important; }
   .marrob-header__cta {
     display: none;
     align-items: center;
@@ -179,22 +219,35 @@
     text-decoration: none;
     transition: color 0.2s;
   }
-  .marrob-header__phone:hover { color: var(--marrob-primary); }
+  .marrob-header:not(.scrolled) .marrob-header__phone {
+    color: #fff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+  }
+  .marrob-header:not(.scrolled) .marrob-header__phone:hover {
+    color: var(--marrob-primary-light) !important;
+  }
+  .marrob-header.scrolled .marrob-header__phone {
+    color: var(--marrob-text) !important;
+    text-shadow: none;
+  }
+  .marrob-header.scrolled .marrob-header__phone:hover { color: var(--marrob-primary) !important; }
   .marrob-header__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 12px 24px;
-    background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
-    color: #fff;
+    background: var(--marrob-primary);
+    color: #fff !important;
     font-size: 0.9375rem;
     font-weight: 600;
     border-radius: var(--marrob-radius);
     text-decoration: none;
-    transition: box-shadow 0.3s, transform 0.2s;
+    box-shadow: 0 4px 16px rgba(var(--marrob-primary-rgb), 0.3);
+    transition: box-shadow 0.3s, transform 0.2s, background 0.2s;
   }
   .marrob-header__btn:hover {
-    box-shadow: 0 8px 24px rgba(196, 92, 62, 0.35);
+    background: var(--marrob-primary-hover);
+    box-shadow: 0 8px 24px rgba(var(--marrob-primary-rgb), 0.35);
     transform: translateY(-2px);
   }
   .marrob-header__burger {
@@ -218,7 +271,13 @@
     height: 2px;
     background: var(--marrob-text);
     border-radius: 1px;
-    transition: transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s, background 0.3s;
+  }
+  .marrob-header:not(.scrolled) .marrob-header__burger span {
+    background: #fff !important;
+  }
+  .marrob-header.scrolled .marrob-header__burger span {
+    background: var(--marrob-text) !important;
   }
   .marrob-header__burger.active span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
@@ -302,11 +361,17 @@
     display: block;
     text-align: center;
     padding: 14px 24px;
-    background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
-    color: #fff;
+    background: var(--marrob-primary);
+    color: #fff !important;
     font-weight: 600;
     border-radius: var(--marrob-radius);
     text-decoration: none;
+    box-shadow: 0 4px 16px rgba(var(--marrob-primary-rgb), 0.25);
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+  .marrob-header__drawer-btn:hover {
+    background: var(--marrob-primary-hover);
+    box-shadow: 0 8px 20px rgba(var(--marrob-primary-rgb), 0.32);
   }
 </style>
 <script>

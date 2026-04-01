@@ -38,6 +38,8 @@
     --marrob-h2: clamp(26px, 4vw, 48px);
     --marrob-subtitle: clamp(22px, 2.5vw, 30px);
     --marrob-body: clamp(16px, 1.5vw, 20px);
+    /* RGB для теней и перекрытия стилей Tilda (primary = зелёный) */
+    --marrob-primary-rgb: 124, 154, 107;
   }
   html { scroll-behavior: smooth; font-size: 100%; }
   @media (prefers-reduced-motion: reduce) {
@@ -98,6 +100,17 @@
       transition: none;
     }
   }
+
+  /* Перекрытие глобальных стилей Tilda: ссылки/кнопки внутри блоков MARROB */
+  #allrecords .marrob-block a[class*="marrob-"],
+  .t-rec .marrob-block a[class*="marrob-"] {
+    border-bottom: none !important;
+    text-decoration: none !important;
+  }
+  #allrecords .marrob-block button[class*="marrob-"],
+  .t-rec .marrob-block button[class*="marrob-"] {
+    font-family: var(--marrob-font-body) !important;
+  }
 </style>
 </head>
 <body>
@@ -117,7 +130,11 @@
   </div>
   <header class="marrob-header">
     <div class="marrob-header__inner">
-      <a href="/" class="marrob-header__logo"><img src="assets/logo.png" alt="MARROB — Фасадные термопанели" class="marrob-header__logo-img" width="160" height="48"></a>
+      <a href="/" class="marrob-header__logo">
+        <span class="marrob-header__logo-wrap">
+          <img src="https://maroob.vercel.app/logo.png" alt="MARROB — Фасадные термопанели" class="marrob-header__logo-img" width="160" height="48">
+        </span>
+      </a>
       <nav class="marrob-header__nav">
         <a href="#about" class="marrob-header__link">О термопанелях</a>
         <a href="#catalog" class="marrob-header__link">Коллекции</a>
@@ -171,7 +188,11 @@
     outline: 2px solid var(--marrob-accent);
     outline-offset: 2px;
   }
-  .marrob-block-header { position: relative; z-index: 1000; }
+  .marrob-block-header {
+    position: relative;
+    z-index: 1000;
+    --marrob-primary-rgb: 124, 154, 107;
+  }
   .marrob-header__top-bar {
     display: none;
     position: fixed;
@@ -211,7 +232,9 @@
     left: 0;
     right: 0;
     font-family: var(--marrob-font-body);
-    background: transparent;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.25) 55%, transparent 100%);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
   }
   .marrob-header__top-bar + .marrob-header { top: 0; }
@@ -220,7 +243,7 @@
   }
   .marrob-header__top-bar { z-index: 1000; }
   .marrob-header.scrolled {
-    background: rgba(250, 249, 247, 0.9);
+    background: rgba(250, 249, 247, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 1px 0 var(--marrob-border);
@@ -241,6 +264,25 @@
     transition: opacity 0.2s;
   }
   .marrob-header__logo:hover { opacity: 0.85; }
+  .marrob-header__logo-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+  }
+  .marrob-header:not(.scrolled) .marrob-header__logo-wrap {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 6px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  .marrob-header.scrolled .marrob-header__logo-wrap {
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
   .marrob-header__logo-img {
     display: block;
     height: 44px;
@@ -266,7 +308,18 @@
     text-decoration: none;
     transition: color 0.2s;
   }
-  .marrob-header__link:hover { color: var(--marrob-primary); }
+  .marrob-header:not(.scrolled) .marrob-header__link {
+    color: rgba(255, 255, 255, 0.95) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+  }
+  .marrob-header:not(.scrolled) .marrob-header__link:hover {
+    color: var(--marrob-primary-light) !important;
+  }
+  .marrob-header.scrolled .marrob-header__link {
+    color: var(--marrob-text-muted) !important;
+    text-shadow: none;
+  }
+  .marrob-header.scrolled .marrob-header__link:hover { color: var(--marrob-primary) !important; }
   .marrob-header__cta {
     display: none;
     align-items: center;
@@ -282,22 +335,35 @@
     text-decoration: none;
     transition: color 0.2s;
   }
-  .marrob-header__phone:hover { color: var(--marrob-primary); }
+  .marrob-header:not(.scrolled) .marrob-header__phone {
+    color: #fff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+  }
+  .marrob-header:not(.scrolled) .marrob-header__phone:hover {
+    color: var(--marrob-primary-light) !important;
+  }
+  .marrob-header.scrolled .marrob-header__phone {
+    color: var(--marrob-text) !important;
+    text-shadow: none;
+  }
+  .marrob-header.scrolled .marrob-header__phone:hover { color: var(--marrob-primary) !important; }
   .marrob-header__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 12px 24px;
-    background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
-    color: #fff;
+    background: var(--marrob-primary);
+    color: #fff !important;
     font-size: 0.9375rem;
     font-weight: 600;
     border-radius: var(--marrob-radius);
     text-decoration: none;
-    transition: box-shadow 0.3s, transform 0.2s;
+    box-shadow: 0 4px 16px rgba(var(--marrob-primary-rgb), 0.3);
+    transition: box-shadow 0.3s, transform 0.2s, background 0.2s;
   }
   .marrob-header__btn:hover {
-    box-shadow: 0 8px 24px rgba(196, 92, 62, 0.35);
+    background: var(--marrob-primary-hover);
+    box-shadow: 0 8px 24px rgba(var(--marrob-primary-rgb), 0.35);
     transform: translateY(-2px);
   }
   .marrob-header__burger {
@@ -321,7 +387,13 @@
     height: 2px;
     background: var(--marrob-text);
     border-radius: 1px;
-    transition: transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s, background 0.3s;
+  }
+  .marrob-header:not(.scrolled) .marrob-header__burger span {
+    background: #fff !important;
+  }
+  .marrob-header.scrolled .marrob-header__burger span {
+    background: var(--marrob-text) !important;
   }
   .marrob-header__burger.active span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
@@ -405,11 +477,17 @@
     display: block;
     text-align: center;
     padding: 14px 24px;
-    background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
-    color: #fff;
+    background: var(--marrob-primary);
+    color: #fff !important;
     font-weight: 600;
     border-radius: var(--marrob-radius);
     text-decoration: none;
+    box-shadow: 0 4px 16px rgba(var(--marrob-primary-rgb), 0.25);
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+  .marrob-header__drawer-btn:hover {
+    background: var(--marrob-primary-hover);
+    box-shadow: 0 8px 20px rgba(var(--marrob-primary-rgb), 0.32);
   }
 </style>
 <script>
@@ -478,11 +556,11 @@
 })();
 </script>
 
-<!-- MARROB — Блок 2: Hero (kimi2): h1 в 3 строки как на Vercel, лид, точки, trust-bar. Фон: assets/hero-bg.png -->
+<!-- MARROB — Блок 2: Hero (kimi2): h1 в 3 строки как на Vercel, лид, точки, trust-bar. Фон: hero-bg.png (как public/ на Vercel) -->
 <div class="marrob-block marrob-block-hero-v2" id="marrob-hero">
   <section class="marrob-hero-v2">
     <div class="marrob-hero-v2__bg">
-      <img src="assets/hero-bg.png" alt="" class="marrob-hero-v2__bg-img" width="1920" height="1080">
+      <img src="https://maroob.vercel.app/hero-bg.png" alt="" class="marrob-hero-v2__bg-img" width="1920" height="1080">
       <div class="marrob-hero-v2__grad marrob-hero-v2__grad--mob" aria-hidden="true"></div>
       <div class="marrob-hero-v2__grad marrob-hero-v2__grad--desk" aria-hidden="true"></div>
       <div class="marrob-hero-v2__ring" aria-hidden="true"></div>
@@ -613,16 +691,6 @@
   }
   .marrob-hero-v2__shell {
     max-width: 36rem;
-  }
-  @media (min-width: 1024px) {
-    .marrob-hero-v2__shell {
-      transform: translateX(-6px);
-    }
-  }
-  @media (min-width: 1280px) {
-    .marrob-hero-v2__shell {
-      transform: translateX(-10px);
-    }
   }
   @media (max-width: 1023px) {
     .marrob-hero-v2__shell {
@@ -1099,7 +1167,7 @@
       </div>
 
       <div class="marrob-sol2__scheme marrob-fade-up marrob-fade-up-delay-2">
-        <img src="assets/solution-scheme.png" alt="Двухслойная конструкция термопанелей MARROB" class="marrob-sol2__scheme-img" width="1200" height="675" loading="lazy">
+        <img src="https://maroob.vercel.app/solution-scheme.png" alt="Двухслойная конструкция термопанелей MARROB" class="marrob-sol2__scheme-img" width="1200" height="675" loading="lazy">
       </div>
 
       <p class="marrob-sol2__caption marrob-fade-up">
@@ -1109,7 +1177,7 @@
       <div class="marrob-sol2__cta marrob-fade-up">
         <div class="marrob-sol2__cta-grid">
           <div class="marrob-sol2__cta-visual">
-            <img src="images/solution-cta-house.png" alt="Термопанели MARROB на объекте: утеплитель и каменная облицовка" class="marrob-sol2__cta-img" width="1200" height="675" loading="lazy" decoding="async">
+            <img src="https://maroob.vercel.app/images/solution-cta-house.png" alt="Термопанели MARROB на объекте: утеплитель и каменная облицовка" class="marrob-sol2__cta-img" width="1200" height="675" loading="lazy" decoding="async">
             <div class="marrob-sol2__cta-img-grad" aria-hidden="true"></div>
           </div>
           <div class="marrob-sol2__cta-body">
@@ -1220,7 +1288,15 @@
   @media (min-width: 1024px) {
     .marrob-sol2__cta-kicker { text-align: left; }
   }
-  .marrob-sol2__cta-title { font-size: 1.375rem; font-weight: 600; margin: 0 0 16px; text-align: center; line-height: 1.25; }
+  .marrob-sol2__cta-title {
+    font-size: 1.375rem;
+    font-weight: 600;
+    margin: 0 0 16px;
+    text-align: center;
+    line-height: 1.25;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+  }
   @media (min-width: 1024px) { .marrob-sol2__cta-title { text-align: left; font-size: 1.75rem; } }
   .marrob-sol2__cta-text {
     font-size: 1rem;
@@ -1316,7 +1392,7 @@
   .marrob-ba { padding: 80px 24px; font-family: var(--marrob-font-body); }
   .marrob-ba__inner { max-width: 1000px; margin: 0 auto; }
   .marrob-ba__head { text-align: center; max-width: 720px; margin: 0 auto 48px; }
-  .marrob-ba__badge { display: inline-block; padding: 8px 20px; background: rgba(196, 92, 62, 0.1); color: var(--marrob-primary); font-size: 0.875rem; font-weight: 500; border-radius: 999px; margin-bottom: 20px; }
+  .marrob-ba__badge { display: inline-block; padding: 8px 20px; background: rgba(124, 154, 107, 0.1); color: var(--marrob-primary); font-size: 0.875rem; font-weight: 500; border-radius: 999px; margin-bottom: 20px; }
   .marrob-ba__title { font-size: 2.25rem; line-height: 1.2; font-weight: 700; color: var(--marrob-text); margin: 0 0 16px; }
   .marrob-ba__subtitle { font-size: 1.0625rem; color: var(--marrob-text-muted); line-height: 1.6; margin: 0; }
   .marrob-ba__slider-wrap { position: relative; border-radius: var(--marrob-radius-lg); overflow: hidden; box-shadow: var(--marrob-shadow-hover); aspect-ratio: 16/9; }
@@ -1356,7 +1432,7 @@
 })();
 </script>
 
-<!-- MARROB — Блок 6: Catalog (как kimi2 по смыслу). Замените href «Смотреть каталог» на URL страницы полного каталога в Tilda. -->
+<!-- MARROB — Блок 6: Catalog. Кнопка «Смотреть каталог» ведёт на полный каталог на Vercel. -->
 <div class="marrob-block marrob-block-catalog" id="catalog">
   <section class="marrob-catalog">
     <div class="marrob-blob marrob-blob--md marrob-blob--primary marrob-blob--tr"></div>
@@ -1382,7 +1458,7 @@
         <div class="marrob-catalog__panel active" data-panel="0">
           <div class="marrob-catalog__twocol">
             <div class="marrob-catalog__img-wrap">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop" alt="Клинкерный кирпич" class="marrob-catalog__img">
+              <img src="https://maroob.vercel.app/images/catalog-houses/clinker.jpg" alt="Клинкерный кирпич" class="marrob-catalog__img">
               <div class="marrob-catalog__img-overlay"></div>
               <div class="marrob-catalog__img-caption">
                 <h3 class="marrob-catalog__img-title">Клинкерный кирпич</h3>
@@ -1401,14 +1477,14 @@
                 <div class="marrob-catalog__swatch" style="background-color: #36454F" title="Графит"></div>
               </div>
               <p class="marrob-catalog__swatch-names">Красный · Коричневый · Песочный · Графит</p>
-              <a href="https://ВАШ_САЙТ.tilda.ws/catalog" class="marrob-catalog__btn">Смотреть каталог</a>
+              <a href="https://maroob.vercel.app/catalog" class="marrob-catalog__btn">Смотреть каталог</a>
             </div>
           </div>
         </div>
         <div class="marrob-catalog__panel" data-panel="1">
           <div class="marrob-catalog__twocol">
             <div class="marrob-catalog__img-wrap">
-              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop" alt="Версальский кирпич" class="marrob-catalog__img">
+              <img src="https://maroob.vercel.app/images/catalog-houses/versailles.jpg" alt="Версальский кирпич" class="marrob-catalog__img">
               <div class="marrob-catalog__img-overlay"></div>
               <div class="marrob-catalog__img-caption">
                 <h3 class="marrob-catalog__img-title">Версальский кирпич</h3>
@@ -1427,14 +1503,14 @@
                 <div class="marrob-catalog__swatch" style="background-color: #293133"></div>
               </div>
               <p class="marrob-catalog__swatch-names">Кремовый · Бежевый · Серый · Антрацит</p>
-              <a href="https://ВАШ_САЙТ.tilda.ws/catalog" class="marrob-catalog__btn">Смотреть каталог</a>
+              <a href="https://maroob.vercel.app/catalog" class="marrob-catalog__btn">Смотреть каталог</a>
             </div>
           </div>
         </div>
         <div class="marrob-catalog__panel" data-panel="2">
           <div class="marrob-catalog__twocol">
             <div class="marrob-catalog__img-wrap">
-              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=400&fit=crop" alt="Византийский кирпич" class="marrob-catalog__img">
+              <img src="https://maroob.vercel.app/images/catalog-houses/byzantine.jpg" alt="Византийский кирпич" class="marrob-catalog__img">
               <div class="marrob-catalog__img-overlay"></div>
               <div class="marrob-catalog__img-caption">
                 <h3 class="marrob-catalog__img-title">Византийский кирпич</h3>
@@ -1453,14 +1529,14 @@
                 <div class="marrob-catalog__swatch" style="background-color: #3D3D3D"></div>
               </div>
               <p class="marrob-catalog__swatch-names">Терракота · Охра · Песок · Тёмный</p>
-              <a href="https://ВАШ_САЙТ.tilda.ws/catalog" class="marrob-catalog__btn">Смотреть каталог</a>
+              <a href="https://maroob.vercel.app/catalog" class="marrob-catalog__btn">Смотреть каталог</a>
             </div>
           </div>
         </div>
         <div class="marrob-catalog__panel" data-panel="3">
           <div class="marrob-catalog__twocol">
             <div class="marrob-catalog__img-wrap">
-              <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600&h=400&fit=crop" alt="Скандинавский кирпич" class="marrob-catalog__img">
+              <img src="https://maroob.vercel.app/images/catalog-houses/scandinavian.jpg" alt="Скандинавский кирпич" class="marrob-catalog__img">
               <div class="marrob-catalog__img-overlay"></div>
               <div class="marrob-catalog__img-caption">
                 <h3 class="marrob-catalog__img-title">Скандинавский кирпич</h3>
@@ -1479,14 +1555,14 @@
                 <div class="marrob-catalog__swatch" style="background-color: #696969"></div>
               </div>
               <p class="marrob-catalog__swatch-names">Белый · Светло-серый · Серый · Тёмно-серый</p>
-              <a href="https://ВАШ_САЙТ.tilda.ws/catalog" class="marrob-catalog__btn">Смотреть каталог</a>
+              <a href="https://maroob.vercel.app/catalog" class="marrob-catalog__btn">Смотреть каталог</a>
             </div>
           </div>
         </div>
         <div class="marrob-catalog__panel" data-panel="4">
           <div class="marrob-catalog__twocol">
             <div class="marrob-catalog__img-wrap">
-              <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&h=400&fit=crop" alt="Туринский кирпич" class="marrob-catalog__img">
+              <img src="https://maroob.vercel.app/images/catalog-houses/turin.jpg" alt="Туринский кирпич" class="marrob-catalog__img">
               <div class="marrob-catalog__img-overlay"></div>
               <div class="marrob-catalog__img-caption">
                 <h3 class="marrob-catalog__img-title">Туринский кирпич</h3>
@@ -1505,14 +1581,14 @@
                 <div class="marrob-catalog__swatch" style="background-color: #3B2F2F"></div>
               </div>
               <p class="marrob-catalog__swatch-names">Карамель · Капучино · Мокко · Эспрессо</p>
-              <a href="https://ВАШ_САЙТ.tilda.ws/catalog" class="marrob-catalog__btn">Смотреть каталог</a>
+              <a href="https://maroob.vercel.app/catalog" class="marrob-catalog__btn">Смотреть каталог</a>
             </div>
           </div>
         </div>
         <div class="marrob-catalog__panel" data-panel="5">
           <div class="marrob-catalog__twocol">
             <div class="marrob-catalog__img-wrap">
-              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" alt="Шумерский кирпич" class="marrob-catalog__img">
+              <img src="https://maroob.vercel.app/images/catalog-houses/sumerian.jpg" alt="Шумерский кирпич" class="marrob-catalog__img">
               <div class="marrob-catalog__img-overlay"></div>
               <div class="marrob-catalog__img-caption">
                 <h3 class="marrob-catalog__img-title">Шумерский кирпич</h3>
@@ -1531,7 +1607,7 @@
                 <div class="marrob-catalog__swatch" style="background-color: #2F2F2F"></div>
               </div>
               <p class="marrob-catalog__swatch-names">Песчаник · Глина · Сланец · Базальт</p>
-              <a href="https://ВАШ_САЙТ.tilda.ws/catalog" class="marrob-catalog__btn">Смотреть каталог</a>
+              <a href="https://maroob.vercel.app/catalog" class="marrob-catalog__btn">Смотреть каталог</a>
             </div>
           </div>
         </div>
@@ -1592,7 +1668,7 @@
     transition: all 0.3s;
     box-shadow: var(--marrob-shadow);
   }
-  .marrob-catalog__tab:hover { border-color: rgba(196, 92, 62, 0.5); color: var(--marrob-primary); }
+  .marrob-catalog__tab:hover { border-color: rgba(124, 154, 107, 0.5); color: var(--marrob-primary); }
   .marrob-catalog__tab.active { background: var(--marrob-primary); color: #fff; border-color: transparent; }
   .marrob-catalog__panel { display: none; }
   .marrob-catalog__panel.active { display: block; animation: marrob-fadeIn 0.4s ease; }
@@ -1622,7 +1698,7 @@
   .marrob-catalog__img-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(42,42,42,0.8) 0%, rgba(42,42,42,0.2) 50%, transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.35) 45%, transparent 100%);
   }
   .marrob-catalog__img-caption {
     position: absolute;
@@ -1631,8 +1707,20 @@
     right: 0;
     padding: 24px;
   }
-  .marrob-catalog__img-title { font-family: var(--marrob-font-display); font-size: 1.5rem; font-weight: 600; color: #fff; margin: 0 0 8px; }
-  .marrob-catalog__img-desc { font-size: 0.875rem; color: rgba(255,255,255,0.8); margin: 0; }
+  .marrob-catalog__img-title {
+    font-family: var(--marrob-font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 8px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.85);
+  }
+  .marrob-catalog__img-desc {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.92);
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.75);
+  }
   .marrob-catalog__img-corner {
     position: absolute;
     top: 16px;
@@ -1767,7 +1855,7 @@
   }
   .marrob-lead__btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(196, 92, 62, 0.35);
+    box-shadow: 0 8px 24px rgba(124, 154, 107, 0.35);
   }
   .marrob-lead-popup {
     position: fixed;
@@ -1932,8 +2020,8 @@
       </div>
       <div class="marrob-gallery__grid">
         <div class="marrob-gallery__card is-visible">
-          <div class="marrob-gallery__item" data-src="projects/moscow/01/klinker-brick-orange-pr-523-4.webp" data-caption="Истринский район — фасадные термопанели MARROB">
-            <img src="projects/moscow/01/klinker-brick-orange-pr-523-4.webp" alt="Истринский район">
+          <div class="marrob-gallery__item" data-src="https://maroob.vercel.app/projects/moscow/01/klinker-brick-orange-pr-523-4.webp" data-caption="Истринский район — фасадные термопанели MARROB">
+            <img src="https://maroob.vercel.app/projects/moscow/01/klinker-brick-orange-pr-523-4.webp" alt="Истринский район">
             <div class="marrob-gallery__overlay">
               <h3 class="marrob-gallery__overlay-title">Истринский район</h3>
               <p class="marrob-gallery__overlay-location">МО</p>
@@ -1946,8 +2034,8 @@
           </div>
         </div>
         <div class="marrob-gallery__card is-visible">
-          <div class="marrob-gallery__item" data-src="projects/moscow/02/seven-tones-orange-golden-tile-eston-ya-pr-509-01.webp" data-caption="г. Дедовск — фасадные термопанели MARROB">
-            <img src="projects/moscow/02/seven-tones-orange-golden-tile-eston-ya-pr-509-01.webp" alt="г. Дедовск">
+          <div class="marrob-gallery__item" data-src="https://maroob.vercel.app/projects/moscow/02/seven-tones-orange-golden-tile-eston-ya-pr-509-01.webp" data-caption="г. Дедовск — фасадные термопанели MARROB">
+            <img src="https://maroob.vercel.app/projects/moscow/02/seven-tones-orange-golden-tile-eston-ya-pr-509-01.webp" alt="г. Дедовск">
             <div class="marrob-gallery__overlay">
               <h3 class="marrob-gallery__overlay-title">г. Дедовск</h3>
               <p class="marrob-gallery__overlay-location">МО</p>
@@ -1960,8 +2048,8 @@
           </div>
         </div>
         <div class="marrob-gallery__card is-visible">
-          <div class="marrob-gallery__item" data-src="projects/moscow/03/brickstyle-baker-street-beige-kiev-pr-514-01.webp" data-caption="г. Красногорск — фасадные термопанели MARROB">
-            <img src="projects/moscow/03/brickstyle-baker-street-beige-kiev-pr-514-01.webp" alt="г. Красногорск">
+          <div class="marrob-gallery__item" data-src="https://maroob.vercel.app/projects/moscow/03/brickstyle-baker-street-beige-kiev-pr-514-01.webp" data-caption="г. Красногорск — фасадные термопанели MARROB">
+            <img src="https://maroob.vercel.app/projects/moscow/03/brickstyle-baker-street-beige-kiev-pr-514-01.webp" alt="г. Красногорск">
             <div class="marrob-gallery__overlay">
               <h3 class="marrob-gallery__overlay-title">г. Красногорск</h3>
               <p class="marrob-gallery__overlay-location">МО</p>
@@ -1974,8 +2062,8 @@
           </div>
         </div>
         <div class="marrob-gallery__card is-visible">
-          <div class="marrob-gallery__item" data-src="projects/moscow/04/loft-brick-chilli-serrad-s-kryukivshchina-pr-511-08.webp" data-caption="г. Химки — фасадные термопанели MARROB">
-            <img src="projects/moscow/04/loft-brick-chilli-serrad-s-kryukivshchina-pr-511-08.webp" alt="г. Химки">
+          <div class="marrob-gallery__item" data-src="https://maroob.vercel.app/projects/moscow/04/loft-brick-chilli-serrad-s-kryukivshchina-pr-511-08.webp" data-caption="г. Химки — фасадные термопанели MARROB">
+            <img src="https://maroob.vercel.app/projects/moscow/04/loft-brick-chilli-serrad-s-kryukivshchina-pr-511-08.webp" alt="г. Химки">
             <div class="marrob-gallery__overlay">
               <h3 class="marrob-gallery__overlay-title">г. Химки</h3>
               <p class="marrob-gallery__overlay-location">МО</p>
@@ -1988,8 +2076,8 @@
           </div>
         </div>
         <div class="marrob-gallery__card is-visible">
-          <div class="marrob-gallery__item" data-src="projects/moscow/05/brickstyle-london-dymny-lviv-pr-516-01-scaled.webp" data-caption="г. Одинцово — фасадные термопанели MARROB">
-            <img src="projects/moscow/05/brickstyle-london-dymny-lviv-pr-516-01-scaled.webp" alt="г. Одинцово">
+          <div class="marrob-gallery__item" data-src="https://maroob.vercel.app/projects/moscow/05/brickstyle-london-dymny-lviv-pr-516-01-scaled.webp" data-caption="г. Одинцово — фасадные термопанели MARROB">
+            <img src="https://maroob.vercel.app/projects/moscow/05/brickstyle-london-dymny-lviv-pr-516-01-scaled.webp" alt="г. Одинцово">
             <div class="marrob-gallery__overlay">
               <h3 class="marrob-gallery__overlay-title">г. Одинцово</h3>
               <p class="marrob-gallery__overlay-location">МО</p>
@@ -2002,8 +2090,8 @@
           </div>
         </div>
         <div class="marrob-gallery__card is-visible">
-          <div class="marrob-gallery__item" data-src="projects/moscow/06/porti-beige-paradyz-lvivska-obl-pr-505-01.webp" data-caption="г. Мытищи — фасадные термопанели MARROB">
-            <img src="projects/moscow/06/porti-beige-paradyz-lvivska-obl-pr-505-01.webp" alt="г. Мытищи">
+          <div class="marrob-gallery__item" data-src="https://maroob.vercel.app/projects/moscow/06/porti-beige-paradyz-lvivska-obl-pr-505-01.webp" data-caption="г. Мытищи — фасадные термопанели MARROB">
+            <img src="https://maroob.vercel.app/projects/moscow/06/porti-beige-paradyz-lvivska-obl-pr-505-01.webp" alt="г. Мытищи">
             <div class="marrob-gallery__overlay">
               <h3 class="marrob-gallery__overlay-title">г. Мытищи</h3>
               <p class="marrob-gallery__overlay-location">МО</p>
@@ -2016,8 +2104,8 @@
           </div>
         </div>
         <div class="marrob-gallery__card">
-          <div class="marrob-gallery__item" data-src="projects/moscow/07/cerrad-loft-brick-curry-vovchinets-pr-244-10-scaled.webp" data-caption="г. Балашиха — фасадные термопанели MARROB">
-            <img src="projects/moscow/07/cerrad-loft-brick-curry-vovchinets-pr-244-10-scaled.webp" alt="г. Балашиха">
+          <div class="marrob-gallery__item" data-src="https://maroob.vercel.app/projects/moscow/07/cerrad-loft-brick-curry-vovchinets-pr-244-10-scaled.webp" data-caption="г. Балашиха — фасадные термопанели MARROB">
+            <img src="https://maroob.vercel.app/projects/moscow/07/cerrad-loft-brick-curry-vovchinets-pr-244-10-scaled.webp" alt="г. Балашиха">
             <div class="marrob-gallery__overlay">
               <h3 class="marrob-gallery__overlay-title">г. Балашиха</h3>
               <p class="marrob-gallery__overlay-location">МО</p>
@@ -2030,8 +2118,8 @@
           </div>
         </div>
         <div class="marrob-gallery__card">
-          <div class="marrob-gallery__item" data-src="projects/moscow/08/backer-street-beige-lithuania-pr-230-01.jpg" data-caption="Ленинский г.о. — фасадные термопанели MARROB">
-            <img src="projects/moscow/08/backer-street-beige-lithuania-pr-230-01.jpg" alt="Ленинский г.о.">
+          <div class="marrob-gallery__item" data-src="https://maroob.vercel.app/projects/moscow/08/backer-street-beige-lithuania-pr-230-01.jpg" data-caption="Ленинский г.о. — фасадные термопанели MARROB">
+            <img src="https://maroob.vercel.app/projects/moscow/08/backer-street-beige-lithuania-pr-230-01.jpg" alt="Ленинский г.о.">
             <div class="marrob-gallery__overlay">
               <h3 class="marrob-gallery__overlay-title">Ленинский г.о.</h3>
               <p class="marrob-gallery__overlay-location">МО</p>
@@ -2044,8 +2132,8 @@
           </div>
         </div>
         <div class="marrob-gallery__card">
-          <div class="marrob-gallery__item" data-src="projects/moscow/09/seven-tones-orange-ivanofrankivsk-pr-227-01.jpg" data-caption="г. Долгопрудный — фасадные термопанели MARROB">
-            <img src="projects/moscow/09/seven-tones-orange-ivanofrankivsk-pr-227-01.jpg" alt="г. Долгопрудный">
+          <div class="marrob-gallery__item" data-src="https://maroob.vercel.app/projects/moscow/09/seven-tones-orange-ivanofrankivsk-pr-227-01.jpg" data-caption="г. Долгопрудный — фасадные термопанели MARROB">
+            <img src="https://maroob.vercel.app/projects/moscow/09/seven-tones-orange-ivanofrankivsk-pr-227-01.jpg" alt="г. Долгопрудный">
             <div class="marrob-gallery__overlay">
               <h3 class="marrob-gallery__overlay-title">г. Долгопрудный</h3>
               <p class="marrob-gallery__overlay-location">МО</p>
@@ -2058,8 +2146,8 @@
           </div>
         </div>
         <div class="marrob-gallery__card">
-          <div class="marrob-gallery__item" data-src="projects/moscow/10/viano-beige-elewaciya-odesa-pr-225-01.jpg" data-caption="г. Люберцы — фасадные термопанели MARROB">
-            <img src="projects/moscow/10/viano-beige-elewaciya-odesa-pr-225-01.jpg" alt="г. Люберцы">
+          <div class="marrob-gallery__item" data-src="https://maroob.vercel.app/projects/moscow/10/viano-beige-elewaciya-odesa-pr-225-01.jpg" data-caption="г. Люберцы — фасадные термопанели MARROB">
+            <img src="https://maroob.vercel.app/projects/moscow/10/viano-beige-elewaciya-odesa-pr-225-01.jpg" alt="г. Люберцы">
             <div class="marrob-gallery__overlay">
               <h3 class="marrob-gallery__overlay-title">г. Люберцы</h3>
               <p class="marrob-gallery__overlay-location">МО</p>
@@ -2072,8 +2160,8 @@
           </div>
         </div>
         <div class="marrob-gallery__card">
-          <div class="marrob-gallery__item" data-src="projects/moscow/12/aria-rustica-hf21-sokilniki-pr-221-01.jpg" data-caption="Чеховский район — фасадные термопанели MARROB">
-            <img src="projects/moscow/12/aria-rustica-hf21-sokilniki-pr-221-01.jpg" alt="Чеховский район">
+          <div class="marrob-gallery__item" data-src="https://maroob.vercel.app/projects/moscow/12/aria-rustica-hf21-sokilniki-pr-221-01.jpg" data-caption="Чеховский район — фасадные термопанели MARROB">
+            <img src="https://maroob.vercel.app/projects/moscow/12/aria-rustica-hf21-sokilniki-pr-221-01.jpg" alt="Чеховский район">
             <div class="marrob-gallery__overlay">
               <h3 class="marrob-gallery__overlay-title">Чеховский район</h3>
               <p class="marrob-gallery__overlay-location">МО</p>
@@ -2086,8 +2174,8 @@
           </div>
         </div>
         <div class="marrob-gallery__card">
-          <div class="marrob-gallery__item" data-src="projects/moscow/13/loft-brick-chilly-otopeni-rumunia-pr-216-01.jpg" data-caption="г. Сергиев Посад — фасадные термопанели MARROB">
-            <img src="projects/moscow/13/loft-brick-chilly-otopeni-rumunia-pr-216-01.jpg" alt="г. Сергиев Посад">
+          <div class="marrob-gallery__item" data-src="https://maroob.vercel.app/projects/moscow/13/loft-brick-chilly-otopeni-rumunia-pr-216-01.jpg" data-caption="г. Сергиев Посад — фасадные термопанели MARROB">
+            <img src="https://maroob.vercel.app/projects/moscow/13/loft-brick-chilly-otopeni-rumunia-pr-216-01.jpg" alt="г. Сергиев Посад">
             <div class="marrob-gallery__overlay">
               <h3 class="marrob-gallery__overlay-title">г. Сергиев Посад</h3>
               <p class="marrob-gallery__overlay-location">МО</p>
@@ -2113,7 +2201,7 @@
           </div>
         </div>
         <div class="marrob-gallery__stats-logo">
-          <img src="logo.png" alt="MARROB" width="200" height="56" loading="lazy" decoding="async">
+          <img src="https://maroob.vercel.app/logo.png" alt="MARROB" width="200" height="56" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -2136,7 +2224,7 @@
   .marrob-gallery__badge {
     display: inline-block;
     padding: 8px 20px;
-    background: rgba(196, 92, 62, 0.1);
+    background: rgba(124, 154, 107, 0.1);
     color: var(--marrob-primary);
     font-size: 0.875rem;
     font-weight: 500;
@@ -2265,7 +2353,7 @@
     font-family: var(--marrob-font-body);
     transition: background 0.2s;
   }
-  .marrob-gallery__load-more:hover { background: rgba(196, 92, 62, 0.08); }
+  .marrob-gallery__load-more:hover { background: rgba(124, 154, 107, 0.08); }
   .marrob-gallery__load-more.is-hidden { display: none; }
   .marrob-gallery__stats-wrap {
     margin-top: 48px;
@@ -2498,7 +2586,7 @@
       <div class="marrob-reviews__grid">
         <div class="marrob-review-card marrob-fade-up">
           <div class="marrob-review-card__video">
-            <img src="projects/moscow/01/klinker-br7ick-orange-pr-523-2.webp" alt="Фасад частного дома, клинкер — портфолио MARROB" loading="lazy" decoding="async">
+            <img src="https://maroob.vercel.app/projects/moscow/01/klinker-brick-orange-pr-523-2.webp" alt="Фасад частного дома, клинкер — портфолио MARROB" loading="lazy" decoding="async">
           </div>
           <div class="marrob-review-card__content">
             <div class="marrob-review-card__stars" aria-hidden="true">★★★★★</div>
@@ -2513,7 +2601,7 @@
         </div>
         <div class="marrob-review-card marrob-fade-up marrob-fade-up-delay-1">
           <div class="marrob-review-card__video">
-            <img src="projects/moscow/04/loft-brick-chilli-serrad-s-kryukivshchina-pr-511-11.webp" alt="Фасад Loft brick — портфолио MARROB" loading="lazy" decoding="async">
+            <img src="https://maroob.vercel.app/projects/moscow/04/loft-brick-chilli-serrad-s-kryukivshchina-pr-511-11.webp" alt="Фасад Loft brick — портфолио MARROB" loading="lazy" decoding="async">
           </div>
           <div class="marrob-review-card__content">
             <div class="marrob-review-card__stars" aria-hidden="true">★★★★★</div>
@@ -2528,7 +2616,7 @@
         </div>
         <div class="marrob-review-card marrob-fade-up marrob-fade-up-delay-2">
           <div class="marrob-review-card__video">
-            <img src="projects/moscow/03/brickstyle-baker-street-beige-kiev-pr-514-01.webp" alt="Фасад Brickstyle Baker Street — портфолио MARROB" loading="lazy" decoding="async">
+            <img src="https://maroob.vercel.app/projects/moscow/03/brickstyle-baker-street-beige-kiev-pr-514-01.webp" alt="Фасад Brickstyle Baker Street — портфолио MARROB" loading="lazy" decoding="async">
           </div>
           <div class="marrob-review-card__content">
             <div class="marrob-review-card__stars" aria-hidden="true">★★★★★</div>
@@ -2550,7 +2638,7 @@
   .marrob-reviews { padding: 80px 24px; font-family: var(--marrob-font-body); }
   .marrob-reviews__inner { max-width: 1280px; margin: 0 auto; }
   .marrob-reviews__head { text-align: center; max-width: 720px; margin: 0 auto 48px; }
-  .marrob-reviews__badge { display: inline-block; padding: 8px 20px; background: rgba(196, 92, 62, 0.1); color: var(--marrob-primary); font-size: 0.875rem; font-weight: 500; border-radius: 999px; margin-bottom: 20px; }
+  .marrob-reviews__badge { display: inline-block; padding: 8px 20px; background: rgba(124, 154, 107, 0.1); color: var(--marrob-primary); font-size: 0.875rem; font-weight: 500; border-radius: 999px; margin-bottom: 20px; }
   .marrob-reviews__title { font-size: 2.25rem; line-height: 1.2; font-weight: 700; color: var(--marrob-text); margin: 0 0 16px; }
   .marrob-reviews__subtitle { font-size: 1.0625rem; color: var(--marrob-text-muted); line-height: 1.6; margin: 0; }
   .marrob-reviews__grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
@@ -2579,19 +2667,19 @@
       </div>
       <div class="marrob-certs__grid">
         <button type="button" class="marrob-certs__item marrob-fade-up" data-marrob-cert-open="0" aria-label="Открыть документ">
-          <img src="assets/certs/reestr-vyborklientov-2023.png" alt="" class="marrob-certs__img" loading="lazy">
+          <img src="https://maroob.vercel.app/certs/cert-1.png" alt="" class="marrob-certs__img" loading="lazy">
           <p class="marrob-certs__name">Реестр эффективных предприятий и номинация «Выбор клиентов и партнёров 2023» (топ 4%)</p>
         </button>
         <button type="button" class="marrob-certs__item marrob-fade-up marrob-fade-up-delay-1" data-marrob-cert-open="1" aria-label="Открыть документ">
-          <img src="assets/certs/trademark-marrob.png" alt="" class="marrob-certs__img" loading="lazy">
+          <img src="https://maroob.vercel.app/certs/cert-2.png" alt="" class="marrob-certs__img" loading="lazy">
           <p class="marrob-certs__name">Свидетельство на товарный знак MARROB (Роспатент, до 2033)</p>
         </button>
         <button type="button" class="marrob-certs__item marrob-fade-up marrob-fade-up-delay-2" data-marrob-cert-open="2" aria-label="Открыть документ">
-          <img src="assets/certs/mosbuild-2023.png" alt="" class="marrob-certs__img" loading="lazy">
+          <img src="https://maroob.vercel.app/certs/cert-3.png" alt="" class="marrob-certs__img" loading="lazy">
           <p class="marrob-certs__name">Участник 28-й Международной выставки MosBuild (28–31.03.2023)</p>
         </button>
         <button type="button" class="marrob-certs__item marrob-fade-up marrob-fade-up-delay-3" data-marrob-cert-open="3" aria-label="Открыть документ">
-          <img src="assets/certs/cert-thermo-stone.png" alt="" class="marrob-certs__img" loading="lazy">
+          <img src="https://maroob.vercel.app/certs/cert-4.png" alt="" class="marrob-certs__img" loading="lazy">
           <p class="marrob-certs__name">Сертификат соответствия «Thermo stone» (Промтехстандарт, до 2026)</p>
         </button>
       </div>
@@ -2616,7 +2704,7 @@
   .marrob-certs__badge {
     display: inline-block;
     padding: 8px 20px;
-    background: rgba(196, 92, 62, 0.1);
+    background: rgba(124, 154, 107, 0.1);
     color: var(--marrob-primary);
     font-size: 0.875rem;
     font-weight: 500;
@@ -2749,7 +2837,7 @@
         </p>
       </div>
       <div class="marrob-specs__diagram marrob-fade-up marrob-fade-up-delay-1">
-        <img src="images/specs-panel-diagram.png" width="1600" height="900" alt="Схема термопанели MARROB: декоративно-защитный слой из керамобетона, утеплитель, монолитное соединение слоёв при производстве, окрашивание в массе, скрытые монтажные отверстия в основании" loading="lazy" decoding="async">
+        <img src="https://maroob.vercel.app/images/specs-panel-diagram.png" width="1600" height="900" alt="Схема термопанели MARROB: декоративно-защитный слой из керамобетона, утеплитель, монолитное соединение слоёв при производстве, окрашивание в массе, скрытые монтажные отверстия в основании" loading="lazy" decoding="async">
       </div>
       <div class="marrob-specs__three">
         <div class="marrob-specs__box marrob-fade-up marrob-fade-up-delay-2">
@@ -2830,7 +2918,7 @@
   .marrob-specs__section-badge {
     display: inline-block;
     padding: 8px 20px;
-    background: rgba(196, 92, 62, 0.1);
+    background: rgba(124, 154, 107, 0.1);
     color: var(--marrob-primary);
     font-size: 0.875rem;
     font-weight: 500;
@@ -2977,7 +3065,7 @@
   .marrob-trust__badge {
     display: inline-block;
     padding: 8px 20px;
-    background: rgba(196, 92, 62, 0.1);
+    background: rgba(124, 154, 107, 0.1);
     color: var(--marrob-primary);
     font-size: 0.875rem;
     font-weight: 500;
@@ -3190,7 +3278,7 @@
   .marrob-purchase__badge {
     display: inline-block;
     padding: 8px 20px;
-    background: rgba(196, 92, 62, 0.1);
+    background: rgba(124, 154, 107, 0.1);
     color: var(--marrob-primary);
     font-size: 0.875rem;
     font-weight: 500;
@@ -3237,7 +3325,7 @@
     box-shadow: var(--marrob-shadow-hover);
   }
   .marrob-purchase__card--highlight {
-    border-color: rgba(196, 92, 62, 0.3);
+    border-color: rgba(124, 154, 107, 0.3);
     background: linear-gradient(to bottom, #fff, var(--marrob-bg));
   }
   .marrob-purchase__card-badge {
@@ -3356,10 +3444,10 @@
     background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover));
     color: #fff;
     border: none;
-    box-shadow: 0 4px 20px rgba(196, 92, 62, 0.3);
+    box-shadow: 0 4px 20px rgba(124, 154, 107, 0.3);
   }
   .marrob-purchase__card-btn--primary:hover {
-    box-shadow: 0 8px 28px rgba(196, 92, 62, 0.4);
+    box-shadow: 0 8px 28px rgba(124, 154, 107, 0.4);
   }
   .marrob-purchase__card-btn--pulse {
     animation: marrob-pulse-btn 2.5s ease-in-out infinite;
@@ -3368,8 +3456,8 @@
     animation: none;
   }
   @keyframes marrob-pulse-btn {
-    0%, 100% { box-shadow: 0 4px 20px rgba(196, 92, 62, 0.3); }
-    50% { box-shadow: 0 4px 28px rgba(196, 92, 62, 0.45); }
+    0%, 100% { box-shadow: 0 4px 20px rgba(124, 154, 107, 0.3); }
+    50% { box-shadow: 0 4px 28px rgba(124, 154, 107, 0.45); }
   }
   .marrob-purchase__note {
     text-align: center;
@@ -3769,7 +3857,7 @@
         </div>
         <div class="marrob-contact2__form-panel">
           <div class="marrob-contact2__form-photo">
-            <img src="images/contact-office.png" alt="Офис MARROB в Одинцово" width="800" height="1200" loading="lazy" decoding="async">
+            <img src="https://maroob.vercel.app/images/contact-office.png" alt="Офис MARROB в Одинцово" width="800" height="1200" loading="lazy" decoding="async">
             <div class="marrob-contact2__form-photo-cap">
               <span class="marrob-contact2__form-photo-title">Наш офис · Одинцово</span>
               <span class="marrob-contact2__form-photo-sub">Ждём вас на консультацию</span>
@@ -3809,7 +3897,7 @@
   .marrob-contact2__inner { max-width: 1280px; margin: 0 auto; }
   .marrob-contact2__head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
   .marrob-contact2__badge {
-    display: inline-block; padding: 8px 20px; background: rgba(196, 92, 62, 0.1);
+    display: inline-block; padding: 8px 20px; background: rgba(124, 154, 107, 0.1);
     color: var(--marrob-primary); font-size: 0.875rem; font-weight: 500; border-radius: 999px; margin-bottom: 16px;
   }
   .marrob-contact2__title { font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 600; color: var(--marrob-text); margin: 0 0 12px; }
@@ -4020,7 +4108,7 @@
   .marrob-faq__badge {
     display: inline-block;
     padding: 8px 20px;
-    background: rgba(196, 92, 62, 0.1);
+    background: rgba(124, 154, 107, 0.1);
     color: var(--marrob-primary);
     font-size: 0.875rem;
     font-weight: 500;
@@ -4184,7 +4272,7 @@
     <div class="marrob-footer__inner">
       <div class="marrob-footer__grid">
         <div class="marrob-footer__brand">
-          <a href="/" class="marrob-footer__logo"><img src="assets/logo.png" alt="MARROB — Фасадные термопанели" class="marrob-footer__logo-img" width="140" height="40"></a>
+          <a href="/" class="marrob-footer__logo"><img src="https://maroob.vercel.app/logo.png" alt="MARROB — Фасадные термопанели" class="marrob-footer__logo-img" width="140" height="40"></a>
           <p class="marrob-footer__desc">
             Производитель фасадных термопанелей с облицовкой под натуральный камень. Поставка по РФ. Монтаж — Москва и Московская область.
           </p>
@@ -4367,55 +4455,13 @@
   .marrob-footer__legal-link:hover { color: #DADADA; }
 </style>
 
-<!-- MARROB — Плавающий виджет WhatsApp / Telegram. -->
-<div class="marrob-messenger-widget" id="marrob-messenger-widget" aria-label="Мессенджеры">
-  <a href="https://wa.me/74996475910" class="marrob-messenger-widget__btn marrob-messenger-widget__btn--wa" target="_blank" rel="noopener noreferrer" title="Написать в WhatsApp">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
-  <a href="https://t.me/marrob" class="marrob-messenger-widget__btn marrob-messenger-widget__btn--tg" target="_blank" rel="noopener noreferrer" title="Написать в Telegram">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-  </a>
-</div>
-<style>
-  .marrob-messenger-widget {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    pointer-events: none;
-  }
-  .marrob-messenger-widget__btn {
-    pointer-events: auto;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    background: #2A2A2A;
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-    text-decoration: none;
-  }
-  .marrob-messenger-widget__btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 6px 24px rgba(0,0,0,0.25);
-    background: #383838;
-  }
-  .marrob-messenger-widget__btn--wa,
-  .marrob-messenger-widget__btn--tg {
-    /* Классические белые иконки на тёмном фоне, без оранжевой заливки */
-  }
-  .marrob-messenger-widget__btn svg {
-    width: 24px;
-    height: 24px;
-  }
-</style>
+<!-- MARROB — Виджет Bitrix24 (кнопка на сайте). -->
+<script>
+(function(w,d,u){
+  var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
+  var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+})(window,document,'https://cdn-ru.bitrix24.ru/b36795754/crm/site_button/loader_1_22ewny.js');
+</script>
 
 <!-- MARROB — Глобальный попап заявки. Открывается по клику на ссылки #contact и кнопки каталога. -->
 <div class="marrob-cta-popup" id="marrob-cta-popup" role="dialog" aria-modal="true" aria-labelledby="marrob-cta-popup-title" aria-hidden="true">
@@ -4612,7 +4658,7 @@
   }
   .marrob-cta-popup__submit:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(196, 92, 62, 0.35);
+    box-shadow: 0 8px 24px rgba(124, 154, 107, 0.35);
   }
   .marrob-cta-popup__disclaimer {
     font-size: 0.8125rem;
@@ -4878,7 +4924,7 @@
   .marrob-quiz__progress-bar { height: 100%; background: var(--marrob-primary); transition: width 0.3s ease; }
   .marrob-quiz__options { display: flex; flex-direction: column; gap: 12px; }
   .marrob-quiz__option { display: flex; align-items: center; gap: 12px; padding: 16px; border: 1px solid var(--marrob-border); border-radius: 8px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
-  .marrob-quiz__option:hover { border-color: var(--marrob-primary); background: rgba(196, 92, 62, 0.02); }
+  .marrob-quiz__option:hover { border-color: var(--marrob-primary); background: rgba(124, 154, 107, 0.02); }
   .marrob-quiz__option input { width: 20px; height: 20px; accent-color: var(--marrob-primary); }
   .marrob-quiz__option span { font-size: 1rem; color: var(--marrob-text); font-weight: 500; }
   .marrob-quiz__nav { display: flex; gap: 12px; margin-top: 24px; }

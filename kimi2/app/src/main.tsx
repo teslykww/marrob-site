@@ -6,7 +6,7 @@ import './index.css';
 import App from './App.tsx';
 import Header from './sections/Header';
 import Footer from './sections/Footer';
-import MessengerWidget from './components/MessengerWidget';
+import BitrixSiteButton from './components/BitrixSiteButton';
 import CatalogPage from './pages/CatalogPage';
 import DealersPage from './pages/DealersPage';
 
@@ -22,7 +22,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/dealers" element={<DealersPage />} />
         </Routes>
         <Footer />
-        <MessengerWidget />
+        <BitrixSiteButton />
       </div>
       </MotionConfig>
     </HashRouter>

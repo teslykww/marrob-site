@@ -1,0 +1,4 @@
+{
+  "publicBaseUrl": "https://maroob.vercel.app",
+  "_readme": "URL продакшена (без слэша в конце). Пусто — относительные пути. Переопределение: MARROB_PUBLIC_BASE_URL."
+}

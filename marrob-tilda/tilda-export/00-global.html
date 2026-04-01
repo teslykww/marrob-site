@@ -1,0 +1,108 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --marrob-bg: #FAF9F7;
+    --marrob-bg-card: #ffffff;
+    /* primary = зелёный (как React), accent = терракота */
+    --marrob-primary: #7C9A6B;
+    --marrob-primary-hover: #6A8560;
+    --marrob-primary-light: #E8F0E3;
+    --marrob-accent: #B66A50;
+    --marrob-accent-hover: #A05A42;
+    --marrob-accent-light: #F5E8E3;
+    --marrob-brick: #C45C3E;
+    --marrob-brick-light: #F5E5E0;
+    --marrob-green: #7C9A6B;
+    --marrob-green-soft: #E8F0E3;
+    --marrob-sand: #D4C4A8;
+    --marrob-sand-light: #F5F0E8;
+    --marrob-text: #2D2D2D;
+    --marrob-text-muted: #5A5A5A;
+    --marrob-text-light: #8A8A8A;
+    --marrob-border: #E8E4DC;
+    --marrob-radius: 12px;
+    --marrob-radius-lg: 20px;
+    --marrob-shadow: 0 4px 24px rgba(45, 45, 45, 0.06);
+    --marrob-shadow-hover: 0 12px 40px rgba(45, 45, 45, 0.1);
+    --marrob-font-display: 'Montserrat', system-ui, sans-serif;
+    --marrob-font-body: 'PT Sans', system-ui, sans-serif;
+    --marrob-h1: clamp(30px, 5vw, 70px);
+    --marrob-h2: clamp(26px, 4vw, 48px);
+    --marrob-subtitle: clamp(22px, 2.5vw, 30px);
+    --marrob-body: clamp(16px, 1.5vw, 20px);
+    /* RGB для теней и перекрытия стилей Tilda (primary = зелёный) */
+    --marrob-primary-rgb: 124, 154, 107;
+  }
+  html { scroll-behavior: smooth; font-size: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+  .marrob-font-display { font-family: var(--marrob-font-display); }
+  .marrob-font-body { font-family: var(--marrob-font-body); }
+  .marrob-h1 { font-size: var(--marrob-h1); font-family: var(--marrob-font-display); line-height: 1.15; }
+  .marrob-h2 { font-size: var(--marrob-h2); font-family: var(--marrob-font-display); line-height: 1.2; }
+  .marrob-subtitle { font-size: var(--marrob-subtitle); font-family: var(--marrob-font-body); line-height: 1.35; }
+  .marrob-body { font-size: var(--marrob-body); font-family: var(--marrob-font-body); line-height: 1.5; }
+  .marrob-icon { width: 24px; height: 24px; flex-shrink: 0; }
+  .marrob-icon svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  .marrob-dot-bg {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, var(--marrob-border) 1px, transparent 0);
+    background-size: 50px 50px;
+    opacity: 0.2;
+    pointer-events: none;
+  }
+  .marrob-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .marrob-blob--primary { background: linear-gradient(135deg, var(--marrob-primary), var(--marrob-primary-hover)); }
+  .marrob-blob--accent { background: linear-gradient(135deg, var(--marrob-accent), var(--marrob-accent-hover)); }
+  .marrob-blob--sm { width: 300px; height: 300px; }
+  .marrob-blob--md { width: 400px; height: 400px; }
+  .marrob-blob--lg { width: 500px; height: 500px; }
+  .marrob-blob--tr { top: 0; right: 0; transform: translate(30%, -30%); }
+  .marrob-blob--tl { top: 0; left: 0; transform: translate(-30%, -30%); }
+  .marrob-blob--br { bottom: 0; right: 0; transform: translate(30%, 30%); }
+  .marrob-blob--bl { bottom: 0; left: 0; transform: translate(-30%, 30%); }
+  .marrob-blob--center-left { top: 50%; left: 0; transform: translate(-50%, -50%); }
+  .marrob-blob--center-right { top: 50%; right: 0; transform: translate(50%, -50%); }
+
+  .marrob-fade-up {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .marrob-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .marrob-fade-up-delay-1 { transition-delay: 0.1s; }
+  .marrob-fade-up-delay-2 { transition-delay: 0.2s; }
+  .marrob-fade-up-delay-3 { transition-delay: 0.3s; }
+  .marrob-fade-up-delay-4 { transition-delay: 0.4s; }
+  @media (prefers-reduced-motion: reduce) {
+    .marrob-fade-up,
+    .marrob-fade-up.visible {
+      transition: none;
+    }
+  }
+
+  /* Перекрытие глобальных стилей Tilda: ссылки/кнопки внутри блоков MARROB */
+  #allrecords .marrob-block a[class*="marrob-"],
+  .t-rec .marrob-block a[class*="marrob-"] {
+    border-bottom: none !important;
+    text-decoration: none !important;
+  }
+  #allrecords .marrob-block button[class*="marrob-"],
+  .t-rec .marrob-block button[class*="marrob-"] {
+    font-family: var(--marrob-font-body) !important;
+  }
+</style>

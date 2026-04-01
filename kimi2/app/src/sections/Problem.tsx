@@ -42,7 +42,7 @@ function AdvantageCard({ item }: { item: Advantage }) {
           <h3 className="type-card-title hyphens-auto break-words [overflow-wrap:anywhere]">{item.title}</h3>
         </div>
       )}
-      <p className="text-sm leading-relaxed text-text-muted">{item.description}</p>
+      <p className="type-body-sm m-0 grow text-text-muted">{item.description}</p>
     </div>
   );
 }

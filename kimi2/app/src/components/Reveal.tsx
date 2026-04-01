@@ -2,6 +2,7 @@ import * as React from 'react';
 import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+import { MOTION } from '@/lib/motion';
 
 type RevealProps = {
   children: React.ReactNode;
@@ -17,8 +18,8 @@ const viewport = {
 } as const;
 
 const transition = {
-  duration: 0.45,
-  ease: [0.22, 1, 0.36, 1] as const,
+  duration: MOTION.durationMd,
+  ease: MOTION.ease,
 };
 
 /**
@@ -34,7 +35,7 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
   return (
     <motion.div
       className={cn(className)}
-      initial={{ opacity: 0, y: 18 }}
+      initial={{ opacity: 0, y: MOTION.liftY }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={viewport}
       transition={{ ...transition, delay }}

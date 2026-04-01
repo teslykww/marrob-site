@@ -83,7 +83,7 @@ const economyCards: { title: string; text: string; icon: ReactNode }[] = [
   },
   {
     title: 'Средний объём заказа',
-    text: 'Средний фасад частного дома — от 150 м².',
+    text: 'Средний фасад частного дома — от 150 м². Объём типового проекта позволяет планировать закупки и логистику, а партнёру — прогнозировать выручку и маржу по сделке без скачков по мелким заявкам.',
     icon: <GridIcon size={20} />,
   },
   {
@@ -263,10 +263,10 @@ function IconCard({
   return (
     <div
       className={cn(
-        'rounded-xl border p-4 sm:p-5 md:p-6 shadow-premium hover:shadow-premium-md transition-shadow h-full flex flex-col',
+        'rounded-xl border p-4 sm:p-5 md:p-6 shadow-premium h-full flex flex-col',
         isDark
-          ? 'border-white/10 bg-[var(--section-dark-elevated)] shadow-none hover:shadow-lg hover:shadow-black/20'
-          : 'border-border bg-white',
+          ? 'border-white/10 bg-[var(--section-dark-elevated)] shadow-none transition-shadow hover:shadow-lg hover:shadow-black/20'
+          : 'card-interactive border-border bg-white hover:shadow-premium-md',
       )}
     >
       <div
@@ -279,8 +279,7 @@ function IconCard({
       </div>
       <h3
         className={cn(
-          /* text-lg задаёт слишком свободный line-height в Tailwind — только размер, leading отдельно */
-          'font-display font-semibold mb-2 text-[1rem] sm:text-[1.125rem] leading-[1.12]',
+          'type-card-title-compact mb-2',
           isDark ? 'text-[var(--section-dark-text)]' : 'text-text',
         )}
       >
@@ -288,8 +287,7 @@ function IconCard({
       </h3>
       <p
         className={cn(
-          /* sm:text-base тоже тянет line-height 1.5 — используем arbitrary size + --leading-body */
-          'font-body text-[0.9375rem] sm:text-[1rem] m-0 grow leading-[var(--leading-body)]',
+          'type-card-copy m-0 grow',
           isDark ? 'text-[var(--section-dark-muted)]' : 'text-text-muted',
         )}
       >
@@ -422,8 +420,8 @@ const DealersPage: React.FC = () => {
           </div>
         </section>
 
-        <div className="dealers-band dealers-band--dark dealers-reveal max-w-5xl mx-auto dealers-stack">
-          <section className="max-w-5xl mx-auto border-0 pt-0 pb-0 dealers-section !border-t-0 !pt-0">
+        <div className="dealers-band dealers-band--dark dealers-reveal layout-wide dealers-stack">
+          <section className="layout-wide border-0 pt-0 pb-0 dealers-section !border-t-0 !pt-0">
             <div className="text-center mx-auto mb-6 sm:mb-8 dealers-prose">
               <h2 className="dealers-h2 mb-2 sm:mb-3">Производитель фасадных термопанелей MARROB</h2>
               <p className="dealers-lead m-0 mx-auto">
@@ -450,9 +448,9 @@ const DealersPage: React.FC = () => {
           </section>
         </div>
 
-        <section className="max-w-5xl mx-auto dealers-section dealers-stack dealers-reveal">
+        <section className="layout-wide dealers-section dealers-stack dealers-reveal">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
-            <div className="max-w-3xl xl:max-w-none">
+            <div className="min-w-0 w-full">
               <span className="badge-premium mb-3">Продукт</span>
               <h2 className="dealers-h2 mb-3 sm:mb-4">Термопанель — понятное предложение для вашего клиента</h2>
               <p className="dealers-lead mb-5 sm:mb-6">
@@ -491,8 +489,8 @@ const DealersPage: React.FC = () => {
           </div>
         </section>
 
-        <div className="dealers-band dealers-band--dark dealers-reveal max-w-5xl mx-auto dealers-stack">
-          <section className="dealers-section px-0 max-w-none !border-t-0 !pt-0 border-0">
+        <div className="dealers-band dealers-band--dark dealers-reveal layout-wide dealers-stack">
+          <section className="dealers-section px-0 w-full !border-t-0 !pt-0 border-0">
             <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-[var(--section-dark-elevated)] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:rounded-3xl">
               <div className="grid min-h-0 lg:grid-cols-[minmax(0,44%)_minmax(0,1fr)] lg:min-h-[min(400px,52vh)]">
                 <div className="relative min-h-[200px] sm:min-h-[260px] lg:min-h-full">
@@ -549,7 +547,7 @@ const DealersPage: React.FC = () => {
           />
           <div className="relative z-10">
             <div className="mb-8 flex flex-col gap-3 sm:mb-10 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
-              <div className="min-w-0 max-w-2xl">
+              <div className="min-w-0 w-full lg:max-w-2xl">
                 <span className="badge-premium mb-3 inline-block sm:mb-4">Объекты</span>
                 <h2 className="type-section-title mb-3 text-balance sm:mb-4">
                   Продукция, которую видно с <span className="text-primary">улицы</span>
@@ -572,7 +570,7 @@ const DealersPage: React.FC = () => {
                 <Link
                   key={project.id}
                   to="/#gallery"
-                  className="group block overflow-hidden rounded-2xl bg-white shadow-premium transition-all duration-300 hover:shadow-premium-lg"
+                  className="group card-interactive block overflow-hidden rounded-2xl bg-white shadow-premium hover:-translate-y-0.5 motion-reduce:hover:translate-y-0"
                 >
                   <div className="relative aspect-[4/3] cursor-pointer overflow-hidden">
                     <img
@@ -619,9 +617,9 @@ const DealersPage: React.FC = () => {
           </div>
         </section>
 
-        <div className="dealers-band dealers-band--dark dealers-reveal max-w-5xl mx-auto dealers-stack">
-          <section className="max-w-5xl mx-auto dealers-section !border-t-0 !pt-0 border-0">
-            <h2 className="dealers-h2 mb-3 sm:mb-4">Сколько зарабатывает дилер MARROB</h2>
+        <div className="dealers-band dealers-band--dark dealers-reveal layout-wide dealers-stack">
+          <section className="layout-wide dealers-section !border-t-0 !pt-0 border-0">
+            <h2 className="dealers-h2 mb-5 sm:mb-6">Сколько зарабатывает дилер MARROB</h2>
             <p className="dealers-lead mb-6 sm:mb-8 dealers-prose">
               Фасадные термопанели — продукт со стабильным спросом и понятной экономикой. Партнёр получает доход как от продажи
               панелей, так и от дополнительных услуг.
@@ -634,8 +632,8 @@ const DealersPage: React.FC = () => {
           </section>
         </div>
 
-        <section className="max-w-2xl mx-auto dealers-stack dealers-reveal">
-          <div className="bg-white rounded-2xl p-6 sm:p-8 md:p-10 shadow-premium text-center border border-border">
+        <section className="layout-wide dealers-stack dealers-reveal">
+          <div className="w-full rounded-2xl border border-border bg-white p-6 sm:p-8 md:p-10 shadow-premium text-center">
             <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary-light rounded-xl flex items-center justify-center text-primary mx-auto mb-4 sm:mb-5">
               <FileTextIcon size={26} className="sm:w-7 sm:h-7" />
             </div>
@@ -648,8 +646,8 @@ const DealersPage: React.FC = () => {
           </div>
         </section>
 
-        <div className="dealers-band dealers-band--dark dealers-reveal max-w-5xl mx-auto dealers-stack">
-          <section className="max-w-5xl mx-auto dealers-section !border-t-0 !pt-0 border-0">
+        <div className="dealers-band dealers-band--dark dealers-reveal layout-wide dealers-stack">
+          <section className="layout-wide dealers-section !border-t-0 !pt-0 border-0">
             <h2 className="dealers-h2 mb-3 sm:mb-4">Кому подходит партнёрство с MARROB</h2>
             <p className="dealers-lead mb-6 sm:mb-8 dealers-prose">
               Мы выстраиваем сотрудничество с компаниями, которые активно работают с частным домостроением и заинтересованы в
@@ -663,7 +661,7 @@ const DealersPage: React.FC = () => {
           </section>
         </div>
 
-        <section className="max-w-5xl mx-auto dealers-section dealers-stack dealers-reveal">
+        <section className="layout-wide dealers-section dealers-stack dealers-reveal">
           <h2 className="dealers-h2 mb-3 sm:mb-4">Поддержка партнёров на каждом этапе</h2>
           <p className="dealers-lead mb-6 sm:mb-8 dealers-prose">
             Наша задача — не просто поставить продукцию, а выстроить устойчивое партнёрство и помочь вам развивать
@@ -676,9 +674,9 @@ const DealersPage: React.FC = () => {
           </div>
         </section>
 
-        <div className="dealers-band dealers-band--dark dealers-reveal max-w-5xl mx-auto dealers-stack">
-          <section className="max-w-5xl mx-auto dealers-section !border-t-0 !pt-0 border-0">
-            <div className="text-center mx-auto mb-6 sm:mb-8 max-w-xl dealers-prose">
+        <div className="dealers-band dealers-band--dark dealers-reveal layout-wide dealers-stack">
+          <section className="layout-wide dealers-section !border-t-0 !pt-0 border-0">
+            <div className="text-center mx-auto mb-6 sm:mb-8 layout-narrow dealers-prose">
               <span className="badge-premium mb-3">Надёжность</span>
               <h2 className="dealers-h2 mb-2">Документы и сертификаты</h2>
               <p className="text-[var(--section-dark-muted)] text-sm sm:text-base m-0 leading-relaxed">
@@ -734,13 +732,13 @@ const DealersPage: React.FC = () => {
 
         <section
           id="dealer-form"
-          className="max-w-5xl mx-auto dealers-stack scroll-mt-28 md:scroll-mt-32 pb-6 sm:pb-8 dealers-reveal"
+          className="layout-wide dealers-stack scroll-mt-28 md:scroll-mt-32 pb-6 sm:pb-8 dealers-reveal"
         >
           <div className="dealers-band dealers-band--dark dealers-band--cta rounded-3xl">
             <h2 className="dealers-h2 text-center mb-2 sm:mb-3 px-2 text-[var(--section-dark-text)]">
               Получите подробную партнёрскую программу MARROB
             </h2>
-            <p className="text-center text-[var(--section-dark-muted)] text-sm sm:text-base mb-5 sm:mb-6 max-w-lg mx-auto leading-relaxed px-2">
+            <p className="text-center text-[var(--section-dark-muted)] text-sm sm:text-base mb-5 sm:mb-6 layout-narrow leading-relaxed px-2">
               Мы направим условия сотрудничества и свяжемся с вами для обсуждения формата работы.
             </p>
 
@@ -758,7 +756,7 @@ const DealersPage: React.FC = () => {
 
             <div className="rounded-2xl overflow-hidden shadow-premium-lg bg-white border border-white/10">
               <div className="flex flex-col justify-center p-5 sm:p-6 md:p-8 lg:p-10 bg-white">
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 max-w-xl mx-auto w-full">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 layout-narrow w-full">
                   {sent && (
                     <div
                       role="status"
@@ -897,10 +895,10 @@ const DealersPage: React.FC = () => {
         </section>
 
         <section
-          className="max-w-5xl mx-auto dealers-section dealers-stack dealers-reveal border-t border-border rounded-3xl bg-gradient-to-b from-sand-light/80 via-bg to-bg px-4 py-10 sm:px-8 sm:py-12 ring-1 ring-border/60 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.85)]"
+          className="layout-wide dealers-section dealers-stack dealers-reveal border-t border-border rounded-3xl bg-gradient-to-b from-sand-light/80 via-bg to-bg px-4 py-10 sm:px-8 sm:py-12 ring-1 ring-border/60 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.85)]"
           aria-labelledby="dealers-partner-path-title"
         >
-          <div className="text-center mx-auto mb-8 sm:mb-10 max-w-xl">
+          <div className="text-center mx-auto mb-8 sm:mb-10 layout-narrow">
             <span className="badge-premium mb-3">После заявки</span>
             <h2 id="dealers-partner-path-title" className="dealers-h2 mb-2 sm:mb-3">
               Путь партнёра
@@ -911,7 +909,7 @@ const DealersPage: React.FC = () => {
             {partnerAfterSubmitSteps.map((s) => (
               <li
                 key={s.step}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-white/95 p-5 sm:p-6 shadow-premium backdrop-blur-[2px] transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-premium-md motion-reduce:transform-none motion-reduce:transition-none"
+                className="group card-interactive relative overflow-hidden rounded-2xl border border-border bg-white/95 p-5 sm:p-6 shadow-premium backdrop-blur-[2px] hover:-translate-y-0.5 hover:border-primary/25 motion-reduce:transform-none motion-reduce:transition-none"
               >
                 <div
                   className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
