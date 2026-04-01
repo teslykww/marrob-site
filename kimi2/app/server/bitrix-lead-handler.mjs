@@ -1,7 +1,28 @@
 /**
  * Bitrix24 crm.lead.add — общий обработчик для Vercel (/api) и Vite dev.
  * Секрет: BITRIX24_WEBHOOK_URL (только сервер, не VITE_).
+ * CORS: при фронте на marrob.ru и API на другом хосте задайте CORS_ALLOW_ORIGIN=https://marrob.ru
+ * (или несколько через запятую — используется первый подходящий Origin запроса).
  */
+
+function applyCors(req, res) {
+  const raw = process.env.CORS_ALLOW_ORIGIN?.trim();
+  const requestOrigin = req.headers?.origin;
+  let allow = '*';
+  if (raw && raw !== '*') {
+    const list = raw.split(',').map((s) => s.trim()).filter(Boolean);
+    if (list.length === 1) {
+      allow = list[0];
+    } else if (requestOrigin && list.includes(requestOrigin)) {
+      allow = requestOrigin;
+    } else if (list.length) {
+      allow = list[0];
+    }
+  }
+  res.setHeader('Access-Control-Allow-Origin', allow);
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+}
 
 function sendJson(res, statusCode, data) {
   if (typeof res.status === 'function') {
@@ -95,8 +116,16 @@ async function readJsonBody(req) {
 }
 
 export default async function handler(req, res) {
+  applyCors(req, res);
+
+  if (req.method === 'OPTIONS') {
+    res.statusCode = 204;
+    res.end();
+    return;
+  }
+
   if (req.method !== 'POST') {
-    res.setHeader?.('Allow', 'POST');
+    res.setHeader?.('Allow', 'POST, OPTIONS');
     return sendJson(res, 405, { ok: false, error: 'Method not allowed' });
   }
 

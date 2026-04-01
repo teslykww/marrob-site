@@ -22,6 +22,7 @@ Thumbs.db
 .idea/
 .vscode/*
 !.vscode/extensions.json
+!.vscode/sftp.json.example
 
 # Logs
 npm-debug.log*

@@ -1,0 +1,20 @@
+{
+  "name": "marrob.ru — загрузка билда (reg.ru)",
+  "context": "kimi2/app/dist",
+  "host": "ВАШ_ХОСТ_ИЗ_ПАНЕЛИ_REG_RU",
+  "protocol": "sftp",
+  "port": 22,
+  "username": "ВАШ_ЛОГИН_FTP_SSH",
+  "remotePath": "/public_html",
+  "uploadOnSave": false,
+  "useTempFile": false,
+  "ignore": [
+    ".DS_Store",
+    "**/.git/**"
+  ],
+  "watcher": {
+    "files": "**/*",
+    "autoUpload": false,
+    "autoDelete": false
+  }
+}
