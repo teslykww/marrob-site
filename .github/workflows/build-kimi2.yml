@@ -1,0 +1,23 @@
+# Сборка на каждый push в main — проверка, что Vercel сможет собрать тот же код.
+name: Build kimi2 app
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: kimi2/app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: kimi2/app/package-lock.json
+      - name: Install and build
+        run: npm ci && npm run build
