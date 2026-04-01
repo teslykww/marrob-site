@@ -15,9 +15,12 @@
    - index.html и бандлы Vite (папка assets/)
    - всё, что лежало в public/: фото, логотипы, certs/, images/, favicon, .htaccess и т.д.
 
-3) В VS Code (расширение SFTP): скопируйте .vscode/sftp.json.example → .vscode/sftp.json,
-   укажите хост и remotePath к корню сайта (часто /public_html), context = папка dist.
-   Команда: выгрузить папку kimi2/app/dist (Upload Folder / Sync).
+3) В Cursor/VS Code (расширение SFTP): скопируйте .vscode/sftp.json.example → .vscode/sftp.json,
+   вставьте пароль FTP (в git не коммитить). Для marrob.ru на reg.ru: remotePath = /www/marrob.ru
+   (корневая директория сайта из панели «Сайты»), context = kimi2/app/dist.
+   Протокол в примере: FTP порт 21. Если не подключается — в панели включите FTPS и в конфиге
+   добавьте "secure": true (см. wiki расширения).
+   Команда: выгрузить папку dist (Upload Folder / Sync Local -> Remote).
 
 4) Пароли и sftp.json в git не коммитьте.
 
