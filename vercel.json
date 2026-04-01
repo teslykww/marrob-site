@@ -1,10 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
-  "installCommand": "npm ci",
-  "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
-  "outputDirectory": "dist",
+  "installCommand": "cd kimi2/app && npm ci",
+  "buildCommand": "cd kimi2/app && npm run build",
+  "outputDirectory": "kimi2/app/dist",
   "rewrites": [
     {
       "source": "/((?!api/).*)",
