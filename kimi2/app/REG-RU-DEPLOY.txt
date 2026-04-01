@@ -1,28 +1,29 @@
 Выгрузка на reg.ru (marrob.ru) — фронт + все картинки и статика
 ================================================================
 
-1) Соберите проект (в папке kimi2/app):
+Вариант A — одной командой из терминала (FTP)
+---------------------------------------------
+1. Скопируйте .env.deploy.example → .env.deploy
+2. В .env.deploy укажите FTP_PASSWORD=ваш_пароль_от_FTP (файл не в git)
+3. В папке kimi2/app выполните:
 
+   npm run deploy:reg-ru
+
+   Это соберёт dist и зальёт всё в /www/marrob.ru на 37.140.192.16
+
+   Либо без файла, в PowerShell:
+   $env:FTP_PASSWORD="пароль"; npm run deploy:reg-ru
+
+Вариант B — расширение SFTP в Cursor
+--------------------------------------
+Файл .vscode/sftp.json уже в репозитории (без пароля). Добавьте пароль в настройках
+расширения или в sftp.json локально → Upload Folder для kimi2/app/dist.
+
+Сборка вручную
+--------------
    npm ci
-   npm run build
-   npm run check:dist
+   npm run build:deploy
 
-2) На сервер нужно залить НЕ исходники, а ЦЕЛИКОМ содержимое папки:
+На сервер заливать ЦЕЛИКОМ содержимое kimi2/app/dist/ (index.html, assets/, images/, …).
 
-   kimi2/app/dist/
-
-   Там уже есть:
-   - index.html и бандлы Vite (папка assets/)
-   - всё, что лежало в public/: фото, логотипы, certs/, images/, favicon, .htaccess и т.д.
-
-3) В Cursor/VS Code (расширение SFTP): скопируйте .vscode/sftp.json.example → .vscode/sftp.json,
-   вставьте пароль FTP (в git не коммитить). Для marrob.ru на reg.ru: remotePath = /www/marrob.ru
-   (корневая директория сайта из панели «Сайты»), context = kimi2/app/dist.
-   Протокол в примере: FTP порт 21. Если не подключается — в панели включите FTPS и в конфиге
-   добавьте "secure": true (см. wiki расширения).
-   Команда: выгрузить папку dist (Upload Folder / Sync Local -> Remote).
-
-4) Пароли и sftp.json в git не коммитьте.
-
-5) Формы: на чистом статике reg.ru нет Node/API. Заявки — через полный URL API
-   (см. .env.example, VITE_LEAD_API_URL) или свой PHP-прокси на том же домене.
+Формы на статике reg.ru: см. .env.example (VITE_LEAD_API_URL на внешний API).
