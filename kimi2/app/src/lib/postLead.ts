@@ -9,10 +9,16 @@ export type PostLeadResult =
   | { success: true }
   | { success: false; errorMessage: string };
 
+const DEFAULT_LEAD_API = '/api/bitrix-lead';
+
 function resolvePostUrl(specific: string | undefined): string | undefined {
   const s = specific?.trim();
   if (s) return s;
-  return (import.meta.env.VITE_LEAD_API_URL as string | undefined)?.trim();
+  const fromEnv = (import.meta.env.VITE_LEAD_API_URL as string | undefined)?.trim();
+  if (fromEnv) return fromEnv;
+  /** Прод-сборка: единый endpoint Bitrix, если забыли задать VITE_LEAD_API_URL в CI */
+  if (import.meta.env.PROD) return DEFAULT_LEAD_API;
+  return undefined;
 }
 
 /**
@@ -25,7 +31,11 @@ export async function postLeadJson(
 ): Promise<PostLeadResult> {
   const trimmed = resolvePostUrl(url);
   if (!trimmed) {
-    return { success: false, errorMessage: 'Сервис заявок не настроен (задайте VITE_LEAD_API_URL или URL формы).' };
+    return {
+      success: false,
+      errorMessage:
+        'Сервис заявок не настроен локально: создайте kimi2/app/.env.local с VITE_LEAD_API_URL=/api/bitrix-lead и BITRIX24_WEBHOOK_URL=…',
+    };
   }
 
   try {
