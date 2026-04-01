@@ -1,5 +1,5 @@
 {
-  "name": "marrob.ru — загрузка билда (reg.ru)",
+  "name": "marrob.ru — весь сайт из dist (фронт + картинки + сертификаты)",
   "context": "kimi2/app/dist",
   "host": "ВАШ_ХОСТ_ИЗ_ПАНЕЛИ_REG_RU",
   "protocol": "sftp",
@@ -8,9 +8,9 @@
   "remotePath": "/public_html",
   "uploadOnSave": false,
   "useTempFile": false,
+  "syncOption": "update",
   "ignore": [
-    ".DS_Store",
-    "**/.git/**"
+    ".DS_Store"
   ],
   "watcher": {
     "files": "**/*",

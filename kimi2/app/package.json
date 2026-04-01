@@ -9,6 +9,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "check:dist": "node scripts/check-dist-assets.mjs",
+    "build:deploy": "npm run build && npm run check:dist",
     "lint": "eslint .",
     "preview": "vite preview",
     "optimize:hero": "node scripts/encode-hero-webp.mjs",

@@ -1,0 +1,25 @@
+Выгрузка на reg.ru (marrob.ru) — фронт + все картинки и статика
+================================================================
+
+1) Соберите проект (в папке kimi2/app):
+
+   npm ci
+   npm run build
+   npm run check:dist
+
+2) На сервер нужно залить НЕ исходники, а ЦЕЛИКОМ содержимое папки:
+
+   kimi2/app/dist/
+
+   Там уже есть:
+   - index.html и бандлы Vite (папка assets/)
+   - всё, что лежало в public/: фото, логотипы, certs/, images/, favicon, .htaccess и т.д.
+
+3) В VS Code (расширение SFTP): скопируйте .vscode/sftp.json.example → .vscode/sftp.json,
+   укажите хост и remotePath к корню сайта (часто /public_html), context = папка dist.
+   Команда: выгрузить папку kimi2/app/dist (Upload Folder / Sync).
+
+4) Пароли и sftp.json в git не коммитьте.
+
+5) Формы: на чистом статике reg.ru нет Node/API. Заявки — через полный URL API
+   (см. .env.example, VITE_LEAD_API_URL) или свой PHP-прокси на том же домене.
