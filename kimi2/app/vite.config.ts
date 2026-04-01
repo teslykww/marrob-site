@@ -51,4 +51,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    /** Бандл ~680 kB (React + Radix + motion); порог по умолчанию 500 kB даёт шум в CI */
+    chunkSizeWarningLimit: 750,
+  },
 });
