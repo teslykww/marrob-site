@@ -1,10 +1,21 @@
 # Production-деплой через Vercel CLI (как в https://vercel.com/guides/how-can-i-use-github-actions-with-vercel).
-# Если секреты не заданы — шаги пропускаются, деплой идёт только через интеграцию Vercel ↔ GitHub.
-# Если зададите секреты при уже работающей интеграции Git — получите два деплоя на один push; тогда отключите один из каналов.
+#
+# ВАЖНО: без секретов этот workflow НЕ деплоит (шаги пропускаются — в логах будет run=false).
+# Тогда сайт обновляется только если в Vercel подключён этот репозиторий (Project → Settings → Git).
+#
+# Чтобы деплой шёл из GitHub Actions, добавьте в репозиторий:
+#   Settings → Secrets and variables → Actions → New repository secret
+#   - VERCEL_TOKEN — https://vercel.com/account/tokens
+#   - VERCEL_ORG_ID — Team ID из Vercel (Settings → Team / или в .vercel/project.json после vercel link)
+#   - VERCEL_PROJECT_ID — Project Settings → General
+# Проект в Vercel должен иметь Root Directory = kimi2/app (как при локальном link в этой папке).
+#
+# Если одновременно включены Git-интеграция и эти секреты — на один push будет два деплоя; отключите один канал.
 name: Vercel production (CLI)
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 concurrency:
   group: vercel-prod-${{ github.ref }}
@@ -21,7 +32,7 @@ jobs:
         run: |
           if [ -z "${{ secrets.VERCEL_TOKEN }}" ]; then
             echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "::notice title=Vercel::Пуш в main обрабатывает интеграция Git в Vercel. Чтобы дублировать деплой через Actions, добавьте VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID в GitHub → Settings → Secrets and variables → Actions."
+            echo "::warning title=Деплой из Actions выключен::В репозитории нет VERCEL_TOKEN — шаги vercel pull/build/deploy пропускаются. Сайт обновится только через интеграцию Vercel↔GitHub (Vercel → Project → Settings → Git → Connected Git Repository). Либо добавьте секреты VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID — см. комментарий в начале .github/workflows/vercel-production.yml"
           else
             echo "run=true" >> "$GITHUB_OUTPUT"
           fi
