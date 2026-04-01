@@ -27,3 +27,13 @@
 На сервер заливать ЦЕЛИКОМ содержимое kimi2/app/dist/ (index.html, assets/, images/, …).
 
 Формы на статике reg.ru: см. .env.example (VITE_LEAD_API_URL на внешний API).
+
+Автодеплой с GitHub (без ручного FTP)
+-------------------------------------
+1. Репозиторий → Settings → Secrets and variables → Actions → New repository secret:
+   FTP_PASSWORD = текущий пароль FTP (после смены пароля — обновить секрет).
+   Опционально: FTP_HOST, FTP_USER, FTP_REMOTE_PATH — если отличаются от дефолтов в ftp-upload-dist.mjs
+2. Push в main с изменениями в kimi2/app/ запускает workflow «Deploy to reg.ru (FTP)».
+3. Убрать автозапуск для всех пушей: отредактируйте .github/workflows/deploy-reg-ru-ftp.yml (секция on/paths)
+   или отключите workflow в GitHub → Actions.
+4. Ручной запуск: Actions → Deploy to reg.ru (FTP) → Run workflow.

@@ -1,0 +1,45 @@
+# После push в main: сборка kimi2/app и выгрузка dist на reg.ru по FTP.
+# Настройка один раз: GitHub → репозиторий → Settings → Secrets and variables → Actions → New repository secret:
+#   FTP_PASSWORD — пароль FTP (обязательно)
+# Опционально (если не заданы — берутся дефолты из scripts/ftp-upload-dist.mjs):
+#   FTP_HOST, FTP_USER, FTP_REMOTE_PATH, FTP_PORT
+name: Deploy to reg.ru (FTP)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "kimi2/app/**"
+      - ".github/workflows/deploy-reg-ru-ftp.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-reg-ru-ftp
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: kimi2/app
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: kimi2/app/package-lock.json
+
+      - name: Install and build
+        run: npm ci && npm run build
+
+      - name: Upload dist to FTP (reg.ru)
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_REMOTE_PATH: ${{ secrets.FTP_REMOTE_PATH }}
+          FTP_PORT: ${{ secrets.FTP_PORT }}
+        run: npm run deploy:ftp
