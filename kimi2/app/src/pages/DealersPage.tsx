@@ -279,7 +279,8 @@ function IconCard({
       </div>
       <h3
         className={cn(
-          'font-display font-semibold mb-2 text-base sm:text-lg leading-[1.15]',
+          /* text-lg задаёт слишком свободный line-height в Tailwind — только размер, leading отдельно */
+          'font-display font-semibold mb-2 text-[1rem] sm:text-[1.125rem] leading-[1.12]',
           isDark ? 'text-[var(--section-dark-text)]' : 'text-text',
         )}
       >
@@ -287,7 +288,8 @@ function IconCard({
       </h3>
       <p
         className={cn(
-          'text-[0.9375rem] sm:text-base leading-tight m-0 grow',
+          /* sm:text-base тоже тянет line-height 1.5 — используем arbitrary size + --leading-body */
+          'font-body text-[0.9375rem] sm:text-[1rem] m-0 grow leading-[var(--leading-body)]',
           isDark ? 'text-[var(--section-dark-muted)]' : 'text-text-muted',
         )}
       >

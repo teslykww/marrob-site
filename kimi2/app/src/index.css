@@ -92,6 +92,9 @@
   --text-size: clamp(1rem, 1.5vw, 1.25rem);
   --text-sm: 0.9375rem;
   --text-xs: 0.8125rem;
+
+  /** Основной текст: один коэффициент для body, лидов и карточек (см. DealersPage IconCard). */
+  --leading-body: 1.42;
   
   /* Отступы */
   --section-py: 80px;
@@ -112,7 +115,7 @@
     overflow-x: hidden;
     font-family: var(--font-body);
     font-size: var(--text-size);
-    line-height: 1.5;
+    line-height: var(--leading-body);
     color: var(--text);
     background-color: var(--bg);
     -webkit-font-smoothing: antialiased;
@@ -172,7 +175,7 @@
 
   .type-section-lead {
     font-size: 1.125rem;
-    line-height: 1.625;
+    line-height: 1.5;
     color: var(--text-muted);
   }
 
@@ -513,7 +516,7 @@
 
   .dealers-lead {
     font-size: var(--text-size);
-    line-height: 1.6;
+    line-height: var(--leading-body);
     color: var(--text-muted);
   }
 
