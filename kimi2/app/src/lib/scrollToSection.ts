@@ -83,4 +83,3 @@ export function usePendingSectionScroll(location: Location, clearState?: () => v
     };
   }, [location.state, clearState]);
 }
-
