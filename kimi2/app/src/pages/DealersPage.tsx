@@ -170,7 +170,7 @@ const certStrip = [
   { image: `${base}certs/cert-1.png`, title: 'Реестр эффективных предприятий' },
   { image: `${base}certs/cert-2.png`, title: 'Товарный знак MARROB' },
   { image: `${base}certs/cert-3.png`, title: 'MosBuild 2023' },
-  { image: `${base}certs/cert-4.png`, title: 'Сертификат Thermo stone' },
+  { image: `${base}certs/cert-4.webp`, title: 'Сертификат Thermo stone' },
 ];
 
 function parseKpiKicker(kicker: string): { kind: 'num'; n: number; rest: string } | { kind: 'text' } {

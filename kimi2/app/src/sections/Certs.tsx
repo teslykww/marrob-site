@@ -23,8 +23,8 @@ const Certs: React.FC = () => {
       title: 'Участие в выставке MosBuild 2023',
     },
     {
-      image: `${base}certs/cert-4.png`,
-      title: 'Сертификат соответствия панели «Thermo stone»',
+      image: `${base}certs/cert-4.webp`,
+      title: 'Сертификат соответствия панели «Thermo stone» (действует до 22.03.2029)',
     },
     {
       image: `${base}certs/cert-5.png`,
