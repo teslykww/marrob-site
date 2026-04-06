@@ -264,8 +264,8 @@ const CatalogPage: React.FC = () => {
                         type="button"
                         onClick={() => setActiveIndex(i)}
                         className={[
-                          'relative aspect-square rounded-[var(--radius)] overflow-hidden border transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
-                          i === activeIndex ? 'border-primary' : 'border-border hover:border-primary/60',
+                          'relative block w-full h-auto aspect-square min-w-0 min-h-0 p-0 m-0 rounded-[var(--radius)] overflow-hidden border transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
+                          i === activeIndex ? 'border-primary ring-1 ring-primary' : 'border-border hover:border-primary/60',
                         ].join(' ')}
                         aria-label={`Открыть фото ${i + 1}`}
                       >
