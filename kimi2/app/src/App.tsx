@@ -12,7 +12,6 @@ import Scenarios from './sections/Scenarios';
 import Stages from './sections/Stages';
 import FAQ from './sections/FAQ';
 import Contact from './sections/Contact';
-import { useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { usePendingSectionScroll } from './lib/scrollToSection';
 
@@ -20,11 +19,9 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const clearScrollState = useCallback(() => {
+  usePendingSectionScroll(location, () => {
     navigate('.', { replace: true, state: null });
-  }, [navigate]);
-
-  usePendingSectionScroll(location, clearScrollState);
+  });
 
   return (
     <main>
@@ -45,5 +42,7 @@ function App() {
     </main>
   );
 }
+
+
 
 export default App;
