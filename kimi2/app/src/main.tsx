@@ -9,9 +9,12 @@ import Footer from './sections/Footer';
 import BitrixSiteButton from './components/BitrixSiteButton';
 import CatalogPage from './pages/CatalogPage';
 import DealersPage from './pages/DealersPage';
+import { LeadModalProvider } from './hooks/useLeadModal';
+import LeadModal from './components/LeadModal';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <LeadModalProvider>
     <HashRouter>
       <MotionConfig reducedMotion="user">
       <div className="min-h-screen min-w-0 w-full max-w-[100%] overflow-x-hidden bg-bg">
@@ -23,8 +26,10 @@ createRoot(document.getElementById('root')!).render(
         </Routes>
         <Footer />
         <BitrixSiteButton />
+        <LeadModal />
       </div>
       </MotionConfig>
     </HashRouter>
+    </LeadModalProvider>
   </StrictMode>,
 )
