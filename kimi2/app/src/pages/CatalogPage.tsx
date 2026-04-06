@@ -203,7 +203,7 @@ const CatalogPage: React.FC = () => {
         <DialogContent className="max-h-[min(100dvh,920px)] overflow-y-auto overflow-x-hidden p-0 sm:max-w-[980px] bg-white">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px]">
             <div className="relative bg-black min-h-0">
-              <div className="aspect-[4/3] max-h-[min(56vh,420px)] lg:max-h-none lg:aspect-auto lg:h-[520px] relative">
+              <div className="relative w-full" style={{aspectRatio: '4/3'}}>
                 {activeSrc && (
                   <img
                     src={activeSrc}
@@ -212,9 +212,18 @@ const CatalogPage: React.FC = () => {
                         ? `${activeCollection.replace(/_+$/g, '')} ${activeVariantLabel}`
                         : activeCollection
                     }
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
                 )}
+                {/* Overlay: collection + variant label */}
+                <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/70 to-transparent">
+                  <div className="text-white font-display font-semibold text-base leading-tight">
+                    {activeCollection.replace(/_+$/g, '')}
+                  </div>
+                  {activeVariantLabel && (
+                    <div className="text-white/80 text-xs mt-0.5">{activeVariantLabel}</div>
+                  )}
+                </div>
               </div>
 
               <button
@@ -254,7 +263,7 @@ const CatalogPage: React.FC = () => {
                 {activeCaption}
               </div>
 
-              <div className="mt-4 sm:mt-5 grid grid-cols-4 gap-2 max-h-[min(40vh,280px)] sm:max-h-[320px] overflow-auto pr-1 pb-1">
+              <div className="mt-4 sm:mt-5 grid grid-cols-3 sm:grid-cols-4 gap-2 max-h-[min(36vh,260px)] overflow-y-auto pr-1 pb-1">
                 {manifest &&
                   activeFiles.map((file, i) => {
                     const src = toSrc(manifest, activeCollection, file);
@@ -264,8 +273,8 @@ const CatalogPage: React.FC = () => {
                         type="button"
                         onClick={() => setActiveIndex(i)}
                         className={[
-                          'relative block w-full h-auto aspect-square min-w-0 min-h-0 p-0 m-0 rounded-[var(--radius)] overflow-hidden border transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
-                          i === activeIndex ? 'border-primary ring-1 ring-primary' : 'border-border hover:border-primary/60',
+                          'relative block w-full h-auto aspect-square min-w-0 min-h-0 p-0 m-0 rounded-[var(--radius)] overflow-hidden border-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
+                          i === activeIndex ? 'border-primary ring-1 ring-primary' : 'border-transparent hover:border-primary/60',
                         ].join(' ')}
                         aria-label={`Открыть фото ${i + 1}`}
                       >
