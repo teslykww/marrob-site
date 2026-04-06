@@ -35,6 +35,10 @@ jobs:
           FTP_REMOTE_PATH: ${{ secrets.FTP_REMOTE_PATH || '/www/marrob.ru' }}
         run: node scripts/optimize-remote-catalog.mjs
 
+      # Обязательно конвертируем локальные картинки в WebP перед сборкой!
+      - name: Local image optimization (WebP)
+        run: node scripts/optimize-images.mjs
+
       # После оптимизации: пересобрать SPA с обновлённым manifest.json
       - name: Install project deps & build
         run: npm ci && npm run build

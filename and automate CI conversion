@@ -1,0 +1,10 @@
+[33m0154741[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mlost-github-code[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m feat: update specs based on new actual data
+[33m7bead73[m fix: resolve overlapping thumbnail bug in catalog modal
+[33md6fcbef[m fix: add LeadModalProvider to main.tsx
+[33m2ea18ee[m fix: restore missing LeadModal files for build
+[33m2945853[m feat: restore bitrix and dealer updates with optimisations
+[33m8a43513[m ci: auto-deploy kimi2 dist to reg.ru FTP on push to main
+[33m9b01501[m feat: FTP deploy script + committed sftp.json for marrob.ru
+[33m8fc700c[m chore: reg.ru FTP template (marrob.ru root /www/marrob.ru)
+[33mae6ac2b[m docs: dist deploy checklist — full static bundle (images + certs)
+[33mb209287[m chore: reg.ru static deploy (htaccess, sftp example) + CORS for lead API
