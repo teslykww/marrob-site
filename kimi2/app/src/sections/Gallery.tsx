@@ -138,7 +138,7 @@ const Gallery: React.FC = () => {
           </div>
           <div className="shrink-0 flex justify-center sm:justify-end">
             <img
-              src={`${base}logo.png`}
+              src={`${base}logo.webp`}
               alt="MARROB"
               className="h-10 sm:h-12 md:h-14 w-auto max-w-[200px] object-contain object-center"
               width={200}

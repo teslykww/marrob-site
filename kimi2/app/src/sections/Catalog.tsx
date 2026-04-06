@@ -53,12 +53,12 @@ function spreadFileIndices(len: number, count: number): number[] {
  * Подбор: визуальный характер фасада ↔ позиционирование коллекции.
  */
 const CATALOG_HOUSE_IMAGE: Record<string, string> = {
-  'версальский кирпич': 'versailles.jpg', // классика, белый декор, «дворцовые» наличники
-  'византийский кирпич': 'byzantine.jpg', // кладка + светлый камень, богатый патио (восточное/средиземноморское)
-  'клинкерный кирпич': 'clinker.jpg', // тёмный клинкер + цоколь, фото про термопанели под кирпич
-  'скандинавский кирпич': 'scandinavian.jpg', // минимализм: тёмная кладка, белый акцент, чистые линии
-  'туринский кирпич': 'turin.jpg', // терракотовая черепица, тёплая кладка, итальянский настрой
-  'шумерский кирпич': 'sumerian.jpg', // горизонтальные пояса кирпич/светлый цоколь, монументальный силуэт
+  'версальский кирпич': 'versailles.webp', // классика, белый декор, «дворцовые» наличники
+  'византийский кирпич': 'byzantine.webp', // кладка + светлый камень, богатый патио (восточное/средиземноморское)
+  'клинкерный кирпич': 'clinker.webp', // тёмный клинкер + цоколь, фото про термопанели под кирпич
+  'скандинавский кирпич': 'scandinavian.webp', // минимализм: тёмная кладка, белый акцент, чистые линии
+  'туринский кирпич': 'turin.webp', // терракотовая черепица, тёплая кладка, итальянский настрой
+  'шумерский кирпич': 'sumerian.webp', // горизонтальные пояса кирпич/светлый цоколь, монументальный силуэт
 };
 
 const Catalog: React.FC = () => {
@@ -167,12 +167,12 @@ const Catalog: React.FC = () => {
             ) : (
               <div className="h-full min-h-[280px] w-full bg-sand-light" />
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 text-white">
-              <h3 className="type-card-title mb-2 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.85)]">
+              <h3 className="type-card-title mb-2">
                 {currentCollection ? displayName(currentCollection.name) : 'Коллекция'}
               </h3>
-              <p className="text-white/90 text-sm drop-shadow-[0_1px_2px_rgba(0,0,0,0.75)]">{currentDescription}</p>
+              <p className="text-white/80 text-sm">{currentDescription}</p>
             </div>
           </div>
 
@@ -193,9 +193,9 @@ const Catalog: React.FC = () => {
                 <p className="text-xs uppercase tracking-wider text-text-light mb-3">Варианты оттенков</p>
                 <div className="grid grid-cols-2 gap-3">
                   {thumbs.slice(0, 4).map((src, index) => (
-                    <div
+                      <div
                       key={`${src}-a-${index}`}
-                      className="aspect-square rounded-xl border-2 border-border shadow-premium overflow-hidden bg-sand-light"
+                      className="aspect-square rounded-xl border-2 border-slate-200 shadow-sm overflow-hidden bg-neutral-100 hover:border-primary/40 transition-colors"
                     >
                       <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
                     </div>
@@ -206,9 +206,9 @@ const Catalog: React.FC = () => {
                 <p className="text-xs uppercase tracking-wider text-text-light mb-3">Ещё фактуры коллекции</p>
                 <div className="grid grid-cols-2 gap-3">
                   {thumbs.slice(4, 8).map((src, index) => (
-                    <div
+                      <div
                       key={`${src}-b-${index}`}
-                      className="aspect-square rounded-xl border-2 border-border shadow-premium overflow-hidden bg-sand-light"
+                      className="aspect-square rounded-xl border-2 border-slate-200 shadow-sm overflow-hidden bg-neutral-100 hover:border-primary/40 transition-colors"
                     >
                       <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
                     </div>
@@ -222,14 +222,14 @@ const Catalog: React.FC = () => {
 
         <div
           id="catalog-form"
-          className="layout-content mt-12 scroll-mt-24 lg:scroll-mt-32 sm:mt-14 lg:mt-16"
+          className="mx-auto mt-12 max-w-5xl scroll-mt-24 lg:scroll-mt-32 sm:mt-14 lg:mt-16"
         >
           <MagnetLeadForm
             idPrefix="catalog"
             source="catalog-section"
             intent="price-catalog"
             showTopIcon={false}
-            sideImageSrc={`${base}images/catalog-lead-house.png`}
+            sideImageSrc={`${base}images/catalog-lead-house.webp`}
             sideImageAlt="Дом с фасадом из термопанелей MARROB"
             cardClassName="ring-0"
             title="Запросить прайс и каталог"

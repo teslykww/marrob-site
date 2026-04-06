@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <img
-                src={`${import.meta.env.BASE_URL}logo.png`}
+                src={`${import.meta.env.BASE_URL}logo.webp`}
                 alt=""
                 width={160}
                 height={40}

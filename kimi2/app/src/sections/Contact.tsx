@@ -11,7 +11,7 @@ import { extractRuPhoneDigits10, formatRuPhoneMask, isCompleteRuMobile10 } from 
 
 const Contact: React.FC = () => {
   const assetBase = import.meta.env.BASE_URL;
-  const officePhoto = `${assetBase}images/contact-office.png`;
+  const officePhoto = `${assetBase}images/contact-office.webp`;
 
   const [formData, setFormData] = useState({
     name: '',

@@ -3,7 +3,7 @@ import { CheckCircleIcon } from '../components/icons/BuildingIcons';
 
 const Specs: React.FC = () => {
   const assetBase = import.meta.env.BASE_URL;
-  const diagramSrc = `${assetBase}images/specs-panel-diagram.png`;
+  const diagramSrc = `${assetBase}images/specs-panel-diagram.webp`;
 
   const specs = [
     {

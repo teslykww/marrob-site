@@ -8,7 +8,7 @@ import { extractRuPhoneDigits10, formatRuPhoneMask, isCompleteRuMobile10 } from 
 import { handleSectionLinkClick } from '@/lib/scrollToSection';
 
 const base = import.meta.env.BASE_URL;
-const ctaHouseImage = `${base}images/solution-cta-house.png`;
+const ctaHouseImage = `${base}images/solution-cta-house.webp`;
 
 const Solution: React.FC = () => {
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ const Solution: React.FC = () => {
         <Reveal delay={0.06}>
           <div className="rounded-2xl overflow-hidden shadow-premium-lg bg-white mb-8">
             <img
-              src={`${base}solution-scheme.png`}
+              src={`${base}solution-scheme.webp`}
               alt="Двухслойная конструкция термопанелей MARROB"
               width={1024}
               height={569}

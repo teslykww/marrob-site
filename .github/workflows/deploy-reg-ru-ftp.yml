@@ -1,8 +1,6 @@
 # После push в main: сборка kimi2/app и выгрузка dist на reg.ru по FTP.
-# Настройка один раз: GitHub → репозиторий → Settings → Secrets and variables → Actions → New repository secret:
-#   FTP_PASSWORD — пароль FTP (обязательно)
-# Опционально (если не заданы — берутся дефолты из scripts/ftp-upload-dist.mjs):
-#   FTP_HOST, FTP_USER, FTP_REMOTE_PATH, FTP_PORT
+# Secrets (Actions): FTP_PASSWORD (обязательно), BITRIX24_WEBHOOK_URL (вебхук Bitrix — иначе формы 503).
+# Опционально: FTP_HOST, FTP_USER, FTP_REMOTE_PATH, FTP_PORT
 name: Deploy to reg.ru (FTP)
 
 on:
@@ -42,4 +40,5 @@ jobs:
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           FTP_REMOTE_PATH: ${{ secrets.FTP_REMOTE_PATH }}
           FTP_PORT: ${{ secrets.FTP_PORT }}
+          BITRIX24_WEBHOOK_URL: ${{ secrets.BITRIX24_WEBHOOK_URL }}
         run: npm run deploy:ftp

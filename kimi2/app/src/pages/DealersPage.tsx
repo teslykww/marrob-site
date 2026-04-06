@@ -167,9 +167,9 @@ const partnerAfterSubmitSteps: {
 ];
 
 const certStrip = [
-  { image: `${base}certs/cert-1.png`, title: 'Реестр эффективных предприятий' },
-  { image: `${base}certs/cert-2.png`, title: 'Товарный знак MARROB' },
-  { image: `${base}certs/cert-3.png`, title: 'MosBuild 2023' },
+  { image: `${base}certs/cert-1.webp`, title: 'Реестр эффективных предприятий' },
+  { image: `${base}certs/cert-2.webp`, title: 'Товарный знак MARROB' },
+  { image: `${base}certs/cert-3.webp`, title: 'MosBuild 2023' },
   { image: `${base}certs/cert-4.webp`, title: 'Сертификат Thermo stone' },
 ];
 
@@ -357,7 +357,7 @@ const DealersPage: React.FC = () => {
     setSubmitError(result.errorMessage);
   };
 
-  const schemeSrc = `${base}solution-scheme.png`;
+  const schemeSrc = `${base}solution-scheme.webp`;
 
   const dealerInputClass =
     'min-h-11 h-11 py-2.5 text-base md:text-sm border-border bg-background focus-visible:ring-primary/30';
@@ -495,7 +495,7 @@ const DealersPage: React.FC = () => {
               <div className="grid min-h-0 lg:grid-cols-[minmax(0,44%)_minmax(0,1fr)] lg:min-h-[min(400px,52vh)]">
                 <div className="relative min-h-[200px] sm:min-h-[260px] lg:min-h-full">
                   <img
-                    src={`${base}images/dealers-market-house.png`}
+                    src={`${base}images/dealers-market-house.webp`}
                     alt="Частный дом с ландшафтом — пример сегмента частного домостроения"
                     className="absolute inset-0 h-full w-full object-cover object-[center_32%]"
                     loading="lazy"

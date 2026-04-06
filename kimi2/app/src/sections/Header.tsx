@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { MenuIcon, XIcon, PhoneIcon } from '../components/icons/BuildingIcons';
 import { handleSectionLinkClick } from '@/lib/scrollToSection';
+import { useLeadModal } from '@/hooks/useLeadModal';
 
 const Header: React.FC = () => {
+  const { open } = useLeadModal();
   const location = useLocation();
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,7 +53,7 @@ const Header: React.FC = () => {
 
       {/* Main Header */}
       <header
-        className={`fixed top-0 lg:top-[36px] left-0 right-0 z-50 pt-[env(safe-area-inset-top,0px)] transition-all duration-300 ${
+        className={`fixed top-0 lg:top-[36px] left-0 right-0 z-50 transition-all duration-300 ${
           headerSolid
             ? 'bg-white/95 backdrop-blur-md shadow-premium'
             : 'bg-gradient-to-b from-black/55 via-black/25 to-transparent backdrop-blur-[2px]'
@@ -63,25 +65,24 @@ const Header: React.FC = () => {
             <Link to="/" className="flex items-center gap-3">
               <span
                 className={`inline-flex rounded-xl transition-all duration-300 ${
-                  headerSolid ? '' : 'bg-white/92 p-1.5 shadow-md ring-1 ring-white/40'
+                  headerSolid ? '' : 'bg-white p-1.5 shadow-md ring-1 ring-white/20'
                 }`}
               >
                 <img
-                  src={`${import.meta.env.BASE_URL}logo.png`}
-                  alt=""
-                  width={160}
-                  height={44}
+                  src={`${import.meta.env.BASE_URL}logo.webp`}
+                  alt="MARROB"
                   className="h-10 sm:h-11 w-auto object-contain"
                 />
               </span>
               <div className="hidden sm:block">
                 <span
                   className={`font-display font-semibold text-lg transition-colors duration-300 ${
-                    headerSolid ? 'text-text' : 'text-white drop-shadow-md'
+                    headerSolid ? 'text-text' : 'text-white'
                   }`}
                 >
                   MARROB
                 </span>
+
                 <p
                   className={`text-xs -mt-1 transition-colors duration-300 ${
                     headerSolid ? 'text-text-light' : 'text-white/90 drop-shadow-sm'
@@ -135,18 +136,17 @@ const Header: React.FC = () => {
                   Позвонить
                 </a>
               ) : (
-                <a
-                  href="#contact"
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    open('callback');
+                  }}
                   className="btn-premium btn-premium--primary text-sm py-3 px-6"
-                  onClick={(e) =>
-                    handleSectionLinkClick(e, '#contact', {
-                      navigate,
-                      location,
-                    })
-                  }
                 >
                   Заказать звонок
-                </a>
+                </button>
               )}
             </div>
 
@@ -177,11 +177,12 @@ const Header: React.FC = () => {
           onClick={() => setIsMobileMenuOpen(false)}
         />
         <div
-          className={`absolute top-20 right-0 w-[min(100%,24rem)] max-h-[calc(100dvh-5.5rem)] overflow-y-auto overscroll-contain rounded-l-2xl bg-white p-6 pb-[max(1.5rem,env(safe-area-inset-bottom,0px))] shadow-premium-lg transition-transform ${
+          className={`absolute top-20 right-0 w-[min(100%,320px)] bg-white shadow-premium-lg rounded-l-2xl p-6 transition-transform duration-300 ease-out border-l border-b border-border ${
             isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          <nav className="flex flex-col gap-3 sm:gap-4">
+
+          <nav className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -223,19 +224,18 @@ const Header: React.FC = () => {
                 Позвонить
               </a>
             ) : (
-              <a
-                href="#contact"
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setIsMobileMenuOpen(false);
+                  open('callback');
+                }}
                 className="btn-premium btn-premium--primary w-full"
-                onClick={(e) =>
-                  handleSectionLinkClick(e, '#contact', {
-                    navigate,
-                    location,
-                    beforeScroll: () => setIsMobileMenuOpen(false),
-                  })
-                }
               >
                 Заказать звонок
-              </a>
+              </button>
             )}
           </div>
         </div>

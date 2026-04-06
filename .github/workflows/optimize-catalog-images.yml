@@ -1,0 +1,57 @@
+name: Optimize Catalog Images (FTP → WebP)
+
+# Ручной запуск через GitHub Actions: Actions → этот workflow → Run workflow
+on:
+  workflow_dispatch:
+
+jobs:
+  optimize:
+    name: Convert PNG/JPG → WebP on reg.ru
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    defaults:
+      run:
+        working-directory: kimi2/app
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install sharp + basic-ftp
+        run: npm install --no-save sharp basic-ftp
+
+      - name: Run image optimization
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST || '37.140.192.16' }}
+          FTP_PORT: ${{ secrets.FTP_PORT || '21' }}
+          FTP_USER: ${{ secrets.FTP_USER || 'u1277917_Vlad' }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_REMOTE_PATH: ${{ secrets.FTP_REMOTE_PATH || '/www/marrob.ru' }}
+        run: node scripts/optimize-remote-catalog.mjs
+
+      # После оптимизации: пересобрать SPA с обновлённым manifest.json
+      - name: Install project deps & build
+        run: npm ci && npm run build
+
+      # Заливаем dist/ на FTP (только dist/ — без catalog-изображений,
+      # они уже обновлены на сервере шагом выше)
+      - name: Deploy dist to reg.ru via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST || '37.140.192.16' }}
+          username: ${{ secrets.FTP_USER || 'u1277917_Vlad' }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT || '21' }}
+          local-dir: kimi2/app/dist/
+          server-dir: ${{ secrets.FTP_REMOTE_PATH || '/www/marrob.ru' }}/
+          # Не трогаем catalog/Клинкерный кирпич_/ и другие папки с изображениями
+          exclude: |
+            **/catalog/*/**.png
+            **/catalog/*/**.jpg
+            **/catalog/*/**.jpeg

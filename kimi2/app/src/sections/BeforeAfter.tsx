@@ -57,7 +57,7 @@ const BeforeAfter: React.FC = () => {
           <div className="aspect-[16/9] relative">
             {/* After Image (Full) */}
             <img
-              src={`${base}before-after/after.png`}
+              src={`${base}before-after/after.webp`}
               alt="После монтажа термопанелей"
               width={1024}
               height={576}
@@ -74,7 +74,7 @@ const BeforeAfter: React.FC = () => {
               style={{ width: `${sliderPosition}%` }}
             >
               <img
-                src={`${base}before-after/before.png`}
+                src={`${base}before-after/before.webp`}
                 alt="До монтажа"
                 width={1024}
                 height={576}

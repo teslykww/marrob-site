@@ -11,15 +11,15 @@ const base = import.meta.env.BASE_URL;
 const Certs: React.FC = () => {
   const certs = [
     {
-      image: `${base}certs/cert-1.png`,
+      image: `${base}certs/cert-1.webp`,
       title: 'Реестр эффективных предприятий. Выбор клиентов и партнёров 2023',
     },
     {
-      image: `${base}certs/cert-2.png`,
+      image: `${base}certs/cert-2.webp`,
       title: 'Свидетельство на товарный знак MARROB № 954317',
     },
     {
-      image: `${base}certs/cert-3.png`,
+      image: `${base}certs/cert-3.webp`,
       title: 'Участие в выставке MosBuild 2023',
     },
     {
@@ -27,7 +27,7 @@ const Certs: React.FC = () => {
       title: 'Сертификат соответствия панели «Thermo stone» (действует до 22.03.2029)',
     },
     {
-      image: `${base}certs/cert-5.png`,
+      image: `${base}certs/cert-5.webp`,
       title: 'Сертификат участника MosBuild 2023',
     },
   ];

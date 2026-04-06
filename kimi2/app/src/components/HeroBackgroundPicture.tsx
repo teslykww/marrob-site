@@ -23,7 +23,7 @@ export const HeroBackgroundPicture: React.FC<HeroBackgroundPictureProps> = ({
   <picture className={pictureClassName}>
     <source srcSet={`${base}hero-bg.webp`} type="image/webp" />
     <img
-      src={`${base}hero-bg.png`}
+      src={`${base}hero-bg.webp`}
       alt={alt}
       width={2752}
       height={1536}
