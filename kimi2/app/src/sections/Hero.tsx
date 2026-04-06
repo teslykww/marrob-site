@@ -134,8 +134,8 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="relative z-10 flex min-h-0 flex-1 flex-col">
-        <div className="flex flex-1 items-center justify-start py-7 pb-5 md:py-9 w-full max-w-[1280px] ml-0 mr-auto px-[var(--section-px)]">
-          <div className="max-w-xl w-full min-w-0 pl-1.5 sm:pl-2">
+        <div className="flex flex-1 items-center justify-start py-7 pb-5 md:py-9 w-full max-w-[1280px] mx-auto px-[var(--section-px)]">
+          <div className="max-w-xl w-full min-w-0">
             {reduced ? (
               <div className={glassClassName}>
                 <HeroGlassContent open={open} />
