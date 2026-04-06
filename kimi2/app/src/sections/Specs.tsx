@@ -5,32 +5,37 @@ const Specs: React.FC = () => {
   const assetBase = import.meta.env.BASE_URL;
   const diagramSrc = `${assetBase}images/specs-panel-diagram.webp`;
 
-  const specs = [
+  const specs: Array<{ title: string; items: Array<{ label: string; value?: string }> }> = [
     {
-      title: 'Размеры и масса',
+      title: 'Основные параметры',
       items: [
-        { label: 'Длина панели', value: '500–1000 мм' },
-        { label: 'Ширина панели', value: '300–600 мм' },
+        { label: 'Толщина панели', value: '62–112 мм' },
         { label: 'Толщина утеплителя', value: '50–100 мм' },
-        { label: 'Масса панели', value: '3,5–7,5 кг' },
+        { label: 'Плотность утеплителя', value: '15–25 кг/м³' },
+        { label: 'Размер панели', value: '600 × 990 мм' },
+        { label: 'Вес панели', value: '14–16 кг' },
+        { label: 'Теплопроводность', value: '0,037 Вт/м·К' },
+        { label: 'Водопоглощение', value: '≤ 2% по объёму' },
       ],
     },
     {
-      title: 'Теплотехника',
+      title: 'Эксплуатационные свойства',
       items: [
-        { label: 'Коэфф. теплопроводности', value: '0,038 Вт/м·К' },
-        { label: 'Теплосопротивление', value: '2,0 м²·К/Вт' },
-        { label: 'Морозостойкость', value: 'F100' },
-        { label: 'Водопоглощение', value: '≤ 2%' },
-      ],
-    },
-    {
-      title: 'Прочность и безопасность',
-      items: [
-        { label: 'Прочность на сжатие', value: '≥ 0,15 МПа' },
-        { label: 'Прочность на изгиб', value: '≥ 0,25 МПа' },
+        { label: 'Срок службы', value: '30–40 лет' },
+        { label: 'УФ-излучение', value: 'Устойчива' },
+        { label: 'Влага и перепады темп.', value: 'Стойкая' },
+        { label: 'Морозостойкость', value: '150–200 циклов' },
         { label: 'Класс горючести', value: 'Г2' },
-        { label: 'Срок службы', value: '40+ лет' },
+        { label: 'Темп. эксплуатации', value: '−50 °C ... +70 °C' },
+      ],
+    },
+    {
+      title: 'Область применения',
+      items: [
+        { label: 'Фасады и цоколи' },
+        { label: 'Частные дома и коммерческие объекты' },
+        { label: 'Новое строительство и реконструкция' },
+        { label: 'Монтаж на кирпичные, бетонные, деревянные и блочные стены' },
       ],
     },
   ];
@@ -82,10 +87,17 @@ const Specs: React.FC = () => {
               </h3>
               <ul className="space-y-3">
                 {spec.items.map((item, i) => (
-                  <li key={i} className="flex justify-between items-center text-sm">
-                    <span className="text-text-muted">{item.label}</span>
-                    <span className="font-medium text-text">{item.value}</span>
-                  </li>
+                  item.value ? (
+                    <li key={i} className="flex justify-between items-center text-sm gap-2">
+                      <span className="text-text-muted">{item.label}</span>
+                      <span className="font-medium text-text text-right shrink-0">{item.value}</span>
+                    </li>
+                  ) : (
+                    <li key={i} className="flex items-start text-sm gap-2">
+                      <span className="text-primary mt-[2px] opacity-70">•</span>
+                      <span className="text-text-muted leading-tight">{item.label}</span>
+                    </li>
+                  )
                 ))}
               </ul>
             </div>
