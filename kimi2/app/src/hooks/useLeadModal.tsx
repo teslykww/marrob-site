@@ -16,7 +16,6 @@ export const LeadModalProvider: React.FC<{ children: ReactNode }> = ({ children 
   const [intent, setIntent] = useState('callback');
 
   const open = (newIntent?: string) => {
-    console.log('LeadModalProvider: Opening with intent:', newIntent);
     if (newIntent) setIntent(newIntent);
     setIsOpen(true);
   };

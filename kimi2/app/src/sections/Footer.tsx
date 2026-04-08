@@ -114,7 +114,7 @@ const Footer: React.FC = () => {
       <div className="border-t border-white/10">
         <div className="container-premium py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/90">
-            <p>© 2024 MARROB. Все права защищены.</p>
+            <p>© {new Date().getFullYear()} MARROB. Все права защищены.</p>
             <div className="flex gap-6">
               <a href="#" className="text-white/90 hover:text-primary transition-colors">Политика конфиденциальности</a>
               <a href="#" className="text-white/90 hover:text-primary transition-colors">Пользовательское соглашение</a>
