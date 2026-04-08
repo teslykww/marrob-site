@@ -263,7 +263,7 @@ const CatalogPage: React.FC = () => {
                 {activeCaption}
               </div>
 
-              <div className="mt-4 sm:mt-5 grid grid-cols-3 sm:grid-cols-4 gap-2 max-h-[min(36vh,260px)] overflow-y-auto pr-1 pb-1">
+              <div className="mt-4 sm:mt-5 grid grid-cols-3 gap-2 max-h-[min(44vh,320px)] overflow-y-auto pr-1 pb-1">
                 {manifest &&
                   activeFiles.map((file, i) => {
                     const src = toSrc(manifest, activeCollection, file);
@@ -278,7 +278,7 @@ const CatalogPage: React.FC = () => {
                         ].join(' ')}
                         aria-label={`Открыть фото ${i + 1}`}
                       >
-                        <div className="relative w-full aspect-square">
+                        <div className="relative w-full aspect-[3/2]">
                           <img src={src} alt="" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
                         </div>
                       </button>
