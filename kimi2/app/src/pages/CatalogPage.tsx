@@ -250,7 +250,7 @@ const CatalogPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-4 sm:p-5 border-t lg:border-t-0 lg:border-l border-border min-h-0 flex flex-col">
+            <div className="p-4 sm:p-5 border-t lg:border-t-0 lg:border-l border-border">
               <DialogHeader className="text-left">
                 <DialogTitle className="font-display text-text text-balance">
                   {activeCollection.replace(/_+$/g, '') || 'Коллекция'}
@@ -259,35 +259,46 @@ const CatalogPage: React.FC = () => {
               {activeVariantLabel ? (
                 <p className="mt-1 text-xs font-medium text-text-muted tracking-wide">{activeVariantLabel}</p>
               ) : null}
-              <div className="mt-3 max-h-36 sm:max-h-44 overflow-y-auto text-sm text-text-muted leading-snug pr-1">
+              <div className="mt-3 text-sm text-text-muted leading-snug" style={{ maxHeight: '5.5em', overflow: 'hidden' }}>
                 {activeCaption}
               </div>
 
+              {/* Thumbnail grid — standalone scroll container with fixed height */}
               <div
-                className="mt-4 sm:mt-5 grid grid-cols-3 lg:grid-cols-4 gap-2 overflow-y-auto pr-1 pb-1"
-                style={{ maxHeight: 'min(44vh, 320px)' }}
+                className="mt-4 overflow-y-auto"
+                style={{ maxHeight: '260px' }}
               >
-                {manifest &&
-                  activeFiles.map((file, i) => {
-                    const src = toSrc(manifest, activeCollection, file);
-                    return (
-                      <button
-                        key={file}
-                        type="button"
-                        onClick={() => setActiveIndex(i)}
-                        className={[
-                          'block w-full min-w-0 p-0 m-0 rounded-[var(--radius)] overflow-hidden border-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
-                          i === activeIndex ? 'border-primary ring-1 ring-primary' : 'border-transparent hover:border-primary/60',
-                        ].join(' ')}
-                        aria-label={`Открыть фото ${i + 1}`}
-                      >
-                        {/* padding-bottom trick: 75% = 4:3 ratio, works in every browser */}
-                        <div className="relative w-full" style={{ paddingBottom: '75%' }}>
-                          <img src={src} alt="" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-                        </div>
-                      </button>
-                    );
-                  })}
+                <div
+                  className="grid gap-2"
+                  style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}
+                >
+                  {manifest &&
+                    activeFiles.map((file, i) => {
+                      const src = toSrc(manifest, activeCollection, file);
+                      return (
+                        <button
+                          key={file}
+                          type="button"
+                          onClick={() => setActiveIndex(i)}
+                          className={[
+                            'block p-0 m-0 overflow-hidden border-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+                            i === activeIndex ? 'border-primary ring-1 ring-primary' : 'border-transparent hover:border-primary/60',
+                          ].join(' ')}
+                          style={{ borderRadius: '6px' }}
+                          aria-label={`Открыть фото ${i + 1}`}
+                        >
+                          <img
+                            src={src}
+                            alt=""
+                            loading="lazy"
+                            width={200}
+                            height={150}
+                            style={{ display: 'block', width: '100%', height: 'auto', aspectRatio: '4 / 3', objectFit: 'cover' }}
+                          />
+                        </button>
+                      );
+                    })}
+                </div>
               </div>
             </div>
           </div>
