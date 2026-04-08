@@ -273,13 +273,12 @@ const CatalogPage: React.FC = () => {
                         type="button"
                         onClick={() => setActiveIndex(i)}
                         className={[
-                          'relative block w-full min-w-0 p-0 m-0 rounded-[var(--radius)] overflow-hidden border-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
+                          'block w-full min-w-0 p-0 m-0 rounded-[var(--radius)] overflow-hidden border-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
                           i === activeIndex ? 'border-primary ring-1 ring-primary' : 'border-transparent hover:border-primary/60',
                         ].join(' ')}
-                        style={{ aspectRatio: '1 / 1' }}
                         aria-label={`Открыть фото ${i + 1}`}
                       >
-                        <img src={src} alt="" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                        <img src={src} alt="" className="block w-full aspect-square object-cover" loading="lazy" />
                       </button>
                     );
                   })}
