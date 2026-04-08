@@ -79,8 +79,8 @@ const Contact: React.FC = () => {
     {
       icon: <MailIcon size={24} />,
       title: 'Email',
-      value: 'info@marrob.ru',
-      href: 'mailto:info@marrob.ru',
+      value: 'sale@marrob.ru',
+      href: 'mailto:sale@marrob.ru',
     },
     {
       icon: <MapPinIcon size={24} />,

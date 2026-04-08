@@ -44,8 +44,8 @@ const Header: React.FC = () => {
               <PhoneIcon size={14} />
               +7(499)647-59-10
             </a>
-            <a href="mailto:info@marrob.ru" className="hover:text-primary transition-colors">
-              info@marrob.ru
+            <a href="mailto:sale@marrob.ru" className="hover:text-primary transition-colors">
+              sale@marrob.ru
             </a>
           </div>
         </div>

@@ -59,9 +59,9 @@ const Footer: React.FC = () => {
                 <PhoneIcon size={16} />
                 +7(499)647-59-10
               </a>
-              <a href="mailto:info@marrob.ru" className="flex items-center gap-2 text-white/90 hover:text-primary transition-colors">
+              <a href="mailto:sale@marrob.ru" className="flex items-center gap-2 text-white/90 hover:text-primary transition-colors">
                 <MailIcon size={16} />
-                info@marrob.ru
+                sale@marrob.ru
               </a>
               <span className="flex items-center gap-2 text-white/90">
                 <MapPinIcon size={16} />
