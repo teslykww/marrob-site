@@ -278,7 +278,9 @@ const CatalogPage: React.FC = () => {
                         ].join(' ')}
                         aria-label={`Открыть фото ${i + 1}`}
                       >
-                        <img src={src} alt="" className="block w-full aspect-square object-cover" loading="lazy" />
+                        <div className="relative w-full aspect-square">
+                          <img src={src} alt="" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                        </div>
                       </button>
                     );
                   })}
