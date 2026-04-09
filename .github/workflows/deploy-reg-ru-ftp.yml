@@ -33,6 +33,13 @@ jobs:
       - name: Install and build
         run: npm ci && npm run build
 
+      - name: Inject Bitrix24 webhook into PHP proxy
+        env:
+          BITRIX24_WEBHOOK_URL: ${{ secrets.BITRIX24_WEBHOOK_URL }}
+        run: |
+          sed -i "s|%%BITRIX24_WEBHOOK_URL%%|${BITRIX24_WEBHOOK_URL}|g" dist/api/bitrix-lead.php
+          echo "✅ Bitrix webhook injected into PHP proxy"
+
       - name: Upload dist to FTP (reg.ru)
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
