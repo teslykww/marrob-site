@@ -11,11 +11,13 @@ import CatalogPage from './pages/CatalogPage';
 import DealersPage from './pages/DealersPage';
 import { LeadModalProvider } from './hooks/useLeadModal';
 import LeadModal from './components/LeadModal';
+import ScrollToTop from './components/ScrollToTop';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <LeadModalProvider>
     <HashRouter>
+      <ScrollToTop />
       <MotionConfig reducedMotion="user">
       <div className="min-h-screen min-w-0 w-full max-w-[100%] overflow-x-hidden bg-bg">
         <Header />
